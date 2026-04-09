@@ -33,3 +33,35 @@
 - Keyboard events use Phaser.Input.Keyboard.KeyCodes for key binding
 - Menu items can be made interactive with `setInteractive({ useHandCursor: true })`
 ---
+
+## 2026-04-09 24:10 - US-004
+- Implemented WorldScene.ts with tile-based map rendering using Phaser's tilemap system
+- Implemented Player.ts entity with four-direction movement using Arcade physics
+- Implemented NPC.ts entity with interaction zone and name display
+- Implemented collision detection for wall/water tiles and NPCs
+- Implemented map transition points with fade transitions
+- Created placeholder textures for tiles, player, and NPCs dynamically
+- Demo map "demo_town" with walls, walkable ground, NPCs, and transition points
+- Player movement with arrow keys and WASD
+- NPC interaction triggered by Enter/Space/C when facing NPC
+- Simple dialog display placeholder (full DialogScene in US-005)
+- MainMenuScene updated to transition to WorldScene on "New Game"
+- Game.ts updated to register WorldScene
+
+**Files changed:**
+- src/scenes/WorldScene.ts (complete rewrite from placeholder)
+- src/entities/Player.ts (complete rewrite from placeholder)
+- src/entities/NPC.ts (complete rewrite from placeholder)
+- src/data/MapData.ts (complete rewrite with tile types and interfaces)
+- src/scenes/MainMenuScene.ts (updated startNewGame to transition to WorldScene)
+- src/core/Game.ts (added WorldScene import and registration)
+- ralph/prd.json (updated US-004 to passes: true)
+
+**Learnings for future iterations:**
+- Phaser tilemaps can be created from raw data arrays using `make.tilemap({ data: tiles })`
+- Use `setCollision([tileIndexes])` on tilemap layers for collision
+- Physics bodies need type casting: `sprite.body as Phaser.Physics.Arcade.Body`
+- Placeholder textures can be generated using `add.graphics()` and `generateTexture()`
+- Player direction tracking needed for NPC interaction (face the NPC)
+- Scene transitions use `scene.restart()` with data object for map changes
+---

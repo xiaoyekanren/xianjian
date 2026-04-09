@@ -290,14 +290,16 @@ export class MainMenuScene extends Phaser.Scene {
   }
 
   /**
-   * Start new game
+   * Start new game - transition to WorldScene
    */
   private startNewGame(): void {
     this.cameras.main.fadeOut(500, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
-      // For now, show a placeholder message
-      // Will transition to WorldScene when US-004 is implemented
-      this.showMessage('新游戏功能将在后续版本实现...');
+      this.scene.start('WorldScene', {
+        mapId: 'demo_town',
+        playerStartX: 5,
+        playerStartY: 5,
+      });
     });
   }
 
