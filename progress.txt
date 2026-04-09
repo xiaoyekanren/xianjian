@@ -561,3 +561,24 @@
 - Sell mode filters items by shop's buyCategories
 - Quantity max is calculated based on gold (buy) or inventory (sell)
 ---
+
+## 2026-04-10 20:00 - US-021
+- Enhanced status effect system with skill application
+- StatusType enum: poison, paralyze, sleep, silence, protect, haste, regen
+- BattleScene displays status icons: 毒/晕/眠/默/护/速/愈
+- Updated BattleSystem.executeSkill to apply status effects from skills
+- Skills with statusEffect field apply effects to targets on hit
+- Duration management: processStatusEffects decrements duration each round
+- Items remove status effects: 解毒药 (poison), 醒神丹 (sleep/paralyze)
+- Skill examples: 鬼降 (paralyze), 万毒咒 (poison)
+
+**Files changed:**
+- src/systems/BattleSystem.ts (updated - apply status effects from skills)
+- ralph/prd.json (updated US-021 to passes: true)
+
+**Learnings for future iterations:**
+- Skills apply status effects via skill.statusEffect field
+- Status effects refresh duration if already present
+- Status effect messages appended to skill result message
+- Damage over time (poison) and healing over time (regen) in processStatusEffects
+---
