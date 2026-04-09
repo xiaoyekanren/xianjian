@@ -2920,6 +2920,249 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // Ending dialogs - US-041: 多结局系统
+  // Default ending - 灵儿结局
+  {
+    id: 'ending_linger_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '拜月教主终于倒下，但战斗的代价是沉重的...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_linger_intro_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥...我必须传承女娲之力，拯救这个世界...',
+        expression: Expression.SAD,
+        nextDialogId: 'ending_linger_intro_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿！难道没有其他办法吗？',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'ending_linger_sacrifice',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这是我的命运...作为女娲后人，我必须守护这片大地。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_linger_sacrifice_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥，请不要忘记我...我会永远守护着你...',
+        expression: Expression.SAD,
+        nextDialogId: 'ending_linger_sacrifice_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿...！我永远不会忘记你！',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ending_linger_final',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '灵儿化身为光，融入了天地之间...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_linger_final_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '她的身影消失在光芒中，只留下一颗晶莹的水灵珠。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_linger_final_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿...我会带着你的祝福，继续前行。',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  // Yueru ending - 月如重逢
+  {
+    id: 'ending_yueru_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '战斗结束后，你取出月如遗物，心中涌起无尽的思念...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_yueru_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '月如...我多希望能再见你一面...',
+        expression: Expression.SAD,
+        nextDialogId: 'ending_yueru_intro_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '遗物散发出温暖的光芒，仿佛回应着你的呼唤...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ending_yueru_reunion',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '光芒中，一个熟悉的身影渐渐显现...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_yueru_reunion_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥...是你吗？我好像做了一个很长的梦...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ending_yueru_reunion_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '月如！真的是你！你回来了！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'ending_yueru_final',
+    lines: [
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥，你一直守护着我...我终于能再次见到你了。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ending_yueru_final_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '月如，让我们一起，重新开始...',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ending_yueru_final_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '月光如水，剑影温柔，两人的身影交织在一起...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // All survive ending - 全员存活
+  {
+    id: 'ending_all_survive_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '女娲之力觉醒，奇迹降临...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_all_survive_intro_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥...还有大家...我感受到一股强大的力量...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ending_all_survive_intro_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '女娲玉佩与月如遗物同时闪耀，交织成神奇的光辉...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ending_all_survive_reunion',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '光芒中，月如的身影重现...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_all_survive_reunion_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥...灵儿...阿奴...你们都还在！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ending_all_survive_reunion_3',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '月如姐姐！你真的回来了！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ending_all_survive_reunion_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '月如...我们终于又能相聚了。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'ending_all_survive_final',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿、月如、阿奴...谢谢你们一直陪着我。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ending_all_survive_final_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥，我们一起，守护这片大地。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_all_survive_final_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '四人并肩站立，夕阳洒下金色的光芒...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ending_all_survive_final_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '这就是他们的故事，一段关于爱与守护的传奇...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
 ];
 
 /**

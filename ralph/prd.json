@@ -655,8 +655,8 @@
         "Typecheck passes"
       ],
       "priority": 41,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - EndingSystem.ts with three endings (linger_default, yueru_reunion, all_survive), ending conditions based on items (yueru_relic, nuwa_amulet) and affection levels (80+ for all-survive ending), EndingScene.ts for ending cutscene playback with screen effects and credits, ending dialogs added to DialogData.ts (ending_linger_*, ending_yueru_*, ending_all_survive_*), story.json updated with ending trigger node after final battle"
     },
     {
       "id": "US-042",

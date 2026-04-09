@@ -1253,13 +1253,41 @@
           "waitForCompletion": true
         },
         {
-          "type": "set_flag",
+        "type": "set_flag",
           "order": 2,
           "data": { "flagName": "visited_inn", "flagValue": true }
         }
       ],
       "priority": 15,
       "onCompleteFlags": ["visited_inn"]
+    },
+    {
+      "id": "story_ending_trigger",
+      "chapter": 5,
+      "title": "结局触发",
+      "description": "最终战斗后触发结局判定",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "baiyue_defeated", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch5_final_battle"],
+      "events": [
+        {
+          "type": "set_flag",
+          "order": 1,
+          "data": { "flagName": "final_battle_complete", "flagValue": true }
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "ending_linger_intro" },
+          "waitForCompletion": true
+        }
+      ],
+      "priority": 1000,
+      "onCompleteFlags": ["final_battle_complete", "ending_reached"]
     }
   ]
 }
