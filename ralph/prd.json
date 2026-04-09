@@ -445,8 +445,8 @@
         "Typecheck passes"
       ],
       "priority": 28,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Enhanced MapData interface with multi-layer support (LayerType: ground/building/overlay/event), TileType enum expanded (12 tile types), MapEventData with trigger types, MapTransitionData with source coordinates and requirements, CollisionData and CollisionBox structures, MapEnvironment settings, maps.json created with 10 maps across 5 locations (yuhang_town, xianling_island, suzhou_city, miao_village, lingbao_pavilion), WorldScene.ts updated to use new interface"
     },
     {
       "id": "US-029",

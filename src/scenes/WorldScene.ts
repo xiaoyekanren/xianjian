@@ -11,6 +11,7 @@ import {
   TileType,
   DEFAULT_TILE_SIZE,
   MapTransitionData,
+  LayerType,
 } from '@/data/MapData';
 import { DialogEndEvent } from '@/scenes/DialogScene';
 
@@ -29,13 +30,19 @@ export interface WorldSceneConfig {
 const DEMO_MAP: MapData = {
   id: 'demo_town',
   name: '测试城镇',
+  displayName: '测试城镇',
+  locationId: 'demo_location',
   width: 20,
   height: 15,
   tileWidth: DEFAULT_TILE_SIZE,
   tileHeight: DEFAULT_TILE_SIZE,
   layers: [
     {
+      id: 'demo_ground',
       name: 'ground',
+      type: LayerType.GROUND,
+      visible: true,
+      opacity: 1,
       tiles: [
         // Row 0-2: walls
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -76,11 +83,16 @@ const DEMO_MAP: MapData = {
   ],
   transitions: [
     {
+      id: 'demo_to_house',
       targetMapId: 'demo_house',
       targetX: 5,
       targetY: 8,
+      sourceX: 9,
+      sourceY: 6,
     },
   ],
+  events: [],
+  collisions: [],
 };
 
 /**
