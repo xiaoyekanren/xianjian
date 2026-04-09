@@ -439,3 +439,35 @@
 - quantity { min, max } allows variable amounts (e.g., 2-3 items)
 - calculateTotalReward aggregates drops from all defeated enemies
 ---
+
+## 2026-04-10 18:00 - US-009
+- Implemented 李逍遥角色实现 with sprite and portrait systems
+- Created SpriteGenerator utility: generates placeholder sprite sheets with 4-direction walk animations
+  - Each direction has 4 walk frames (walk cycle animation)
+  - Support for different character styles (male/female/child)
+  - Weapon indicators for sword-bearing characters
+  - CHARACTER_APPEARANCES configuration for all main characters
+- Created PortraitGenerator utility: generates placeholder portraits with expression variations
+  - 7 expressions: normal, happy, sad, angry, surprised, thinking, shy
+  - Different facial features per expression (eyes, mouth, eyebrows)
+  - PORTRAIT_APPEARANCES configuration for all main characters
+- Updated BootScene.ts: generates all character sprites/portraits at startup
+- Updated Player.ts: uses walking animations with playWalkAnimation/playIdleAnimation
+- Updated DialogScene.ts: integrates portrait system with expression-specific textures
+- Verified character data: HP120, MP30, Attack18, Defense12, correct skill progression
+
+**Files changed:**
+- src/utils/SpriteGenerator.ts (created - sprite sheet generator with animations)
+- src/utils/PortraitGenerator.ts (created - portrait generator with expressions)
+- src/scenes/BootScene.ts (updated - generate character assets at startup)
+- src/entities/Player.ts (updated - walking animation system)
+- src/scenes/DialogScene.ts (updated - portrait integration)
+- ralph/prd.json (updated US-009 to passes: true)
+
+**Learnings for future iterations:**
+- Phaser animations use generateFrameNumbers with frame indices
+- Sprite sheets layout: row 0=down, row 1=left, row 2=right, row 3=up
+- Portrait textures keyed by `portrait_{characterId}_{expression}`
+- DialogScene uses this.textures.exists (not this.scene.textures)
+- Unused parameters should use underscore prefix (_direction) for TypeScript
+---
