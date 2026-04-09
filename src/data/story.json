@@ -481,32 +481,48 @@
         {
           "type": "screen_effect",
           "order": 1,
-          "data": { "effectType": "shake", "effectDuration": 2000 }
+          "data": { "effectType": "shake", "effectDuration": 1500 }
         },
         {
           "type": "dialog",
           "order": 2,
-          "data": { "dialogId": "tower_yueru_sacrifice" },
+          "data": { "dialogId": "tower_yueru_sacrifice_cutscene" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 3,
+          "data": { "effectType": "flash", "effectColor": "#ff0000", "effectDuration": 500 }
+        },
+        {
+          "type": "screen_effect",
+          "order": 4,
+          "data": { "effectType": "fade", "effectColor": "#000000", "effectDuration": 2000 }
+        },
+        {
+          "type": "dialog",
+          "order": 5,
+          "data": { "dialogId": "tower_yueru_sacrifice_aftermath" },
           "waitForCompletion": true
         },
         {
           "type": "remove_party",
-          "order": 3,
+          "order": 6,
           "data": { "characterId": "lin_yueru" }
         },
         {
           "type": "get_item",
-          "order": 4,
+          "order": 7,
           "data": { "itemId": "yueru_relic", "quantity": 1 }
         },
         {
           "type": "set_flag",
-          "order": 5,
+          "order": 8,
           "data": { "flagName": "yueru_sacrificed", "flagValue": true }
         },
         {
           "type": "chapter_change",
-          "order": 6,
+          "order": 9,
           "data": { "chapter": 4 }
         }
       ],

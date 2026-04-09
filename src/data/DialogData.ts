@@ -1254,6 +1254,60 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // US-037: 月如牺牲后续 - Tower collapse aftermath
+  {
+    id: 'tower_yueru_sacrifice_aftermath',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '锁妖塔剧烈震动，开始崩塌...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_yueru_sacrifice_aftermath_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '在最后一刻，林月如用自己的生命，挡住了致命的一击...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_yueru_sacrifice_aftermath_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '月如......为什么...为什么要这样做...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_yueru_sacrifice_aftermath_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥...月如姐姐是为了保护我们...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_yueru_sacrifice_aftermath_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '她的牺牲...我们会永远记住...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_yueru_sacrifice_aftermath_6',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '（握紧月如留下的遗物）月如，我会带着你的心愿，继续走下去...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_yueru_sacrifice_aftermath_7',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿，我们必须离开这里，去苗疆寻找五灵珠，完成月如的遗愿。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
   {
     id: 'tower_boss_victory',
     lines: [

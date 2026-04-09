@@ -867,3 +867,29 @@
 - Dialog sequences use narrator for cutscene-style storytelling
 - Map transitions connect Black Miao ↔ Sacred Grounds ↔ White Miao
 ---
+
+## 2026-04-10 21:30 - US-037
+- Implemented 锁妖塔月如牺牲剧情 (Demon Lock Tower Yueru Sacrifice Scene)
+- Enhanced story node story_ch3_yueru_sacrifice with multi-step emotional sequence
+- Added SCREEN_EFFECT event handler to WorldScene.ts (shake, flash, fade with color support)
+- Screen effects: shake (1500ms) for tower collapse, flash (red 500ms) for impact, fade (black 2000ms) for emotional transition
+- Dialog sequence: tower_yueru_sacrifice_cutscene (sacrifice moment) -> tower_yueru_sacrifice_aftermath (grief and resolve)
+- REMOVE_PARTY event removes lin_yueru from party
+- GET_ITEM event gives yueru_relic key item (月如遗物 - 林月如留下的遗物)
+- Added yueru_relic item to items.json as key item type
+- Fixed story.json dialog ID mismatch (was tower_yueru_sacrifice, now tower_yueru_sacrifice_cutscene)
+
+**Files changed:**
+- src/scenes/WorldScene.ts (added SCREEN_EFFECT handler with executeScreenEffect method)
+- src/data/items.json (added yueru_relic key item)
+- src/data/story.json (fixed dialog ID, enhanced event sequence)
+- src/data/DialogData.ts (added tower_yueru_sacrifice_aftermath dialog)
+- ralph/prd.json (updated US-037 to passes: true)
+
+**Learnings for future iterations:**
+- SCREEN_EFFECT supports shake/flash/fade with configurable duration and color
+- Story events can chain multiple screen effects for dramatic sequences
+- Dialog aftermath scenes help transition emotional weight to next chapter
+- REMOVE_PARTY event logs removal but actual party state management is TODO
+- GET_ITEM event logs acquisition but inventory state management is TODO
+---

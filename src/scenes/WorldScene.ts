@@ -281,8 +281,73 @@ export class WorldScene extends Phaser.Scene {
         this.handleStoryEventComplete();
         break;
 
+      case StoryEventType.SCREEN_EFFECT:
+        // Screen effect (fade, flash, shake)
+        this.executeScreenEffect(event.data);
+        break;
+
+      case StoryEventType.REMOVE_PARTY:
+        // Remove party member - handled by game state
+        console.log(`[WorldScene] Party member removed: ${event.data.characterId}`);
+        this.handleStoryEventComplete();
+        break;
+
       default:
         // Skip unknown events
+        this.handleStoryEventComplete();
+        break;
+    }
+  }
+
+  /**
+   * Execute screen effect (shake, flash, fade)
+   */
+  private executeScreenEffect(data: Record<string, unknown>): void {
+    const effectType = data.effectType as string;
+    const duration = (data.effectDuration as number) || 1000;
+    const color = (data.effectColor as string) || '#ffffff';
+
+    switch (effectType) {
+      case 'shake':
+        // Camera shake effect
+        this.cameras.main.shake(duration, 0.02);
+        this.time.delayedCall(duration, () => {
+          this.handleStoryEventComplete();
+        });
+        break;
+
+      case 'flash':
+        // Flash effect
+        this.cameras.main.flash(duration,
+          parseInt(color.slice(1, 3), 16),
+          parseInt(color.slice(3, 5), 16),
+          parseInt(color.slice(5, 7), 16)
+        );
+        this.time.delayedCall(duration, () => {
+          this.handleStoryEventComplete();
+        });
+        break;
+
+      case 'fade':
+        // Fade to color then back
+        this.cameras.main.fadeOut(duration / 2,
+          parseInt(color.slice(1, 3), 16),
+          parseInt(color.slice(3, 5), 16),
+          parseInt(color.slice(5, 7), 16)
+        );
+        this.time.delayedCall(duration / 2, () => {
+          this.cameras.main.fadeIn(duration / 2,
+            parseInt(color.slice(1, 3), 16),
+            parseInt(color.slice(3, 5), 16),
+            parseInt(color.slice(5, 7), 16)
+          );
+        });
+        this.time.delayedCall(duration, () => {
+          this.handleStoryEventComplete();
+        });
+        break;
+
+      default:
         this.handleStoryEventComplete();
         break;
     }
