@@ -471,3 +471,21 @@
 - DialogScene uses this.textures.exists (not this.scene.textures)
 - Unused parameters should use underscore prefix (_direction) for TypeScript
 ---
+
+## 2026-04-10 18:15 - US-010, US-011, US-012
+- Verified character data for 赵灵儿/林月如/阿奴 in characters.json and skills.json
+- All four main characters already included in BootScene asset generation
+- SpriteGenerator/PortraitGenerator handle all characters uniformly
+- Character-specific data:
+  - 赵灵儿: HP80/MP80, 风咒Lv1/雷咒Lv5/五气朝元Lv8 etc.
+  - 林月如: HP100/MP40, Attack22, 七诀剑气Lv8/剑舞乾坤Lv12 etc.
+  - 阿奴: HP70/MP60, Speed22/Luck18, 鬼降Lv15/祭天Lv18 etc.
+
+**Files changed:**
+- ralph/prd.json (updated US-010, US-011, US-012 to passes: true)
+
+**Learnings for future iterations:**
+- SpriteGenerator handles all main characters in one array
+- Story triggers for party member joining will be in later chapters
+- Portrait/sprite assets are generated at BootScene startup for all characters
+---
