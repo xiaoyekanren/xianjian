@@ -148,8 +148,8 @@
         "Typecheck passes"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Character data verified in characters.json/skills.json (US-008), SpriteGenerator creates placeholder sprite sheets with 4-direction walk animations (4 frames per direction), PortraitGenerator creates expression portraits for dialogs (normal/happy/sad/angry/surprised/thinking/shy), Player.ts updated to use walking animations, DialogScene integrates portrait system with fallback for NPCs"
     },
     {
       "id": "US-010",

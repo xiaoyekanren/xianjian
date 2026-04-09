@@ -1,6 +1,7 @@
 /**
  * Player entity - Main player character for world exploration
  * US-004: 地图探索场景实现
+ * US-009: 李逍遥角色实现 - Walking animations
  */
 
 import Phaser from 'phaser';
@@ -23,7 +24,7 @@ export interface PlayerConfig {
   startX: number;
   startY: number;
   speed: number;
-  spriteKey?: string;
+  spriteKey?: string;  // Sprite sheet key (e.g., 'sprite_li_xiaoyao')
 }
 
 /**
@@ -33,6 +34,7 @@ const DEFAULT_PLAYER_CONFIG: PlayerConfig = {
   startX: 5,
   startY: 5,
   speed: 150,
+  spriteKey: 'player',  // Default sprite key
 };
 
 /**
@@ -47,6 +49,7 @@ export class Player {
   private speed: number;
   private tileX: number;
   private tileY: number;
+  private spriteKey: string;
 
   constructor(scene: Phaser.Scene, config: Partial<PlayerConfig> = {}) {
     this.scene = scene;
@@ -54,6 +57,7 @@ export class Player {
     this.speed = finalConfig.speed;
     this.tileX = finalConfig.startX;
     this.tileY = finalConfig.startY;
+    this.spriteKey = finalConfig.spriteKey || 'player';
 
     this.createSprite(finalConfig);
     this.setupAnimations();
@@ -67,8 +71,8 @@ export class Player {
     const pixelX = config.startX * DEFAULT_TILE_SIZE + DEFAULT_TILE_SIZE / 2;
     const pixelY = config.startY * DEFAULT_TILE_SIZE + DEFAULT_TILE_SIZE / 2;
 
-    // Create or use existing sprite texture
-    const textureKey = config.spriteKey || 'player';
+    // Use configured sprite key
+    const textureKey = config.spriteKey || this.spriteKey;
 
     // Check if texture exists, if not create placeholder
     if (!this.scene.textures.exists(textureKey)) {
@@ -82,10 +86,13 @@ export class Player {
     const body = this.sprite.body as Phaser.Physics.Arcade.Body;
     body.setSize(DEFAULT_TILE_SIZE - 4, DEFAULT_TILE_SIZE - 4);
     this.sprite.setDepth(10); // Player on top of map tiles
+
+    // Set initial frame
+    this.sprite.setFrame(0);
   }
 
   /**
-   * Create placeholder texture for player
+   * Create placeholder texture for player (fallback)
    */
   private createPlaceholderTexture(key: string): void {
     const graphics = this.scene.add.graphics();
@@ -104,12 +111,50 @@ export class Player {
   }
 
   /**
-   * Setup movement animations
-   * Note: For placeholder, we'll just flip the sprite for direction
+   * Setup movement animations using generated sprite sheets
    */
   private setupAnimations(): void {
-    // Placeholder animations - would use actual sprite frames later
-    // For now, direction is handled by visual cues
+    // Play initial idle animation (facing down)
+    this.playIdleAnimation();
+  }
+
+  /**
+   * Play walk animation for current direction
+   */
+  private playWalkAnimation(): void {
+    const animKey = `${this.spriteKey}_walk_${this.currentDirection}`;
+    if (this.scene.anims.exists(animKey)) {
+      this.sprite.play(animKey, true);
+    }
+  }
+
+  /**
+   * Play idle animation for current direction
+   */
+  private playIdleAnimation(): void {
+    const animKey = `${this.spriteKey}_idle_${this.currentDirection}`;
+    if (this.scene.anims.exists(animKey)) {
+      this.sprite.play(animKey, true);
+    } else {
+      // Fallback: stop animation and use static frame
+      this.sprite.stop();
+      this.setDirectionFrame();
+    }
+  }
+
+  /**
+   * Set static frame based on direction (fallback)
+   */
+  private setDirectionFrame(): void {
+    // Frame layout: down (row 0), left (row 1), right (row 2), up (row 3)
+    // First frame of each row for idle
+    const frameMap: Record<Direction, number> = {
+      [Direction.DOWN]: 0,
+      [Direction.LEFT]: 4,
+      [Direction.RIGHT]: 8,
+      [Direction.UP]: 12,
+    };
+    this.sprite.setFrame(frameMap[this.currentDirection] || 0);
   }
 
   /**
@@ -140,8 +185,8 @@ export class Player {
 
     this.sprite.setVelocity(velocityX, velocityY);
 
-    // Update visual direction indicator
-    this.updateDirectionVisual();
+    // Play walk animation
+    this.playWalkAnimation();
   }
 
   /**
@@ -150,19 +195,9 @@ export class Player {
   stop(): void {
     this.isMoving = false;
     this.sprite.setVelocity(0, 0);
-  }
 
-  /**
-   * Update visual based on current direction
-   */
-  private updateDirectionVisual(): void {
-    // Placeholder: scale sprite horizontally for left/right
-    // Would use proper animation frames in production
-    if (this.currentDirection === Direction.LEFT) {
-      this.sprite.setScale(-1, 1);
-    } else if (this.currentDirection === Direction.RIGHT) {
-      this.sprite.setScale(1, 1);
-    }
+    // Play idle animation for current direction
+    this.playIdleAnimation();
   }
 
   /**

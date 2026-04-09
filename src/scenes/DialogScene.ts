@@ -1,6 +1,7 @@
 /**
  * Dialog Scene - Displays dialogue interface for NPC interactions
  * US-005: 对话系统实现
+ * US-009: 李逍遥角色实现 - Portrait integration
  */
 
 import Phaser from 'phaser';
@@ -284,39 +285,34 @@ export class DialogScene extends Phaser.Scene {
 
   /**
    * Update avatar based on speaker and expression
+   * US-009: Uses portrait textures when available
    */
   private updateAvatar(speakerId: string, expression?: Expression): void {
     if (!this.avatarContainer) return;
 
-    // Different colors for different speaker types
-    let avatarColor = 0x66aa88; // Default green (NPC)
-
-    if (speakerId.startsWith('player') || speakerId === 'li_xiaoyao') {
-      avatarColor = 0x4488ff; // Blue for player
-    } else if (speakerId.startsWith('npc_elder')) {
-      avatarColor = 0x88aa88; // Gray-green for elder
-    } else if (speakerId.startsWith('npc_villager')) {
-      avatarColor = 0x88cc66; // Light green for villagers
-    }
-
-    // Recreate avatar with new color
+    // Clear existing avatar elements
     this.avatarContainer.removeAll(true);
 
-    // Avatar background circle
-    const avatarBg = this.add.graphics();
-    avatarBg.fillStyle(0x333344, 1);
-    avatarBg.fillCircle(0, 0, this.AVATAR_SIZE / 2);
-    avatarBg.lineStyle(2, 0xD4A84B);
-    avatarBg.strokeCircle(0, 0, this.AVATAR_SIZE / 2);
-    this.avatarContainer.add(avatarBg);
+    // Try to use proper portrait texture
+    const portraitKey = `portrait_${speakerId}_${expression || Expression.NORMAL}`;
+    const defaultPortraitKey = `portrait_${speakerId}`;
 
-    // Avatar placeholder
-    const avatarPlaceholder = this.add.graphics();
-    avatarPlaceholder.fillStyle(avatarColor);
-    avatarPlaceholder.fillCircle(0, 0, this.AVATAR_SIZE / 2 - 5);
-    this.avatarContainer.add(avatarPlaceholder);
+    if (this.textures.exists(portraitKey)) {
+      // Use expression-specific portrait
+      const portrait = this.add.image(0, 0, portraitKey);
+      portrait.setDisplaySize(this.AVATAR_SIZE, this.AVATAR_SIZE);
+      this.avatarContainer.add(portrait);
+    } else if (this.textures.exists(defaultPortraitKey)) {
+      // Use default portrait
+      const portrait = this.add.image(0, 0, defaultPortraitKey);
+      portrait.setDisplaySize(this.AVATAR_SIZE, this.AVATAR_SIZE);
+      this.avatarContainer.add(portrait);
+    } else {
+      // Fallback to placeholder colored circle (for NPCs without portraits)
+      this.createFallbackAvatar(speakerId);
+    }
 
-    // Expression indicator
+    // Add expression indicator text (for non-normal expressions)
     if (expression && expression !== Expression.NORMAL) {
       this.expressionIndicator = this.add.text(
         0,
@@ -332,8 +328,42 @@ export class DialogScene extends Phaser.Scene {
       );
       this.expressionIndicator.setOrigin(0.5, 0.5);
       this.expressionIndicator.setVisible(true);
-      this.avatarContainer.add(this.expressionIndicator);
+      if (this.avatarContainer) {
+        this.avatarContainer.add(this.expressionIndicator);
+      }
     }
+  }
+
+  /**
+   * Create fallback avatar for speakers without proper portraits
+   */
+  private createFallbackAvatar(speakerId: string): void {
+    if (!this.avatarContainer) return;
+
+    // Different colors for different speaker types
+    let avatarColor = 0x66aa88; // Default green (NPC)
+
+    if (speakerId.startsWith('player') || speakerId === 'li_xiaoyao') {
+      avatarColor = 0x4488ff; // Blue for player
+    } else if (speakerId.startsWith('npc_elder')) {
+      avatarColor = 0x888888; // Gray for elder
+    } else if (speakerId.startsWith('npc_villager')) {
+      avatarColor = 0x88cc66; // Light green for villagers
+    }
+
+    // Avatar background circle
+    const avatarBg = this.add.graphics();
+    avatarBg.fillStyle(0x333344, 1);
+    avatarBg.fillCircle(0, 0, this.AVATAR_SIZE / 2);
+    avatarBg.lineStyle(2, 0xD4A84B);
+    avatarBg.strokeCircle(0, 0, this.AVATAR_SIZE / 2);
+    this.avatarContainer.add(avatarBg);
+
+    // Avatar placeholder
+    const avatarPlaceholder = this.add.graphics();
+    avatarPlaceholder.fillStyle(avatarColor);
+    avatarPlaceholder.fillCircle(0, 0, this.AVATAR_SIZE / 2 - 5);
+    this.avatarContainer.add(avatarPlaceholder);
   }
 
   /**

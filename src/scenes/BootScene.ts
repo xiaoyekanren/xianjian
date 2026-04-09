@@ -1,9 +1,12 @@
 /**
  * Boot Scene - Loads game assets and shows loading progress
  * US-003: 启动场景和主菜单
+ * US-009: 李逍遥角色实现 - Sprite and portrait generation
  */
 
 import Phaser from 'phaser';
+import { SpriteGenerator, CHARACTER_APPEARANCES, DEFAULT_SPRITE_CONFIG } from '@/utils/SpriteGenerator';
+import { PortraitGenerator, PORTRAIT_APPEARANCES, DEFAULT_PORTRAIT_CONFIG } from '@/utils/PortraitGenerator';
 
 export class BootScene extends Phaser.Scene {
   private loadingBar!: Phaser.GameObjects.Graphics;
@@ -32,6 +35,9 @@ export class BootScene extends Phaser.Scene {
   }
 
   create(): void {
+    // Generate placeholder character sprites and portraits
+    this.generateCharacterAssets();
+
     // Fade out and transition to main menu
     this.cameras.main.fadeOut(500, 0, 0, 0);
 
@@ -142,5 +148,60 @@ export class BootScene extends Phaser.Scene {
     for (let i = 0; i < 5; i++) {
       this.load.image(`placeholder_${i}`, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==');
     }
+  }
+
+  /**
+   * Generate character sprite sheets and portraits
+   * US-009: 李逍遥角色实现
+   */
+  private generateCharacterAssets(): void {
+    // Generate sprite sheets for main characters
+    const mainCharacters = ['li_xiaoyao', 'zhao_linger', 'lin_yueru', 'anu'];
+
+    for (const characterId of mainCharacters) {
+      const appearance = CHARACTER_APPEARANCES[characterId];
+      if (appearance) {
+        // Generate walking sprite sheet
+        SpriteGenerator.generateSpriteSheet(
+          this,
+          `sprite_${characterId}`,
+          appearance,
+          DEFAULT_SPRITE_CONFIG
+        );
+
+        // Generate portrait set with all expressions
+        const portraitAppearance = PORTRAIT_APPEARANCES[characterId];
+        if (portraitAppearance) {
+          PortraitGenerator.generatePortraitSet(
+            this,
+            characterId,
+            portraitAppearance,
+            DEFAULT_PORTRAIT_CONFIG
+          );
+        }
+      }
+    }
+
+    // Generate NPC sprites
+    const npcTypes = ['npc_villager', 'npc_elder'];
+    for (const npcId of npcTypes) {
+      const appearance = CHARACTER_APPEARANCES[npcId];
+      if (appearance) {
+        SpriteGenerator.generateSpriteSheet(
+          this,
+          `sprite_${npcId}`,
+          appearance,
+          DEFAULT_SPRITE_CONFIG
+        );
+      }
+    }
+
+    // Generate default player sprite (using li_xiaoyao)
+    SpriteGenerator.generateSpriteSheet(
+      this,
+      'player',
+      CHARACTER_APPEARANCES.li_xiaoyao,
+      DEFAULT_SPRITE_CONFIG
+    );
   }
 }
