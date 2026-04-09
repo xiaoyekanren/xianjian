@@ -1,5 +1,5 @@
 [
-  // === 李逍遥专属技能 ===
+  
   {
     "id": "yujianshu",
     "name": "御剑术",
@@ -78,7 +78,7 @@
     "learnLevel": 30
   },
 
-  // === 赵灵儿专属技能 ===
+  
   {
     "id": "fengzhou",
     "name": "风咒",
@@ -168,7 +168,7 @@
     "learnLevel": 30
   },
 
-  // === 林月如专属技能 ===
+  
   {
     "id": "qijue_jianqi",
     "name": "七诀剑气",
@@ -236,7 +236,7 @@
     "learnLevel": 35
   },
 
-  // === 阿奴专属技能 ===
+  
   {
     "id": "guijiang",
     "name": "鬼降",
@@ -307,7 +307,7 @@
     "learnLevel": 35
   },
 
-  // === 基础仙术（所有角色可能学习） ===
+  
   {
     "id": "xuanbingzhou",
     "name": "玄冰咒",

@@ -1,5 +1,5 @@
 [
-  // === 消耗品 ===
+  
   {
     "id": "zhixuecao",
     "name": "止血草",
@@ -133,7 +133,7 @@
     "targetCount": 1
   },
 
-  // === 武器 ===
+  
   {
     "id": "wooden_sword",
     "name": "木剑",
@@ -207,7 +207,7 @@
     "bonus": { "mp": 100, "attack": 30, "luck": 10 }
   },
 
-  // === 防具 ===
+  
   {
     "id": "cloth_armor",
     "name": "布衣",
@@ -265,7 +265,7 @@
     "bonus": { "defense": 2, "speed": 3 }
   },
 
-  // === 饰品 ===
+  
   {
     "id": "wooden_ring",
     "name": "木戒指",
@@ -307,7 +307,7 @@
     "bonus": { "mp": 50, "hp": 50, "luck": 8 }
   },
 
-  // === 剧情道具 ===
+  
   {
     "id": "key_jiuguan",
     "name": "客栈钥匙",

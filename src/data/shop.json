@@ -1,5 +1,5 @@
 [
-  // === 余杭镇商店 ===
+  
   {
     "id": "yuhang_general",
     "name": "杂货铺",
@@ -46,7 +46,7 @@
     "buyCategories": ["weapon", "armor"]
   },
 
-  // === 苏州城商店 ===
+  
   {
     "id": "suzhou_general",
     "name": "苏州杂货铺",
@@ -103,7 +103,7 @@
     "buyCategories": ["consumable"]
   },
 
-  // === 苗族区域商店 ===
+  
   {
     "id": "miao_general",
     "name": "苗寨杂货铺",
@@ -134,7 +134,7 @@
     "buyCategories": ["weapon", "armor"]
   },
 
-  // === 特殊商店 ===
+  
   {
     "id": "special_magic",
     "name": "灵宝阁",

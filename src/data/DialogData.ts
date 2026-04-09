@@ -101,6 +101,227 @@ export interface DialogState {
  * Demo dialog data for testing
  */
 export const DEMO_DIALOGS: DialogSequence[] = [
+  // Yuhang Town dialogs - US-029
+  {
+    id: 'yuhang_aunt_intro',
+    lines: [
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '逍遥，你又出去闲逛了？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yuhang_aunt_intro_2',
+      },
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '家里还有好多事情要做呢，别总想着出去玩。',
+        expression: Expression.ANGRY,
+        nextDialogId: 'yuhang_aunt_intro_3',
+      },
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '不过我看你这身手越来越敏捷了，是不是偷偷练剑去了？',
+        expression: Expression.HAPPY,
+        choices: [
+          {
+            text: '是的，婶婶，我在练习御剑术',
+            nextDialogId: 'yuhang_aunt_proud',
+          },
+          {
+            text: '没有，只是随便走走',
+            nextDialogId: 'yuhang_aunt_worry',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'yuhang_aunt_proud',
+    lines: [
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '好孩子，练剑是好事，但也要注意安全。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'yuhang_aunt_proud_2',
+      },
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '你父亲当年也是一位侠客，希望能继承他的遗志。',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'yuhang_aunt_worry',
+    lines: [
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '你这孩子，总是不让我放心...',
+        expression: Expression.SAD,
+        nextDialogId: 'yuhang_aunt_worry_2',
+      },
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '快去酒馆看看吧，听说那里有个奇怪的道士。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yuhang_drunkard_intro',
+    lines: [
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '好酒...真是好酒啊...',
+        expression: Expression.HAPPY,
+        nextDialogId: 'yuhang_drunkard_intro_2',
+      },
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '年轻人，我看你骨骼惊奇，是个练剑的好苗子。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yuhang_drunkard_intro_3',
+      },
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '要不要跟我学一套御剑术？',
+        expression: Expression.THINKING,
+        choices: [
+          {
+            text: '愿意请教！',
+            nextDialogId: 'yuhang_drunkard_teach',
+            event: { type: DialogEventType.SET_FLAG, data: { flagName: 'learned_yujianshu', flagValue: true } },
+          },
+          {
+            text: '您喝多了吧...',
+            nextDialogId: 'yuhang_drunkard_refuse',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'yuhang_drunkard_teach',
+    lines: [
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '好！既然你有心求学，我便教你这套御剑术。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'yuhang_drunkard_teach_2',
+      },
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '记住，剑由心发，意到剑到。心中无剑，方能御剑。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yuhang_drunkard_teach_3',
+      },
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '你已经学会了御剑术的基本要领，继续练习吧。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'yuhang_drunkard_refuse',
+    lines: [
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '哼，你这年轻人不识货...',
+        expression: Expression.ANGRY,
+        nextDialogId: 'yuhang_drunkard_refuse_2',
+      },
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '罢了罢了，再喝一壶酒去...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'tavern_drunkard_talk',
+    lines: [
+      {
+        speakerId: 'tavern_drunkard',
+        speakerName: '醉道士',
+        text: '又是你啊，年轻人。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tavern_drunkard_talk_2',
+      },
+      {
+        speakerId: 'tavern_drunkard',
+        speakerName: '醉道士',
+        text: '这酒馆的酒不错，陪我喝一杯？',
+        expression: Expression.HAPPY,
+        choices: [
+          {
+            text: '好吧，我陪您喝一杯',
+            nextDialogId: 'tavern_drunkard_drink',
+          },
+          {
+            text: '抱歉，我还有事',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'tavern_drunkard_drink',
+    lines: [
+      {
+        speakerId: 'tavern_drunkard',
+        speakerName: '醉道士',
+        text: '哈哈哈！好酒量！来，这壶酒送你。',
+        expression: Expression.HAPPY,
+        event: { type: DialogEventType.GET_ITEM, data: { itemId: 'lingxincao', quantity: 1 } },
+      },
+    ],
+  },
+  {
+    id: 'yuhang_villager_1',
+    lines: [
+      {
+        speakerId: 'yuhang_villager_1',
+        speakerName: '村民',
+        text: '你好啊，年轻人！你是李家的侄儿吧？',
+        expression: Expression.HAPPY,
+        nextDialogId: 'yuhang_villager_1_2',
+      },
+      {
+        speakerId: 'yuhang_villager_1',
+        speakerName: '村民',
+        text: '听说最近镇上有些奇怪的人来往，小心点。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yuhang_shopkeeper',
+    lines: [
+      {
+        speakerId: 'yuhang_shopkeeper',
+        speakerName: '杂货铺老板',
+        text: '欢迎光临！需要什么？',
+        expression: Expression.HAPPY,
+        event: { type: DialogEventType.SHOW_CHOICE },
+      },
+    ],
+  },
+  // Original demo dialogs
   {
     id: 'dialog_villager_1',
     lines: [

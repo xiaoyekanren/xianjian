@@ -295,10 +295,11 @@ export class MainMenuScene extends Phaser.Scene {
   private startNewGame(): void {
     this.cameras.main.fadeOut(500, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
+      // Start in Yuhang Town - 李逍遥的家乡
       this.scene.start('WorldScene', {
-        mapId: 'demo_town',
-        playerStartX: 5,
-        playerStartY: 5,
+        mapId: 'yuhang_town_main',
+        playerStartX: 15,
+        playerStartY: 10,
       });
     });
   }

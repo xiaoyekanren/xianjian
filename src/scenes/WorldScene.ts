@@ -1,6 +1,7 @@
 /**
  * World Scene - Tile-based map exploration
  * US-004: 地图探索场景实现
+ * US-029: 余杭镇地图实现
  */
 
 import Phaser from 'phaser';
@@ -13,6 +14,7 @@ import {
   MapTransitionData,
   LayerType,
 } from '@/data/MapData';
+import { mapManager } from '@/systems/MapManager';
 import { DialogEndEvent } from '@/scenes/DialogScene';
 
 /**
@@ -25,77 +27,6 @@ export interface WorldSceneConfig {
 }
 
 /**
- * Simple demo map data for testing
- */
-const DEMO_MAP: MapData = {
-  id: 'demo_town',
-  name: '测试城镇',
-  displayName: '测试城镇',
-  locationId: 'demo_location',
-  width: 20,
-  height: 15,
-  tileWidth: DEFAULT_TILE_SIZE,
-  tileHeight: DEFAULT_TILE_SIZE,
-  layers: [
-    {
-      id: 'demo_ground',
-      name: 'ground',
-      type: LayerType.GROUND,
-      visible: true,
-      opacity: 1,
-      tiles: [
-        // Row 0-2: walls
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        // Row 3-12: walkable ground with some obstacles
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        // Row 13-14: walls
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      ],
-    },
-  ],
-  npcs: [
-    {
-      npcId: 'npc_villager_1',
-      name: '村民',
-      dialogId: 'dialog_villager_1',
-      x: 6,
-      y: 8,
-    },
-    {
-      npcId: 'npc_villager_2',
-      name: '老者',
-      dialogId: 'dialog_elder_1',
-      x: 11,
-      y: 8,
-    },
-  ],
-  transitions: [
-    {
-      id: 'demo_to_house',
-      targetMapId: 'demo_house',
-      targetX: 5,
-      targetY: 8,
-      sourceX: 9,
-      sourceY: 6,
-    },
-  ],
-  events: [],
-  collisions: [],
-};
-
-/**
  * World Scene class
  * Handles tile-based map rendering, player movement, collisions, and interactions
  */
@@ -103,8 +34,11 @@ export class WorldScene extends Phaser.Scene {
   private player: Player | null = null;
   private npcs: NPC[] = [];
   private currentMap: MapData;
+  private currentMapId: string;
   private tilemap: Phaser.Tilemaps.Tilemap | null = null;
   private collisionLayer: Phaser.Tilemaps.TilemapLayer | null = null;
+  private buildingLayer: Phaser.Tilemaps.TilemapLayer | null = null;
+  private overlayLayer: Phaser.Tilemaps.TilemapLayer | null = null;
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   private wasdKeys!: { W: Phaser.Input.Keyboard.Key; A: Phaser.Input.Keyboard.Key; S: Phaser.Input.Keyboard.Key; D: Phaser.Input.Keyboard.Key };
   private interactKey!: Phaser.Input.Keyboard.Key;
@@ -115,20 +49,80 @@ export class WorldScene extends Phaser.Scene {
 
   constructor() {
     super({ key: 'WorldScene' });
-    this.currentMap = DEMO_MAP;
+    // Default to Yuhang Town main map
+    this.currentMapId = 'yuhang_town_main';
+    this.currentMap = mapManager.getMap(this.currentMapId) || this.createFallbackMap();
     this.playerStartX = 5;
-    this.playerStartY = 5;
+    this.playerStartY = 10;
+  }
+
+  /**
+   * Create a fallback map if no map is found
+   */
+  private createFallbackMap(): MapData {
+    return {
+      id: 'fallback',
+      name: 'Fallback',
+      displayName: 'Fallback',
+      locationId: 'fallback',
+      width: 20,
+      height: 15,
+      tileWidth: DEFAULT_TILE_SIZE,
+      tileHeight: DEFAULT_TILE_SIZE,
+      layers: [
+        {
+          id: 'fallback_ground',
+          name: 'ground',
+          type: LayerType.GROUND,
+          visible: true,
+          opacity: 1,
+          tiles: [
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          ],
+        },
+      ],
+      npcs: [],
+      transitions: [],
+      events: [],
+      collisions: [],
+    };
   }
 
   init(data: WorldSceneConfig): void {
-    // Use default map for now (demo_town)
+    // Load the specified map or use default
+    if (data.mapId) {
+      const map = mapManager.getMap(data.mapId);
+      if (map) {
+        this.currentMapId = data.mapId;
+        this.currentMap = map;
+        mapManager.setCurrentMap(data.mapId);
+      }
+    }
+
     this.playerStartX = data.playerStartX || 5;
-    this.playerStartY = data.playerStartY || 5;
+    this.playerStartY = data.playerStartY || 10;
     this.isTransitioning = false;
+    this.transitionPoints = [];
   }
 
   create(): void {
-    this.cameras.main.setBackgroundColor('#2d2d44');
+    // Set background color from map environment
+    const bgColor = mapManager.getMapBackgroundColor(this.currentMapId);
+    this.cameras.main.setBackgroundColor(bgColor);
 
     // Create tilemap and render map
     this.createTilemap();
@@ -153,32 +147,80 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /**
-   * Create tilemap from map data
+   * Create tilemap from map data with warm color theme
    */
   private createTilemap(): void {
-    // Create a tilemap data structure
+    // Get color theme for this map
+    const colorTheme = mapManager.getMapColorTheme(this.currentMapId);
+
+    // Create a tilemap data structure using ground layer
+    const groundLayer = this.currentMap.layers.find(l => l.type === LayerType.GROUND);
+    if (!groundLayer) return;
+
     this.tilemap = this.make.tilemap({
-      data: this.currentMap.layers[0].tiles,
+      data: groundLayer.tiles,
       tileWidth: this.currentMap.tileWidth,
       tileHeight: this.currentMap.tileHeight,
     });
 
-    // Create tileset texture dynamically
-    this.createTilesetTexture();
+    // Create tileset texture dynamically with warm colors
+    this.createTilesetTexture(colorTheme);
 
     // Add the tileset to the tilemap
     const tileset = this.tilemap.addTilesetImage('tiles', 'tiles');
 
     if (tileset) {
-      // Create the layer
+      // Create the ground layer
       this.collisionLayer = this.tilemap.createLayer(0, tileset, 0, 0);
-
       if (this.collisionLayer) {
         this.collisionLayer.setDepth(0);
+        // Set collision for walls and other collision tiles
+        const collisionTiles = mapManager.getCollisionTilesForMap(this.currentMapId);
+        this.collisionLayer.setCollision(collisionTiles);
+      }
 
-        // Set collision for wall tiles (tile index 1)
-        this.collisionLayer.setCollisionByProperty({ collides: true });
-        this.collisionLayer.setCollision([1, 2]); // Walls and water
+      // Create building layer if exists
+      const buildingLayerData = this.currentMap.layers.find(l => l.type === LayerType.BUILDING);
+      if (buildingLayerData && buildingLayerData.visible) {
+        // Create separate tileset for buildings
+        this.createBuildingTilesetTexture(colorTheme);
+        const buildingTileset = this.tilemap.addTilesetImage('building_tiles', 'building_tiles');
+        if (buildingTileset) {
+          // Create building layer using separate tilemap
+          const buildingTilemap = this.make.tilemap({
+            data: buildingLayerData.tiles,
+            tileWidth: this.currentMap.tileWidth,
+            tileHeight: this.currentMap.tileHeight,
+          });
+          this.buildingLayer = buildingTilemap.createLayer(0, buildingTileset, 0, 0);
+          if (this.buildingLayer) {
+            this.buildingLayer.setDepth(1);
+            this.buildingLayer.setAlpha(buildingLayerData.opacity);
+            // Building collision tiles (8 = building)
+            if (buildingLayerData.collision) {
+              this.buildingLayer.setCollision(buildingLayerData.collision.tileIds);
+            }
+          }
+        }
+      }
+
+      // Create overlay layer if exists (trees, decorations)
+      const overlayLayerData = this.currentMap.layers.find(l => l.type === LayerType.OVERLAY);
+      if (overlayLayerData && overlayLayerData.visible) {
+        this.createOverlayTilesetTexture(colorTheme);
+        const overlayTileset = this.tilemap.addTilesetImage('overlay_tiles', 'overlay_tiles');
+        if (overlayTileset) {
+          const overlayTilemap = this.make.tilemap({
+            data: overlayLayerData.tiles,
+            tileWidth: this.currentMap.tileWidth,
+            tileHeight: this.currentMap.tileHeight,
+          });
+          this.overlayLayer = overlayTilemap.createLayer(0, overlayTileset, 0, 0);
+          if (this.overlayLayer) {
+            this.overlayLayer.setDepth(2);
+            this.overlayLayer.setAlpha(overlayLayerData.opacity);
+          }
+        }
       }
     }
 
@@ -191,49 +233,123 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /**
-   * Create tileset texture dynamically
+   * Create tileset texture dynamically with warm colors for Yuhang Town
    */
-  private createTilesetTexture(): void {
+  private createTilesetTexture(colorTheme: { primary: string; secondary: string; accent: string }): void {
     const graphics = this.add.graphics();
 
-    // Tile 0: Ground (walkable) - light brown/tan
-    graphics.fillStyle(0x887766);
+    // Convert hex colors to number
+    const groundColor = Phaser.Display.Color.HexStringToColor(colorTheme.accent).color;
+    const wallColor = Phaser.Display.Color.HexStringToColor(colorTheme.secondary).color;
+    const doorColor = Phaser.Display.Color.HexStringToColor(colorTheme.primary).color;
+
+    // Tile 0: Ground (walkable) - warm light brown/tan (暖黄色调)
+    graphics.fillStyle(groundColor);
     graphics.fillRect(0, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
-    graphics.fillStyle(0x998877);
-    graphics.fillRect(2, 2, DEFAULT_TILE_SIZE - 4, DEFAULT_TILE_SIZE - 4);
+    // Add subtle texture pattern
+    graphics.fillStyle(groundColor + 0x111111);
+    graphics.fillRect(2, 2, DEFAULT_TILE_SIZE / 2 - 2, DEFAULT_TILE_SIZE / 2 - 2);
+    graphics.fillRect(DEFAULT_TILE_SIZE / 2 + 2, DEFAULT_TILE_SIZE / 2 + 2, DEFAULT_TILE_SIZE / 2 - 4, DEFAULT_TILE_SIZE / 2 - 4);
 
-    // Tile 1: Wall (impassable) - dark gray
-    graphics.fillStyle(0x444444);
+    // Tile 1: Wall (impassable) - warm brown (棕色)
+    graphics.fillStyle(wallColor);
     graphics.fillRect(DEFAULT_TILE_SIZE, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
-    graphics.fillStyle(0x555555);
-    graphics.fillRect(DEFAULT_TILE_SIZE + 2, 2, DEFAULT_TILE_SIZE - 4, DEFAULT_TILE_SIZE - 4);
+    graphics.fillStyle(wallColor + 0x222222);
+    graphics.fillRect(DEFAULT_TILE_SIZE + 4, 4, DEFAULT_TILE_SIZE - 8, DEFAULT_TILE_SIZE - 8);
 
-    // Tile 2: Water (impassable) - blue
-    graphics.fillStyle(0x4488cc);
+    // Tile 2: Water (impassable) - muted blue-green
+    graphics.fillStyle(0x5588aa);
     graphics.fillRect(DEFAULT_TILE_SIZE * 2, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
+    // Add water shimmer effect
+    graphics.fillStyle(0x6699bb);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 2 + 6, 6, 8, 4);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 2 + 18, 18, 6, 4);
 
-    // Tile 3: Door - brown with frame
-    graphics.fillStyle(0x664422);
+    // Tile 3: Door - warm gold/brown frame
+    graphics.fillStyle(doorColor);
     graphics.fillRect(DEFAULT_TILE_SIZE * 3, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
-    graphics.lineStyle(2, 0x886644);
-    graphics.strokeRect(DEFAULT_TILE_SIZE * 3 + 4, 4, DEFAULT_TILE_SIZE - 8, DEFAULT_TILE_SIZE - 4);
+    graphics.fillStyle(0x442200);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 3 + 4, 2, DEFAULT_TILE_SIZE - 8, DEFAULT_TILE_SIZE - 4);
+    graphics.lineStyle(2, doorColor);
+    graphics.strokeRect(DEFAULT_TILE_SIZE * 3 + 6, 4, DEFAULT_TILE_SIZE - 12, DEFAULT_TILE_SIZE - 8);
 
-    // Tile 4: Path - lighter ground
-    graphics.fillStyle(0xaa9988);
+    // Tile 4: Path - lighter warm ground
+    graphics.fillStyle(groundColor + 0x0a0a0a);
     graphics.fillRect(DEFAULT_TILE_SIZE * 4, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
+    graphics.lineStyle(1, groundColor - 0x111111);
+    graphics.strokeRect(DEFAULT_TILE_SIZE * 4 + 2, 2, DEFAULT_TILE_SIZE - 4, DEFAULT_TILE_SIZE - 4);
 
-    // Tile 5: Transition point - special marker
-    graphics.fillStyle(0x887766);
+    // Tile 5: Transition point - subtle marker (door-like)
+    graphics.fillStyle(doorColor - 0x222222);
     graphics.fillRect(DEFAULT_TILE_SIZE * 5, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
-    graphics.fillStyle(0xD4A84B, 0.5); // Semi-transparent gold
-    graphics.fillRect(DEFAULT_TILE_SIZE * 5 + 4, 4, DEFAULT_TILE_SIZE - 8, DEFAULT_TILE_SIZE - 8);
+    graphics.fillStyle(0x332211);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 5 + 8, 8, DEFAULT_TILE_SIZE - 16, DEFAULT_TILE_SIZE - 16);
 
-    // Tile 6: NPC spawn - special marker (invisible, just for data)
-    graphics.fillStyle(0x887766);
+    // Tile 6: NPC spawn - invisible marker
+    graphics.fillStyle(groundColor);
     graphics.fillRect(DEFAULT_TILE_SIZE * 6, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
 
-    // Generate texture with all tiles
+    // Generate texture with all ground tiles
     graphics.generateTexture('tiles', DEFAULT_TILE_SIZE * 7, DEFAULT_TILE_SIZE);
+    graphics.destroy();
+  }
+
+  /**
+   * Create building tileset texture with warm colors
+   */
+  private createBuildingTilesetTexture(colorTheme: { primary: string; secondary: string; accent: string }): void {
+    const graphics = this.add.graphics();
+
+    const buildingColor = Phaser.Display.Color.HexStringToColor(colorTheme.secondary).color;
+    const roofColor = Phaser.Display.Color.HexStringToColor(colorTheme.primary).color;
+
+    // Tile 0: Empty (no building)
+    graphics.fillStyle(0x000000, 0);
+    graphics.fillRect(0, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
+
+    // Tile 8: Building wall - warm brown with frame
+    graphics.fillStyle(buildingColor);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 8, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
+    graphics.fillStyle(buildingColor + 0x111111);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 8 + 2, 2, DEFAULT_TILE_SIZE - 4, DEFAULT_TILE_SIZE - 4);
+    // Add window-like detail
+    graphics.fillStyle(roofColor);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 8 + 8, 8, 8, 8);
+
+    // Generate building texture
+    graphics.generateTexture('building_tiles', DEFAULT_TILE_SIZE * 12, DEFAULT_TILE_SIZE);
+    graphics.destroy();
+  }
+
+  /**
+   * Create overlay tileset texture (trees, decorations)
+   */
+  private createOverlayTilesetTexture(colorTheme: { primary: string; secondary: string; accent: string }): void {
+    const graphics = this.add.graphics();
+
+    // Tile 0: Empty
+    graphics.fillStyle(0x000000, 0);
+    graphics.fillRect(0, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
+
+    // Tile 7: Tree - green with warm trunk
+    // Tree trunk (brown)
+    graphics.fillStyle(0x664422);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 7 + 10, 20, 12, 12);
+    // Tree foliage (green)
+    graphics.fillStyle(0x448844);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 7 + 16, 12, 10);
+    graphics.fillStyle(0x55aa55);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 7 + 12, 14, 6);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 7 + 20, 14, 6);
+
+    // Tile 10: Chest - golden treasure box
+    graphics.fillStyle(Phaser.Display.Color.HexStringToColor(colorTheme.primary).color);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 10 + 4, 8, DEFAULT_TILE_SIZE - 8, DEFAULT_TILE_SIZE - 12);
+    graphics.fillStyle(0x886622);
+    graphics.fillRect(DEFAULT_TILE_SIZE * 10 + 8, 4, DEFAULT_TILE_SIZE - 16, 8);
+
+    // Generate overlay texture
+    graphics.generateTexture('overlay_tiles', DEFAULT_TILE_SIZE * 12, DEFAULT_TILE_SIZE);
     graphics.destroy();
   }
 
@@ -251,8 +367,24 @@ export class WorldScene extends Phaser.Scene {
    * Create NPCs from map data
    */
   private createNPCs(): void {
+    // Clear existing NPCs
+    for (const npc of this.npcs) {
+      npc.destroy();
+    }
+    this.npcs = [];
+
+    // Create NPCs from current map data
     for (const npcSpawn of this.currentMap.npcs) {
-      const npc = new NPC(this, npcSpawn);
+      const npc = new NPC(this, {
+        npcId: npcSpawn.npcId,
+        name: npcSpawn.name,
+        dialogId: npcSpawn.dialogId,
+        x: npcSpawn.x,
+        y: npcSpawn.y,
+        direction: npcSpawn.direction,
+        movementType: npcSpawn.movementType,
+        movementRange: npcSpawn.movementRange,
+      });
       this.npcs.push(npc);
     }
   }
@@ -261,10 +393,17 @@ export class WorldScene extends Phaser.Scene {
    * Setup collision detection
    */
   private setupCollisions(): void {
-    if (!this.player || !this.collisionLayer) return;
+    if (!this.player) return;
 
     // Player collides with collision layer (walls, water, etc.)
-    this.physics.add.collider(this.player.getSprite(), this.collisionLayer);
+    if (this.collisionLayer) {
+      this.physics.add.collider(this.player.getSprite(), this.collisionLayer);
+    }
+
+    // Player collides with building layer
+    if (this.buildingLayer) {
+      this.physics.add.collider(this.player.getSprite(), this.buildingLayer);
+    }
 
     // Player collides with NPCs
     for (const npc of this.npcs) {
@@ -308,16 +447,39 @@ export class WorldScene extends Phaser.Scene {
    * Setup map transition detection
    */
   private setupMapTransitions(): void {
-    // Check for transition tiles in map
-    const tiles = this.currentMap.layers[0].tiles;
-    for (let y = 0; y < tiles.length; y++) {
-      for (let x = 0; x < tiles[y].length; x++) {
-        if (tiles[y][x] === TileType.TRANSITION) {
-          this.transitionPoints.push({
-            x,
-            y,
-            data: this.currentMap.transitions[0], // Use first transition config
-          });
+    // Clear existing transition points
+    this.transitionPoints = [];
+
+    // Load transitions from current map
+    const transitions = this.currentMap.transitions;
+    for (const transition of transitions) {
+      this.transitionPoints.push({
+        x: transition.sourceX,
+        y: transition.sourceY,
+        data: transition,
+      });
+    }
+
+    // Also check for transition tiles in tile data (tile type 5)
+    const groundLayer = this.currentMap.layers.find(l => l.type === LayerType.GROUND);
+    if (groundLayer) {
+      for (let y = 0; y < groundLayer.tiles.length; y++) {
+        for (let x = 0; x < groundLayer.tiles[y].length; x++) {
+          if (groundLayer.tiles[y][x] === TileType.TRANSITION) {
+            // Check if transition is already defined
+            const existingTransition = this.transitionPoints.find(
+              p => p.x === x && p.y === y
+            );
+            if (!existingTransition && this.currentMap.transitions.length > 0) {
+              // Use first transition as default if no specific one defined
+              const defaultTransition = this.currentMap.transitions[0];
+              this.transitionPoints.push({
+                x,
+                y,
+                data: defaultTransition,
+              });
+            }
+          }
         }
       }
     }
@@ -407,13 +569,24 @@ export class WorldScene extends Phaser.Scene {
     this.cameras.main.fadeOut(500, 0, 0, 0);
 
     this.cameras.main.once('camerafadeoutcomplete', () => {
-      // Transition to new map (for now, same map with different position)
-      // In full implementation, would load different map data
-      this.scene.restart({
-        mapId: transitionData.targetMapId,
-        playerStartX: transitionData.targetX,
-        playerStartY: transitionData.targetY,
-      });
+      // Check if target map exists
+      const targetMap = mapManager.getMap(transitionData.targetMapId);
+      if (targetMap) {
+        // Transition to new map
+        this.scene.restart({
+          mapId: transitionData.targetMapId,
+          playerStartX: transitionData.targetX,
+          playerStartY: transitionData.targetY,
+        });
+      } else {
+        // Fallback: restart current map at new position
+        console.warn(`Target map ${transitionData.targetMapId} not found, staying in current map`);
+        this.scene.restart({
+          mapId: this.currentMapId,
+          playerStartX: transitionData.targetX,
+          playerStartY: transitionData.targetY,
+        });
+      }
     });
   }
 

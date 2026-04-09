@@ -461,8 +461,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 29,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Implemented MapManager to load maps from maps.json, updated WorldScene to render multi-layer maps with warm color theme (暖黄/棕色), added NPC dialogs for 婶婶 and 醉道士, implemented building/overlay layer rendering with proper collision detection, updated MainMenuScene to start in yuhang_town_main map"
     },
     {
       "id": "US-030",

@@ -659,3 +659,73 @@
 - isComboSkillUnlocked checks requirements for each skill
 - getAffectionProgress provides detailed info for UI display
 ---
+## 2026-04-10 22:00 - US-028
+- Enhanced MapData.ts with complete map data structure
+- LayerType enum: ground/building/overlay/event (地图层类型)
+- TileType enum expanded: TREE/BUILDING/FENCE/CHEST/EVENT (新增瓦片类型)
+- MapEventData interface: type, triggerType, dialogId, battleId, treasureId, flags
+- EventTriggerType enum: on_enter/on_interact/on_touch/auto (触发方式)
+- MapEventType enum: dialog/battle/treasure/cutscene/shop/inn/teleport/npc_interact/story_progress
+- MapTransitionData enhanced: id, sourceX/Y, direction, requireFlag, requireItem
+- CollisionData and CollisionBox for custom collision areas
+- NPCMovementType enum: static/random/patrol/follow
+- MapEnvironment: timeOfDay, weather, backgroundColor, bgm
+- MapLocation for grouping maps by location
+- maps.json created with 10 maps:
+  - yuhang_town: yuhang_town_main, yuhang_li_home, yuhang_tavern, yuhang_shop
+  - xianling_island: xianling_entrance, xianling_maze_1, xianling_pool
+  - suzhou_city: suzhou_main (placeholder)
+  - miao_village: miao_main (placeholder)
+  - lingbao_pavilion: lingbao_main (placeholder)
+- Updated WorldScene.ts DEMO_MAP to use new interface
+
+**Files changed:**
+- src/data/MapData.ts (enhanced - LayerType, TileType expansion, MapEventData, CollisionData, NPCMovementType)
+- src/data/maps.json (created - 10 maps with complete tile data)
+- src/scenes/WorldScene.ts (updated - DEMO_MAP with new interface, LayerType import)
+- ralph/prd.json (updated US-028 to passes: true)
+
+**Learnings for future iterations:**
+- MapLayer requires id, name, type, visible, opacity fields
+- MapTransitionData requires id and sourceX/Y coordinates
+- MapData.displayName is for Chinese display name
+- CollisionData.tileIds lists which tile values have collision
+- Event layer is invisible (visible: false) but tracks event positions
+- maps.json structure: locations array + maps array for separation
+---
+## 2026-04-10 23:30 - US-029
+- Implemented MapManager.ts to load and manage maps from maps.json
+- Updated WorldScene.ts to use MapManager for dynamic map loading
+- Implemented multi-layer tile rendering (ground, building, overlay layers)
+- Created warm color tile textures for Yuhang Town (暖黄, 棕色)
+  - Ground tiles: warm tan/brown (#F5DEB3 accent color)
+  - Wall tiles: warm brown (#8B4513 secondary color)
+  - Door tiles: gold (#D4A84B primary color)
+  - Building tiles: brown with gold window details
+  - Overlay tiles: green trees with brown trunks
+- Added dialog data for Yuhang Town NPCs:
+  - 婶婶: intro dialog with choices about practicing sword
+  - 醉道士: intro dialog teaching 御剑术 skill
+  - 村民: basic greeting dialog
+  - 杂货铺老板: shop dialog
+- Updated MainMenuScene to start in yuhang_town_main map
+- Fixed JSON files (skills.json, items.json, shop.json) by removing JavaScript comments
+
+**Files changed:**
+- src/systems/MapManager.ts (created - map loading and management system)
+- src/scenes/WorldScene.ts (updated - MapManager integration, multi-layer rendering, warm color theme)
+- src/scenes/MainMenuScene.ts (updated - start in yuhang_town_main)
+- src/data/DialogData.ts (updated - added Yuhang Town NPC dialogs)
+- src/data/skills.json (fixed - removed comments for valid JSON)
+- src/data/items.json (fixed - removed comments for valid JSON)
+- src/data/shop.json (fixed - removed comments for valid JSON)
+- ralph/prd.json (updated US-029 to passes: true)
+
+**Learnings for future iterations:**
+- JSON files cannot contain JavaScript-style comments (// or /* */)
+- MapManager provides centralized map loading and collision detection
+- Multi-layer rendering requires separate tilemap instances for each layer
+- Color themes can be passed to tile generation for consistent styling
+- Map transitions are defined in maps.json transitions array
+- NPCSpawnData includes direction and movementType fields
+---
