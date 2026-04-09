@@ -19,6 +19,7 @@ import { SaveLoadScene } from '@/scenes/SaveLoadScene';
 import { ShopScene } from '@/scenes/ShopScene';
 import { AffectionScene } from '@/scenes/AffectionScene';
 import { EndingScene } from '@/scenes/EndingScene';
+import { SettingsScene } from '@/scenes/SettingsScene';
 
 /**
  * Game configuration interface
@@ -77,6 +78,7 @@ export class Game {
       ShopScene,
       AffectionScene,
       EndingScene,
+      SettingsScene,
     ];
 
     const phaserConfig: Phaser.Types.Core.GameConfig = {

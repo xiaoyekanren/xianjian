@@ -791,8 +791,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 50,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - SettingsScene.ts with full settings UI: BGM volume slider (0-100%), SFX volume slider, text speed (slow/normal/fast), auto-save toggle. Controls info popup with keyboard shortcuts. Save/Reset buttons. Integrates with SaveSystem for persistence. Keyboard navigation (arrows/WASD, Enter, ESC)."
     },
     {
       "id": "US-051",
@@ -805,8 +805,8 @@
         "Typecheck passes"
       ],
       "priority": 51,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Enemy.ts with EnemyType interface (hp/attack/defense/speed/luck/expReward/goldReward/drops), EnemyCategory type (normal/elite/boss), EnemyManager singleton for loading and querying enemies. enemies.json with 14 enemies: normal (ghost/skeleton/demon), elite (gargoyle/shadow), boss (guardian/demon_king/baiyue_leader/water_beast/fire_guardian/wind_guardian/thunder_guardian/earth_guardian). Tower encounter configuration per level."
     },
     {
       "id": "US-052",
