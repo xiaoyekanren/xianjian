@@ -282,3 +282,36 @@
 - quickSave uses slot 1 for auto-save functionality
 - Play time formatted as HH:MM:SS or MM:SS
 ---
+
+## 2026-04-10 16:30 - US-018
+- Implemented complete shop system with ShopSystem.ts
+- ShopEntry interface: itemId, quantity (-1 for unlimited), restockTime
+- ShopData interface: id, name, location, items, buysItems, buyCategories
+- ShopTransaction interface: success, message, goldChange, itemsChange
+- ShopSystem class with ItemManager dependency:
+  - loadShops(shops): load shop configuration
+  - getShop(id): get shop by ID
+  - getShopsAtLocation(locationId): get shops at a map location
+  - getItemPrice(itemId): get buy/sell prices
+  - buyItem(shopId, itemId, quantity, playerGold, inventory): purchase with validation
+  - sellItem(shopId, itemId, quantity, inventory): sell with validation
+  - applyTransaction(shopId, itemId, quantity): update shop stock
+  - getShopDisplayInfo(shopId): get display data for UI
+- shop.json with 8 shops across different locations:
+  - yuhang_town: 杂货铺 (general items), 药铺 (medicine), 铁匠铺 (weapons/armor)
+  - suzhou_city: 苏州杂货铺, 林家兵器店, 苏州药铺
+  - miao_village: 苗寨杂货铺, 苗寨兵器店
+  - special: 灵宝阁 (magic items)
+
+**Files changed:**
+- src/systems/ShopSystem.ts (complete rewrite - Shop interfaces, ShopSystem class)
+- src/data/shop.json (created - 8 shops with item lists)
+- ralph/prd.json (updated US-018 to passes: true)
+
+**Learnings for future iterations:**
+- ShopEntry.quantity = -1 means unlimited stock
+- buysItems/buyCategories control what shops will purchase from players
+- Key items cannot be sold (type === 'key')
+- ShopTransaction returns all changes for easy application
+- getShopDisplayInfo provides UI-friendly data structure
+---

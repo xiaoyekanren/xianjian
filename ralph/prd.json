@@ -290,8 +290,8 @@
         "Typecheck passes"
       ],
       "priority": 18,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - ShopSystem.ts with buy/sell logic, ShopTransaction interface for result, ShopData interface for shop configuration, ShopEntry for inventory, buyItem/sellItem methods with validation (shop exists, item exists, stock check, gold check, inventory check), getShopDisplayInfo for UI, shop.json with 8 shops (yuhang_town: 杂货铺/药铺/铁匠铺, suzhou_city: 杂货铺/林家兵器店/药铺, miao_village: 苗寨杂货铺/兵器店, special: 灵宝阁), buysItems/buyCategories for item acceptance filtering"
     },
     {
       "id": "US-019",
