@@ -373,3 +373,37 @@
 - Combo skills require minimum affection levels for all relevant characters
 - getAffectionProgress returns progress percentage for UI bars
 ---
+
+## 2026-04-10 17:15 - US-024
+- Implemented complete treasure system with TreasureSystem.ts
+- TreasureBox interface: id, mapId, x, y, contents, requireItem, requireFlag, hidden
+- TreasureContent interface: itemId, quantity, gold, exp, skillId
+- TreasureResult interface: success, message, items, gold, exp, skills, alreadyOpened
+- TreasureSystem class:
+  - loadTreasures(treasures): load treasure configuration
+  - loadOpenedState(openedIds): load from save data
+  - getOpenedState(): get for save data
+  - getTreasure(id): get treasure by ID
+  - getTreasuresAtMap(mapId): get all treasures on a map
+  - canOpen(treasureId, playerItems, storyFlags): check if can open
+  - openTreasure(treasureId, playerItems, storyFlags): open and get contents
+  - isOpened(treasureId): check opened state
+  - resetAll(): clear all opened states
+  - getVisibleTreasures(mapId, storyFlags): filter hidden/locked
+- DEMO_TREASURES with 5 chests:
+  - yuhang_chest_1 (止血草x3, 50 gold)
+  - yuhang_chest_2 (铁剑, requires 客栈钥匙)
+  - xianling_chest_1 (灵符, 100 exp)
+  - suzhou_chest_1 (200 gold, 金创药x5)
+  - miao_chest_1 (苗刀, 鬼降 skill, requires 苗族联盟 flag)
+
+**Files changed:**
+- src/systems/TreasureSystem.ts (created - Treasure interfaces, TreasureSystem class, DEMO_TREASURES)
+- ralph/prd.json (updated US-024 to passes: true)
+
+**Learnings for future iterations:**
+- openedChests is a Set<string> for fast lookup
+- requireItem/requireFlag for conditional access
+- hidden flag for secret chests that only appear after discovery
+- getOpenedState/loadOpenedState for save/load integration
+---

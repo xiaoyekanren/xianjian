@@ -382,8 +382,8 @@
         "Typecheck passes"
       ],
       "priority": 24,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - TreasureBox interface with position (mapId, x, y) and contents, TreasureContent interface (itemId, quantity, gold, exp, skillId), TreasureResult interface for open results, TreasureSystem class with openTreasure/canOpen/isOpened methods, openedChests Set for state tracking, requireItem/requireFlag for conditional access, DEMO_TREASURES with 5 demo chests across locations (yuhang_town, xianling_island, suzhou_city, miao_village), getVisibleTreasures for filtering hidden/locked chests"
     },
     {
       "id": "US-025",
