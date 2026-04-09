@@ -99,8 +99,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - BattleScene with full turn-based combat system: displays player party (up to 4) and enemies with HP/MP bars, player actions (attack/skill/item(defend/flee), turn order calculated by speed value, damage calculation for physical and skill attacks, victory/failure判定 with rewards, Chinese-style UI with gold borders, demo skills for testing (御剑术/火咒/五气朝元), status effect system (poison/paralyze/sleep/silence/protect/haste/regen)"
     },
     {
       "id": "US-007",

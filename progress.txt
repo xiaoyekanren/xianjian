@@ -97,3 +97,47 @@
 - Typewriter effect uses Phaser.Time.TimerEvent with repeat parameter
 - Choice container needs to be cleared before creating new choices
 ---
+
+## 2026-04-10 10:30 - US-006
+- Implemented BattleScene.ts with full turn-based combat interface
+- Implemented BattleSystem.ts with battle logic (turn order, damage calculation, status effects)
+- BattleScene displays player party (max 4) on left side and enemies on right side
+- HP/MP bars for all units with color indicators (green/yellow/red for HP)
+- Player action selection menu: 攻击 (Attack), 仙术 (Skill), 遭具 (Item placeholder), 防御 (Defend), 逃跑 (Flee)
+- Keyboard navigation (↑↓/WS for action/skill selection, ←→/AD for target selection, Enter/Space to confirm, ESC to cancel)
+- Mouse click support for action buttons and skill menu
+- Turn order display showing next 4 units in action sequence
+- Turn order calculated by speed value (higher speed = earlier action)
+- Damage calculation: physical damage = attack - defense with ±20% variance, critical hit based on luck
+- Skill damage: power + (caster.attack * 0.5) - target.defense with ±15% variance
+- Skill healing: power + (caster.luck * 0.5) with ±10% variance
+- Demo skills for testing: 御剑术 (MP:5, power:30), 火咒 (MP:10, power:50), 五气朝元 (MP:15, power:40)
+- Enemy AI: simple random attack on alive player units
+- Defend action: reduces incoming damage by 50%
+- Flee action: success chance = 30% + (luck/100)*50%, can be disabled via canFlee config
+- Victory/failure判定 with exp/gold/item rewards placeholder
+- Status effect system: 7 effects (poison, paralyze, sleep, silence, protect, haste, regen)
+- Status effects applied at end of round (poison damage, regen healing)
+- Attack animations: attacker moves toward target, target shakes
+- Skill animations: caster glow, targets flash
+- Dead units fade out with scale animation
+- Updated Skill.ts interface with SkillTargetType enum
+- Updated Game.ts to register BattleScene
+- Chinese-style UI with gold (#D4A84B) borders and corner decorations
+
+**Files changed:**
+- src/scenes/BattleScene.ts (complete rewrite - full battle scene implementation)
+- src/systems/BattleSystem.ts (complete rewrite - battle logic system)
+- src/data/Skill.ts (updated - added SkillTargetType, extended interface)
+- src/core/Game.ts (added BattleScene import and registration)
+- ralph/prd.json (updated US-006 to passes: true)
+
+**Learnings for future iterations:**
+- BattleScene is launched via scene.launch() from WorldScene when battle event triggered
+- BattleSystem manages all combat logic separately from UI
+- Use null checks for UI containers (actionMenu, skillMenu, turnOrderDisplay) to avoid TypeScript errors
+- SkillTargetType should include 'all_enemy', 'all_player', 'self', 'single', 'all'
+- Turn order recalculated at start of each round
+- Status effects processed at end of each round before checking battle end
+- BattleResult returned to WorldScene via scene.resume() with battleResult data
+---
