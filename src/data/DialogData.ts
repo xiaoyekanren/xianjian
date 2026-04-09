@@ -1013,6 +1013,272 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+
+  // Tower dialogs - US-032 锁妖塔实现
+  {
+    id: 'tower_entrance_warning',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这里就是传说中的锁妖塔...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'tower_entrance_warning_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '阴森的气息弥漫四周，每一层都可能有危险。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_entrance_warning_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿一定就在深处，我必须找到她！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'tower_puzzle_hint_1',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这里有一个奇怪的开关...',
+        expression: Expression.THINKING,
+        nextDialogId: 'tower_puzzle_hint_1_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '看来需要按正确的顺序操作才能打开通道。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'tower_puzzle_hint_2',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这些火炬...有些熄灭了，有些还在燃烧。',
+        expression: Expression.THINKING,
+        nextDialogId: 'tower_puzzle_hint_2_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '也许点燃所有火炬就能解开谜题。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'tower_puzzle_hint_3',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这道门上有一个奇怪的钥匙孔...',
+        expression: Expression.THINKING,
+        nextDialogId: 'tower_puzzle_hint_3_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '需要找到对应的钥匙才能继续前进。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'tower_puzzle_hint_4',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这道石门看起来很沉重...',
+        expression: Expression.THINKING,
+        nextDialogId: 'tower_puzzle_hint_4_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '也许附近有机关可以打开它。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'tower_find_linger',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_find_linger_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我被女娲封印在这里，无法离开...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_find_linger_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿！我来救你了！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'tower_find_linger_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '要解除封印，必须击败塔底的妖王...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'tower_find_linger_cutscene',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '终于...终于找到你了，灵儿！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'tower_find_linger_cutscene_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥...你怎么会来到这里？',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_find_linger_cutscene_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我经历了千辛万苦，只为了找到你！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'tower_find_linger_cutscene_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥...谢谢你...',
+        expression: Expression.HAPPY,
+        nextDialogId: 'tower_find_linger_cutscene_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '但我被困在封印之中，只有击败妖王才能解脱。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_find_linger_cutscene_6',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '放心，我一定会击败妖王，带你离开这里！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'tower_yueru_sacrifice_cutscene',
+    lines: [
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥，小心！妖王的攻击太强了！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'tower_yueru_sacrifice_cutscene_2',
+      },
+      {
+        speakerId: 'tower_boss',
+        speakerName: '妖王',
+        text: '哈哈哈...你们这些蝼蚁，竟敢挑战我！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'tower_yueru_sacrifice_cutscene_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '（妖王的力量太强了...我们必须小心应对）',
+        expression: Expression.THINKING,
+        nextDialogId: 'tower_yueru_sacrifice_cutscene_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥，我来挡住这一击！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'tower_yueru_sacrifice_cutscene_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '月如！不要！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'tower_yueru_sacrifice_cutscene_6',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥...灵儿...我...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_yueru_sacrifice_cutscene_7',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '这是我...最后一次保护你了...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_yueru_sacrifice_cutscene_8',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '月如！！！',
+        expression: Expression.SAD,
+        event: {
+          type: DialogEventType.SET_FLAG,
+          data: { flagName: 'yueru_sacrificed', flagValue: true },
+        },
+      },
+    ],
+  },
+  {
+    id: 'tower_boss_victory',
+    lines: [
+      {
+        speakerId: 'tower_boss',
+        speakerName: '妖王',
+        text: '不可能...我竟然被击败了...',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_boss_victory_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '终于...妖王被消灭了！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'tower_boss_victory_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '封印解除了...我可以自由了！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
 ];
 
 /**

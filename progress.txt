@@ -787,3 +787,55 @@
 - Story flag 'can_enter_arena' controls arena access
 - Lin Yueru can be added as party member via arena_win dialog outcome
 ---
+
+## 2026-04-10 03:30 - US-032
+- Implemented 锁妖塔 location with 7 maps:
+  - suoyaota_entrance: Tower entrance with dark atmosphere
+  - suoyaota_level_1 to level_5: Five tower layers with increasing difficulty
+  - suoyaota_bottom: Bottom layer where Ling'er is sealed
+- Created enemies.json with tower enemy system:
+  - 7 enemy types: ghost, skeleton, demon, gargoyle, shadow, boss_guardian, boss_demon_king
+  - Enemy categories: normal, elite, boss
+  - Tower encounter configuration per level with groups and encounter rates
+- Enhanced Enemy.ts with EnemyManager class:
+  - loadFromData for loading enemy and encounter configurations
+  - getEnemy, getAllEnemies, getEnemiesByCategory for querying
+  - generateRandomEncounter for dynamic battle encounters
+  - getTowerBoss for boss-level enemy retrieval
+- Added puzzle events per level:
+  - Level 1: switch puzzle (puzzle_level1_complete)
+  - Level 2: torch puzzle (puzzle_level2_complete)
+  - Level 3: key puzzle (puzzle_level3_complete)
+  - Level 4: door puzzle (puzzle_level4_complete)
+  - Each puzzle has setFlag for progress tracking
+- Added tower dialogs in DialogData.ts:
+  - tower_entrance_warning: First time entering tower warning
+  - tower_puzzle_hint_1-4: Puzzle hints for each level
+  - tower_find_linger_cutscene: Finding Ling'er in bottom layer
+  - tower_yueru_sacrifice_cutscene: Yueru sacrifice tragedy scene
+- Implemented 压抑色调 (oppressive color theme):
+  - Deep purple primary (#2D1B4E to #6D5B8E gradient per level)
+  - Black backgrounds (#0D0D1A to #000005 darker per level)
+  - Purple accents (#7B2D8E to #5B1D6E)
+  - Night timeOfDay, fog weather for atmosphere
+- Battle events configured:
+  - Level 5 boss battle: tower_boss_guardian with oneTime trigger
+  - Bottom layer boss battle: tower_boss_demon_king
+  - Encounter zones per level for random enemy encounters
+- Story flags: entered_suoyaota, puzzle_level*_complete, boss_guardian_defeated, boss_demon_king_defeated, found_linger_tower, yueru_sacrificed
+
+**Files changed:**
+- src/data/enemies.json (created - tower enemy data)
+- src/entities/Enemy.ts (enhanced - EnemyManager class)
+- src/data/maps.json (updated - added suoyaota location and 7 maps)
+- src/data/DialogData.ts (updated - added tower dialogs)
+- ralph/prd.json (updated US-032 to passes: true)
+
+**Learnings for future iterations:**
+- Tower maps use requireFlag on transitions for puzzle completion gating
+- Battle events use enemyIds array for specifying battle enemies
+- Cutscene events can trigger on_flag for post-battle story sequences
+- Enemy data includes drops array with itemId and probability fields
+- TowerEncounter groups define enemy composition per level
+- Color theme should darken progressively deeper into tower
+---

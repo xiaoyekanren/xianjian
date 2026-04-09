@@ -37,6 +37,13 @@
       "displayName": "灵宝阁",
       "maps": ["lingbao_main"],
       "shops": ["lingbao_magic"]
+    },
+    {
+      "id": "suoyaota",
+      "name": "锁妖塔",
+      "displayName": "锁妖塔",
+      "maps": ["suoyaota_entrance", "suoyaota_level_1", "suoyaota_level_2", "suoyaota_level_3", "suoyaota_level_4", "suoyaota_level_5", "suoyaota_bottom"],
+      "chapter": 4
     }
   ],
   "maps": [
@@ -1756,6 +1763,808 @@
       "transitions": [],
       "events": [],
       "collisions": []
+    },
+    {
+      "id": "suoyaota_entrance",
+      "name": "锁妖塔入口",
+      "displayName": "锁妖塔入口",
+      "description": "锁妖塔的入口，阴森恐怖的气息弥漫",
+      "locationId": "suoyaota",
+      "chapter": 4,
+      "width": 20,
+      "height": 15,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#2D1B4E",
+        "secondary": "#1A0A2E",
+        "accent": "#7B2D8E"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "fog",
+        "backgroundColor": "#0D0D1A",
+        "bgm": "suoyaota_entrance"
+      },
+      "layers": [
+        {
+          "id": "entrance_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,3,3,3,3,3,3,3,3,3,0,0,0,0,0,1],
+            [1,0,0,0,0,0,3,3,3,3,3,3,3,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,3,3,3,3,3,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "entrance_ground",
+            "tileIds": [1, 3]
+          }
+        },
+        {
+          "id": "entrance_overlay",
+          "name": "覆盖层",
+          "type": "overlay",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,6,6,0,6,0,0,0,0,0,0,0,0,0,0,0,0,6,6,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,6,6,0,6,0,0,0,0,0,0,0,0,0,0,0,0,6,6,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ]
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "entrance_to_level1",
+          "targetMapId": "suoyaota_level_1",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 10,
+          "sourceY": 13,
+          "direction": "up"
+        }
+      ],
+      "events": [
+        {
+          "id": "tower_entrance_event",
+          "type": "dialog",
+          "x": 10,
+          "y": 7,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "tower_entrance_warning",
+          "setFlag": "entered_suoyaota",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "entrance_ground",
+          "tileIds": [1, 3]
+        }
+      ]
+    },
+    {
+      "id": "suoyaota_level_1",
+      "name": "锁妖塔第一层",
+      "displayName": "锁妖塔一层",
+      "description": "塔的第一层，充满阴森的气息",
+      "locationId": "suoyaota",
+      "chapter": 4,
+      "width": 25,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#2D1B4E",
+        "secondary": "#1A0A2E",
+        "accent": "#7B2D8E"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "fog",
+        "backgroundColor": "#0D0D1A",
+        "bgm": "suoyaota_level"
+      },
+      "layers": [
+        {
+          "id": "level1_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,1,0,0,0,0,1,0,0,1,1,1,1,1,1,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "level1_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "level1_to_entrance",
+          "targetMapId": "suoyaota_entrance",
+          "targetX": 10,
+          "targetY": 13,
+          "sourceX": 10,
+          "sourceY": 17,
+          "direction": "down"
+        },
+        {
+          "id": "level1_to_level2",
+          "targetMapId": "suoyaota_level_2",
+          "targetX": 12,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 2,
+          "direction": "up",
+          "requireFlag": "puzzle_level1_complete"
+        }
+      ],
+      "events": [
+        {
+          "id": "level1_puzzle",
+          "type": "puzzle",
+          "x": 16,
+          "y": 8,
+          "triggerType": "on_interact",
+          "puzzleType": "switch",
+          "setFlag": "puzzle_level1_complete",
+          "dialogId": "tower_puzzle_hint_1"
+        },
+        {
+          "id": "level1_encounter_zone",
+          "type": "battle",
+          "x": 7,
+          "y": 5,
+          "width": 4,
+          "height": 4,
+          "triggerType": "on_enter",
+          "encounterLevel": 1,
+          "priority": 2
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "level1_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "suoyaota_level_2",
+      "name": "锁妖塔第二层",
+      "displayName": "锁妖塔二层",
+      "description": "塔的第二层，道路更加曲折",
+      "locationId": "suoyaota",
+      "chapter": 4,
+      "width": 25,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#3D2B5E",
+        "secondary": "#1A0A2E",
+        "accent": "#8B3D9E"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "fog",
+        "backgroundColor": "#0A0A15",
+        "bgm": "suoyaota_level"
+      },
+      "layers": [
+        {
+          "id": "level2_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "level2_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "level2_to_level1",
+          "targetMapId": "suoyaota_level_1",
+          "targetX": 12,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 17,
+          "direction": "down"
+        },
+        {
+          "id": "level2_to_level3",
+          "targetMapId": "suoyaota_level_3",
+          "targetX": 8,
+          "targetY": 2,
+          "sourceX": 8,
+          "sourceY": 2,
+          "direction": "up",
+          "requireFlag": "puzzle_level2_complete"
+        }
+      ],
+      "events": [
+        {
+          "id": "level2_puzzle",
+          "type": "puzzle",
+          "x": 19,
+          "y": 13,
+          "triggerType": "on_interact",
+          "puzzleType": "torch",
+          "setFlag": "puzzle_level2_complete",
+          "dialogId": "tower_puzzle_hint_2"
+        },
+        {
+          "id": "level2_encounter_zone",
+          "type": "battle",
+          "x": 3,
+          "y": 5,
+          "width": 4,
+          "height": 3,
+          "triggerType": "on_enter",
+          "encounterLevel": 2,
+          "priority": 2
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "level2_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "suoyaota_level_3",
+      "name": "锁妖塔第三层",
+      "displayName": "锁妖塔三层",
+      "description": "塔的中层，妖魔更加凶猛",
+      "locationId": "suoyaota",
+      "chapter": 4,
+      "width": 30,
+      "height": 25,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#4D3B6E",
+        "secondary": "#2A1A3E",
+        "accent": "#9B4DAE"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "fog",
+        "backgroundColor": "#080810",
+        "bgm": "suoyaota_level"
+      },
+      "layers": [
+        {
+          "id": "level3_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,1],
+            [1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,1],
+            [1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,1],
+            [1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "level3_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "level3_to_level2",
+          "targetMapId": "suoyaota_level_2",
+          "targetX": 8,
+          "targetY": 2,
+          "sourceX": 8,
+          "sourceY": 22,
+          "direction": "down"
+        },
+        {
+          "id": "level3_to_level4",
+          "targetMapId": "suoyaota_level_4",
+          "targetX": 15,
+          "targetY": 2,
+          "sourceX": 15,
+          "sourceY": 2,
+          "direction": "up",
+          "requireFlag": "puzzle_level3_complete"
+        }
+      ],
+      "events": [
+        {
+          "id": "level3_puzzle",
+          "type": "puzzle",
+          "x": 16,
+          "y": 13,
+          "triggerType": "on_interact",
+          "puzzleType": "key",
+          "setFlag": "puzzle_level3_complete",
+          "dialogId": "tower_puzzle_hint_3"
+        },
+        {
+          "id": "level3_encounter_zone",
+          "type": "battle",
+          "x": 5,
+          "y": 4,
+          "width": 4,
+          "height": 4,
+          "triggerType": "on_enter",
+          "encounterLevel": 3,
+          "priority": 2
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "level3_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "suoyaota_level_4",
+      "name": "锁妖塔第四层",
+      "displayName": "锁妖塔四层",
+      "description": "塔的高层，阴气森森",
+      "locationId": "suoyaota",
+      "chapter": 4,
+      "width": 25,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#5D4B7E",
+        "secondary": "#3A2A4E",
+        "accent": "#AB5DBE"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "fog",
+        "backgroundColor": "#050508",
+        "bgm": "suoyaota_level"
+      },
+      "layers": [
+        {
+          "id": "level4_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,1],
+            [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1],
+            [1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1],
+            [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "level4_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "level4_to_level3",
+          "targetMapId": "suoyaota_level_3",
+          "targetX": 15,
+          "targetY": 2,
+          "sourceX": 15,
+          "sourceY": 17,
+          "direction": "down"
+        },
+        {
+          "id": "level4_to_level5",
+          "targetMapId": "suoyaota_level_5",
+          "targetX": 12,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 2,
+          "direction": "up",
+          "requireFlag": "puzzle_level4_complete"
+        }
+      ],
+      "events": [
+        {
+          "id": "level4_puzzle",
+          "type": "puzzle",
+          "x": 17,
+          "y": 13,
+          "triggerType": "on_interact",
+          "puzzleType": "door",
+          "setFlag": "puzzle_level4_complete",
+          "dialogId": "tower_puzzle_hint_4"
+        },
+        {
+          "id": "level4_encounter_zone",
+          "type": "battle",
+          "x": 4,
+          "y": 4,
+          "width": 3,
+          "height": 3,
+          "triggerType": "on_enter",
+          "encounterLevel": 4,
+          "priority": 2
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "level4_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "suoyaota_level_5",
+      "name": "锁妖塔第五层",
+      "displayName": "锁妖塔五层",
+      "description": "塔的顶层，守护者在此等待",
+      "locationId": "suoyaota",
+      "chapter": 4,
+      "width": 20,
+      "height": 18,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#6D5B8E",
+        "secondary": "#4A3A5E",
+        "accent": "#BB6DCE"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "fog",
+        "backgroundColor": "#030305",
+        "bgm": "suoyaota_boss"
+      },
+      "layers": [
+        {
+          "id": "level5_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "level5_ground",
+            "tileIds": [1]
+          }
+        },
+        {
+          "id": "level5_building",
+          "name": "建筑层",
+          "type": "building",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,8,8,8,8,8,8,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,8,0,0,0,0,8,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,8,0,0,0,0,8,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,8,0,0,0,0,8,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,8,0,0,0,0,8,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,8,0,0,0,0,8,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ],
+          "collision": {
+            "layerId": "level5_building",
+            "tileIds": [8]
+          }
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "level5_to_level4",
+          "targetMapId": "suoyaota_level_4",
+          "targetX": 12,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 15,
+          "direction": "down"
+        },
+        {
+          "id": "level5_to_bottom",
+          "targetMapId": "suoyaota_bottom",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 10,
+          "sourceY": 10,
+          "direction": "up",
+          "requireFlag": "boss_guardian_defeated"
+        }
+      ],
+      "events": [
+        {
+          "id": "level5_boss_battle",
+          "type": "battle",
+          "x": 10,
+          "y": 5,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "battleId": "tower_boss_guardian",
+          "enemyIds": ["tower_boss_guardian"],
+          "setFlag": "boss_guardian_defeated",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "level5_ground",
+          "tileIds": [1]
+        },
+        {
+          "layerId": "level5_building",
+          "tileIds": [8]
+        }
+      ]
+    },
+    {
+      "id": "suoyaota_bottom",
+      "name": "锁妖塔底层",
+      "displayName": "锁妖塔底层",
+      "description": "塔的底层，灵儿被封印于此，月如的命运在此揭晓",
+      "locationId": "suoyaota",
+      "chapter": 4,
+      "width": 25,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#1D0B2E",
+        "secondary": "#0A0015",
+        "accent": "#5B1D6E"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "fog",
+        "backgroundColor": "#000005",
+        "bgm": "suoyaota_bottom"
+      },
+      "layers": [
+        {
+          "id": "bottom_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "bottom_ground",
+            "tileIds": [1, 3]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "zhao_linger_sealed",
+          "name": "赵灵儿",
+          "dialogId": "tower_find_linger",
+          "x": 12,
+          "y": 8,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "bottom_to_level5",
+          "targetMapId": "suoyaota_level_5",
+          "targetX": 10,
+          "targetY": 10,
+          "sourceX": 10,
+          "sourceY": 17,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "bottom_find_linger",
+          "type": "cutscene",
+          "x": 12,
+          "y": 10,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "tower_find_linger_cutscene",
+          "setFlag": "found_linger_tower",
+          "oneTime": true,
+          "priority": 1
+        },
+        {
+          "id": "bottom_yueru_sacrifice",
+          "type": "cutscene",
+          "x": 12,
+          "y": 8,
+          "triggerType": "on_flag",
+          "requireFlag": "boss_demon_king_defeated",
+          "dialogId": "tower_yueru_sacrifice_cutscene",
+          "setFlag": "yueru_sacrificed",
+          "oneTime": true,
+          "priority": 2
+        },
+        {
+          "id": "bottom_boss_battle",
+          "type": "battle",
+          "x": 12,
+          "y": 6,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "battleId": "tower_boss_demon_king",
+          "enemyIds": ["tower_boss_demon_king"],
+          "setFlag": "boss_demon_king_defeated",
+          "oneTime": true,
+          "priority": 3
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "bottom_ground",
+          "tileIds": [1, 3]
+        }
+      ]
     }
   ]
 }
