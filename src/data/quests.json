@@ -1,0 +1,374 @@
+[
+  {
+    "id": "quest_herb_collector",
+    "name": "采药人",
+    "title": "采药人的请求",
+    "description": "余杭镇的采药人需要收集一些珍贵的草药，帮助他采集止血草和灵心草。",
+    "summary": "帮助采药人收集止血草x5和灵心草x3",
+    "chapter": 1,
+    "location": "yuhang_town_main",
+    "giverNpcId": "yuhang_herb_collector",
+    "prerequisites": {
+      "storyFlags": ["know_xianling_island"]
+    },
+    "steps": [
+      {
+        "id": "step_herb_1",
+        "type": "collect_item",
+        "description": "收集止血草x5",
+        "targetId": "zhixuecao",
+        "targetCount": 5,
+        "currentCount": 0
+      },
+      {
+        "id": "step_herb_2",
+        "type": "collect_item",
+        "description": "收集灵心草x3",
+        "targetId": "lingxincao",
+        "targetCount": 3,
+        "currentCount": 0
+      },
+      {
+        "id": "step_herb_3",
+        "type": "talk_to_npc",
+        "description": "返回采药人处交任务",
+        "targetId": "yuhang_herb_collector",
+        "targetMapId": "yuhang_town_main"
+      }
+    ],
+    "rewards": {
+      "exp": 50,
+      "gold": 100,
+      "items": [
+        { "itemId": "jinchuangyao", "quantity": 3 }
+      ],
+      "affection": [
+        { "characterId": "zhao_linger", "amount": 5 }
+      ]
+    }
+  },
+  {
+    "id": "quest_lost_heirloom",
+    "name": "传家宝",
+    "title": "失落的传家宝",
+    "description": "林家的传家宝剑在比武招亲时遗失了，帮助林月如找回林家剑。",
+    "summary": "在苏州城附近寻找林家剑",
+    "chapter": 2,
+    "location": "suzhou_main",
+    "giverNpcId": "lin_butler",
+    "prerequisites": {
+      "completedQuests": [],
+      "storyFlags": ["lin_yueru_joined"]
+    },
+    "steps": [
+      {
+        "id": "step_heirloom_1",
+        "type": "talk_to_npc",
+        "description": "询问杂货铺老板是否见过林家剑",
+        "targetId": "suzhou_shopkeeper",
+        "targetMapId": "suzhou_main"
+      },
+      {
+        "id": "step_heirloom_2",
+        "type": "defeat_enemy",
+        "description": "在城外击败偷剑的盗贼",
+        "targetId": "bandit",
+        "targetCount": 3,
+        "currentCount": 0
+      },
+      {
+        "id": "step_heirloom_3",
+        "type": "collect_item",
+        "description": "找回林家剑",
+        "targetId": "lin_sword",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_heirloom_4",
+        "type": "talk_to_npc",
+        "description": "将林家剑还给林管家",
+        "targetId": "lin_butler",
+        "targetMapId": "suzhou_lin_home"
+      }
+    ],
+    "rewards": {
+      "exp": 100,
+      "gold": 300,
+      "affection": [
+        { "characterId": "lin_yueru", "amount": 15 }
+      ],
+      "flags": [
+        { "flagName": "lin_heirloom_returned", "value": true }
+      ]
+    }
+  },
+  {
+    "id": "quest_tower_explorer",
+    "name": "塔中探秘",
+    "title": "锁妖塔的传说",
+    "description": "传说锁妖塔中藏有珍贵的宝藏，探索塔中寻找传说中的灵符。",
+    "summary": "在锁妖塔中找到隐藏的灵符",
+    "chapter": 3,
+    "location": "suoyaota_entrance",
+    "giverNpcId": "tower_guardian_spirit",
+    "prerequisites": {
+      "storyFlags": ["entered_suoyaota"]
+    },
+    "steps": [
+      {
+        "id": "step_tower_1",
+        "type": "reach_location",
+        "description": "到达锁妖塔第三层",
+        "targetId": "suoyaota_level3"
+      },
+      {
+        "id": "step_tower_2",
+        "type": "defeat_enemy",
+        "description": "击败守护宝箱的恶魔",
+        "targetId": "demon",
+        "targetCount": 5,
+        "currentCount": 0
+      },
+      {
+        "id": "step_tower_3",
+        "type": "collect_item",
+        "description": "找到灵符",
+        "targetId": "spirit_amulet",
+        "targetCount": 1,
+        "currentCount": 0
+      }
+    ],
+    "rewards": {
+      "exp": 200,
+      "gold": 500,
+      "items": [
+        { "itemId": "spirit_amulet", "quantity": 1 }
+      ],
+      "skills": ["spirit_blessing"]
+    }
+  },
+  {
+    "id": "quest_miao_herbs",
+    "name": "苗疆秘药",
+    "title": "苗族的秘药配方",
+    "description": "苗族的长老需要一些特殊的草药来制作秘药，帮助收集这些珍贵的材料。",
+    "summary": "帮助苗族长老收集稀有草药",
+    "chapter": 4,
+    "location": "white_miao_main",
+    "giverNpcId": "miao_elder",
+    "prerequisites": {
+      "storyFlags": ["anu_joined"]
+    },
+    "steps": [
+      {
+        "id": "step_miao_1",
+        "type": "collect_item",
+        "description": "收集大黄丹x2",
+        "targetId": "dahuangdan",
+        "targetCount": 2,
+        "currentCount": 0
+      },
+      {
+        "id": "step_miao_2",
+        "type": "collect_item",
+        "description": "收集天心丹x1",
+        "targetId": "tianxin_dan",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_miao_3",
+        "type": "defeat_enemy",
+        "description": "在圣地击败守护灵草的精灵",
+        "targetId": "spirit_guardian",
+        "targetCount": 3,
+        "currentCount": 0,
+        "targetMapId": "miao_sacred_grounds"
+      },
+      {
+        "id": "step_miao_4",
+        "type": "talk_to_npc",
+        "description": "返回苗族长老处",
+        "targetId": "miao_elder",
+        "targetMapId": "white_miao_main"
+      }
+    ],
+    "rewards": {
+      "exp": 300,
+      "gold": 800,
+      "items": [
+        { "itemId": "dahuangdan", "quantity": 5 },
+        { "itemId": "tianxin_dan", "quantity": 2 }
+      ],
+      "affection": [
+        { "characterId": "anu", "amount": 20 }
+      ]
+    }
+  },
+  {
+    "id": "quest_fisherman_trouble",
+    "name": "渔夫之困",
+    "title": "余杭渔夫的烦恼",
+    "description": "余杭镇的渔夫遇到了一些麻烦，有妖物在河边作祟，影响渔民的生活。",
+    "summary": "帮助渔夫清除河边的妖物",
+    "chapter": 1,
+    "location": "yuhang_town_main",
+    "giverNpcId": "yuhang_fisherman",
+    "prerequisites": {
+      "level": 3,
+      "storyFlags": ["learned_yujianshu"]
+    },
+    "steps": [
+      {
+        "id": "step_fish_1",
+        "type": "talk_to_npc",
+        "description": "与渔夫交谈了解情况",
+        "targetId": "yuhang_fisherman",
+        "targetMapId": "yuhang_town_main"
+      },
+      {
+        "id": "step_fish_2",
+        "type": "defeat_enemy",
+        "description": "清除河边的史莱姆",
+        "targetId": "slime",
+        "targetCount": 5,
+        "currentCount": 0
+      },
+      {
+        "id": "step_fish_3",
+        "type": "defeat_enemy",
+        "description": "击败史莱姆王",
+        "targetId": "boss_slime_king",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_fish_4",
+        "type": "talk_to_npc",
+        "description": "向渔夫报告",
+        "targetId": "yuhang_fisherman",
+        "targetMapId": "yuhang_town_main"
+      }
+    ],
+    "rewards": {
+      "exp": 80,
+      "gold": 150,
+      "items": [
+        { "itemId": "jinchuangyao", "quantity": 5 },
+        { "itemId": "lingxindan", "quantity": 2 }
+      ]
+    }
+  },
+  {
+    "id": "quest_suzhou_gourmet",
+    "name": "美食家",
+    "title": "苏州美食之旅",
+    "description": "苏州城的美食家想要品尝各地的美食，帮助他收集一些特色食材。",
+    "summary": "收集特色食材给美食家",
+    "chapter": 2,
+    "location": "suzhou_main",
+    "giverNpcId": "suzhou_gourmet",
+    "prerequisites": {
+      "storyFlags": ["entered_suzhou"]
+    },
+    "steps": [
+      {
+        "id": "step_gourmet_1",
+        "type": "collect_item",
+        "description": "收集金创药x3（用于调味）",
+        "targetId": "jinchuangyao",
+        "targetCount": 3,
+        "currentCount": 0
+      },
+      {
+        "id": "step_gourmet_2",
+        "type": "collect_item",
+        "description": "收集灵心草x5（用于香料）",
+        "targetId": "lingxincao",
+        "targetCount": 5,
+        "currentCount": 0
+      },
+      {
+        "id": "step_gourmet_3",
+        "type": "talk_to_npc",
+        "description": "将食材交给美食家",
+        "targetId": "suzhou_gourmet",
+        "targetMapId": "suzhou_main"
+      }
+    ],
+    "rewards": {
+      "exp": 60,
+      "gold": 200,
+      "items": [
+        { "itemId": "huichunyao", "quantity": 5 }
+      ]
+    }
+  },
+  {
+    "id": "quest_spirit_pearl_hunter",
+    "name": "灵珠猎人",
+    "title": "收集五灵珠",
+    "description": "传说五灵珠蕴含着强大的力量，收集所有灵珠以获得神秘的力量。",
+    "summary": "收集五颗灵珠",
+    "chapter": 4,
+    "location": "miao_sacred_altar",
+    "giverNpcId": "miao_priest",
+    "prerequisites": {
+      "storyFlags": ["learned_miao_conflict"]
+    },
+    "steps": [
+      {
+        "id": "step_pearl_1",
+        "type": "collect_item",
+        "description": "收集火灵珠",
+        "targetId": "fire_pearl",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_pearl_2",
+        "type": "collect_item",
+        "description": "收集水灵珠",
+        "targetId": "water_pearl",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_pearl_3",
+        "type": "collect_item",
+        "description": "收集风灵珠",
+        "targetId": "wind_pearl",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_pearl_4",
+        "type": "collect_item",
+        "description": "收集雷灵珠",
+        "targetId": "thunder_pearl",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_pearl_5",
+        "type": "collect_item",
+        "description": "收集土灵珠",
+        "targetId": "earth_pearl",
+        "targetCount": 1,
+        "currentCount": 0
+      }
+    ],
+    "rewards": {
+      "exp": 1000,
+      "gold": 2000,
+      "items": [
+        { "itemId": "nuwa_amulet", "quantity": 1 }
+      ],
+      "flags": [
+        { "flagName": "all_pearls_collected", "value": true }
+      ]
+    },
+    "hidden": true
+  }
+]
