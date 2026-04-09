@@ -65,3 +65,35 @@
 - Player direction tracking needed for NPC interaction (face the NPC)
 - Scene transitions use `scene.restart()` with data object for map changes
 ---
+
+## 2026-04-09 16:53 - US-005
+- Implemented DialogScene.ts with full dialog interface system
+- Created DialogData.ts with dialog types, expressions, events, and dialog manager
+- Dialog interface with speaker name, placeholder avatar, and dialog content
+- Typewriter text effect for dialog content display
+- Expression system with 7 expressions (normal, happy, sad, angry, surprised, thinking, shy)
+- Expression indicator displays Chinese text for current expression
+- Player choice system with keyboard navigation (↑↓/WS) and mouse click
+- Choice buttons with hover and selection highlighting
+- Dialog event system supporting: get_item, start_battle, set_flag, change_map, add_party_member, remove_party_member, heal
+- Dialog branching via nextDialogId for multi-branch conversations
+- Demo dialogs for testing: villager dialog with choices, elder dialog with branching
+- Updated WorldScene.ts to use DialogScene instead of placeholder dialog
+- Updated Game.ts to register DialogScene
+- Chinese-style UI with gold (#D4A84B) borders and decorations
+
+**Files changed:**
+- src/data/DialogData.ts (created - dialog types, Expression enum, DialogEvent types, DialogManager class, demo dialogs)
+- src/scenes/DialogScene.ts (complete rewrite - full dialog scene implementation)
+- src/scenes/WorldScene.ts (updated triggerDialog to use DialogScene, added handleDialogEnd, removed showSimpleDialog)
+- src/core/Game.ts (added DialogScene import and registration)
+- ralph/prd.json (updated US-005 to passes: true)
+
+**Learnings for future iterations:**
+- Dialog scene is launched as parallel scene with scene.launch(), parent scene is paused
+- Use scene.resume() to pass data back to parent scene
+- Scene events can be listened via scene.get('SceneName').events.once('event')
+- Placeholder avatars can use different colors based on speakerId prefix
+- Typewriter effect uses Phaser.Time.TimerEvent with repeat parameter
+- Choice container needs to be cleared before creating new choices
+---

@@ -12,6 +12,7 @@ import {
   DEFAULT_TILE_SIZE,
   MapTransitionData,
 } from '@/data/MapData';
+import { DialogEndEvent } from '@/scenes/DialogScene';
 
 /**
  * World scene configuration passed from scene transition
@@ -335,7 +336,7 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /**
-   * Trigger dialog with NPC
+   * Trigger dialog with NPC using DialogScene
    */
   private triggerDialog(npc: NPC): void {
     // Pause player movement
@@ -344,80 +345,43 @@ export class WorldScene extends Phaser.Scene {
       this.player.setEnabled(false);
     }
 
-    // Start dialog scene (placeholder - would use DialogScene later)
+    // Start interaction
     const interaction = npc.startInteraction();
 
-    // For now, show a simple dialog box
-    this.showSimpleDialog(npc.getName(), `与${npc.getName()}对话...\n对话ID: ${interaction.dialogId}`);
+    // Pause this scene and launch DialogScene
+    this.scene.pause();
+    this.scene.launch('DialogScene', {
+      dialogId: interaction.dialogId,
+      npcName: npc.getName(),
+    });
+
+    // Listen for dialog end event
+    this.scene.get('DialogScene').events.once('resume', (data: DialogEndEvent) => {
+      this.handleDialogEnd(data);
+    });
   }
 
   /**
-   * Show simple dialog box (placeholder)
+   * Handle dialog scene ending
    */
-  private showSimpleDialog(name: string, message: string): void {
-    const width = this.cameras.main.width;
-    const height = this.cameras.main.height;
+  private handleDialogEnd(endEvent: DialogEndEvent): void {
+    // Resume player
+    if (this.player) {
+      this.player.setEnabled(true);
+    }
 
-    // Dialog box background
-    const dialogBox = this.add.graphics();
-    dialogBox.fillStyle(0x000000, 0.8);
-    dialogBox.fillRect(width * 0.1, height * 0.7, width * 0.8, height * 0.25);
-    dialogBox.lineStyle(2, 0xD4A84B);
-    dialogBox.strokeRect(width * 0.1, height * 0.7, width * 0.8, height * 0.25);
-    dialogBox.setDepth(100);
-
-    // Name text
-    const nameText = this.add.text(width * 0.15, height * 0.73, name, {
-      fontFamily: 'Arial, sans-serif',
-      fontSize: '20px',
-      color: '#D4A84B',
-      fontStyle: 'bold',
-    });
-    nameText.setDepth(101);
-
-    // Message text
-    const messageText = this.add.text(width * 0.15, height * 0.78, message, {
-      fontFamily: 'Arial, sans-serif',
-      fontSize: '18px',
-      color: '#FFFFFF',
-      wordWrap: { width: width * 0.7 },
-    });
-    messageText.setDepth(101);
-
-    // Close instruction
-    const closeText = this.add.text(width * 0.85, height * 0.92, '按Enter关闭', {
-      fontFamily: 'Arial, sans-serif',
-      fontSize: '14px',
-      color: '#AAAAAA',
-    });
-    closeText.setOrigin(1, 0.5);
-    closeText.setDepth(101);
-
-    // Setup close handler
-    const closeDialog = () => {
-      dialogBox.destroy();
-      nameText.destroy();
-      messageText.destroy();
-      closeText.destroy();
-
-      // Resume player
-      if (this.player) {
-        this.player.setEnabled(true);
+    // End NPC interaction
+    for (const npc of this.npcs) {
+      if (npc.getState() === 'interacting') {
+        npc.endInteraction();
       }
+    }
 
-      // End NPC interaction
-      for (const npc of this.npcs) {
-        if (npc.getState() === 'interacting') {
-          npc.endInteraction();
-        }
-      }
-
-      this.input.keyboard!.off('keydown-ENTER', closeDialog);
-      this.input.keyboard!.off('keydown-SPACE', closeDialog);
-    };
-
-    this.input.keyboard!.once('keydown-ENTER', closeDialog);
-    this.input.keyboard!.once('keydown-SPACE', closeDialog);
+    // Handle events from dialog (in full implementation)
+    if (endEvent.lastEvent) {
+      console.log(`[WorldScene] Dialog ended with event: ${endEvent.lastEvent.type}`);
+      // TODO: Handle events like item received, battle started, etc.
+    }
   }
 
   /**
