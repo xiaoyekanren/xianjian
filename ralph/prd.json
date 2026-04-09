@@ -1,0 +1,844 @@
+{
+  "project": "仙剑奇侠传现代重制版",
+  "branchName": "ralph/xianjian-remake",
+  "description": "仙剑奇侠传1995年原版的现代重制版，保持原版经典剧情和回合制战斗核心，使用Web技术重新设计画面和UI，采用现代扁平化卡通风格。",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "项目架构搭建",
+      "description": "As a developer, I need to set up the project structure so that development can proceed efficiently.",
+      "acceptanceCriteria": [
+        "创建项目目录结构（src/core, src/scenes, src/systems, src/entities, src/data）",
+        "配置package.json、tsconfig.json、vite.config.ts",
+        "Phaser.js框架集成成功",
+        "TypeScript编译通过",
+        "开发服务器可启动运行",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "游戏主控制器实现",
+      "description": "As a developer, I need a main game controller to manage the game lifecycle.",
+      "acceptanceCriteria": [
+        "Game.ts实现游戏初始化和生命周期管理",
+        "SceneManager.ts实现场景切换逻辑",
+        "InputManager.ts处理键盘/触屏输入",
+        "AudioManager.ts管理音效播放",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "启动场景和主菜单",
+      "description": "As a player, I want to see a title screen and menu so I can start or continue the game.",
+      "acceptanceCriteria": [
+        "BootScene.ts加载游戏资源并显示进度",
+        "MainMenuScene.ts显示标题和菜单选项（新游戏、继续、设置）",
+        "菜单选项可通过键盘/点击选择",
+        "中文标题'仙剑奇侠传'正确显示",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "地图探索场景实现",
+      "description": "As a player, I want to explore maps so I can move around towns and dungeons.",
+      "acceptanceCriteria": [
+        "WorldScene.ts实现基于瓦片的地图渲染",
+        "玩家角色可在地图上四方向行走",
+        "碰撞检测阻止进入障碍区域",
+        "地图切换点可传送至其他地图",
+        "NPC可交互触发对话",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "对话系统实现",
+      "description": "As a player, I want to engage in dialogues so I can experience the story.",
+      "acceptanceCriteria": [
+        "DialogScene.ts显示对话界面",
+        "显示说话者名字、头像、对话内容",
+        "支持表情切换（normal, happy, sad等）",
+        "选项对话支持玩家选择",
+        "对话可触发事件（获得物品、进入战斗等）",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "回合制战斗系统实现",
+      "description": "As a player, I want to engage in turn-based combat so I can defeat enemies.",
+      "acceptanceCriteria": [
+        "BattleScene.ts实现战斗场景",
+        "显示玩家队伍（最多4人）和敌人",
+        "玩家可选行动：攻击、仙术、道具、防御、逃跑",
+        "按速度值决定行动顺序",
+        "正确计算伤害（物理/仙术）",
+        "战斗胜利/失败判定",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "战斗UI界面",
+      "description": "As a player, I want clear battle UI so I can easily control my characters.",
+      "acceptanceCriteria": [
+        "显示所有角色HP/MP状态条",
+        "行动按钮清晰可见且可点击",
+        "仙术选择菜单列出可用技能",
+        "敌人选择界面（单体/全体）",
+        "战斗消息显示区域",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "角色数据系统",
+      "description": "As a developer, I need character data structures so the game can manage player and enemy stats.",
+      "acceptanceCriteria": [
+        "Character接口定义完整属性（HP, MP, 攻击, 防御, 速度, 运气）",
+        "支持等级和成长系数",
+        "仙术列表和学习等级配置",
+        "装备槽位（武器、防具、饰品）",
+        "characters.json配置四大主角数据",
+        "Typecheck passes"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "李逍遥角色实现",
+      "description": "As a player, I want the main character Li Xiaoyao so I can start the game.",
+      "acceptanceCriteria": [
+        "李逍遥初始属性正确（HP120, MP30, 攻击18, 防御12）",
+        "学习御剑术（Lv1）、天师符法（Lv5）等仙术",
+        "成长系数配置正确",
+        "行走精灵图四方向动画",
+        "对话立绘和表情系统",
+        "Typecheck passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "赵灵儿角色实现",
+      "description": "As a player, I want Zhao Ling'er as a party member with her unique skills.",
+      "acceptanceCriteria": [
+        "赵灵儿加入时属性正确（HP80, MP80高灵力）",
+        "五气朝元等恢复仙术",
+        "风咒、雷咒等攻击仙术学习等级配置",
+        "行走精灵图和立绘",
+        "Typecheck passes"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "林月如角色实现",
+      "description": "As a player, I want Lin Yue Ru as a physical attack specialist.",
+      "acceptanceCriteria": [
+        "林月如Lv8加入时属性正确（高攻击）",
+        "七诀剑气等物理技能",
+        "苏州比武招亲剧情触发加入",
+        "行走精灵图和立绘",
+        "Typecheck passes"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-012",
+      "title": "阿奴角色实现",
+      "description": "As a player, I want A Nu as a support character with unique Miao skills.",
+      "acceptanceCriteria": [
+        "阿奴Lv15加入时属性正确（高速度、高运气）",
+        "鬼降、祭天等辅助/减益仙术",
+        "苗族篇加入剧情触发",
+        "行走精灵图和立绘",
+        "Typecheck passes"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-013",
+      "title": "仙术/技能系统",
+      "description": "As a player, I want to use skills in battle so I can deal more damage or heal.",
+      "acceptanceCriteria": [
+        "Skill接口定义完整（名称、MP消耗、威力、属性、目标类型）",
+        "攻击仙术：御剑术、冰咒、雷咒、火咒、风咒等",
+        "恢复仙术：五气朝元、玄冰咒等",
+        "仙术特效动画显示",
+        "skills.json配置完整仙术数据",
+        "Typecheck passes"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-014",
+      "title": "物品系统实现",
+      "description": "As a player, I want to use items so I can heal or equip better gear.",
+      "acceptanceCriteria": [
+        "Item接口定义类型（消耗品、武器、防具、饰品、剧情道具）",
+        "消耗品效果配置（止血草HP+50等）",
+        "装备属性加成配置",
+        "物品可在战斗/菜单中使用",
+        "items.json配置完整物品数据",
+        "Typecheck passes"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-015",
+      "title": "物品/装备管理界面",
+      "description": "As a player, I want to manage my inventory so I can use items and equip gear.",
+      "acceptanceCriteria": [
+        "显示所有物品列表",
+        "消耗品可使用并显示效果",
+        "装备可穿戴/卸下",
+        "显示物品描述和价格",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-016",
+      "title": "存档系统实现",
+      "description": "As a player, I want to save my progress so I can continue later.",
+      "acceptanceCriteria": [
+        "SaveData接口定义完整存档内容",
+        "5个存档槽位",
+        "保存当前地图、位置、剧情进度",
+        "保存角色状态和物品",
+        "保存好感度数据",
+        "localStorage持久化存储",
+        "Typecheck passes"
+      ],
+      "priority": 16,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-017",
+      "title": "存档/读档界面",
+      "description": "As a player, I want to select save slots so I can manage multiple playthroughs.",
+      "acceptanceCriteria": [
+        "显示5个存档槽位及信息（时间、进度）",
+        "存档缩略图显示",
+        "空槽位可新建存档",
+        "已有槽位可读取或覆盖",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 17,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-018",
+      "title": "商店系统实现",
+      "description": "As a player, I want to buy/sell items so I can prepare for battles.",
+      "acceptanceCriteria": [
+        "ShopSystem.ts实现买卖逻辑",
+        "显示商店物品列表和价格",
+        "购买扣款并添加物品",
+        "出售获得金钱",
+        "shop.json配置各城镇商店数据",
+        "Typecheck passes"
+      ],
+      "priority": 18,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-019",
+      "title": "商店界面",
+      "description": "As a player, I want a clear shop interface so I can easily buy items.",
+      "acceptanceCriteria": [
+        "物品名称、价格、数量清晰显示",
+        "当前金钱显示",
+        "购买/出售切换",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 19,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-020",
+      "title": "旅馆系统实现",
+      "description": "As a player, I want to rest at inns so I can fully recover HP/MP.",
+      "acceptanceCriteria": [
+        "旅馆可完全恢复HP/MP",
+        "解除所有负面状态",
+        "扣除住宿费用",
+        "自动存档",
+        "Typecheck passes"
+      ],
+      "priority": 20,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-021",
+      "title": "状态效果系统",
+      "description": "As a player, I want status effects to affect combat so battles are more strategic.",
+      "acceptanceCriteria": [
+        "负面状态：中毒、眩晕、睡眠、沉默等",
+        "正面状态：防护、神行、回春等",
+        "状态持续回合数管理",
+        "状态图标显示",
+        "状态解除物品/仙术可用",
+        "Typecheck passes"
+      ],
+      "priority": 21,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-022",
+      "title": "经验值与升级系统",
+      "description": "As a player, I want to level up so my characters become stronger.",
+      "acceptanceCriteria": [
+        "战斗胜利获得经验值和金钱",
+        "累计经验值达到阈值触发升级",
+        "升级时属性按成长系数提升",
+        "达到特定等级学会新仙术",
+        "HP/MP恢复满",
+        "升级动画显示",
+        "Typecheck passes"
+      ],
+      "priority": 22,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-023",
+      "title": "战斗掉落系统",
+      "description": "As a player, I want rewards after battles so I can gain items.",
+      "acceptanceCriteria": [
+        "BattleReward接口定义奖励",
+        "物品掉落概率计算",
+        "战斗结束显示获得的EXP/Gold/Items",
+        "Typecheck passes"
+      ],
+      "priority": 23,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-024",
+      "title": "宝箱系统",
+      "description": "As a player, I want to find treasure chests so I can get rewards.",
+      "acceptanceCriteria": [
+        "TreasureBox接口定义位置和内容",
+        "宝箱可交互打开",
+        "打开后获得物品",
+        "已打开状态记录",
+        "Typecheck passes"
+      ],
+      "priority": 24,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-025",
+      "title": "好感度系统实现",
+      "description": "As a player, I want to build relationships so I can unlock combo skills.",
+      "acceptanceCriteria": [
+        "AffectionSystem管理三人好感度（0-100）",
+        "对话选择影响好感度",
+        "赠送礼物增加好感度",
+        "好感度等级划分（冷淡/普通/友好/亲密/深爱）",
+        "Typecheck passes"
+      ],
+      "priority": 25,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-026",
+      "title": "好感度界面",
+      "description": "As a player, I want to view affection levels so I know my progress.",
+      "acceptanceCriteria": [
+        "显示三人好感度进度条",
+        "显示当前等级名称和颜色",
+        "显示已解锁/未解锁合体技",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 26,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-027",
+      "title": "合体技能系统",
+      "description": "As a player, I want combo skills so I can deal powerful attacks.",
+      "acceptanceCriteria": [
+        "ComboSkill接口定义合体技",
+        "四人合体技：四方合击、女娲神威",
+        "双人合体技：剑舞乾坤、仙魔同归",
+        "好感度解锁条件判定",
+        "合体技华丽特效",
+        "Typecheck passes"
+      ],
+      "priority": 27,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-028",
+      "title": "地图数据配置",
+      "description": "As a developer, I need map data so the game can render locations.",
+      "acceptanceCriteria": [
+        "MapData接口定义地图结构",
+        "多层瓦片支持（地面/建筑/覆盖）",
+        "碰撞数据配置",
+        "地图事件配置",
+        "地图切换点配置",
+        "maps.json配置所有地图数据",
+        "Typecheck passes"
+      ],
+      "priority": 28,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-029",
+      "title": "余杭镇地图实现",
+      "description": "As a player, I want to explore Yuhang Town so I can start the game.",
+      "acceptanceCriteria": [
+        "余杭镇地图瓦片渲染正确",
+        "李逍遥家、酒馆等关键地点可进入",
+        "NPC可交互（婶婶、醉道士等）",
+        "城镇色调温暖（暖黄、棕色）",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 29,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-030",
+      "title": "仙灵岛迷宫实现",
+      "description": "As a player, I want to explore Fairy Island so I can meet Ling'er.",
+      "acceptanceCriteria": [
+        "仙灵岛迷宫地图渲染",
+        "迷宫路径和机关",
+        "荷花池场景",
+        "遇赵灵儿剧情触发",
+        "神秘氛围色调（青绿、淡蓝）",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 30,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-031",
+      "title": "苏州城地图实现",
+      "description": "As a player, I want to explore Suzhou so I can join the martial arts contest.",
+      "acceptanceCriteria": [
+        "苏州城地图渲染",
+        "林家堡、客栈等地点",
+        "比武招亲场景触发",
+        "繁华色调（红色、金色）",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 31,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-032",
+      "title": "锁妖塔实现",
+      "description": "As a player, I want to explore the Demon Lock Tower so I can save Ling'er.",
+      "acceptanceCriteria": [
+        "锁妖塔5层+底层地图",
+        "各层敌人配置",
+        "机关解谜",
+        "找到灵儿剧情",
+        "月如牺牲剧情触发",
+        "压抑色调（深紫、黑色）",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 32,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-033",
+      "title": "苗族地图实现",
+      "description": "As a player, I want to explore Miao territory so I can collect Spirit Pearls.",
+      "acceptanceCriteria": [
+        "黑苗族、白苗族城镇地图",
+        "苗族圣地迷宫",
+        "五灵珠收集点",
+        "异域风情色调（翠绿、紫色）",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 33,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-034",
+      "title": "剧情脚本系统",
+      "description": "As a developer, I need story scripts so the narrative can be played.",
+      "acceptanceCriteria": [
+        "story.json配置完整剧情节点",
+        "剧情触发条件配置",
+        "剧情事件（对话、战斗、获得物品）",
+        "剧情进度追踪",
+        "Typecheck passes"
+      ],
+      "priority": 34,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-035",
+      "title": "第一章剧情实现",
+      "description": "As a player, I want to play Chapter 1 so I can start the story.",
+      "acceptanceCriteria": [
+        "李逍遥梦中习剑开场",
+        "婶婶生病事件",
+        "酒馆遇醉道士学会御剑术",
+        "仙灵岛遇赵灵儿",
+        "拜月教徒袭击",
+        "灵儿被绑架",
+        "Typecheck passes"
+      ],
+      "priority": 35,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-036",
+      "title": "第二章剧情实现",
+      "description": "As a player, I want to play Chapter 2 so I can meet Lin Yue Ru.",
+      "acceptanceCriteria": [
+        "乘船赴苏州",
+        "比武招亲事件",
+        "战斗林月如BOSS",
+        "林月如加入队伍",
+        "Typecheck passes"
+      ],
+      "priority": 36,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-037",
+      "title": "锁妖塔月如牺牲剧情",
+      "description": "As a player, I want to experience the tragic sacrifice scene.",
+      "acceptanceCriteria": [
+        "锁妖塔崩塌事件触发",
+        "月如牺牲对话序列播放",
+        "月如从队伍移除",
+        "获得月如遗物",
+        "情感冲击动画/音乐",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 37,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-038",
+      "title": "十年前回忆剧情",
+      "description": "As a player, I want to experience the flashback to understand the backstory.",
+      "acceptanceCriteria": [
+        "时光回溯触发条件",
+        "十年前南诏国场景",
+        "巫后剧情对话",
+        "水魔兽封印事件",
+        "获得水灵珠",
+        "Typecheck passes"
+      ],
+      "priority": 38,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-039",
+      "title": "苗族篇剧情实现",
+      "description": "As a player, I want to play the Miao chapter so I can awaken Ling'er's power.",
+      "acceptanceCriteria": [
+        "黑苗族/白苗族冲突剧情",
+        "阿奴加入队伍",
+        "五灵珠收集任务",
+        "灵儿觉醒剧情",
+        "Typecheck passes"
+      ],
+      "priority": 39,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-040",
+      "title": "最终决战实现",
+      "description": "As a player, I want the final battle so I can complete the game.",
+      "acceptanceCriteria": [
+        "拜月教总部地图",
+        "拜月教主BOSS（HP8000）",
+        "水魔兽召唤机制",
+        "四人合体技可用",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 40,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-041",
+      "title": "多结局系统",
+      "description": "As a player, I want different endings based on my choices.",
+      "acceptanceCriteria": [
+        "灵儿结局（默认）",
+        "月如结局（收集特定道具）",
+        "全员存活结局（好感度+道具条件）",
+        "结局判定逻辑",
+        "结局动画播放",
+        "Typecheck passes"
+      ],
+      "priority": 41,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-042",
+      "title": "支线任务系统",
+      "description": "As a player, I want side quests so I can earn extra rewards.",
+      "acceptanceCriteria": [
+        "SideQuest接口定义任务",
+        "任务步骤追踪",
+        "任务奖励发放",
+        "quests.json配置支线任务",
+        "Typecheck passes"
+      ],
+      "priority": 42,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-043",
+      "title": "小游戏系统",
+      "description": "As a player, I want mini-games so I can gamble for extra gold.",
+      "acceptanceCriteria": [
+        "猜大小游戏实现",
+        "翻牌配对游戏实现",
+        "赌注范围配置",
+        "Typecheck passes"
+      ],
+      "priority": 43,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-044",
+      "title": "天气时间系统",
+      "description": "As a player, I want weather effects so the world feels dynamic.",
+      "acceptanceCriteria": [
+        "天气类型：晴天、雨天、雪天、雾天、夜晚",
+        "天气粒子效果显示",
+        "天气影响战斗（部分敌人增强）",
+        "Typecheck passes"
+      ],
+      "priority": 44,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-045",
+      "title": "角色行走动画",
+      "description": "As a player, I want animated characters so movement looks natural.",
+      "acceptanceCriteria": [
+        "四方向行走动画（每方向4帧）",
+        "待机动画",
+        "奔跑动画",
+        "脚步音效",
+        "Typecheck passes"
+      ],
+      "priority": 45,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-046",
+      "title": "战斗特效动画",
+      "description": "As a player, I want visual effects so combat feels exciting.",
+      "acceptanceCriteria": [
+        "物理攻击剑光特效",
+        "仙术特效（火球、冰晶、雷电）",
+        "合体技华丽全屏特效",
+        "受伤闪烁效果",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 46,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-047",
+      "title": "场景转场效果",
+      "description": "As a player, I want smooth transitions so scene changes feel natural.",
+      "acceptanceCriteria": [
+        "黑淡入淡出转场",
+        "白闪光（进入战斗）",
+        "水墨扩散（剧情转场）",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 47,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-048",
+      "title": "开场动画",
+      "description": "As a player, I want an intro sequence so the game starts dramatically.",
+      "acceptanceCriteria": [
+        "游戏标题淡入动画",
+        "女娲传说水墨画序幕",
+        "李逍遥梦境开场",
+        "可跳过选项",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 48,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-049",
+      "title": "新手引导系统",
+      "description": "As a new player, I want tutorials so I can learn the controls.",
+      "acceptanceCriteria": [
+        "游戏开始移动教学",
+        "第一次战斗教学",
+        "第一个城镇商店教学",
+        "仙术使用教学",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 49,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-050",
+      "title": "设置界面",
+      "description": "As a player, I want to adjust settings so the game suits my preferences.",
+      "acceptanceCriteria": [
+        "音乐/音效音量调节",
+        "窗口模式切换",
+        "键盘设置查看",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 50,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-051",
+      "title": "敌人数据配置",
+      "description": "As a developer, I need enemy data so battles can be configured.",
+      "acceptanceCriteria": [
+        "Enemy接口定义敌人属性",
+        "普通敌人、精英敌人、BOSS分类",
+        "enemies.json配置所有敌人数据",
+        "Typecheck passes"
+      ],
+      "priority": 51,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-052",
+      "title": "AI美术资源生成",
+      "description": "As a developer, I need AI-generated art assets so the game has visuals.",
+      "acceptanceCriteria": [
+        "角色立绘生成（李逍遥、灵儿、月如、阿奴）",
+        "角色行走精灵图生成",
+        "地图瓦片生成",
+        "UI元素生成",
+        "特效素材生成",
+        "敌人图像生成"
+      ],
+      "priority": 52,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-053",
+      "title": "音效添加",
+      "description": "As a player, I want sound effects so the game feels immersive.",
+      "acceptanceCriteria": [
+        "UI点击音效",
+        "战斗攻击/受伤音效",
+        "仙术释放音效",
+        "行走脚步音效",
+        "物品拾取音效",
+        "Typecheck passes"
+      ],
+      "priority": 53,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}

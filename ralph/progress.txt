@@ -1,0 +1,26 @@
+# Ralph Progress Tracker
+
+Project: 仙剑奇侠传现代重制版
+Branch: ralph/xianjian-remake
+Started: 2026-04-09
+
+---
+
+## Completed Stories
+
+(None yet)
+
+---
+
+## Current Status
+
+Ready to begin. Run ralph loop to start autonomous execution.
+
+---
+
+## Notes
+
+- 53 user stories total
+- Phase 1 priority: US-001 through US-035 (核心框架+第一章)
+- Phase 2 priority: US-010, US-011, US-031, US-036 (扩展章节)
+- Phase 3-8 continue progressively
