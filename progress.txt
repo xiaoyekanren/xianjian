@@ -514,3 +514,26 @@
 - Equipment toggle handles auto-unequip of same-type items
 - Sort inventory by type order then name for better UX
 ---
+
+## 2026-04-10 19:00 - US-017
+- Implemented save/load UI with SaveLoadScene.ts
+- 5 save slots with full info display
+- Slot info: 存档号, 游戏时间, 章节, 保存时间, 地点
+- Thumbnail placeholder with character icon
+- Empty slot display: '-- 空 --'
+- Mode-based UI: 存档 (save) / 读档 (load)
+- Action buttons: 保存/读取, 删除, 关闭
+- Keyboard navigation: ↑↓/WS for slots, Enter/Space to confirm, ESC to close
+- Success/error messages with colored feedback (green/red)
+- Integrates with SaveSystem.getAllSlotInfo/load/save/delete
+
+**Files changed:**
+- src/scenes/SaveLoadScene.ts (created - save/load UI scene)
+- src/core/Game.ts (updated - registered SaveLoadScene)
+- ralph/prd.json (updated US-017 to passes: true)
+
+**Learnings for future iterations:**
+- SaveLoadScene receives mode ('save' or 'load') in config
+- SaveSlotInfo provides lightweight data for UI without full save data
+- Slot containers use graphics for dynamic selection highlighting
+---
