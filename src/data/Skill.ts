@@ -35,3 +35,15 @@ export interface Skill {
   statusEffect?: SkillStatusEffect;  // Status effect applied by this skill
   healing?: number;  // Healing power (if skill is healing type)
 }
+
+/**
+ * Load skills from JSON data
+ */
+export function loadSkillsFromJson(jsonData: unknown): Skill[] {
+  const data = jsonData as { skills: Skill[] };
+  if (!data.skills || !Array.isArray(data.skills)) {
+    console.warn('Invalid skills data format');
+    return [];
+  }
+  return data.skills;
+}

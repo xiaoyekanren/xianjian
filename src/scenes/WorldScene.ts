@@ -3,6 +3,7 @@
  * US-004: 地图探索场景实现
  * US-029: 余杭镇地图实现
  * US-035: 第一章剧情实现
+ * US-036: 第二章剧情实现
  */
 
 import Phaser from 'phaser';
@@ -19,6 +20,12 @@ import { mapManager } from '@/systems/MapManager';
 import { storySystem, TriggerType, StoryEventType, parseStoryConfig } from '@/systems/StorySystem';
 import storyData from '@/data/story.json';
 import { DialogEndEvent } from '@/scenes/DialogScene';
+import { enemyManager } from '@/entities/Enemy';
+import { CharacterManager } from '@/entities/Character';
+import { Skill, loadSkillsFromJson } from '@/data/Skill';
+import { BattleConfig } from '@/systems/BattleSystem';
+import charactersData from '@/data/characters.json';
+import skillsData from '@/data/skills.json';
 
 /**
  * World scene configuration passed from scene transition
@@ -49,6 +56,8 @@ export class WorldScene extends Phaser.Scene {
   private playerStartX: number;
   private playerStartY: number;
   private transitionPoints: { x: number; y: number; data: MapTransitionData }[] = [];
+  private characterManager: CharacterManager;
+  private allSkills: Skill[];
 
   constructor() {
     super({ key: 'WorldScene' });
@@ -60,6 +69,31 @@ export class WorldScene extends Phaser.Scene {
 
     // Initialize story system with story data
     storySystem.loadConfig(parseStoryConfig(storyData));
+
+    // Initialize character system
+    this.characterManager = new CharacterManager();
+    this.characterManager.loadCharacterData(charactersData as unknown as Parameters<CharacterManager['loadCharacterData']>[0]);
+    this.allSkills = loadSkillsFromJson(skillsData);
+  }
+
+  /**
+   * Get default player party for battle
+   * Returns Li Xiaoyao at level based on story progress
+   */
+  private getDefaultPlayerParty(): ReturnType<CharacterManager['createCharacter']>[] {
+    // Get current chapter from story system
+    const chapter = storySystem.getCurrentChapter();
+
+    // Determine player level based on chapter
+    // Chapter 0-1: Lv1, Chapter 2: Lv5, Chapter 3: Lv10, etc.
+    const playerLevel = Math.max(1, chapter * 5);
+
+    // Create Li Xiaoyao at appropriate level
+    const liXiaoyao = this.characterManager.createCharacter('li_xiaoyao', playerLevel, this.allSkills);
+
+    // For now, return single character party
+    // TODO: Track party members in game state
+    return [liXiaoyao];
   }
 
   /**
@@ -177,11 +211,42 @@ export class WorldScene extends Phaser.Scene {
       case StoryEventType.BATTLE:
         // Start battle scene
         if (event.data.enemyIds) {
+          // Get enemy data from enemyIds
+          const enemyIdsArray = event.data.enemyIds as string[];
+          const enemies = enemyIdsArray
+            .map(id => enemyManager.getEnemy(id))
+            .filter(e => e !== undefined)
+            .map(enemy => ({
+              id: enemy.id,
+              name: enemy.displayName || enemy.name,
+              hp: enemy.hp,
+              maxHp: enemy.maxHp,
+              attack: enemy.attack,
+              defense: enemy.defense,
+              speed: enemy.speed,
+              luck: enemy.luck,
+              expReward: enemy.expReward,
+              goldReward: enemy.goldReward,
+            }));
+
+          if (enemies.length === 0) {
+            console.error('[WorldScene] No valid enemies found for battle');
+            this.handleStoryEventComplete();
+            return;
+          }
+
+          // Get player party
+          const playerParty = this.getDefaultPlayerParty();
+
+          // Create battle config
+          const battleConfig: BattleConfig = {
+            enemies,
+            playerParty,
+            canFlee: false, // Story battles cannot be fled
+          };
+
           this.scene.pause();
-          this.scene.launch('BattleScene', {
-            enemyIds: (event.data.enemyIds as string[])[0],
-            isStoryEvent: true,
-          });
+          this.scene.launch('BattleScene', battleConfig);
           this.scene.get('BattleScene').events.once('resume', () => {
             this.handleStoryEventComplete();
           });

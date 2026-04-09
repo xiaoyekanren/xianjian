@@ -575,8 +575,8 @@
         "Typecheck passes"
       ],
       "priority": 36,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Story nodes for chapter 2 already existed (story_ch2_arrive_suzhou, story_ch2_biwu). Added lin_yueru_boss enemy to enemies.json with boss-level stats (HP350, Attack35). Fixed WorldScene BATTLE event handling to properly construct BattleConfig with enemy data from EnemyManager and player party from CharacterManager. Added loadSkillsFromJson helper to Skill.ts. Chapter 2 story flow: arrive in Suzhou -> enter arena -> dialog with Lin Yueru -> boss battle -> victory -> Lin Yueru joins party."
     },
     {
       "id": "US-037",

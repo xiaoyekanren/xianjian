@@ -120,6 +120,25 @@
       "spriteKey": "enemy_boss_guardian"
     },
     {
+      "id": "lin_yueru_boss",
+      "name": "林月如",
+      "displayName": "林月如",
+      "description": "林家堡千金，比武招亲的擂主",
+      "category": "boss",
+      "hp": 350,
+      "maxHp": 350,
+      "attack": 35,
+      "defense": 20,
+      "speed": 18,
+      "luck": 12,
+      "expReward": 150,
+      "goldReward": 100,
+      "drops": [
+        { "itemId": "lin_jianbao", "probability": 1.0 }
+      ],
+      "spriteKey": "character_lin_yueru"
+    },
+    {
       "id": "tower_boss_demon_king",
       "name": "锁妖塔妖王",
       "displayName": "妖王",

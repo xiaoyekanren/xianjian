@@ -1,0 +1,32 @@
+## Codebase Patterns
+- Use `loadSkillsFromJson()` to parse skills.json data
+- Cast JSON imports through `unknown` for type safety with nullable fields
+- Story battles use `canFlee: false` to prevent escape from story encounters
+- Boss enemy IDs follow pattern: `[character]_boss` (e.g., `lin_yueru_boss`)
+- Enemy drops reference item IDs that must exist in items.json
+
+---
+
+# Ralph Progress Log
+Started: Thu Apr  9 11:11:03 PM CST 2026
+---
+
+## Thu Apr 10 2026 - US-036
+- Implemented Chapter 2 story content (苏州比武招亲篇)
+- Added `lin_yueru_boss` enemy to enemies.json with boss-level stats (HP350, Attack35, Defense20, Speed18)
+- Fixed WorldScene BATTLE event handling to properly construct BattleConfig:
+  - Added CharacterManager initialization to create player party
+  - Added `getDefaultPlayerParty()` method that creates Li Xiaoyao at appropriate level
+  - Added `loadSkillsFromJson()` helper function to Skill.ts
+  - BATTLE events now properly load enemy data from EnemyManager and create full BattleConfig
+- Files changed:
+  - src/data/enemies.json (added lin_yueru_boss)
+  - src/data/Skill.ts (added loadSkillsFromJson)
+  - src/scenes/WorldScene.ts (fixed battle config, added character/party management)
+  - ralph/prd.json (updated US-036 to passes: true)
+- **Learnings for future iterations:**
+  - WorldScene now handles story battles properly - enemyIds in story.json are resolved via EnemyManager
+  - Player level scales with chapter (chapter * 5) for story battles
+  - Cast JSON imports through `unknown` when fields might be null (e.g., accessoryId: null)
+  - Boss drops must reference existing items in items.json
+---
