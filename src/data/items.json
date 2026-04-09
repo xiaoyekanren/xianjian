@@ -335,5 +335,40 @@
     "type": "key",
     "description": "苗族的信物",
     "price": 0
+  },
+  {
+    "id": "fire_pearl",
+    "name": "火灵珠",
+    "type": "key",
+    "description": "传说中的火灵珠，蕴含火焰之力",
+    "price": 0
+  },
+  {
+    "id": "water_pearl",
+    "name": "水灵珠",
+    "type": "key",
+    "description": "传说中的水灵珠，蕴含水灵之力",
+    "price": 0
+  },
+  {
+    "id": "wind_pearl",
+    "name": "风灵珠",
+    "type": "key",
+    "description": "传说中的风灵珠，蕴含风灵之力",
+    "price": 0
+  },
+  {
+    "id": "thunder_pearl",
+    "name": "雷灵珠",
+    "type": "key",
+    "description": "传说中的雷灵珠，蕴含雷电之力",
+    "price": 0
+  },
+  {
+    "id": "earth_pearl",
+    "name": "土灵珠",
+    "type": "key",
+    "description": "传说中的土灵珠，蕴含大地之力",
+    "price": 0
   }
 ]

@@ -839,3 +839,31 @@
 - TowerEncounter groups define enemy composition per level
 - Color theme should darken progressively deeper into tower
 ---
+
+## 2026-04-10 03:00 - US-033
+- Implemented complete Miao Territory maps with exotic color theme
+- Black Miao Village (黑苗族): 4 maps (main, leader_home, shop, inn)
+- White Miao Village (白苗族): 4 maps (main, leader_home, shop, inn)
+- Sacred Grounds (苗族圣地): 5 maps (entrance, maze_1, maze_2, maze_3, shrine)
+- Added 5 Spirit Pearls (五灵珠) as key items: fire_pearl, water_pearl, wind_pearl, thunder_pearl, earth_pearl
+- Spirit Pearl collection points as treasure events in sacred maze maps
+- Exotic color theme: 翠绿 (#4CAF50) for White Miao, 紫色 (#9C27B0) for Black Miao
+- Added 20+ dialog sequences for Miao NPCs and events including:
+  - Black Miao: guard, elder, woman, leader, shopkeeper, innkeeper
+  - White Miao: guard, elder, anu_family, leader, shopkeeper, innkeeper
+  - Sacred Grounds: entrance intro, shrine guardian, awaken Ling'er cutscene
+- All maps have proper transitions, NPCs, events, and collision data
+
+**Files changed:**
+- src/data/maps.json (added 3 locations, 13 new maps)
+- src/data/items.json (added 5 Spirit Pearls)
+- src/data/DialogData.ts (added 20+ Miao dialog sequences)
+- ralph/prd.json (updated US-033 to passes: true)
+
+**Learnings for future iterations:**
+- Miao territory uses distinct color themes: Black Miao (purple) vs White Miao (green)
+- Spirit Pearls are key items for awakening Ling'er's power
+- Sacred maze maps have treasure events for Spirit Pearl collection
+- Dialog sequences use narrator for cutscene-style storytelling
+- Map transitions connect Black Miao ↔ Sacred Grounds ↔ White Miao
+---

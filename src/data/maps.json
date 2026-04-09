@@ -44,6 +44,31 @@
       "displayName": "锁妖塔",
       "maps": ["suoyaota_entrance", "suoyaota_level_1", "suoyaota_level_2", "suoyaota_level_3", "suoyaota_level_4", "suoyaota_level_5", "suoyaota_bottom"],
       "chapter": 4
+    },
+    {
+      "id": "black_miao_village",
+      "name": "黑苗族",
+      "displayName": "黑苗族",
+      "maps": ["black_miao_main", "black_miao_leader_home", "black_miao_shop", "black_miao_inn"],
+      "shops": ["miao_general", "miao_weapon"],
+      "inns": ["black_miao_inn"],
+      "chapter": 5
+    },
+    {
+      "id": "white_miao_village",
+      "name": "白苗族",
+      "displayName": "白苗族",
+      "maps": ["white_miao_main", "white_miao_leader_home", "white_miao_shop", "white_miao_inn"],
+      "shops": ["miao_general", "miao_weapon"],
+      "inns": ["white_miao_inn"],
+      "chapter": 5
+    },
+    {
+      "id": "miao_sacred_grounds",
+      "name": "苗族圣地",
+      "displayName": "苗族圣地",
+      "maps": ["sacred_entrance", "sacred_maze_1", "sacred_maze_2", "sacred_maze_3", "sacred_shrine"],
+      "chapter": 5
     }
   ],
   "maps": [
@@ -2563,6 +2588,1365 @@
         {
           "layerId": "bottom_ground",
           "tileIds": [1, 3]
+        }
+      ]
+    },
+    {
+      "id": "black_miao_main",
+      "name": "黑苗族广场",
+      "displayName": "黑苗族",
+      "description": "黑苗族聚居地，神秘的部落村庄",
+      "locationId": "black_miao_village",
+      "chapter": 5,
+      "width": 30,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#9C27B0",
+        "secondary": "#4A148C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#F3E5F5",
+        "bgm": "miao_black"
+      },
+      "layers": [
+        {
+          "id": "black_miao_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "black_miao_ground",
+            "tileIds": [1, 8]
+          }
+        },
+        {
+          "id": "black_miao_overlay",
+          "name": "覆盖层",
+          "type": "overlay",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ]
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "black_miao_guard",
+          "name": "黑苗族守卫",
+          "dialogId": "black_miao_guard_intro",
+          "x": 5,
+          "y": 3,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "black_miao_elder",
+          "name": "黑苗族长老",
+          "dialogId": "black_miao_elder_intro",
+          "x": 15,
+          "y": 6,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "black_miao_woman",
+          "name": "黑苗族女子",
+          "dialogId": "black_miao_woman_intro",
+          "x": 22,
+          "y": 4,
+          "direction": "left",
+          "movementType": "random",
+          "movementRange": 2
+        }
+      ],
+      "transitions": [
+        {
+          "id": "black_miao_to_leader",
+          "targetMapId": "black_miao_leader_home",
+          "targetX": 5,
+          "targetY": 2,
+          "sourceX": 10,
+          "sourceY": 8,
+          "direction": "up"
+        },
+        {
+          "id": "black_miao_to_shop",
+          "targetMapId": "black_miao_shop",
+          "targetX": 3,
+          "targetY": 2,
+          "sourceX": 20,
+          "sourceY": 8,
+          "direction": "up"
+        },
+        {
+          "id": "black_miao_to_inn",
+          "targetMapId": "black_miao_inn",
+          "targetX": 3,
+          "targetY": 2,
+          "sourceX": 25,
+          "sourceY": 8,
+          "direction": "up"
+        },
+        {
+          "id": "black_miao_to_sacred",
+          "targetMapId": "sacred_entrance",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 15,
+          "sourceY": 1,
+          "direction": "up"
+        }
+      ],
+      "events": [
+        {
+          "id": "black_miao_arrive",
+          "type": "dialog",
+          "x": 15,
+          "y": 5,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "black_miao_arrive",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "black_miao_ground",
+          "tileIds": [1, 8]
+        }
+      ]
+    },
+    {
+      "id": "black_miao_leader_home",
+      "name": "黑苗族首领之家",
+      "displayName": "首领之家",
+      "description": "黑苗族首领的居所",
+      "locationId": "black_miao_village",
+      "chapter": 5,
+      "width": 15,
+      "height": 12,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#9C27B0",
+        "secondary": "#4A148C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#F3E5F5",
+        "bgm": "miao_leader"
+      },
+      "layers": [
+        {
+          "id": "leader_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,8,8,8,8,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "leader_ground",
+            "tileIds": [1, 8]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "black_miao_leader",
+          "name": "黑苗族首领",
+          "dialogId": "black_miao_leader_intro",
+          "x": 7,
+          "y": 6,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "leader_to_main",
+          "targetMapId": "black_miao_main",
+          "targetX": 10,
+          "targetY": 9,
+          "sourceX": 5,
+          "sourceY": 10,
+          "direction": "down"
+        }
+      ],
+      "events": [],
+      "collisions": [
+        {
+          "layerId": "leader_ground",
+          "tileIds": [1, 8]
+        }
+      ]
+    },
+    {
+      "id": "black_miao_shop",
+      "name": "黑苗族商铺",
+      "displayName": "商铺",
+      "description": "黑苗族的杂货商铺",
+      "locationId": "black_miao_village",
+      "chapter": 5,
+      "width": 12,
+      "height": 10,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#9C27B0",
+        "secondary": "#4A148C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#F3E5F5",
+        "bgm": "miao_shop"
+      },
+      "layers": [
+        {
+          "id": "shop_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "shop_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "black_miao_shopkeeper",
+          "name": "商铺老板",
+          "dialogId": "black_miao_shopkeeper_intro",
+          "x": 6,
+          "y": 3,
+          "direction": "down",
+          "movementType": "static",
+          "shopId": "miao_general"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "shop_to_main",
+          "targetMapId": "black_miao_main",
+          "targetX": 20,
+          "targetY": 9,
+          "sourceX": 3,
+          "sourceY": 7,
+          "direction": "down"
+        }
+      ],
+      "events": [],
+      "collisions": [
+        {
+          "layerId": "shop_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "black_miao_inn",
+      "name": "黑苗族客栈",
+      "displayName": "客栈",
+      "description": "黑苗族的休息之所",
+      "locationId": "black_miao_village",
+      "chapter": 5,
+      "width": 12,
+      "height": 10,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#9C27B0",
+        "secondary": "#4A148C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#F3E5F5",
+        "bgm": "miao_inn"
+      },
+      "layers": [
+        {
+          "id": "inn_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "inn_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "black_miao_innkeeper",
+          "name": "客栈老板",
+          "dialogId": "black_miao_innkeeper_intro",
+          "x": 6,
+          "y": 3,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "inn_to_main",
+          "targetMapId": "black_miao_main",
+          "targetX": 25,
+          "targetY": 9,
+          "sourceX": 3,
+          "sourceY": 7,
+          "direction": "down"
+        }
+      ],
+      "events": [],
+      "collisions": [
+        {
+          "layerId": "inn_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "white_miao_main",
+      "name": "白苗族广场",
+      "displayName": "白苗族",
+      "description": "白苗族聚居地，和平的部落村庄",
+      "locationId": "white_miao_village",
+      "chapter": 5,
+      "width": 30,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#4CAF50",
+        "secondary": "#2E7D32",
+        "accent": "#C8E6C9"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#E8F5E9",
+        "bgm": "miao_white"
+      },
+      "layers": [
+        {
+          "id": "white_miao_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "white_miao_ground",
+            "tileIds": [1, 8]
+          }
+        },
+        {
+          "id": "white_miao_overlay",
+          "name": "覆盖层",
+          "type": "overlay",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ]
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "white_miao_guard",
+          "name": "白苗族守卫",
+          "dialogId": "white_miao_guard_intro",
+          "x": 5,
+          "y": 3,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "white_miao_elder",
+          "name": "白苗族长老",
+          "dialogId": "white_miao_elder_intro",
+          "x": 15,
+          "y": 6,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "anu_family",
+          "name": "阿奴家人",
+          "dialogId": "anu_family_intro",
+          "x": 22,
+          "y": 4,
+          "direction": "left",
+          "movementType": "random",
+          "movementRange": 2
+        }
+      ],
+      "transitions": [
+        {
+          "id": "white_miao_to_leader",
+          "targetMapId": "white_miao_leader_home",
+          "targetX": 5,
+          "targetY": 2,
+          "sourceX": 10,
+          "sourceY": 8,
+          "direction": "up"
+        },
+        {
+          "id": "white_miao_to_shop",
+          "targetMapId": "white_miao_shop",
+          "targetX": 3,
+          "targetY": 2,
+          "sourceX": 20,
+          "sourceY": 8,
+          "direction": "up"
+        },
+        {
+          "id": "white_miao_to_inn",
+          "targetMapId": "white_miao_inn",
+          "targetX": 3,
+          "targetY": 2,
+          "sourceX": 25,
+          "sourceY": 8,
+          "direction": "up"
+        },
+        {
+          "id": "white_miao_to_sacred",
+          "targetMapId": "sacred_entrance",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 15,
+          "sourceY": 1,
+          "direction": "up"
+        }
+      ],
+      "events": [
+        {
+          "id": "white_miao_arrive",
+          "type": "dialog",
+          "x": 15,
+          "y": 5,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "white_miao_arrive",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "white_miao_ground",
+          "tileIds": [1, 8]
+        }
+      ]
+    },
+    {
+      "id": "white_miao_leader_home",
+      "name": "白苗族首领之家",
+      "displayName": "首领之家",
+      "description": "白苗族首领的居所",
+      "locationId": "white_miao_village",
+      "chapter": 5,
+      "width": 15,
+      "height": 12,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#4CAF50",
+        "secondary": "#2E7D32",
+        "accent": "#C8E6C9"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#E8F5E9",
+        "bgm": "miao_leader"
+      },
+      "layers": [
+        {
+          "id": "white_leader_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,8,8,8,8,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,8,0,0,0,8,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "white_leader_ground",
+            "tileIds": [1, 8]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "white_miao_leader",
+          "name": "白苗族首领",
+          "dialogId": "white_miao_leader_intro",
+          "x": 7,
+          "y": 6,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "white_leader_to_main",
+          "targetMapId": "white_miao_main",
+          "targetX": 10,
+          "targetY": 9,
+          "sourceX": 5,
+          "sourceY": 10,
+          "direction": "down"
+        }
+      ],
+      "events": [],
+      "collisions": [
+        {
+          "layerId": "white_leader_ground",
+          "tileIds": [1, 8]
+        }
+      ]
+    },
+    {
+      "id": "white_miao_shop",
+      "name": "白苗族商铺",
+      "displayName": "商铺",
+      "description": "白苗族的杂货商铺",
+      "locationId": "white_miao_village",
+      "chapter": 5,
+      "width": 12,
+      "height": 10,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#4CAF50",
+        "secondary": "#2E7D32",
+        "accent": "#C8E6C9"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#E8F5E9",
+        "bgm": "miao_shop"
+      },
+      "layers": [
+        {
+          "id": "white_shop_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "white_shop_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "white_miao_shopkeeper",
+          "name": "商铺老板",
+          "dialogId": "white_miao_shopkeeper_intro",
+          "x": 6,
+          "y": 3,
+          "direction": "down",
+          "movementType": "static",
+          "shopId": "miao_general"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "white_shop_to_main",
+          "targetMapId": "white_miao_main",
+          "targetX": 20,
+          "targetY": 9,
+          "sourceX": 3,
+          "sourceY": 7,
+          "direction": "down"
+        }
+      ],
+      "events": [],
+      "collisions": [
+        {
+          "layerId": "white_shop_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "white_miao_inn",
+      "name": "白苗族客栈",
+      "displayName": "客栈",
+      "description": "白苗族的休息之所",
+      "locationId": "white_miao_village",
+      "chapter": 5,
+      "width": 12,
+      "height": 10,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#4CAF50",
+        "secondary": "#2E7D32",
+        "accent": "#C8E6C9"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#E8F5E9",
+        "bgm": "miao_inn"
+      },
+      "layers": [
+        {
+          "id": "white_inn_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "white_inn_ground",
+            "tileIds": [1]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "white_miao_innkeeper",
+          "name": "客栈老板",
+          "dialogId": "white_miao_innkeeper_intro",
+          "x": 6,
+          "y": 3,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "white_inn_to_main",
+          "targetMapId": "white_miao_main",
+          "targetX": 25,
+          "targetY": 9,
+          "sourceX": 3,
+          "sourceY": 7,
+          "direction": "down"
+        }
+      ],
+      "events": [],
+      "collisions": [
+        {
+          "layerId": "white_inn_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "sacred_entrance",
+      "name": "苗族圣地入口",
+      "displayName": "圣地入口",
+      "description": "苗族圣地的入口，神秘的神圣区域",
+      "locationId": "miao_sacred_grounds",
+      "chapter": 5,
+      "width": 20,
+      "height": 15,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#7B1FA2",
+        "secondary": "#388E3C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "fog",
+        "backgroundColor": "#D1C4E9",
+        "bgm": "sacred_entrance"
+      },
+      "layers": [
+        {
+          "id": "sacred_entrance_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "sacred_entrance_ground",
+            "tileIds": [1]
+          }
+        },
+        {
+          "id": "sacred_entrance_overlay",
+          "name": "覆盖层",
+          "type": "overlay",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ]
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "sacred_to_maze1",
+          "targetMapId": "sacred_maze_1",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 10,
+          "sourceY": 12,
+          "direction": "up"
+        }
+      ],
+      "events": [
+        {
+          "id": "sacred_entrance_event",
+          "type": "dialog",
+          "x": 10,
+          "y": 7,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "sacred_entrance_intro",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "sacred_entrance_ground",
+          "tileIds": [1]
+        }
+      ]
+    },
+    {
+      "id": "sacred_maze_1",
+      "name": "苗族圣地迷宫一层",
+      "displayName": "圣地迷宫一层",
+      "description": "苗族圣地的第一层迷宫",
+      "locationId": "miao_sacred_grounds",
+      "chapter": 5,
+      "width": 25,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#7B1FA2",
+        "secondary": "#388E3C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "fog",
+        "backgroundColor": "#D1C4E9",
+        "bgm": "sacred_maze"
+      },
+      "layers": [
+        {
+          "id": "maze1_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,1],
+            [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+            [1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1],
+            [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+            [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+            [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "maze1_ground",
+            "tileIds": [1, 2]
+          }
+        },
+        {
+          "id": "maze1_overlay",
+          "name": "覆盖层",
+          "type": "overlay",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ]
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "maze1_to_maze2",
+          "targetMapId": "sacred_maze_2",
+          "targetX": 12,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 18,
+          "direction": "up"
+        },
+        {
+          "id": "maze1_to_entrance",
+          "targetMapId": "sacred_entrance",
+          "targetX": 10,
+          "targetY": 11,
+          "sourceX": 10,
+          "sourceY": 1,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "fire_pearl_point",
+          "type": "treasure",
+          "x": 18,
+          "y": 6,
+          "triggerType": "on_interact",
+          "triggerOnInteract": true,
+          "treasureId": "fire_pearl_chest",
+          "setFlag": "collected_fire_pearl",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "maze1_ground",
+          "tileIds": [1, 2]
+        }
+      ]
+    },
+    {
+      "id": "sacred_maze_2",
+      "name": "苗族圣地迷宫二层",
+      "displayName": "圣地迷宫二层",
+      "description": "苗族圣地的第二层迷宫",
+      "locationId": "miao_sacred_grounds",
+      "chapter": 5,
+      "width": 25,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#7B1FA2",
+        "secondary": "#388E3C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "fog",
+        "backgroundColor": "#D1C4E9",
+        "bgm": "sacred_maze"
+      },
+      "layers": [
+        {
+          "id": "maze2_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1],
+            [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
+            [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
+            [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1],
+            [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
+            [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "maze2_ground",
+            "tileIds": [1, 2]
+          }
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "maze2_to_maze3",
+          "targetMapId": "sacred_maze_3",
+          "targetX": 12,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 18,
+          "direction": "up"
+        },
+        {
+          "id": "maze2_to_maze1",
+          "targetMapId": "sacred_maze_1",
+          "targetX": 12,
+          "targetY": 18,
+          "sourceX": 12,
+          "sourceY": 1,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "water_pearl_point",
+          "type": "treasure",
+          "x": 6,
+          "y": 6,
+          "triggerType": "on_interact",
+          "triggerOnInteract": true,
+          "treasureId": "water_pearl_chest",
+          "setFlag": "collected_water_pearl",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "maze2_ground",
+          "tileIds": [1, 2]
+        }
+      ]
+    },
+    {
+      "id": "sacred_maze_3",
+      "name": "苗族圣地迷宫三层",
+      "displayName": "圣地迷宫三层",
+      "description": "苗族圣地的第三层迷宫",
+      "locationId": "miao_sacred_grounds",
+      "chapter": 5,
+      "width": 25,
+      "height": 20,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#7B1FA2",
+        "secondary": "#388E3C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "fog",
+        "backgroundColor": "#D1C4E9",
+        "bgm": "sacred_maze"
+      },
+      "layers": [
+        {
+          "id": "maze3_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,0,1,1,1,1,0,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "maze3_ground",
+            "tileIds": [1, 2]
+          }
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "maze3_to_shrine",
+          "targetMapId": "sacred_shrine",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 18,
+          "direction": "up"
+        },
+        {
+          "id": "maze3_to_maze2",
+          "targetMapId": "sacred_maze_2",
+          "targetX": 12,
+          "targetY": 18,
+          "sourceX": 12,
+          "sourceY": 1,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "wind_pearl_point",
+          "type": "treasure",
+          "x": 4,
+          "y": 6,
+          "triggerType": "on_interact",
+          "triggerOnInteract": true,
+          "treasureId": "wind_pearl_chest",
+          "setFlag": "collected_wind_pearl",
+          "oneTime": true,
+          "priority": 1
+        },
+        {
+          "id": "thunder_pearl_point",
+          "type": "treasure",
+          "x": 20,
+          "y": 6,
+          "triggerType": "on_interact",
+          "triggerOnInteract": true,
+          "treasureId": "thunder_pearl_chest",
+          "setFlag": "collected_thunder_pearl",
+          "oneTime": true,
+          "priority": 1
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "maze3_ground",
+          "tileIds": [1, 2]
+        }
+      ]
+    },
+    {
+      "id": "sacred_shrine",
+      "name": "苗族圣地神殿",
+      "displayName": "圣地神殿",
+      "description": "苗族圣地的核心神殿，五灵珠供奉之地",
+      "locationId": "miao_sacred_grounds",
+      "chapter": 5,
+      "width": 20,
+      "height": 15,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#7B1FA2",
+        "secondary": "#388E3C",
+        "accent": "#E1BEE7"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#D1C4E9",
+        "bgm": "sacred_shrine"
+      },
+      "layers": [
+        {
+          "id": "shrine_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,8,8,8,8,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "shrine_ground",
+            "tileIds": [1, 8]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "shrine_guardian",
+          "name": "圣地守护者",
+          "dialogId": "shrine_guardian_intro",
+          "x": 10,
+          "y": 5,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "shrine_to_maze3",
+          "targetMapId": "sacred_maze_3",
+          "targetX": 12,
+          "targetY": 18,
+          "sourceX": 10,
+          "sourceY": 12,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "earth_pearl_point",
+          "type": "treasure",
+          "x": 10,
+          "y": 6,
+          "triggerType": "on_interact",
+          "triggerOnInteract": true,
+          "treasureId": "earth_pearl_chest",
+          "setFlag": "collected_earth_pearl",
+          "oneTime": true,
+          "priority": 1
+        },
+        {
+          "id": "shrine_awaken_linger",
+          "type": "cutscene",
+          "x": 10,
+          "y": 7,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "shrine_awaken_linger_cutscene",
+          "requireFlag": "all_pearls_collected",
+          "setFlag": "linger_awakened",
+          "oneTime": true,
+          "priority": 2
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "shrine_ground",
+          "tileIds": [1, 8]
         }
       ]
     }

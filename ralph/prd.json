@@ -528,8 +528,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 33,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Implemented black_miao_village (4 maps), white_miao_village (4 maps), miao_sacred_grounds (5 maps with maze). Added 5 Spirit Pearls (火灵珠/水灵珠/风灵珠/雷灵珠/土灵珠) as key items in items.json. Applied exotic color theme with 翠绿 (#4CAF50) for White Miao and 紫色 (#9C27B0) for Black Miao. Added 20+ dialog sequences for Miao NPCs and events. All maps have transitions, NPCs, events, and collision data."
     },
     {
       "id": "US-034",

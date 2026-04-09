@@ -1279,6 +1279,375 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // Miao Territory dialogs - US-033
+  {
+    id: 'black_miao_arrive',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你来到了黑苗族的聚居地。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'black_miao_arrive_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这里就是黑苗族了...气氛有些压抑。',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'black_miao_guard_intro',
+    lines: [
+      {
+        speakerId: 'black_miao_guard',
+        speakerName: '黑苗族守卫',
+        text: '外乡人，报上名来！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'black_miao_guard_intro_2',
+      },
+      {
+        speakerId: 'black_miao_guard',
+        speakerName: '黑苗族守卫',
+        text: '...既然是来找灵珠的，那就进去吧。但要小心，不要惹事。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'black_miao_elder_intro',
+    lines: [
+      {
+        speakerId: 'black_miao_elder',
+        speakerName: '黑苗族长老',
+        text: '外乡人，欢迎来到我们黑苗族。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'black_miao_elder_intro_2',
+      },
+      {
+        speakerId: 'black_miao_elder',
+        speakerName: '黑苗族长老',
+        text: '灵珠是我们苗族的神圣宝物，分散在圣地各处。',
+        expression: Expression.THINKING,
+        nextDialogId: 'black_miao_elder_intro_3',
+      },
+      {
+        speakerId: 'black_miao_elder',
+        speakerName: '黑苗族长老',
+        text: '只有真正的英雄才能集齐五灵珠，唤醒女娲后人的力量。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'black_miao_woman_intro',
+    lines: [
+      {
+        speakerId: 'black_miao_woman',
+        speakerName: '黑苗族女子',
+        text: '你是来找灵珠的吗？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'black_miao_woman_intro_2',
+      },
+      {
+        speakerId: 'black_miao_woman',
+        speakerName: '黑苗族女子',
+        text: '听说圣地里有很多机关，要小心啊。',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'black_miao_leader_intro',
+    lines: [
+      {
+        speakerId: 'black_miao_leader',
+        speakerName: '黑苗族首领',
+        text: '我就是黑苗族的首领。你来此地有何目的？',
+        expression: Expression.NORMAL,
+        choices: [
+          {
+            text: '我来寻找灵珠',
+            nextDialogId: 'black_miao_leader_help',
+          },
+          {
+            text: '只是路过看看',
+            nextDialogId: 'black_miao_leader_pass',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'black_miao_leader_help',
+    lines: [
+      {
+        speakerId: 'black_miao_leader',
+        speakerName: '黑苗族首领',
+        text: '灵珠是神圣之物，但既然你有此决心，我祝你成功。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'black_miao_leader_help_2',
+      },
+      {
+        speakerId: 'black_miao_leader',
+        speakerName: '黑苗族首领',
+        text: '圣地在村子北边，但那里机关重重，你要小心。',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'black_miao_leader_pass',
+    lines: [
+      {
+        speakerId: 'black_miao_leader',
+        speakerName: '黑苗族首领',
+        text: '哼，随便看看吧。但不要在我们村里惹事。',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'black_miao_shopkeeper_intro',
+    lines: [
+      {
+        speakerId: 'black_miao_shopkeeper',
+        speakerName: '商铺老板',
+        text: '外乡人，要买点什么？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'black_miao_shopkeeper_intro_2',
+      },
+      {
+        speakerId: 'black_miao_shopkeeper',
+        speakerName: '商铺老板',
+        text: '我们这里有苗族的特产，都是很珍贵的物品。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'black_miao_innkeeper_intro',
+    lines: [
+      {
+        speakerId: 'black_miao_innkeeper',
+        speakerName: '客栈老板',
+        text: '累了吗？要在这里休息一下吗？',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.HEAL, data: {} },
+      },
+    ],
+  },
+  {
+    id: 'white_miao_arrive',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你来到了白苗族的聚居地。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'white_miao_arrive_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '白苗族...这里看起来更加和平。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'white_miao_guard_intro',
+    lines: [
+      {
+        speakerId: 'white_miao_guard',
+        speakerName: '白苗族守卫',
+        text: '欢迎来到白苗族！请问有何贵干？',
+        expression: Expression.HAPPY,
+        nextDialogId: 'white_miao_guard_intro_2',
+      },
+      {
+        speakerId: 'white_miao_guard',
+        speakerName: '白苗族守卫',
+        text: '我们白苗族向来好客，请随意参观。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'white_miao_elder_intro',
+    lines: [
+      {
+        speakerId: 'white_miao_elder',
+        speakerName: '白苗族长老',
+        text: '外乡人，欢迎来到我们白苗族。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'white_miao_elder_intro_2',
+      },
+      {
+        speakerId: 'white_miao_elder',
+        speakerName: '白苗族长老',
+        text: '五灵珠是上古神物，分别代表火、水、风、雷、土五种元素。',
+        expression: Expression.THINKING,
+        nextDialogId: 'white_miao_elder_intro_3',
+      },
+      {
+        speakerId: 'white_miao_elder',
+        speakerName: '白苗族长老',
+        text: '只有集齐五灵珠，才能唤醒女娲后人的真正力量。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'anu_family_intro',
+    lines: [
+      {
+        speakerId: 'anu_family',
+        speakerName: '阿奴家人',
+        text: '你认识阿奴吗？她是我们的骄傲！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'anu_family_intro_2',
+      },
+      {
+        speakerId: 'anu_family',
+        speakerName: '阿奴家人',
+        text: '阿奴虽然年纪小，但已经学会了很多苗族的神仙术。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'white_miao_leader_intro',
+    lines: [
+      {
+        speakerId: 'white_miao_leader',
+        speakerName: '白苗族首领',
+        text: '外乡人，欢迎来到我们白苗族。我是这里的首领。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'white_miao_leader_intro_2',
+      },
+      {
+        speakerId: 'white_miao_leader',
+        speakerName: '白苗族首领',
+        text: '如果你是来找灵珠的，我可以告诉你一些有用的信息。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'white_miao_leader_intro_3',
+      },
+      {
+        speakerId: 'white_miao_leader',
+        speakerName: '白苗族首领',
+        text: '圣地里有五颗灵珠，分布在迷宫的各个角落。',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'white_miao_shopkeeper_intro',
+    lines: [
+      {
+        speakerId: 'white_miao_shopkeeper',
+        speakerName: '商铺老板',
+        text: '欢迎光临！我们这里有各种苗族特产。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'white_miao_innkeeper_intro',
+    lines: [
+      {
+        speakerId: 'white_miao_innkeeper',
+        speakerName: '客栈老板',
+        text: '旅途辛苦了，要在这里休息吗？',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.HEAL, data: {} },
+      },
+    ],
+  },
+  {
+    id: 'sacred_entrance_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你来到了苗族圣地的入口。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'sacred_entrance_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这里就是圣地了...感觉很神圣。',
+        expression: Expression.THINKING,
+        nextDialogId: 'sacred_entrance_intro_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '迷宫中藏有五灵珠，但要小心机关陷阱。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shrine_guardian_intro',
+    lines: [
+      {
+        speakerId: 'shrine_guardian',
+        speakerName: '圣地守护者',
+        text: '勇士，你已经来到了圣地神殿。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shrine_guardian_intro_2',
+      },
+      {
+        speakerId: 'shrine_guardian',
+        speakerName: '圣地守护者',
+        text: '五灵珠分别代表火、水、风、雷、土五种元素力量。',
+        expression: Expression.THINKING,
+        nextDialogId: 'shrine_guardian_intro_3',
+      },
+      {
+        speakerId: 'shrine_guardian',
+        speakerName: '圣地守护者',
+        text: '只有集齐五灵珠，才能唤醒女娲后人的力量，打败拜月教主。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shrine_awaken_linger_cutscene',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '五灵珠散发出璀璨的光芒，环绕在赵灵儿周围...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shrine_awaken_linger_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我感觉...一股强大的力量正在觉醒...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'shrine_awaken_linger_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这是...女娲的力量！我终于觉醒了！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'shrine_awaken_linger_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '赵灵儿的真正力量觉醒了，她现在可以使用更强大的仙术！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
 ];
 
 /**
