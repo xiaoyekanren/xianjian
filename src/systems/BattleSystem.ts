@@ -5,6 +5,7 @@
 
 import { Character } from '@/entities/Character';
 import { Skill } from '@/data/Skill';
+import { ComboSkill, ComboSkillResult } from '@/data/ComboSkill';
 
 /**
  * Battle unit representing a character or enemy in battle
@@ -870,5 +871,120 @@ export class BattleSystem {
       }
     }
     return 0;
+  }
+
+  /**
+   * Execute combo skill action
+   * US-027: 合体技能系统
+   */
+  executeComboSkill(
+    initiatorId: string,
+    comboSkill: ComboSkill,
+    targetIds: string[],
+    participantStats: { id: string; attack: number }[]
+  ): ComboSkillResult {
+    const initiator = this.units.get(initiatorId);
+    if (!initiator) {
+      return {
+        success: false,
+        message: '合体技施放失败',
+        damage: 0,
+        healed: 0,
+        participantsUsed: [],
+        mpConsumed: {},
+      };
+    }
+
+    // Consume MP from all participants
+    const mpConsumed: Record<string, number> = {};
+    const participantsUsed: string[] = [];
+
+    for (const participant of comboSkill.participants) {
+      const unit = this.units.get(participant.characterId);
+      if (unit && unit.hp > 0) {
+        const mpToConsume = participant.mpCost;
+        if (unit.mp >= mpToConsume) {
+          unit.mp -= mpToConsume;
+          mpConsumed[participant.characterId] = mpToConsume;
+          participantsUsed.push(participant.characterId);
+        }
+      }
+    }
+
+    // Calculate combo damage
+    let totalDamage = 0;
+    let totalHealed = 0;
+    const messages: string[] = [];
+
+    // Calculate participant attack contributions
+    const attackContributions = participantStats
+      .filter(p => participantsUsed.includes(p.id))
+      .map(p => ({ attack: p.attack }));
+
+    // Base damage from combo skill power + participant attacks
+    let baseDamage = comboSkill.power;
+    for (const stats of attackContributions) {
+      baseDamage += Math.floor(stats.attack * 0.3);
+    }
+
+    // Combo bonus: +20% for each additional participant beyond 2
+    const participantCount = participantsUsed.length;
+    const comboBonus = 1 + (participantCount - 2) * 0.2;
+
+    // Apply damage to all targets
+    for (const targetId of targetIds) {
+      const target = this.units.get(targetId);
+      if (!target) continue;
+
+      // Calculate damage with defense reduction
+      let damage = Math.floor(baseDamage * comboBonus);
+      damage -= Math.floor(target.defense * 0.5); // Combo skills pierce some defense
+
+      // Minimum damage
+      if (damage < Math.floor(comboSkill.power * 0.3)) {
+        damage = Math.floor(comboSkill.power * 0.3);
+      }
+
+      // Add variance (±10%)
+      const variance = 0.1;
+      const randomFactor = 1 + (Math.random() * 2 - 1) * variance;
+      damage = Math.floor(damage * randomFactor);
+
+      // Check for defending target
+      if (target.isDefending) {
+        damage = Math.floor(damage * 0.6); // Combo skills are harder to defend
+      }
+
+      // Apply damage
+      target.hp = Math.max(0, target.hp - damage);
+      totalDamage += damage;
+
+      // Wake sleeping targets
+      if (target.statusEffects.some(e => e.type === StatusType.SLEEP)) {
+        target.statusEffects = target.statusEffects.filter(e => e.type !== StatusType.SLEEP);
+      }
+
+      messages.push(`${target.name} ${damage}`);
+    }
+
+    // Build message
+    const participantNames = participantsUsed.map(id => {
+      const unit = this.units.get(id);
+      return unit?.name ?? id;
+    }).join('、');
+
+    let message = `${participantNames} 施展合体技 ${comboSkill.name}！`;
+    if (messages.length > 0) {
+      message += ` [${messages.join(', ')}]`;
+    }
+
+    return {
+      success: true,
+      message,
+      damage: totalDamage,
+      healed: totalHealed,
+      participantsUsed,
+      mpConsumed,
+    };
   }
 }

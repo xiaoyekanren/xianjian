@@ -605,6 +605,37 @@
 - BattleResult provides raw data, external systems apply rewards
 - Level-up animations can be added to BattleScene for visual feedback
 ---
+## 2026-04-10 21:30 - US-027
+- Implemented combo skill system with ComboSkill.ts
+- ComboSkill interface extends Skill with participants array and affection requirements
+- ComboParticipant: characterId, mpCost, required flag
+- animationType: 'flashy' | 'spectacular' | 'ultimate' for visual effects
+- ComboSkillSystem class: availability checking, MP verification, affection level requirements
+- DEFAULT_COMBO_SKILLS with 6 combo skills:
+  - 双人合体技: 剑舞乾坤(李逍遥+林月如), 仙魔同归(赵灵儿+林月如), 灵神风暴(赵灵儿+阿奴), 影刃绝杀(林月如+阿奴)
+  - 四人合体技: 四方合击, 女娲神威
+- Updated BattleSystem with executeComboSkill method
+- Combo damage formula: power + attack contribution + combo bonus (20% per extra participant)
+- Updated BattleScene with combo action button, combo menu, and flashy animations
+- Three animation types with increasing visual effects:
+  - flashy: 2-color background flash, participant glow, particle effects
+  - spectacular: 3-color flash, central burst explosion, multi-hit effects
+  - ultimate: 6-color rainbow flash, large central burst, extended shake effects
+- Keyboard navigation: up/down in combo menu, Enter to confirm, ESC to cancel
+
+**Files changed:**
+- src/data/ComboSkill.ts (created - ComboSkill interface, ComboSkillSystem class, DEFAULT_COMBO_SKILLS)
+- src/systems/BattleSystem.ts (updated - executeComboSkill method, ComboSkillResult interface)
+- src/scenes/BattleScene.ts (updated - combo action button, combo menu, combo animations, PLAYER_SELECT_COMBO state)
+- ralph/prd.json (updated US-027 to passes: true)
+
+**Learnings for future iterations:**
+- Combo skills require multiple participants with sufficient MP
+- Animation types should reflect skill power level (flashy < spectacular < ultimate)
+- Damage bonus: +20% for each participant beyond 2
+- Combo skills pierce 50% of defense
+- Affection requirements checked via COMBO_SKILL_REQUIREMENTS in AffectionSystem
+---
 ## 2026-04-10 21:00 - US-026
 - Implemented affection UI with AffectionScene.ts
 - Three character affection panels: 赵灵儿, 林月如, 阿奴

@@ -12,6 +12,8 @@ import {
   StatusType,
 } from '@/systems/BattleSystem';
 import { Skill } from '@/data/Skill';
+import { ComboSkill, ComboSkillSystem, DEFAULT_COMBO_SKILLS } from '@/data/ComboSkill';
+import { AffectionCharacterId } from '@/systems/AffectionSystem';
 
 /**
  * Battle state enum
@@ -22,6 +24,7 @@ enum BattleState {
   PLAYER_SELECT_ACTION = 'player_select_action',
   PLAYER_SELECT_TARGET = 'player_select_target',
   PLAYER_SELECT_SKILL = 'player_select_skill',
+  PLAYER_SELECT_COMBO = 'player_select_combo',
   EXECUTE_ACTION = 'execute_action',
   ENEMY_TURN = 'enemy_turn',
   ROUND_END = 'round_end',
@@ -32,8 +35,9 @@ enum BattleState {
  * Selected action data
  */
 interface SelectedAction {
-  type: ActionType;
+  type: ActionType | 'combo';
   skill?: Skill;
+  comboSkill?: ComboSkill;
   itemId?: string;
 }
 
@@ -43,6 +47,7 @@ interface SelectedAction {
  */
 export class BattleScene extends Phaser.Scene {
   private battleSystem: BattleSystem;
+  private comboSkillSystem: ComboSkillSystem;
   private battleState: BattleState = BattleState.INIT;
   private currentUnit: BattleUnit | null = null;
   private selectedAction: SelectedAction | null = null;
@@ -51,6 +56,7 @@ export class BattleScene extends Phaser.Scene {
   private enemies: BattleUnit[] = [];
   private actionIndex: number = 0;
   private skillIndex: number = 0;
+  private comboIndex: number = 0;
   private targetIndex: number = 0;
   private isAllTargetMode: boolean = false;
   private keyDelay: number = 0;
@@ -65,6 +71,8 @@ export class BattleScene extends Phaser.Scene {
   private actionButtons: Phaser.GameObjects.Text[] = [];
   private skillMenu: Phaser.GameObjects.Container | null = null;
   private skillButtons: Phaser.GameObjects.Text[] = [];
+  private comboMenu: Phaser.GameObjects.Container | null = null;
+  private comboButtons: Phaser.GameObjects.Text[] = [];
   private targetIndicator: Phaser.GameObjects.Graphics | null = null;
   private messageBox: Phaser.GameObjects.Container | null = null;
   private messageText: Phaser.GameObjects.Text | null = null;
@@ -97,6 +105,7 @@ export class BattleScene extends Phaser.Scene {
   constructor() {
     super({ key: 'BattleScene' });
     this.battleSystem = new BattleSystem();
+    this.comboSkillSystem = new ComboSkillSystem(DEFAULT_COMBO_SKILLS);
   }
 
   init(config: BattleConfig): void {
@@ -132,6 +141,7 @@ export class BattleScene extends Phaser.Scene {
     // Create UI elements
     this.createActionMenu();
     this.createSkillMenu();
+    this.createComboMenu();
     this.createMessageBox();
     this.createTurnOrderDisplay();
 
@@ -398,6 +408,7 @@ export class BattleScene extends Phaser.Scene {
     const actions = [
       { type: ActionType.ATTACK, name: '攻击', color: '#FFFFFF' },
       { type: ActionType.SKILL, name: '仙术', color: '#88ccff' },
+      { type: 'combo', name: '合体', color: '#ff88ff' },
       { type: ActionType.ITEM, name: '道具', color: '#88ff88' },
       { type: ActionType.DEFEND, name: '防御', color: '#ffff88' },
       { type: ActionType.FLEE, name: '逃跑', color: '#ff8888' },
@@ -467,6 +478,365 @@ export class BattleScene extends Phaser.Scene {
     this.skillMenu.add(title);
 
     this.skillButtons = [];
+  }
+
+  /**
+   * Create combo skill selection menu
+   * US-027: 合体技能系统
+   */
+  private createComboMenu(): void {
+    const width = this.cameras.main.width;
+    const height = this.cameras.main.height;
+
+    this.comboMenu = this.add.container(width / 2 + 100, height - 250);
+    this.comboMenu.setDepth(55);
+    this.comboMenu.setVisible(false);
+
+    // Combo menu background
+    const menuBg = this.add.graphics();
+    menuBg.fillStyle(0x2a2a4e, 0.95);
+    menuBg.fillRect(0, 0, 280, 250);
+    menuBg.lineStyle(2, 0xff88ff);
+    menuBg.strokeRect(0, 0, 280, 250);
+    this.comboMenu.add(menuBg);
+
+    // Title
+    const title = this.add.text(140, 15, '选择合体技', {
+      fontFamily: 'Arial, sans-serif',
+      fontSize: '16px',
+      color: '#ff88ff',
+    });
+    title.setOrigin(0.5, 0.5);
+    this.comboMenu.add(title);
+
+    this.comboButtons = [];
+  }
+
+  /**
+   * Populate combo menu with available combo skills
+   */
+  private populateComboMenu(): void {
+    if (!this.comboMenu) return;
+
+    // Clear existing combo buttons
+    for (const button of this.comboButtons) {
+      button.destroy();
+    }
+    this.comboButtons = [];
+
+    // Get party members in battle
+    const partyMembers = this.playerParty
+      .filter(u => u.hp > 0)
+      .map(u => u.id);
+
+    // Get party MP levels
+    const partyMp: Record<string, number> = {};
+    for (const unit of this.playerParty) {
+      partyMp[unit.id] = unit.mp;
+    }
+
+    // Get affection levels (use default for demo)
+    const affectionLevels: Partial<Record<AffectionCharacterId, number>> = {
+      zhao_linger: 50,
+      lin_yueru: 50,
+      anu: 50,
+    };
+
+    // Get available combo skills
+    const comboSkills = this.comboSkillSystem.getAvailableComboSkills(
+      partyMembers,
+      partyMp,
+      affectionLevels
+    );
+
+    // Also show unavailable skills with gray color
+    const allComboSkills = this.comboSkillSystem.getAllComboSkills();
+
+    for (let i = 0; i < allComboSkills.length; i++) {
+      const skill = allComboSkills[i];
+      const isAvailable = comboSkills.some(s => s.id === skill.id);
+      const color = isAvailable ? '#FFFFFF' : '#666666';
+
+      // Build skill text with participant info
+      const participantNames = skill.participants.map(p => {
+        const unit = this.playerParty.find(u => u.id === p.characterId);
+        return unit?.name ?? p.characterId;
+      }).join('+');
+
+      const text = this.add.text(
+        20,
+        40 + i * 32,
+        `${skill.name} (${skill.power}) [${participantNames}]`,
+        {
+          fontFamily: 'Arial, sans-serif',
+          fontSize: '12px',
+          color,
+        }
+      );
+      this.comboMenu.add(text);
+      this.comboButtons.push(text);
+
+      // Interactive background
+      const bg = this.add.graphics();
+      bg.fillStyle(0x333355, 0.5);
+      bg.fillRect(10, 35 + i * 32, 260, 28);
+      this.comboMenu.add(bg);
+
+      if (isAvailable) {
+        bg.setInteractive({ useHandCursor: true });
+        bg.on('pointerover', () => {
+          this.comboIndex = i;
+          this.updateComboSelection();
+        });
+        bg.on('pointerdown', () => {
+          this.confirmCombo();
+        });
+      }
+    }
+
+    this.comboIndex = 0;
+    this.updateComboSelection();
+  }
+
+  /**
+   * Update combo button selection
+   */
+  private updateComboSelection(): void {
+    for (let i = 0; i < this.comboButtons.length; i++) {
+      const skill = this.comboSkillSystem.getAllComboSkills()[i];
+      const partyMembers = this.playerParty.filter(u => u.hp > 0).map(u => u.id);
+      const partyMp: Record<string, number> = {};
+      for (const unit of this.playerParty) {
+        partyMp[unit.id] = unit.mp;
+      }
+      const affectionLevels: Partial<Record<AffectionCharacterId, number>> = {
+        zhao_linger: 50,
+        lin_yueru: 50,
+        anu: 50,
+      };
+      const isAvailable = this.comboSkillSystem.checkComboSkillAvailability(
+        skill.id,
+        partyMembers,
+        partyMp,
+        affectionLevels
+      ).available;
+
+      if (i === this.comboIndex && isAvailable) {
+        this.comboButtons[i].setColor('#ff88ff');
+      } else if (isAvailable) {
+        this.comboButtons[i].setColor('#FFFFFF');
+      }
+    }
+  }
+
+  /**
+   * Confirm selected combo skill
+   */
+  private confirmCombo(): void {
+    const comboSkills = this.comboSkillSystem.getAllComboSkills();
+    const skill = comboSkills[this.comboIndex];
+
+    if (!this.currentUnit) return;
+
+    // Check availability again
+    const partyMembers = this.playerParty.filter(u => u.hp > 0).map(u => u.id);
+    const partyMp: Record<string, number> = {};
+    for (const unit of this.playerParty) {
+      partyMp[unit.id] = unit.mp;
+    }
+    const affectionLevels: Partial<Record<AffectionCharacterId, number>> = {
+      zhao_linger: 50,
+      lin_yueru: 50,
+      anu: 50,
+    };
+
+    const check = this.comboSkillSystem.checkComboSkillAvailability(
+      skill.id,
+      partyMembers,
+      partyMp,
+      affectionLevels
+    );
+
+    if (!check.available) {
+      this.showMessage(`无法使用 ${skill.name}: ${check.reason}`);
+      return;
+    }
+
+    this.selectedAction = { type: 'combo', comboSkill: skill };
+    if (this.comboMenu) this.comboMenu.setVisible(false);
+
+    // Combo skills always target all enemies
+    this.selectedTargets = this.enemies.filter(e => e.hp > 0).map(e => e.id);
+    this.executeComboAction();
+  }
+
+  /**
+   * Execute combo skill action
+   * US-027: 合体技能系统
+   */
+  private executeComboAction(): void {
+    if (!this.currentUnit || !this.selectedAction?.comboSkill) return;
+
+    this.clearTargetIndicator();
+    this.battleState = BattleState.EXECUTE_ACTION;
+
+    // Get participant stats for damage calculation
+    const participantStats = this.playerParty
+      .filter(u => this.selectedAction!.comboSkill!.participants.some(p => p.characterId === u.id))
+      .map(u => ({ id: u.id, attack: u.attack }));
+
+    const result = this.battleSystem.executeComboSkill(
+      this.currentUnit.id,
+      this.selectedAction.comboSkill,
+      this.selectedTargets,
+      participantStats
+    );
+
+    this.showMessage(result.message);
+    this.playComboAnimation(this.selectedAction.comboSkill, result.participantsUsed, this.selectedTargets);
+
+    this.time.delayedCall(2000, () => {
+      this.updateUnitDisplays();
+      this.finishTurn();
+    });
+  }
+
+  /**
+   * Play combo skill animation with flashy effects
+   * US-027: 合体技能系统
+   */
+  private playComboAnimation(skill: ComboSkill, participantIds: string[], targetIds: string[]): void {
+    const width = this.cameras.main.width;
+    const height = this.cameras.main.height;
+
+    // Create a special effects layer
+    const effectsLayer = this.add.container(0, 0);
+    effectsLayer.setDepth(100);
+
+    // Flash background based on animation type
+    const bgColors = {
+      flashy: [0xff88ff, 0x88ffff],
+      spectacular: [0xff8800, 0x00ff88, 0x8800ff],
+      ultimate: [0xff0000, 0xff8800, 0xffff00, 0x88ff00, 0x00ffff, 0x0088ff],
+    };
+
+    const colors = bgColors[skill.animationType];
+    const flashCount = skill.animationType === 'ultimate' ? 6 : skill.animationType === 'spectacular' ? 3 : 2;
+
+    // Background flash effect
+    for (let i = 0; i < flashCount; i++) {
+      this.time.delayedCall(i * 150, () => {
+        const flashBg = this.add.graphics();
+        flashBg.fillStyle(colors[i % colors.length], 0.3);
+        flashBg.fillRect(0, 0, width, height);
+        effectsLayer.add(flashBg);
+
+        this.tweens.add({
+          targets: flashBg,
+          alpha: 0,
+          duration: 150,
+          onComplete: () => flashBg.destroy(),
+        });
+      });
+    }
+
+    // Participant glow effects
+    for (const participantId of participantIds) {
+      const sprite = this.unitSprites.get(participantId);
+      if (sprite) {
+        // Rising glow effect
+        this.tweens.add({
+          targets: sprite,
+          alpha: 0.3,
+          scale: 1.2,
+          duration: 300,
+          yoyo: true,
+        });
+
+        // Particle effect placeholder (simple circles)
+        for (let j = 0; j < 5; j++) {
+          const particle = this.add.circle(
+            sprite.x + Math.random() * 40 - 20,
+            sprite.y + Math.random() * 40 - 20,
+            5,
+            colors[j % colors.length]
+          );
+          effectsLayer.add(particle);
+
+          this.tweens.add({
+            targets: particle,
+            y: sprite.y - 100,
+            alpha: 0,
+            scale: 0,
+            duration: 500,
+            delay: j * 50,
+            onComplete: () => particle.destroy(),
+          });
+        }
+      }
+    }
+
+    // Center explosion effect for ultimate/spectacular
+    if (skill.animationType !== 'flashy') {
+      const centerX = width / 2;
+      const centerY = height / 2 - 100;
+
+      // Central burst
+      for (let i = 0; i < (skill.animationType === 'ultimate' ? 20 : 10); i++) {
+        const angle = (i / (skill.animationType === 'ultimate' ? 20 : 10)) * Math.PI * 2;
+        const radius = skill.animationType === 'ultimate' ? 150 : 100;
+
+        const burst = this.add.circle(centerX, centerY, 8, colors[i % colors.length]);
+        effectsLayer.add(burst);
+
+        this.tweens.add({
+          targets: burst,
+          x: centerX + Math.cos(angle) * radius,
+          y: centerY + Math.sin(angle) * radius,
+          alpha: 0,
+          scale: 0.5,
+          duration: 400,
+          delay: 200,
+          onComplete: () => burst.destroy(),
+        });
+      }
+    }
+
+    // Target hit effects
+    for (const targetId of targetIds) {
+      const targetSprite = this.unitSprites.get(targetId);
+      if (targetSprite) {
+        // Multi-hit flash
+        this.time.delayedCall(skill.animationType === 'ultimate' ? 400 : 200, () => {
+          for (let k = 0; k < (skill.animationType === 'ultimate' ? 4 : 2); k++) {
+            this.time.delayedCall(k * 100, () => {
+              this.tweens.add({
+                targets: targetSprite,
+                alpha: 0.1,
+                duration: 50,
+                yoyo: true,
+              });
+            });
+          }
+        });
+
+        // Shake effect
+        this.time.delayedCall(skill.animationType === 'ultimate' ? 400 : 200, () => {
+          this.tweens.add({
+            targets: targetSprite,
+            x: targetSprite.x + 15,
+            duration: 30,
+            yoyo: true,
+            repeat: skill.animationType === 'ultimate' ? 5 : 3,
+          });
+        });
+      }
+    }
+
+    // Clean up effects layer after animation
+    this.time.delayedCall(skill.animationType === 'ultimate' ? 1500 : 1000, () => {
+      effectsLayer.destroy();
+    });
   }
 
   /**
@@ -742,12 +1112,11 @@ export class BattleScene extends Phaser.Scene {
    * Update action button selection
    */
   private updateActionSelection(): void {
+    const colors = ['#FFFFFF', '#88ccff', '#ff88ff', '#88ff88', '#ffff88', '#ff8888'];
     for (let i = 0; i < this.actionButtons.length; i++) {
       if (i === this.actionIndex) {
         this.actionButtons[i].setColor('#D4A84B');
       } else {
-        // Reset to original colors based on action type
-        const colors = ['#FFFFFF', '#88ccff', '#88ff88', '#ffff88', '#ff8888'];
         this.actionButtons[i].setColor(colors[i]);
       }
     }
@@ -779,6 +1148,9 @@ export class BattleScene extends Phaser.Scene {
       case BattleState.PLAYER_SELECT_SKILL:
         this.confirmSkill();
         break;
+      case BattleState.PLAYER_SELECT_COMBO:
+        this.confirmCombo();
+        break;
       case BattleState.PLAYER_SELECT_TARGET:
         this.confirmTarget();
         break;
@@ -795,6 +1167,11 @@ export class BattleScene extends Phaser.Scene {
     if (this.battleState === BattleState.PLAYER_SELECT_SKILL) {
       // Back to action menu
       if (this.skillMenu) this.skillMenu.setVisible(false);
+      this.battleState = BattleState.PLAYER_SELECT_ACTION;
+      this.showActionMenu();
+    } else if (this.battleState === BattleState.PLAYER_SELECT_COMBO) {
+      // Back to action menu
+      if (this.comboMenu) this.comboMenu.setVisible(false);
       this.battleState = BattleState.PLAYER_SELECT_ACTION;
       this.showActionMenu();
     } else if (this.battleState === BattleState.PLAYER_SELECT_TARGET) {
@@ -828,9 +1205,10 @@ export class BattleScene extends Phaser.Scene {
    * Confirm selected action
    */
   private confirmAction(): void {
-    const actions = [
+    const actions: (ActionType | 'combo')[] = [
       ActionType.ATTACK,
       ActionType.SKILL,
+      'combo',
       ActionType.ITEM,
       ActionType.DEFEND,
       ActionType.FLEE,
@@ -856,6 +1234,12 @@ export class BattleScene extends Phaser.Scene {
           this.populateSkillMenu(this.currentUnit);
         }
         if (this.skillMenu) this.skillMenu.setVisible(true);
+        break;
+
+      case 'combo':
+        this.battleState = BattleState.PLAYER_SELECT_COMBO;
+        this.populateComboMenu();
+        if (this.comboMenu) this.comboMenu.setVisible(true);
         break;
 
       case ActionType.ITEM:
@@ -1311,6 +1695,23 @@ export class BattleScene extends Phaser.Scene {
   }
 
   /**
+   * Handle keyboard navigation for combo menu
+   */
+  private handleComboNavigation(): void {
+    if (this.keyDelay > 0) return;
+
+    if (this.cursors.up.isDown || this.wasdKeys.W.isDown) {
+      this.comboIndex = Math.max(0, this.comboIndex - 1);
+      this.updateComboSelection();
+      this.keyDelay = this.KEY_DELAY_MS;
+    } else if (this.cursors.down.isDown || this.wasdKeys.S.isDown) {
+      this.comboIndex = Math.min(this.comboButtons.length - 1, this.comboIndex + 1);
+      this.updateComboSelection();
+      this.keyDelay = this.KEY_DELAY_MS;
+    }
+  }
+
+  /**
    * Update loop
    */
   update(_time: number, delta: number): void {
@@ -1326,6 +1727,9 @@ export class BattleScene extends Phaser.Scene {
         break;
       case BattleState.PLAYER_SELECT_SKILL:
         this.handleSkillNavigation();
+        break;
+      case BattleState.PLAYER_SELECT_COMBO:
+        this.handleComboNavigation();
         break;
       case BattleState.PLAYER_SELECT_TARGET:
         this.handleTargetNavigation();
