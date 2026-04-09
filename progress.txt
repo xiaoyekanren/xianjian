@@ -489,3 +489,28 @@
 - Story triggers for party member joining will be in later chapters
 - Portrait/sprite assets are generated at BootScene startup for all characters
 ---
+
+## 2026-04-10 18:30 - US-015
+- Implemented complete inventory management UI with InventoryScene.ts
+- Category filtering: 全部/消耗品/武器/防具/饰品/剧情 (6 tabs)
+- Item list with 8 visible items, selection highlighting
+- Detail panel shows: item name, type, description, buy/sell price, effects, bonuses
+- Character selection panel: 4 character slots with HP/MP bars and level
+- Action buttons: 使用/装备 (use/equip), 整理 (sort), 关闭 (close)
+- Keyboard navigation: ↑↓/WS for items, ←→/AD for characters, Enter/Space to use, ESC to close
+- Consumable usage: applies HP/MP changes and status effects to selected character
+- Equipment management: toggle equip/unequip, auto-unequip previous same-type equipment
+- Fixed Item.ts: removeStatus changed from StatusType[] to string[] for JSON compatibility
+
+**Files changed:**
+- src/scenes/InventoryScene.ts (created - full inventory UI scene)
+- src/data/Item.ts (updated - fixed removeStatus type)
+- src/core/Game.ts (updated - registered InventoryScene)
+- ralph/prd.json (updated US-015 to passes: true)
+
+**Learnings for future iterations:**
+- JSON files can't use TypeScript enum types directly, use string[] instead
+- InventoryScene is launched from WorldScene via scene.launch()
+- Equipment toggle handles auto-unequip of same-type items
+- Sort inventory by type order then name for better UX
+---
