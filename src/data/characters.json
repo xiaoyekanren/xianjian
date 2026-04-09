@@ -1,0 +1,149 @@
+[
+  {
+    "id": "li_xiaoyao",
+    "name": "李逍遥",
+    "description": "余杭镇客栈的小伙计，性格开朗活泼，天性善良。意外闯入仙灵岛，结识赵灵儿，从此踏上修仙之路。",
+    "baseStats": {
+      "hp": 120,
+      "mp": 30,
+      "attack": 18,
+      "defense": 12,
+      "speed": 15,
+      "luck": 12
+    },
+    "growthCoefficients": {
+      "hp": 12,
+      "mp": 5,
+      "attack": 3,
+      "defense": 2,
+      "speed": 1,
+      "luck": 1
+    },
+    "skills": [
+      { "skillId": "yujianshu", "learnLevel": 1 },
+      { "skillId": "tianshifu", "learnLevel": 5 },
+      { "skillId": "jianqi_chongxiao", "learnLevel": 10 },
+      { "skillId": "wanjian_jue", "learnLevel": 15 },
+      { "skillId": "tianshi_fuzhou", "learnLevel": 20 },
+      { "skillId": "linghun_shou", "learnLevel": 25 },
+      { "skillId": "qixing_jue", "learnLevel": 30 }
+    ],
+    "initialEquipment": {
+      "weaponId": "wooden_sword",
+      "armorId": "cloth_armor",
+      "accessoryId": null
+    },
+    "portrait": "portrait_li_xiaoyao",
+    "sprite": "sprite_li_xiaoyao"
+  },
+  {
+    "id": "zhao_linger",
+    "name": "赵灵儿",
+    "description": "仙灵岛水月宫的少女，女娲后人，拥有强大的灵力。温柔善良，对李逍遥一往情深。",
+    "baseStats": {
+      "hp": 80,
+      "mp": 80,
+      "attack": 10,
+      "defense": 8,
+      "speed": 12,
+      "luck": 15
+    },
+    "growthCoefficients": {
+      "hp": 8,
+      "mp": 10,
+      "attack": 2,
+      "defense": 1,
+      "speed": 1,
+      "luck": 2
+    },
+    "skills": [
+      { "skillId": "fengzhou", "learnLevel": 1 },
+      { "skillId": "leizhou", "learnLevel": 5 },
+      { "skillId": "wuqi_chaoyuan", "learnLevel": 8 },
+      { "skillId": "bingzhou", "learnLevel": 12 },
+      { "skillId": "huozhou", "learnLevel": 15 },
+      { "skillId": "nuwa_shenzhu", "learnLevel": 20 },
+      { "skillId": "tianlei_po", "learnLevel": 25 },
+      { "skillId": "dihuo_lie", "learnLevel": 30 }
+    ],
+    "initialEquipment": {
+      "weaponId": "spirit_staff",
+      "armorId": "silk_dress",
+      "accessoryId": null
+    },
+    "portrait": "portrait_zhao_linger",
+    "sprite": "sprite_zhao_linger"
+  },
+  {
+    "id": "lin_yueru",
+    "name": "林月如",
+    "description": "林家堡大小姐，武艺高强，性格泼辣直爽。在苏州比武招亲中被李逍遥击败，从此跟随他踏上江湖。",
+    "baseStats": {
+      "hp": 100,
+      "mp": 40,
+      "attack": 22,
+      "defense": 14,
+      "speed": 18,
+      "luck": 10
+    },
+    "growthCoefficients": {
+      "hp": 10,
+      "mp": 4,
+      "attack": 4,
+      "defense": 3,
+      "speed": 2,
+      "luck": 1
+    },
+    "skills": [
+      { "skillId": "qijue_jianqi", "learnLevel": 8 },
+      { "skillId": "jianwu_qiankun", "learnLevel": 12 },
+      { "skillId": "yijian_xiao", "learnLevel": 18 },
+      { "skillId": "qiankun_yizhi", "learnLevel": 22 },
+      { "skillId": "tianwaifeixian", "learnLevel": 28 },
+      { "skillId": "jiannu_zhaorijue", "learnLevel": 35 }
+    ],
+    "initialEquipment": {
+      "weaponId": "lin_sword",
+      "armorId": "lin_armor",
+      "accessoryId": null
+    },
+    "portrait": "portrait_lin_yueru",
+    "sprite": "sprite_lin_yueru"
+  },
+  {
+    "id": "anu",
+    "name": "阿奴",
+    "description": "苗族少女，身手敏捷，擅长辅助与减益术法。活泼机灵，是李逍遥冒险路上的重要伙伴。",
+    "baseStats": {
+      "hp": 70,
+      "mp": 60,
+      "attack": 12,
+      "defense": 6,
+      "speed": 22,
+      "luck": 18
+    },
+    "growthCoefficients": {
+      "hp": 6,
+      "mp": 8,
+      "attack": 2,
+      "defense": 1,
+      "speed": 2,
+      "luck": 2
+    },
+    "skills": [
+      { "skillId": "guijiang", "learnLevel": 15 },
+      { "skillId": "jitian", "learnLevel": 18 },
+      { "skillId": "miao_jian", "learnLevel": 22 },
+      { "skillId": "wandu_zhou", "learnLevel": 25 },
+      { "skillId": "xihe_lie", "learnLevel": 30 },
+      { "skillId": "yinhe_zhou", "learnLevel": 35 }
+    ],
+    "initialEquipment": {
+      "weaponId": "miao_blade",
+      "armorId": "miao_dress",
+      "accessoryId": null
+    },
+    "portrait": "portrait_anu",
+    "sprite": "sprite_anu"
+  }
+]

@@ -173,7 +173,7 @@ export class BattleSystem {
         isPlayer: true,
         isDefending: false,
         statusEffects: [],
-        skills: [], // Will be populated from character skills
+        skills: player.availableSkills ?? [], // Use character's learned skills
       };
       this.units.set(unit.id, unit);
     }

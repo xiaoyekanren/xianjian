@@ -4,7 +4,38 @@
 - Scene keys follow pattern: 'BootScene', 'MainMenuScene', 'WorldScene', etc.
 - Phaser game config: 1920x1080 resolution, FIT scaling, CENTER_BOTH
 - Color scheme: Gold primary (#D4A84B), dark background (#1a1a2e)
+- JSON files in src/data/ can be imported directly (resolveJsonModule: true in tsconfig)
+- Character data loaded from characters.json via CharacterManager
 
+---
+
+## 2026-04-10 15:30 - US-008
+- Implemented Character.ts with complete character data structures
+- CharacterData interface: base stats, growth coefficients, skill learn levels, equipment slots
+- Character interface: runtime state with level, exp, HP/MP, stats, learned skills, equipment, status effects
+- Equipment slots: weapon, armor, accessory (EquipmentSlot type)
+- SkillLearnEntry: skillId + learnLevel for progressive skill learning
+- CharacterManager class: create characters at level, level up with stat growth, skill learning, EXP management
+- Level-up formula: stats = base + (level-1) * growth, EXP = (level-1)^2 * 100
+- characters.json: four main characters with unique stat profiles and skill progression
+  - 李逍遥: balanced physical,御剑术/天师符法/万剑诀 progression
+  - 赵灵儿: high MP/spirit, 风咒/雷咒/五气朝元/女娲神珠 progression
+  - 林月如: high attack/speed, 七诀剑气/剑舞乾坤/天外飞仙 progression
+  - 阿奴: high speed/luck, 鬼降/祭天/万毒咒 progression
+- Updated BattleSystem.ts to use character's availableSkills when creating BattleUnit
+
+**Files changed:**
+- src/entities/Character.ts (complete rewrite - Character interfaces, CharacterManager class)
+- src/data/characters.json (created - four main characters data)
+- src/systems/BattleSystem.ts (updated - use player.availableSkills for BattleUnit skills)
+- ralph/prd.json (updated US-008 to passes: true)
+
+**Learnings for future iterations:**
+- Character.availableSkills should be populated from Skill[] using learnedSkills filter
+- Level-up restores HP/MP to full (common JRPG pattern)
+- Growth coefficients determine stat scaling per level
+- JSON imports require resolveJsonModule in tsconfig.json
+- Character portrait and sprite keys follow pattern: 'portrait_[id]', 'sprite_[id]'
 ---
 
 ## 2026-04-10 12:30 - US-007
