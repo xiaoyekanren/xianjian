@@ -537,3 +537,27 @@
 - SaveSlotInfo provides lightweight data for UI without full save data
 - Slot containers use graphics for dynamic selection highlighting
 ---
+
+## 2026-04-10 19:30 - US-019
+- Implemented complete shop UI with ShopScene.ts
+- Buy/sell mode toggle tabs (购买/出售)
+- Item list: name, price, stock (buy) or quantity (sell)
+- Detail panel: name, type, description, buy/sell prices, effects, bonuses
+- Quantity selector: - / + / MAX buttons
+- Action buttons: 确认 (confirm) / 离开 (leave)
+- Keyboard navigation: ↑↓/WS for items, ←→/AD for quantity, Enter/Space to confirm, ESC to close
+- Gold display updates after transactions
+- Success/error messages with colored feedback
+- Integrates with ShopSystem for buy/sell logic
+
+**Files changed:**
+- src/scenes/ShopScene.ts (created - shop UI scene)
+- src/core/Game.ts (updated - registered ShopScene)
+- ralph/prd.json (updated US-019 to passes: true)
+
+**Learnings for future iterations:**
+- ShopScene receives shopId in config to identify which shop
+- Display items list changes based on mode (buy vs sell)
+- Sell mode filters items by shop's buyCategories
+- Quantity max is calculated based on gold (buy) or inventory (sell)
+---
