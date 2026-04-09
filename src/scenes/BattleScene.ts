@@ -52,6 +52,9 @@ export class BattleScene extends Phaser.Scene {
   private actionIndex: number = 0;
   private skillIndex: number = 0;
   private targetIndex: number = 0;
+  private isAllTargetMode: boolean = false;
+  private keyDelay: number = 0;
+  private readonly KEY_DELAY_MS = 150;
 
   // UI elements
   private background: Phaser.GameObjects.Graphics | null = null;
@@ -85,9 +88,10 @@ export class BattleScene extends Phaser.Scene {
 
   // Demo data for testing
   private demoSkills: Skill[] = [
-    { id: 'skill_sword', name: '御剑术', mpCost: 5, power: 30, element: 'physical', targetType: 'single' },
-    { id: 'skill_fire', name: '火咒', mpCost: 10, power: 50, element: 'fire', targetType: 'single' },
-    { id: 'skill_heal', name: '五气朝元', mpCost: 15, power: 40, element: 'healing', targetType: 'self' },
+    { id: 'skill_sword', name: '御剑术', mpCost: 5, power: 30, element: 'physical', targetType: 'single', targetTypeName: '单体' },
+    { id: 'skill_fire', name: '火咒', mpCost: 10, power: 50, element: 'fire', targetType: 'single', targetTypeName: '单体' },
+    { id: 'skill_heal', name: '五气朝元', mpCost: 15, power: 40, element: 'healing', targetType: 'self', targetTypeName: '自身' },
+    { id: 'skill_ice_all', name: '玄冰咒', mpCost: 20, power: 35, element: 'ice', targetType: 'all_enemy', targetTypeName: '全体' },
   ];
 
   constructor() {
@@ -487,8 +491,9 @@ export class BattleScene extends Phaser.Scene {
       const canUse = unit.mp >= skill.mpCost;
       const color = canUse ? '#FFFFFF' : '#666666';
 
-      // Skill text
-      const text = this.add.text(20, 40 + i * 30, `${skill.name} (MP:${skill.mpCost})`, {
+      // Skill text with target type indicator
+      const targetTypeText = skill.targetTypeName || (skill.targetType === 'all_enemy' || skill.targetType === 'all' ? '全体' : skill.targetType === 'self' ? '自身' : '单体');
+      const text = this.add.text(20, 40 + i * 30, `${skill.name} (MP:${skill.mpCost}) [${targetTypeText}]`, {
         fontFamily: 'Arial, sans-serif',
         fontSize: '14px',
         color,
@@ -625,6 +630,12 @@ export class BattleScene extends Phaser.Scene {
 
     // Escape to cancel
     this.input.keyboard!.on('keydown-ESC', () => this.handleCancel());
+
+    // T key to toggle target mode (single/all)
+    this.input.keyboard!.on('keydown-T', () => this.toggleTargetMode());
+
+    // Tab key for quick target mode toggle
+    this.input.keyboard!.on('keydown-TAB', () => this.toggleTargetMode());
   }
 
   /**
@@ -789,6 +800,7 @@ export class BattleScene extends Phaser.Scene {
     } else if (this.battleState === BattleState.PLAYER_SELECT_TARGET) {
       // Back to action/skill menu
       this.clearTargetIndicator();
+      this.isAllTargetMode = false;
       if (this.selectedAction?.type === ActionType.SKILL) {
         this.battleState = BattleState.PLAYER_SELECT_SKILL;
         if (this.skillMenu) this.skillMenu.setVisible(true);
@@ -797,6 +809,19 @@ export class BattleScene extends Phaser.Scene {
         this.showActionMenu();
       }
     }
+  }
+
+  /**
+   * Toggle target mode between single and all
+   */
+  private toggleTargetMode(): void {
+    if (this.battleState !== BattleState.PLAYER_SELECT_TARGET) return;
+
+    // Only allow toggle for attack action (skills have fixed target types)
+    if (this.selectedAction?.type !== ActionType.ATTACK) return;
+
+    this.isAllTargetMode = !this.isAllTargetMode;
+    this.showTargetIndicator(this.isAllTargetMode);
   }
 
   /**
@@ -819,9 +844,10 @@ export class BattleScene extends Phaser.Scene {
     switch (selectedType) {
       case ActionType.ATTACK:
         this.battleState = BattleState.PLAYER_SELECT_TARGET;
-        this.showMessage('选择攻击目标');
+        this.showMessage('选择攻击目标 (按 T 键切换单体/全体)');
         this.targetIndex = 0;
-        this.showTargetIndicator();
+        this.isAllTargetMode = false;
+        this.showTargetIndicator(false);
         break;
 
       case ActionType.SKILL:
@@ -888,30 +914,61 @@ export class BattleScene extends Phaser.Scene {
       this.selectedTargets = [this.enemies[this.targetIndex].id];
       this.executeSkillAction();
     } else {
-      this.selectedTargets = [this.enemies[this.targetIndex].id];
-      this.executeAttackAction();
+      // Attack action - check if all target mode
+      if (this.isAllTargetMode) {
+        this.selectedTargets = this.enemies.filter(e => e.hp > 0).map(e => e.id);
+        this.executeAttackAction(true);
+      } else {
+        this.selectedTargets = [this.enemies[this.targetIndex].id];
+        this.executeAttackAction();
+      }
     }
+    this.isAllTargetMode = false;
   }
 
   /**
    * Show target indicator on selected enemy
    */
-  private showTargetIndicator(): void {
+  private showTargetIndicator(isAllTarget: boolean = false): void {
     this.clearTargetIndicator();
 
-    const enemy = this.enemies[this.targetIndex];
-    const container = this.unitSprites.get(enemy.id);
-
-    if (container) {
+    if (isAllTarget) {
+      // Show indicator on all enemies
       this.targetIndicator = this.add.graphics();
       this.targetIndicator.lineStyle(3, 0xD4A84B);
-      this.targetIndicator.strokeRect(
-        container.x - 50,
-        container.y - 60,
-        this.UNIT_WIDTH,
-        this.UNIT_HEIGHT
-      );
+
+      for (const enemy of this.enemies) {
+        if (enemy.hp > 0) {
+          const container = this.unitSprites.get(enemy.id);
+          if (container) {
+            this.targetIndicator.strokeRect(
+              container.x - 50,
+              container.y - 60,
+              this.UNIT_WIDTH,
+              this.UNIT_HEIGHT
+            );
+          }
+        }
+      }
       this.targetIndicator.setDepth(15);
+
+      // Show "全体" text indicator
+      this.showMessage('目标：全体敌人');
+    } else {
+      const enemy = this.enemies[this.targetIndex];
+      const container = this.unitSprites.get(enemy.id);
+
+      if (container) {
+        this.targetIndicator = this.add.graphics();
+        this.targetIndicator.lineStyle(3, 0xD4A84B);
+        this.targetIndicator.strokeRect(
+          container.x - 50,
+          container.y - 60,
+          this.UNIT_WIDTH,
+          this.UNIT_HEIGHT
+        );
+        this.targetIndicator.setDepth(15);
+      }
     }
   }
 
@@ -928,19 +985,31 @@ export class BattleScene extends Phaser.Scene {
   /**
    * Execute attack action
    */
-  private executeAttackAction(): void {
+  private executeAttackAction(isMultiTarget: boolean = false): void {
     if (!this.currentUnit) return;
 
     this.clearTargetIndicator();
     this.battleState = BattleState.EXECUTE_ACTION;
 
-    const action = this.battleSystem.executeAttack(
-      this.currentUnit.id,
-      this.selectedTargets[0]
-    );
+    if (isMultiTarget && this.selectedTargets.length > 1) {
+      const action = this.battleSystem.executeMultiAttack(
+        this.currentUnit.id,
+        this.selectedTargets
+      );
+      this.showMessage(action.message);
 
-    this.showMessage(action.message);
-    this.playAttackAnimation(this.currentUnit.id, this.selectedTargets[0]);
+      // Play attack animations for all targets
+      for (const targetId of this.selectedTargets) {
+        this.playAttackAnimation(this.currentUnit.id, targetId);
+      }
+    } else {
+      const action = this.battleSystem.executeAttack(
+        this.currentUnit.id,
+        this.selectedTargets[0]
+      );
+      this.showMessage(action.message);
+      this.playAttackAnimation(this.currentUnit.id, this.selectedTargets[0]);
+    }
 
     this.time.delayedCall(1000, () => {
       this.updateUnitDisplays();
@@ -1180,12 +1249,16 @@ export class BattleScene extends Phaser.Scene {
    * Handle keyboard navigation for action menu
    */
   private handleActionNavigation(): void {
+    if (this.keyDelay > 0) return;
+
     if (this.cursors.up.isDown || this.wasdKeys.W.isDown) {
       this.actionIndex = Math.max(0, this.actionIndex - 1);
       this.updateActionSelection();
+      this.keyDelay = this.KEY_DELAY_MS;
     } else if (this.cursors.down.isDown || this.wasdKeys.S.isDown) {
       this.actionIndex = Math.min(this.actionButtons.length - 1, this.actionIndex + 1);
       this.updateActionSelection();
+      this.keyDelay = this.KEY_DELAY_MS;
     }
   }
 
@@ -1193,12 +1266,16 @@ export class BattleScene extends Phaser.Scene {
    * Handle keyboard navigation for skill menu
    */
   private handleSkillNavigation(): void {
+    if (this.keyDelay > 0) return;
+
     if (this.cursors.up.isDown || this.wasdKeys.W.isDown) {
       this.skillIndex = Math.max(0, this.skillIndex - 1);
       this.updateSkillSelection();
+      this.keyDelay = this.KEY_DELAY_MS;
     } else if (this.cursors.down.isDown || this.wasdKeys.S.isDown) {
       this.skillIndex = Math.min(this.skillButtons.length - 1, this.skillIndex + 1);
       this.updateSkillSelection();
+      this.keyDelay = this.KEY_DELAY_MS;
     }
   }
 
@@ -1206,19 +1283,28 @@ export class BattleScene extends Phaser.Scene {
    * Handle keyboard navigation for target selection
    */
   private handleTargetNavigation(): void {
+    if (this.keyDelay > 0) return;
+
     if (this.cursors.left.isDown || this.wasdKeys.A.isDown) {
       this.targetIndex = Math.max(0, this.targetIndex - 1);
-      this.showTargetIndicator();
+      this.showTargetIndicator(this.isAllTargetMode);
+      this.keyDelay = this.KEY_DELAY_MS;
     } else if (this.cursors.right.isDown || this.wasdKeys.D.isDown) {
       this.targetIndex = Math.min(this.enemies.length - 1, this.targetIndex + 1);
-      this.showTargetIndicator();
+      this.showTargetIndicator(this.isAllTargetMode);
+      this.keyDelay = this.KEY_DELAY_MS;
     }
   }
 
   /**
    * Update loop
    */
-  update(): void {
+  update(_time: number, delta: number): void {
+    // Update key delay
+    if (this.keyDelay > 0) {
+      this.keyDelay -= delta;
+    }
+
     // Handle navigation based on current state
     switch (this.battleState) {
       case BattleState.PLAYER_SELECT_ACTION:

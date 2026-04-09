@@ -18,6 +18,7 @@ export interface Skill {
   power: number;
   element: string;
   targetType: SkillTargetType;
+  targetTypeName?: string;  // Display name for target type (单体/全体/自身)
   description?: string;
   learnLevel?: number;
 }

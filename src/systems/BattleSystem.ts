@@ -458,6 +458,57 @@ export class BattleSystem {
   }
 
   /**
+   * Execute multi-target attack action
+   */
+  executeMultiAttack(actorId: string, targetIds: string[]): BattleAction {
+    const actor = this.units.get(actorId);
+
+    if (!actor) {
+      return {
+        type: ActionType.ATTACK,
+        actorId,
+        targetIds,
+        message: '攻击失败',
+      };
+    }
+
+    let totalDamage = 0;
+    const hitMessages: string[] = [];
+
+    for (const targetId of targetIds) {
+      const target = this.units.get(targetId);
+      if (!target) continue;
+
+      // Calculate damage for each target (slightly reduced for multi-target)
+      let damage = Math.floor(this.calculatePhysicalDamage(actor, target) * 0.8);
+
+      // Check for defending target
+      if (target.isDefending) {
+        damage = Math.floor(damage * 0.5);
+      }
+
+      // Apply damage
+      target.hp = Math.max(0, target.hp - damage);
+      totalDamage += damage;
+
+      // Wake sleeping targets
+      if (target.statusEffects.some(e => e.type === StatusType.SLEEP)) {
+        target.statusEffects = target.statusEffects.filter(e => e.type !== StatusType.SLEEP);
+      }
+
+      hitMessages.push(`${target.name} ${damage}`);
+    }
+
+    return {
+      type: ActionType.ATTACK,
+      actorId,
+      targetIds,
+      damage: totalDamage,
+      message: `${actor.name} 全体攻击！[${hitMessages.join(', ')}]`,
+    };
+  }
+
+  /**
    * Execute skill action
    */
   executeSkill(actorId: string, skill: Skill, targetIds: string[]): BattleAction {

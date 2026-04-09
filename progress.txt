@@ -7,6 +7,35 @@
 
 ---
 
+## 2026-04-10 12:30 - US-007
+- Enhanced BattleScene.ts battle UI with improved features
+- Added target type indicator (单体/全体/自身) to skill menu items
+- Added visual indicator for "all enemies" target selection mode
+- Added T key and Tab key toggle for single/all target mode during attack
+- Added executeMultiAttack method to BattleSystem.ts for multi-target physical attacks
+- Improved keyboard navigation with 150ms debounce delay
+- Added isAllTargetMode flag and KEY_DELAY_MS constant for navigation control
+- Added 玄冰咒 demo skill with all_enemy target type
+- Updated Skill.ts interface to include targetTypeName optional field
+- HP/MP bars with color indicators (green > 50%, yellow > 25%, red ≤ 25%)
+- Action buttons with mouse hover and click support
+- Skill menu shows skill name, MP cost, and target type
+- Target selection message shows mode instructions
+
+**Files changed:**
+- src/scenes/BattleScene.ts (enhanced - added target type indicator, all-target mode, keyboard debounce)
+- src/systems/BattleSystem.ts (enhanced - added executeMultiAttack method)
+- src/data/Skill.ts (enhanced - added targetTypeName optional field)
+- ralph/prd.json (updated US-007 to passes: true)
+
+**Learnings for future iterations:**
+- Keyboard navigation should use debounce to prevent rapid repeated selections
+- Multi-target attacks should have reduced damage per target (80% of normal)
+- Target type should be displayed in skill menu to help players understand skill behavior
+- Use underscore prefix (_time) for unused parameters to avoid TypeScript errors
+- T key and Tab key can be used for target mode toggle in battle UI
+---
+
 ## 2026-04-09 23:35 - US-003
 - Implemented BootScene.ts with asset loading and progress bar display
 - Implemented MainMenuScene.ts with Chinese title "仙剑奇侠传" and 3 menu options
@@ -103,7 +132,7 @@
 - Implemented BattleSystem.ts with battle logic (turn order, damage calculation, status effects)
 - BattleScene displays player party (max 4) on left side and enemies on right side
 - HP/MP bars for all units with color indicators (green/yellow/red for HP)
-- Player action selection menu: 攻击 (Attack), 仙术 (Skill), 遭具 (Item placeholder), 防御 (Defend), 逃跑 (Flee)
+- Player action selection menu: 攻击 (Attack), 仙术 (Skill), 道具 (Item placeholder), 防御 (Defend), 逃跑 (Flee)
 - Keyboard navigation (↑↓/WS for action/skill selection, ←→/AD for target selection, Enter/Space to confirm, ESC to cancel)
 - Mouse click support for action buttons and skill menu
 - Turn order display showing next 4 units in action sequence
