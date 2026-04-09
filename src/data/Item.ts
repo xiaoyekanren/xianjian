@@ -21,7 +21,7 @@ export interface ItemEffect {
     duration: number;
     intensity: number;
   };
-  removeStatus?: StatusType[];  // Status effects to remove
+  removeStatus?: string[];  // Status effect names to remove (e.g., 'poison', 'paralyze')
 }
 
 /**
@@ -107,13 +107,13 @@ export class ItemManager {
   }): {
     hpChange: number;
     mpChange: number;
-    removedStatuses: StatusType[];
+    removedStatuses: string[];
     addedStatus: { type: StatusType; duration: number; intensity: number } | null;
   } {
     const result = {
       hpChange: 0,
       mpChange: 0,
-      removedStatuses: [] as StatusType[],
+      removedStatuses: [] as string[],
       addedStatus: null as { type: StatusType; duration: number; intensity: number } | null,
     };
 

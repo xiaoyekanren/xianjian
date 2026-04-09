@@ -241,8 +241,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 15,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - InventoryScene with category filtering (all/consumable/weapon/armor/accessory/key), item list with selection, detail panel showing name/type/description/price/effects/bonuses, character selection panel with HP/MP bars, use/equip/sort/close buttons, keyboard navigation (arrows/WASD for items, A/D for characters, Enter/Space to use, ESC to close), consumable usage applies effects to selected character, equipment toggle for equip/unequip"
     },
     {
       "id": "US-016",

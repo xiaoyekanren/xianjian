@@ -8,12 +8,13 @@ import { SceneManager } from './SceneManager';
 import { InputManager } from './InputManager';
 import { AudioManager } from './AudioManager';
 
-// Import scenes for US-003, US-004, US-005, and US-006
+// Import scenes for US-003, US-004, US-005, US-006, and US-015
 import { BootScene } from '@/scenes/BootScene';
 import { MainMenuScene } from '@/scenes/MainMenuScene';
 import { WorldScene } from '@/scenes/WorldScene';
 import { DialogScene } from '@/scenes/DialogScene';
 import { BattleScene } from '@/scenes/BattleScene';
+import { InventoryScene } from '@/scenes/InventoryScene';
 
 /**
  * Game configuration interface
@@ -67,6 +68,7 @@ export class Game {
       WorldScene,
       DialogScene,
       BattleScene,
+      InventoryScene,
     ];
 
     const phaserConfig: Phaser.Types.Core.GameConfig = {
