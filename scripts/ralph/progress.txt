@@ -7,8 +7,80 @@
 
 ---
 
+## Fri Apr 10 2026 - US-039
+- Implemented 苗族篇剧情 (Miao Chapter Story)
+- Added story nodes to story.json:
+  - story_ch4_miao_conflict: Black/White Miao tribal conflict discovery
+  - story_ch4_anu_join: Anu joining party event
+  - story_ch4_collect_fire_pearl: Fire pearl collection in sacred_maze_1
+  - story_ch4_collect_wind_pearl: Wind pearl collection in sacred_maze_2
+  - story_ch4_collect_thunder_pearl: Thunder pearl collection in sacred_maze_3
+  - story_ch4_collect_earth_pearl: Earth pearl collection (trigger before shrine)
+  - story_ch4_linger_awakening: Ling'er awakens Nüwa power after flashback
+- Added guardian enemies to enemies.json:
+  - fire_guardian: HP400, Attack50, Defense25, Speed20, drops fire_pearl
+  - wind_guardian: HP350, Attack40, Defense20, Speed25, drops wind_pearl
+  - thunder_guardian: HP450, Attack55, Defense30, Speed22, drops thunder_pearl
+  - earth_guardian: HP500, Attack45, Defense35, Speed15, drops earth_pearl
+  - All guardians use canFlee: false for story battles
+- Added dialog sequences in DialogData.ts:
+  - miao_enter: Introduction to Miao territory
+  - miao_conflict_intro/black_leader/white_leader: Tribal conflict dialogs
+  - anu_join_intro/accept: Anu joining party dialogs
+  - pearl_fire/wind/thunder/earth_intro/obtained: Pearl collection dialogs
+  - miao_pearls_complete: Four pearls collected announcement
+  - linger_awakening_start/power/complete: Awakening sequence dialogs
+- Fixed story flow: enter_miao -> conflict -> anu_join -> pearl collection -> flashback -> awakening -> final_battle
+- Files changed:
+  - src/data/story.json (added 8 new story nodes, fixed triggers and node chains)
+  - src/data/DialogData.ts (added 18 new dialog sequences)
+  - src/data/enemies.json (added 4 pearl guardian bosses)
+  - ralph/prd.json (updated US-039 to passes: true)
+- **Learnings for future iterations:**
+  - Pearl guardians use pattern: `[element]_guardian` (e.g., `fire_guardian`)
+  - Story battles in maze levels trigger on enter_map with requiredFlags
+  - Flashback flow: all_pearls_collected -> spirit_pearls dialog -> pearls_ready -> flashback_trigger on shrine
+  - Awakening triggers on flashback_complete + all_pearls_collected flags
+---
+
 # Ralph Progress Log
 Started: Thu Apr  9 11:11:03 PM CST 2026
+---
+
+## Fri Apr 10 2026 - US-039
+- Implemented 苗族篇剧情 (Miao Chapter Story)
+- Added story nodes to story.json:
+  - story_ch4_miao_conflict: Black/White Miao tribal conflict discovery
+  - story_ch4_anu_join: Anu joining party event
+  - story_ch4_collect_fire_pearl: Fire pearl collection in sacred_maze_1
+  - story_ch4_collect_wind_pearl: Wind pearl collection in sacred_maze_2
+  - story_ch4_collect_thunder_pearl: Thunder pearl collection in sacred_maze_3
+  - story_ch4_collect_earth_pearl: Earth pearl collection (trigger before shrine)
+  - story_ch4_linger_awakening: Ling'er awakens Nüwa power after flashback
+- Added guardian enemies to enemies.json:
+  - fire_guardian: HP400, Attack50, Defense25, Speed20, drops fire_pearl
+  - wind_guardian: HP350, Attack40, Defense20, Speed25, drops wind_pearl
+  - thunder_guardian: HP450, Attack55, Defense30, Speed22, drops thunder_pearl
+  - earth_guardian: HP500, Attack45, Defense35, Speed15, drops earth_pearl
+  - All guardians use canFlee: false for story battles
+- Added dialog sequences in DialogData.ts:
+  - miao_enter: Introduction to Miao territory
+  - miao_conflict_intro/black_leader/white_leader: Tribal conflict dialogs
+  - anu_join_intro/accept: Anu joining party dialogs
+  - pearl_fire/wind/thunder/earth_intro/obtained: Pearl collection dialogs
+  - miao_pearls_complete: Four pearls collected announcement
+  - linger_awakening_start/power/complete: Awakening sequence dialogs
+- Fixed story flow: enter_miao -> conflict -> anu_join -> pearl collection -> flashback -> awakening -> final_battle
+- Files changed:
+  - src/data/story.json (added 8 new story nodes, fixed triggers and node chains)
+  - src/data/DialogData.ts (added 18 new dialog sequences)
+  - src/data/enemies.json (added 4 pearl guardian bosses)
+  - ralph/prd.json (updated US-039 to passes: true)
+- **Learnings for future iterations:**
+  - Pearl guardians use pattern: `[element]_guardian` (e.g., `fire_guardian`)
+  - Story battles in maze levels trigger on enter_map with requiredFlags
+  - Flashback flow: all_pearls_collected -> spirit_pearls dialog -> pearls_ready -> flashback_trigger on shrine
+  - Awakening triggers on flashback_complete + all_pearls_collected flags
 ---
 
 ## Thu Apr 10 2026 - US-036
@@ -29,4 +101,108 @@ Started: Thu Apr  9 11:11:03 PM CST 2026
   - Player level scales with chapter (chapter * 5) for story battles
   - Cast JSON imports through `unknown` when fields might be null (e.g., accessoryId: null)
   - Boss drops must reference existing items in items.json
+---
+
+## Fri Apr 10 2026 - US-039
+- Implemented 苗族篇剧情 (Miao Chapter Story)
+- Added story nodes to story.json:
+  - story_ch4_miao_conflict: Black/White Miao tribal conflict discovery
+  - story_ch4_anu_join: Anu joining party event
+  - story_ch4_collect_fire_pearl: Fire pearl collection in sacred_maze_1
+  - story_ch4_collect_wind_pearl: Wind pearl collection in sacred_maze_2
+  - story_ch4_collect_thunder_pearl: Thunder pearl collection in sacred_maze_3
+  - story_ch4_collect_earth_pearl: Earth pearl collection (trigger before shrine)
+  - story_ch4_linger_awakening: Ling'er awakens Nüwa power after flashback
+- Added guardian enemies to enemies.json:
+  - fire_guardian: HP400, Attack50, Defense25, Speed20, drops fire_pearl
+  - wind_guardian: HP350, Attack40, Defense20, Speed25, drops wind_pearl
+  - thunder_guardian: HP450, Attack55, Defense30, Speed22, drops thunder_pearl
+  - earth_guardian: HP500, Attack45, Defense35, Speed15, drops earth_pearl
+  - All guardians use canFlee: false for story battles
+- Added dialog sequences in DialogData.ts:
+  - miao_enter: Introduction to Miao territory
+  - miao_conflict_intro/black_leader/white_leader: Tribal conflict dialogs
+  - anu_join_intro/accept: Anu joining party dialogs
+  - pearl_fire/wind/thunder/earth_intro/obtained: Pearl collection dialogs
+  - miao_pearls_complete: Four pearls collected announcement
+  - linger_awakening_start/power/complete: Awakening sequence dialogs
+- Fixed story flow: enter_miao -> conflict -> anu_join -> pearl collection -> flashback -> awakening -> final_battle
+- Files changed:
+  - src/data/story.json (added 8 new story nodes, fixed triggers and node chains)
+  - src/data/DialogData.ts (added 18 new dialog sequences)
+  - src/data/enemies.json (added 4 pearl guardian bosses)
+  - ralph/prd.json (updated US-039 to passes: true)
+- **Learnings for future iterations:**
+  - Pearl guardians use pattern: `[element]_guardian` (e.g., `fire_guardian`)
+  - Story battles in maze levels trigger on enter_map with requiredFlags
+  - Flashback flow: all_pearls_collected -> spirit_pearls dialog -> pearls_ready -> flashback_trigger on shrine
+  - Awakening triggers on flashback_complete + all_pearls_collected flags
+---
+
+## Fri Apr 10 2026 - US-038
+- Implemented 十年前回忆剧情 flashback story system
+- Added flashback story nodes to story.json:
+  - story_ch4_flashback_trigger: Triggered by entering sacred_shrine with pearls_ready flag
+  - story_ch4_flashback_wuhou: Meeting 巫后 (Witch Queen) in Nanzhao palace
+  - story_ch4_flashback_water_beast: Water beast seal event with screen effects
+  - story_ch4_flashback_return: Return to modern time after flashback
+- Created 南诏国 flashback location in maps.json:
+  - nanzhao_10_years location with 2 maps
+  - nanzhao_palace_10_years: Royal palace with 巫后, 南诏王, guards NPCs
+  - nanzhao_shrine_10_years: Shrine where water beast seal happens (storm weather)
+- Added dialog sequences in DialogData.ts:
+  - flashback_trigger_intro: Introduction to flashback trigger
+  - flashback_nanzhao_intro: Arriving in Nanzhao 10 years ago
+  - flashback_wuhou_meet: Meeting 巫后 who reveals she is Ling'er's mother
+  - flashback_water_beast_intro: Water beast awakening scene
+  - flashback_wuhou_seal: 巫后 using power to seal water beast
+  - flashback_wuhou_sacrifice: 巫后 sacrifice and handing over water_pearl
+  - flashback_return/aftermath: Return to present with Ling'er's reaction
+- Files changed:
+  - src/data/story.json (added 4 flashback story nodes)
+  - src/data/maps.json (added nanzhao_10_years location with 2 maps)
+  - src/data/DialogData.ts (added 10 flashback dialog sequences)
+  - ralph/prd.json (updated US-038 to passes: true)
+- **Learnings for future iterations:**
+  - Flashback story flow: trigger → map change → dialog sequence → return map change
+  - Use screen_effect for flashback transitions (fade to white for entering, fade to white for returning)
+  - GET_ITEM event can be triggered in dialog sequences via DialogEventType.GET_ITEM
+  - Story nodes can chain together with nextNode to create complex multi-step sequences
+  - Flashback maps use different color themes (E8D5B7/B8860B for palace, 4169E1/1E3A8A for shrine)
+---
+
+## Fri Apr 10 2026 - US-039
+- Implemented 苗族篇剧情 (Miao Chapter Story)
+- Added story nodes to story.json:
+  - story_ch4_miao_conflict: Black/White Miao tribal conflict discovery
+  - story_ch4_anu_join: Anu joining party event
+  - story_ch4_collect_fire_pearl: Fire pearl collection in sacred_maze_1
+  - story_ch4_collect_wind_pearl: Wind pearl collection in sacred_maze_2
+  - story_ch4_collect_thunder_pearl: Thunder pearl collection in sacred_maze_3
+  - story_ch4_collect_earth_pearl: Earth pearl collection (trigger before shrine)
+  - story_ch4_linger_awakening: Ling'er awakens Nüwa power after flashback
+- Added guardian enemies to enemies.json:
+  - fire_guardian: HP400, Attack50, Defense25, Speed20, drops fire_pearl
+  - wind_guardian: HP350, Attack40, Defense20, Speed25, drops wind_pearl
+  - thunder_guardian: HP450, Attack55, Defense30, Speed22, drops thunder_pearl
+  - earth_guardian: HP500, Attack45, Defense35, Speed15, drops earth_pearl
+  - All guardians use canFlee: false for story battles
+- Added dialog sequences in DialogData.ts:
+  - miao_enter: Introduction to Miao territory
+  - miao_conflict_intro/black_leader/white_leader: Tribal conflict dialogs
+  - anu_join_intro/accept: Anu joining party dialogs
+  - pearl_fire/wind/thunder/earth_intro/obtained: Pearl collection dialogs
+  - miao_pearls_complete: Four pearls collected announcement
+  - linger_awakening_start/power/complete: Awakening sequence dialogs
+- Fixed story flow: enter_miao -> conflict -> anu_join -> pearl collection -> flashback -> awakening -> final_battle
+- Files changed:
+  - src/data/story.json (added 8 new story nodes, fixed triggers and node chains)
+  - src/data/DialogData.ts (added 18 new dialog sequences)
+  - src/data/enemies.json (added 4 pearl guardian bosses)
+  - ralph/prd.json (updated US-039 to passes: true)
+- **Learnings for future iterations:**
+  - Pearl guardians use pattern: `[element]_guardian` (e.g., `fire_guardian`)
+  - Story battles in maze levels trigger on enter_map with requiredFlags
+  - Flashback flow: all_pearls_collected -> spirit_pearls dialog -> pearls_ready -> flashback_trigger on shrine
+  - Awakening triggers on flashback_complete + all_pearls_collected flags
 ---

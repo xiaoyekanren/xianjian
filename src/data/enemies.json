@@ -158,6 +158,87 @@
         { "itemId": "lingjian", "probability": 0.5 }
       ],
       "spriteKey": "enemy_boss_demon_king"
+    },
+    // US-039: Pearl Guardians
+    {
+      "id": "fire_guardian",
+      "name": "火灵守护者",
+      "displayName": "火灵守护者",
+      "description": "守护火灵珠的炎之精灵",
+      "category": "boss",
+      "hp": 400,
+      "maxHp": 400,
+      "attack": 50,
+      "defense": 25,
+      "speed": 20,
+      "luck": 15,
+      "expReward": 180,
+      "goldReward": 120,
+      "drops": [
+        { "itemId": "fire_pearl", "probability": 1.0 }
+      ],
+      "spriteKey": "enemy_fire_guardian",
+      "canFlee": false
+    },
+    {
+      "id": "wind_guardian",
+      "name": "风灵守护者",
+      "displayName": "风灵守护者",
+      "description": "守护风灵珠的风之精灵",
+      "category": "boss",
+      "hp": 350,
+      "maxHp": 350,
+      "attack": 40,
+      "defense": 20,
+      "speed": 25,
+      "luck": 18,
+      "expReward": 160,
+      "goldReward": 100,
+      "drops": [
+        { "itemId": "wind_pearl", "probability": 1.0 }
+      ],
+      "spriteKey": "enemy_wind_guardian",
+      "canFlee": false
+    },
+    {
+      "id": "thunder_guardian",
+      "name": "雷灵守护者",
+      "displayName": "雷灵守护者",
+      "description": "守护雷灵珠的雷之精灵",
+      "category": "boss",
+      "hp": 450,
+      "maxHp": 450,
+      "attack": 55,
+      "defense": 30,
+      "speed": 22,
+      "luck": 16,
+      "expReward": 200,
+      "goldReward": 150,
+      "drops": [
+        { "itemId": "thunder_pearl", "probability": 1.0 }
+      ],
+      "spriteKey": "enemy_thunder_guardian",
+      "canFlee": false
+    },
+    {
+      "id": "earth_guardian",
+      "name": "土灵守护者",
+      "displayName": "土灵守护者",
+      "description": "守护土灵珠的地之精灵",
+      "category": "boss",
+      "hp": 500,
+      "maxHp": 500,
+      "attack": 45,
+      "defense": 35,
+      "speed": 15,
+      "luck": 20,
+      "expReward": 220,
+      "goldReward": 180,
+      "drops": [
+        { "itemId": "earth_pearl", "probability": 1.0 }
+      ],
+      "spriteKey": "enemy_earth_guardian",
+      "canFlee": false
     }
   ],
   "towerEncounters": [

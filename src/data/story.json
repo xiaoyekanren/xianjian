@@ -538,7 +538,7 @@
       "triggers": [
         {
           "type": "enter_map",
-          "data": { "mapId": "white_miao_entrance" }
+          "data": { "mapId": "white_miao_main" }
         }
       ],
       "blockingNodes": ["story_ch3_yueru_sacrifice"],
@@ -558,7 +558,338 @@
       ],
       "priority": 100,
       "onCompleteFlags": ["entered_miao"],
+      "nextNode": "story_ch4_miao_conflict"
+    },
+    {
+      "id": "story_ch4_miao_conflict",
+      "chapter": 4,
+      "title": "苗族冲突",
+      "description": "了解黑苗族与白苗族之间的冲突",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "black_miao_main" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_enter_miao"],
+      "requiredFlags": ["entered_miao"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "miao_conflict_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "miao_conflict_black_leader" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "miao_conflict_white_leader" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "learned_miao_conflict", "flagValue": true }
+        }
+      ],
+      "priority": 95,
+      "onCompleteFlags": ["learned_miao_conflict"],
+      "nextNode": "story_ch4_anu_join"
+    },
+    {
+      "id": "story_ch4_anu_join",
+      "chapter": 4,
+      "title": "阿奴加入",
+      "description": "阿奴加入队伍协助收集灵珠",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "learned_miao_conflict", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch4_miao_conflict"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "anu_join_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "add_party",
+          "order": 2,
+          "data": { "characterId": "anu" }
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "anu_join_accept" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "anu_joined", "flagValue": true }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["anu_joined"],
+      "nextNode": "story_ch4_collect_fire_pearl"
+    },
+    {
+      "id": "story_ch4_collect_fire_pearl",
+      "chapter": 4,
+      "title": "收集火灵珠",
+      "description": "在圣地迷宫收集火灵珠",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "sacred_maze_1" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_anu_join"],
+      "requiredFlags": ["anu_joined"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "pearl_fire_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["fire_guardian"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "get_item",
+          "order": 3,
+          "data": { "itemId": "fire_pearl", "quantity": 1 }
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "pearl_fire_obtained" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "collected_fire_pearl", "flagValue": true }
+        }
+      ],
+      "priority": 85,
+      "onCompleteFlags": ["collected_fire_pearl"],
+      "nextNode": "story_ch4_collect_wind_pearl"
+    },
+    {
+      "id": "story_ch4_collect_wind_pearl",
+      "chapter": 4,
+      "title": "收集风灵珠",
+      "description": "在圣地迷宫收集风灵珠",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "sacred_maze_2" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_collect_fire_pearl"],
+      "requiredFlags": ["collected_fire_pearl"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "pearl_wind_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["wind_guardian"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "get_item",
+          "order": 3,
+          "data": { "itemId": "wind_pearl", "quantity": 1 }
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "pearl_wind_obtained" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "collected_wind_pearl", "flagValue": true }
+        }
+      ],
+      "priority": 80,
+      "onCompleteFlags": ["collected_wind_pearl"],
+      "nextNode": "story_ch4_collect_thunder_pearl"
+    },
+    {
+      "id": "story_ch4_collect_thunder_pearl",
+      "chapter": 4,
+      "title": "收集雷灵珠",
+      "description": "在圣地迷宫收集雷灵珠",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "sacred_maze_3" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_collect_wind_pearl"],
+      "requiredFlags": ["collected_wind_pearl"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "pearl_thunder_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["thunder_guardian"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "get_item",
+          "order": 3,
+          "data": { "itemId": "thunder_pearl", "quantity": 1 }
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "pearl_thunder_obtained" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "collected_thunder_pearl", "flagValue": true }
+        }
+      ],
+      "priority": 75,
+      "onCompleteFlags": ["collected_thunder_pearl"],
+      "nextNode": "story_ch4_collect_earth_pearl"
+    },
+    {
+      "id": "story_ch4_collect_earth_pearl",
+      "chapter": 4,
+      "title": "收集土灵珠",
+      "description": "在圣地神殿收集土灵珠",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "sacred_maze_3" }
+        },
+        {
+          "type": "flag_set",
+          "data": { "flagName": "collected_thunder_pearl", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch4_collect_thunder_pearl"],
+      "requiredFlags": ["collected_thunder_pearl"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "pearl_earth_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["earth_guardian"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "get_item",
+          "order": 3,
+          "data": { "itemId": "earth_pearl", "quantity": 1 }
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "pearl_earth_obtained" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "collected_earth_pearl", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 6,
+          "data": { "flagName": "all_pearls_collected", "flagValue": true }
+        }
+      ],
+      "priority": 70,
+      "onCompleteFlags": ["collected_earth_pearl", "all_pearls_collected"],
       "nextNode": "story_ch4_spirit_pearls"
+    },
+    {
+      "id": "story_ch4_linger_awakening",
+      "chapter": 4,
+      "title": "灵儿觉醒",
+      "description": "灵儿觉醒女娲之力",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "flashback_complete", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch4_flashback_return"],
+      "requiredFlags": ["flashback_complete", "all_pearls_collected"],
+      "events": [
+        {
+          "type": "screen_effect",
+          "order": 1,
+          "data": { "effectType": "flash", "effectColor": "#FFD700", "effectDuration": 2000 }
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "linger_awakening_start" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "linger_awakening_power" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 4,
+          "data": { "effectType": "flash", "effectColor": "#00FFFF", "effectDuration": 1500 }
+        },
+        {
+          "type": "dialog",
+          "order": 5,
+          "data": { "dialogId": "linger_awakening_complete" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 6,
+          "data": { "flagName": "linger_awakened", "flagValue": true }
+        }
+      ],
+      "priority": 60,
+      "onCompleteFlags": ["linger_awakened"],
+      "nextNode": "story_ch5_final_battle"
     },
     {
       "id": "story_ch4_spirit_pearls",
@@ -571,8 +902,8 @@
           "data": { "flagName": "all_pearls_collected", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch4_enter_miao"],
-      "requiredFlags": ["entered_miao"],
+      "blockingNodes": ["story_ch4_collect_earth_pearl"],
+      "requiredFlags": ["all_pearls_collected"],
       "events": [
         {
           "type": "dialog",
@@ -584,16 +915,198 @@
           "type": "set_flag",
           "order": 2,
           "data": { "flagName": "pearls_ready", "flagValue": true }
-        },
-        {
-          "type": "chapter_change",
-          "order": 3,
-          "data": { "chapter": 5 }
         }
       ],
       "priority": 90,
-      "onCompleteFlags": ["pearls_ready", "ch4_complete"],
-      "nextNode": "story_ch5_final_battle"
+      "onCompleteFlags": ["pearls_ready"],
+      "nextNode": "story_ch4_flashback_trigger"
+    },
+    {
+      "id": "story_ch4_flashback_trigger",
+      "chapter": 4,
+      "title": "时光回溯",
+      "description": "进入圣地神殿触发时光回溯",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "sacred_shrine" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_spirit_pearls"],
+      "requiredFlags": ["pearls_ready"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "flashback_trigger_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 2,
+          "data": { "effectType": "fade", "effectColor": "#FFFFFF", "effectDuration": 2000 }
+        },
+        {
+          "type": "change_map",
+          "order": 3,
+          "data": { "mapId": "nanzhao_palace_10_years", "x": 10, "y": 8 }
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "flashback_active", "flagValue": true }
+        }
+      ],
+      "priority": 85,
+      "onCompleteFlags": ["flashback_active"],
+      "nextNode": "story_ch4_flashback_wuhou"
+    },
+    {
+      "id": "story_ch4_flashback_wuhou",
+      "chapter": 4,
+      "title": "巫后对话",
+      "description": "十年前南诏国遇见巫后",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "nanzhao_palace_10_years" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_flashback_trigger"],
+      "requiredFlags": ["flashback_active"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "flashback_nanzhao_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "flashback_wuhou_meet" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "met_wuhou", "flagValue": true }
+        }
+      ],
+      "priority": 80,
+      "onCompleteFlags": ["met_wuhou"],
+      "nextNode": "story_ch4_flashback_water_beast"
+    },
+    {
+      "id": "story_ch4_flashback_water_beast",
+      "chapter": 4,
+      "title": "水魔兽封印",
+      "description": "巫后封印水魔兽牺牲",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "met_wuhou", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch4_flashback_wuhou"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "flashback_water_beast_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 2,
+          "data": { "effectType": "shake", "effectDuration": 1500 }
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "flashback_wuhou_seal" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 4,
+          "data": { "effectType": "flash", "effectColor": "#4169E1", "effectDuration": 1000 }
+        },
+        {
+          "type": "dialog",
+          "order": 5,
+          "data": { "dialogId": "flashback_wuhou_sacrifice" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "get_item",
+          "order": 6,
+          "data": { "itemId": "water_pearl", "quantity": 1 }
+        },
+        {
+          "type": "set_flag",
+          "order": 7,
+          "data": { "flagName": "water_beast_sealed", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 8,
+          "data": { "flagName": "collected_water_pearl", "flagValue": true }
+        }
+      ],
+      "priority": 75,
+      "onCompleteFlags": ["water_beast_sealed", "collected_water_pearl"],
+      "nextNode": "story_ch4_flashback_return"
+    },
+    {
+      "id": "story_ch4_flashback_return",
+      "chapter": 4,
+      "title": "返回现代",
+      "description": "时光回溯结束，返回现代",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "water_beast_sealed", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch4_flashback_water_beast"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "flashback_return" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 2,
+          "data": { "effectType": "fade", "effectColor": "#FFFFFF", "effectDuration": 2000 }
+        },
+        {
+          "type": "change_map",
+          "order": 3,
+          "data": { "mapId": "sacred_shrine", "x": 10, "y": 7 }
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "flashback_aftermath" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "flashback_complete", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 6,
+          "data": { "chapter": 5 }
+        }
+      ],
+      "priority": 70,
+      "onCompleteFlags": ["flashback_complete", "ch4_complete"],
+      "nextNode": "story_ch4_linger_awakening"
     },
     {
       "id": "story_ch5_final_battle",
@@ -606,8 +1119,8 @@
           "data": { "mapId": "miao_sacred_altar" }
         }
       ],
-      "blockingNodes": ["story_ch4_spirit_pearls"],
-      "requiredFlags": ["pearls_ready"],
+      "blockingNodes": ["story_ch4_linger_awakening"],
+      "requiredFlags": ["linger_awakened"],
       "events": [
         {
           "type": "dialog",

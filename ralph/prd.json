@@ -608,8 +608,8 @@
         "Typecheck passes"
       ],
       "priority": 38,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Added flashback trigger in story.json (story_ch4_flashback_trigger through story_ch4_flashback_return nodes), created nanzhao_10_years location with nanzhao_palace_10_years and nanzhao_shrine_10_years maps, added dialog sequences for 巫后/Water Beast sealing/return scenes in DialogData.ts, water_pearl item acquisition via GET_ITEM event, screen effects for flashback transitions"
     },
     {
       "id": "US-039",
@@ -623,8 +623,8 @@
         "Typecheck passes"
       ],
       "priority": 39,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Added story nodes for Black/White Miao conflict (miao_conflict_intro, miao_conflict_black_leader, miao_conflict_white_leader), Anu joining party (story_ch4_anu_join), individual pearl collection nodes for fire/wind/thunder/earth pearls in sacred maze levels, Ling'er awakening story node (story_ch4_linger_awakening). Added guardian enemies (fire_guardian, wind_guardian, thunder_guardian, earth_guardian) with appropriate boss-level stats. Added dialog sequences for all Miao chapter events."
     },
     {
       "id": "US-040",

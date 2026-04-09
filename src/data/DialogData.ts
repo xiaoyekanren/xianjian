@@ -1929,6 +1929,816 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // US-038: 十年前回忆剧情 - Flashback dialogs
+  {
+    id: 'flashback_trigger_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你们来到了苗族圣地神殿，五灵珠的力量在此汇聚...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_trigger_intro_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这里...我感觉到一股熟悉的力量...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'flashback_trigger_intro_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '似乎有什么记忆正在苏醒...',
+        expression: Expression.THINKING,
+        nextDialogId: 'flashback_trigger_intro_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '灵珠的光芒闪烁，时光的力量开始涌动...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'flashback_nanzhao_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '一阵光芒过后，你发现自己来到了一个陌生的地方...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_nanzhao_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这是...哪里？为什么周围的景象如此不同？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'flashback_nanzhao_intro_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '这里是十年前的南诏国...女娲后人的故乡。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_nanzhao_intro_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '十年前？难道我穿越了时光？',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'flashback_wuhou_meet',
+    lines: [
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '你是...来自未来的旅人？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'flashback_wuhou_meet_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '您是...巫后？传说中的女娲后人？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_wuhou_meet_3',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '是的，我是南诏国的巫后，也是灵儿的母亲。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_wuhou_meet_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿的母亲？！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'flashback_wuhou_meet_5',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '你来自未来，一定是为了某个重要的事情...',
+        expression: Expression.THINKING,
+        nextDialogId: 'flashback_wuhou_meet_6',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '让我带你去看一看即将发生的事...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'wuhou_intro',
+    lines: [
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '我是南诏国的巫后，守护着这片土地的安宁。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'wuhou_intro_2',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '但最近，一股邪恶的力量正在逼近...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'nanzhao_king_intro',
+    lines: [
+      {
+        speakerId: 'nanzhao_king',
+        speakerName: '南诏王',
+        text: '我的王国是这片土地上最繁荣的国家。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_king_intro_2',
+      },
+      {
+        speakerId: 'nanzhao_king',
+        speakerName: '南诏王',
+        text: '但有巫后守护着我们，任何邪恶都无法入侵。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'nanzhao_guard_intro',
+    lines: [
+      {
+        speakerId: 'nanzhao_guard',
+        speakerName: '侍卫',
+        text: '你好，外乡人。这里是南诏国王宫。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_guard_intro_2',
+      },
+      {
+        speakerId: 'nanzhao_guard',
+        speakerName: '侍卫',
+        text: '王宫内有巫后大人守护，十分安全。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'flashback_water_beast_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '巫后带领你来到了南诏国的圣地...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_water_beast_intro_2',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '这里...就是水魔兽将要苏醒的地方。',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_water_beast_intro_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '水魔兽？那是什么？',
+        expression: Expression.THINKING,
+        nextDialogId: 'flashback_water_beast_intro_4',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '水魔兽是上古时代的凶兽，被封印在此地。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_water_beast_intro_5',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '但拜月教主正在试图解开它的封印...',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'flashback_wuhou_seal',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '突然，天空乌云密布，水魔兽开始苏醒！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_wuhou_seal_2',
+      },
+      {
+        speakerId: 'water_beast',
+        speakerName: '水魔兽',
+        text: '吼！！！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'flashback_wuhou_seal_3',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '不好！水魔兽已经开始苏醒了！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'flashback_wuhou_seal_4',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '我必须用尽所有力量重新封印它！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'flashback_wuhou_seal_5',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '水灵珠...请赐予我力量！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_wuhou_seal_6',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '巫后聚集全身力量，与水灵珠融为一体...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'flashback_wuhou_sacrifice',
+    lines: [
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '水魔兽，接受女娲后人的封印吧！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'flashback_wuhou_sacrifice_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '一道蓝光从天而降，水魔兽被重新封印！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_wuhou_sacrifice_3',
+      },
+      {
+        speakerId: 'water_beast',
+        speakerName: '水魔兽',
+        text: '吼...！',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_wuhou_sacrifice_4',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '逍遥...请收下这颗水灵珠...',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_wuhou_sacrifice_5',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '这是我...留给灵儿...最后的遗产...',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_wuhou_sacrifice_6',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '巫后...！',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_wuhou_sacrifice_7',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '巫后将水灵珠交给李逍遥，她的身体渐渐消失...',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.GET_ITEM, data: { itemId: 'water_pearl', quantity: 1 } },
+      },
+    ],
+  },
+  {
+    id: 'flashback_water_beast_seal_scene',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你来到了封印水魔兽的核心位置...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_water_beast_seal_scene_2',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '这里就是我将要封印水魔兽的地方...',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_water_beast_seal_scene_3',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '你必须亲眼见证这一切...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'flashback_return',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '时光回溯的力量开始消退...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_return_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '巫后...她的牺牲...我终于明白了。',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_return_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '水灵珠...我会用它来完成使命。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_return_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '光芒再次闪烁，你即将返回现代...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'flashback_aftermath',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '时光回溯结束，你回到了苗族圣地神殿。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_aftermath_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥...我刚才感觉到...母亲的气息...',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_aftermath_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿...我见到了你的母亲，巫后大人。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_aftermath_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '母亲...她为了封印水魔兽，牺牲了自己...',
+        expression: Expression.SAD,
+        nextDialogId: 'flashback_aftermath_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥，水灵珠...是母亲留给我的遗产。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'flashback_aftermath_6',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '是的，我们现在已经集齐了五灵珠！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'flashback_aftermath_7',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '五灵珠集齐，灵儿的力量开始觉醒...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // US-039: Miao Chapter dialogs
+  {
+    id: 'miao_enter',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你踏入了苗疆的土地，空气中弥漫着神秘的气息。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_enter_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这里就是苗疆了...我们要在这里收集五灵珠。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_enter_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥，我感觉到...这里的力量与我血脉相连。',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'miao_conflict_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你来到了黑苗族的聚居地，感受到两族之间紧张的氛围。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_conflict_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '黑苗族和白苗族之间似乎有很大的矛盾...',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'miao_conflict_black_leader',
+    lines: [
+      {
+        speakerId: 'black_miao_leader',
+        speakerName: '黑苗族首领',
+        text: '外乡人，你来这里做什么？',
+        expression: Expression.ANGRY,
+        nextDialogId: 'miao_conflict_black_leader_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '首领大人，我们是为收集五灵珠而来，并无恶意。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_conflict_black_leader_3',
+      },
+      {
+        speakerId: 'black_miao_leader',
+        speakerName: '黑苗族首领',
+        text: '灵珠...那是我们苗族的圣物！你们外乡人凭什么拿走？',
+        expression: Expression.ANGRY,
+        nextDialogId: 'miao_conflict_black_leader_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '首领大人...我是女娲的后人，灵珠与我的血脉相连。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_conflict_black_leader_5',
+      },
+      {
+        speakerId: 'black_miao_leader',
+        speakerName: '黑苗族首领',
+        text: '女娲后人...？如果是真的，那就去圣地证明你的力量！',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'miao_conflict_white_leader',
+    lines: [
+      {
+        speakerId: 'white_miao_leader',
+        speakerName: '白苗族首领',
+        text: '我听说了你们的来意。既然是女娲后人，我们愿意帮助你们。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'miao_conflict_white_leader_2',
+      },
+      {
+        speakerId: 'white_miao_leader',
+        speakerName: '白苗族首领',
+        text: '圣地中藏有火、风、雷、土四颗灵珠，水灵珠则在时光回溯中获得。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_conflict_white_leader_3',
+      },
+      {
+        speakerId: 'white_miao_leader',
+        speakerName: '白苗族首领',
+        text: '我的女儿阿奴可以引导你们进入圣地。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'anu_join_intro',
+    lines: [
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '嘿！我是阿奴，白苗族首领的女儿！听说你们要收集灵珠？',
+        expression: Expression.HAPPY,
+        nextDialogId: 'anu_join_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '阿奴？你就是白苗族首领的女儿？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'anu_join_intro_3',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '对啊！我从小就学会了很多苗族的神仙术，可以帮你们打败守护灵珠的怪物！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'anu_join_intro_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '阿奴妹妹...谢谢你愿意帮助我们。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'anu_join_accept',
+    lines: [
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '好！我们一起去圣地，收集五灵珠！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'anu_join_accept_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '阿奴加入了队伍。',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.ADD_PARTY_MEMBER, data: { characterId: 'anu' } },
+      },
+    ],
+  },
+  {
+    id: 'pearl_fire_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你来到了圣地迷宫的第一层，感受到炙热的气息。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_fire_intro_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '这里就是火灵珠的守护地！小心，火之守护者很强！',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'pearl_fire_obtained',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '火之守护者被击败！你获得了火灵珠！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_fire_obtained_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '第一颗灵珠到手！继续前进！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'pearl_wind_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '圣地迷宫第二层，狂风呼啸。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_wind_intro_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '风灵珠就在这里...我能感觉到它的气息。',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'pearl_wind_obtained',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '风之守护者被击败！你获得了风灵珠！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_wind_obtained_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '两颗了！还差三颗！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'pearl_thunder_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '圣地迷宫第三层，雷声轰鸣。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_thunder_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '雷灵珠...这里的守护者肯定更强！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'pearl_thunder_obtained',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '雷之守护者被击败！你获得了雷灵珠！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_thunder_obtained_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '三颗灵珠...还差土灵珠和水灵珠。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'pearl_earth_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '圣地迷宫最深处，大地之力涌动。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_earth_intro_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '土灵珠就在这里！这是我们最后的挑战！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'pearl_earth_obtained',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '土之守护者被击败！你获得了土灵珠！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'pearl_earth_obtained_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '四颗灵珠到手！现在去神殿寻找水灵珠！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'miao_pearls_complete',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '你已经收集了火、风、雷、土四颗灵珠！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_pearls_complete_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥...我还感觉到水灵珠的气息，它似乎在...过去。',
+        expression: Expression.THINKING,
+        nextDialogId: 'miao_pearls_complete_3',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '圣地神殿有时光回溯的力量！也许在那里可以找到水灵珠！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'miao_pearls_complete_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '好！我们去圣地神殿！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'linger_awakening_start',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '五灵珠齐聚，灵儿身上的女娲之力开始觉醒！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'linger_awakening_start_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '啊...我的身体...感觉有什么力量在涌动...',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'linger_awakening_power',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '五灵珠的光芒汇聚在灵儿身上，她的女娲血脉彻底觉醒！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'linger_awakening_power_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这是...母亲的力量...女娲神力！我现在可以...与拜月教主一战了！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'linger_awakening_complete',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥，阿奴...我已经觉醒了女娲之力。让我们一起去打败拜月教主！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'linger_awakening_complete_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿...太好了！我们一起去！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'linger_awakening_complete_3',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '终于可以决战了！拜月教主，等着我们！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
 ];
 
 /**
