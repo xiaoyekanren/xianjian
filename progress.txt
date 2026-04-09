@@ -605,3 +605,26 @@
 - BattleResult provides raw data, external systems apply rewards
 - Level-up animations can be added to BattleScene for visual feedback
 ---
+## 2026-04-10 21:00 - US-026
+- Implemented affection UI with AffectionScene.ts
+- Three character affection panels: 赵灵儿, 林月如, 阿奴
+- Progress bars showing 0-100 affection value with character color
+- Level display with color-coded level names (冷淡/普通/友好/亲密/深爱)
+- Next level indicator showing required threshold
+- Combo skill panel showing all 6 skills (剑舞乾坤/仙魔同归/灵神风暴/影刃绝杀/四方合击/女娲神威)
+- Unlock status display with requirement breakdown for locked skills
+- Character-specific colors: 赵灵儿(cyan), 林月如(pink), 阿奴(green)
+- ESC key to close, mouse click support
+
+**Files changed:**
+- src/scenes/AffectionScene.ts (created - affection UI scene)
+- src/core/Game.ts (updated - registered AffectionScene)
+- ralph/prd.json (updated US-026 to passes: true)
+
+**Learnings for future iterations:**
+- AffectionScene receives AffectionSystem in config for data access
+- Level colors: 冷淡(gray), 普通(white), 友好(green), 亲密(orange), 深爱(pink)
+- COMBO_SKILL_REQUIREMENTS imported from AffectionSystem.ts
+- isComboSkillUnlocked checks requirements for each skill
+- getAffectionProgress provides detailed info for UI display
+---

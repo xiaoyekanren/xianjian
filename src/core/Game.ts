@@ -8,7 +8,7 @@ import { SceneManager } from './SceneManager';
 import { InputManager } from './InputManager';
 import { AudioManager } from './AudioManager';
 
-// Import scenes for US-003, US-004, US-005, US-006, US-015, US-017, and US-019
+// Import scenes for US-003, US-004, US-005, US-006, US-015, US-017, US-019, and US-026
 import { BootScene } from '@/scenes/BootScene';
 import { MainMenuScene } from '@/scenes/MainMenuScene';
 import { WorldScene } from '@/scenes/WorldScene';
@@ -17,6 +17,7 @@ import { BattleScene } from '@/scenes/BattleScene';
 import { InventoryScene } from '@/scenes/InventoryScene';
 import { SaveLoadScene } from '@/scenes/SaveLoadScene';
 import { ShopScene } from '@/scenes/ShopScene';
+import { AffectionScene } from '@/scenes/AffectionScene';
 
 /**
  * Game configuration interface
@@ -73,6 +74,7 @@ export class Game {
       InventoryScene,
       SaveLoadScene,
       ShopScene,
+      AffectionScene,
     ];
 
     const phaserConfig: Phaser.Types.Core.GameConfig = {
