@@ -234,6 +234,7 @@ export class WorldScene extends Phaser.Scene {
 
   /**
    * Create tileset texture dynamically with warm colors for Yuhang Town
+   * or mystical colors for Fairy Island (青绿, 淡蓝)
    */
   private createTilesetTexture(colorTheme: { primary: string; secondary: string; accent: string }): void {
     const graphics = this.add.graphics();
@@ -243,7 +244,13 @@ export class WorldScene extends Phaser.Scene {
     const wallColor = Phaser.Display.Color.HexStringToColor(colorTheme.secondary).color;
     const doorColor = Phaser.Display.Color.HexStringToColor(colorTheme.primary).color;
 
-    // Tile 0: Ground (walkable) - warm light brown/tan (暖黄色调)
+    // Determine if this is a mystical location (Fairy Island) based on color theme
+    // Fairy Island uses cyan/teal colors (#4ECDC4, #2E8B57, #B0E0E6)
+    const isMystical = colorTheme.primary === '#4ECDC4' || colorTheme.primary === '#00BCD4';
+    const waterColor = isMystical ? 0x4ECDC4 : 0x5588aa; // Cyan for mystical, blue for normal
+    const waterShimmer = isMystical ? 0x80DEEA : 0x6699bb;
+
+    // Tile 0: Ground (walkable) - warm light brown/tan or mystical light teal
     graphics.fillStyle(groundColor);
     graphics.fillRect(0, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
     // Add subtle texture pattern
@@ -251,21 +258,21 @@ export class WorldScene extends Phaser.Scene {
     graphics.fillRect(2, 2, DEFAULT_TILE_SIZE / 2 - 2, DEFAULT_TILE_SIZE / 2 - 2);
     graphics.fillRect(DEFAULT_TILE_SIZE / 2 + 2, DEFAULT_TILE_SIZE / 2 + 2, DEFAULT_TILE_SIZE / 2 - 4, DEFAULT_TILE_SIZE / 2 - 4);
 
-    // Tile 1: Wall (impassable) - warm brown (棕色)
+    // Tile 1: Wall (impassable) - warm brown or mystical green
     graphics.fillStyle(wallColor);
     graphics.fillRect(DEFAULT_TILE_SIZE, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
     graphics.fillStyle(wallColor + 0x222222);
     graphics.fillRect(DEFAULT_TILE_SIZE + 4, 4, DEFAULT_TILE_SIZE - 8, DEFAULT_TILE_SIZE - 8);
 
-    // Tile 2: Water (impassable) - muted blue-green
-    graphics.fillStyle(0x5588aa);
+    // Tile 2: Water (impassable) - mystical cyan or normal blue-green
+    graphics.fillStyle(waterColor);
     graphics.fillRect(DEFAULT_TILE_SIZE * 2, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
     // Add water shimmer effect
-    graphics.fillStyle(0x6699bb);
+    graphics.fillStyle(waterShimmer);
     graphics.fillRect(DEFAULT_TILE_SIZE * 2 + 6, 6, 8, 4);
     graphics.fillRect(DEFAULT_TILE_SIZE * 2 + 18, 18, 6, 4);
 
-    // Tile 3: Door - warm gold/brown frame
+    // Tile 3: Door - warm gold/brown frame or mystical cyan frame
     graphics.fillStyle(doorColor);
     graphics.fillRect(DEFAULT_TILE_SIZE * 3, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
     graphics.fillStyle(0x442200);
@@ -273,7 +280,7 @@ export class WorldScene extends Phaser.Scene {
     graphics.lineStyle(2, doorColor);
     graphics.strokeRect(DEFAULT_TILE_SIZE * 3 + 6, 4, DEFAULT_TILE_SIZE - 12, DEFAULT_TILE_SIZE - 8);
 
-    // Tile 4: Path - lighter warm ground
+    // Tile 4: Path - lighter ground
     graphics.fillStyle(groundColor + 0x0a0a0a);
     graphics.fillRect(DEFAULT_TILE_SIZE * 4, 0, DEFAULT_TILE_SIZE, DEFAULT_TILE_SIZE);
     graphics.lineStyle(1, groundColor - 0x111111);
@@ -322,7 +329,7 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /**
-   * Create overlay tileset texture (trees, decorations)
+   * Create overlay tileset texture (trees, decorations, lotus flowers)
    */
   private createOverlayTilesetTexture(colorTheme: { primary: string; secondary: string; accent: string }): void {
     const graphics = this.add.graphics();
@@ -341,6 +348,24 @@ export class WorldScene extends Phaser.Scene {
     graphics.fillStyle(0x55aa55);
     graphics.fillCircle(DEFAULT_TILE_SIZE * 7 + 12, 14, 6);
     graphics.fillCircle(DEFAULT_TILE_SIZE * 7 + 20, 14, 6);
+
+    // Tile 9: Lotus flower - for Fairy Island ponds (青绿, 粉色)
+    // Lotus pad (green)
+    graphics.fillStyle(0x2E8B57);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 9 + 16, 20, 10);
+    graphics.fillStyle(0x3CB371);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 9 + 12, 18, 6);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 9 + 20, 18, 6);
+    // Lotus petals (pink)
+    graphics.fillStyle(0xFFB6C1);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 9 + 16, 12, 5);
+    graphics.fillStyle(0xFFC0CB);
+    graphics.fillEllipse(DEFAULT_TILE_SIZE * 9 + 12, 14, 4, 6);
+    graphics.fillEllipse(DEFAULT_TILE_SIZE * 9 + 20, 14, 4, 6);
+    graphics.fillEllipse(DEFAULT_TILE_SIZE * 9 + 16, 8, 4, 5);
+    // Lotus center (yellow)
+    graphics.fillStyle(0xFFD700);
+    graphics.fillCircle(DEFAULT_TILE_SIZE * 9 + 16, 12, 2);
 
     // Tile 10: Chest - golden treasure box
     graphics.fillStyle(Phaser.Display.Color.HexStringToColor(colorTheme.primary).color);

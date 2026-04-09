@@ -729,3 +729,33 @@
 - Map transitions are defined in maps.json transitions array
 - NPCSpawnData includes direction and movementType fields
 ---
+## 2026-04-10 23:50 - US-030
+- Implemented Fairy Island (仙灵岛) maze maps with mystical atmosphere
+- Enhanced xianling_entrance: water pools, fog environment, mystical trees
+- Implemented xianling_maze_1: 25x20 maze with paths, walls, water obstacles
+- Created xianling_pool: lotus pond (荷花池) where Zhao Ling'er appears
+- Added Zhao Ling'er NPC at the pool with meet_linger_intro dialog
+- Created meet_linger_cutscene dialog: player meets Zhao Ling'er at the pool
+  - Dialog with choices: "多谢姑娘相助" vs "姑娘是...仙女吗？"
+  - Sets 'met_linger' story flag for story progression
+- Updated WorldScene with mystical color theme support:
+  - Cyan/teal water (青绿 #4ECDC4) for Fairy Island maps
+  - Light blue background (淡蓝 #E0F7FA)
+  - Added lotus flower tile (9) in overlay layer
+- Map transitions: entrance ↔ maze ↔ pool chain
+- Battle event trigger at maze (xianling_maze_monsters_1)
+- Treasure chest event at maze (xianling_maze_chest_1)
+
+**Files changed:**
+- src/data/maps.json (updated xianling_entrance, xianling_maze_1, xianling_pool)
+- src/data/DialogData.ts (added Fairy Island dialogs)
+- src/scenes/WorldScene.ts (updated tileset for mystical theme, added lotus flower)
+- ralph/prd.json (updated US-030 to passes: true)
+
+**Learnings for future iterations:**
+- Mystical locations use colorTheme.primary === '#4ECDC4' or '#00BCD4' to detect special rendering
+- Lotus flower tile (9) placed in overlay layer for pond decoration
+- JSON tile arrays must have exact dimensions matching map width
+- Story flags (met_linger, linger_helps) track story progression
+- Dialog choices can set flags via DialogEventType.SET_FLAG
+---

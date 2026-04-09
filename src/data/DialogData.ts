@@ -321,6 +321,159 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // Fairy Island dialogs - US-030
+  {
+    id: 'xianling_arrive',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '你来到了传说中的仙灵岛...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'xianling_arrive_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '这里雾气缭绕，灵气充盈，仿佛与世隔绝的仙境。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'xianling_arrive_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这就是仙灵岛吗...真美啊。',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'xianling_arrive_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '听说这里有仙女居住，不知道是不是真的...',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'meet_linger_cutscene',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '你穿过荷花池，看到前方有一位少女...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'meet_linger_cutscene_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '她肌肤胜雪，容颜如玉，仿佛不食人间烟火的仙女。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'meet_linger_cutscene_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '啊！你是谁？怎么会在这里？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'meet_linger_cutscene_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '在下李逍遥，从余杭镇来此寻找仙药...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'meet_linger_cutscene_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '仙药？你是为了救治你婶婶来的吗？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'meet_linger_cutscene_6',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '正是！姑娘如何得知？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'meet_linger_cutscene_7',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我...我只是感觉到了你的善意。',
+        expression: Expression.SHY,
+        nextDialogId: 'meet_linger_cutscene_8',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '既然你是为了救人而来，我可以帮你。',
+        expression: Expression.NORMAL,
+        choices: [
+          {
+            text: '多谢姑娘相助！',
+            nextDialogId: 'meet_linger_help',
+            event: { type: DialogEventType.SET_FLAG, data: { flagName: 'linger_helps', flagValue: true } },
+          },
+          {
+            text: '姑娘是...仙女吗？',
+            nextDialogId: 'meet_linger_fairy',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'meet_linger_help',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '跟我来吧，我带你去见姥姥。',
+        expression: Expression.HAPPY,
+        event: { type: DialogEventType.SET_FLAG, data: { flagName: 'met_linger', flagValue: true } },
+      },
+    ],
+  },
+  {
+    id: 'meet_linger_fairy',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我...我只是这里的守护者之一。',
+        expression: Expression.SHY,
+        nextDialogId: 'meet_linger_fairy_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '走吧，我带你去见姥姥，她会帮你的。',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.SET_FLAG, data: { flagName: 'met_linger', flagValue: true } },
+      },
+    ],
+  },
+  {
+    id: 'meet_linger_intro',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '你...还在这里啊。',
+        expression: Expression.SHY,
+        nextDialogId: 'meet_linger_intro_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '姥姥说，如果你需要帮助，可以随时找她。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
   // Original demo dialogs
   {
     id: 'dialog_villager_1',
