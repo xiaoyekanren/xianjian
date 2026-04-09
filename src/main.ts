@@ -1,32 +1,12 @@
-import Phaser from 'phaser';
+/**
+ * Main entry point for Chinese Paladin Modern Remake
+ * 仙剑奇侠传现代重制版
+ */
 
-// Game configuration for Chinese Paladin Modern Remake
-const config: Phaser.Types.Core.GameConfig = {
-  type: Phaser.AUTO,
-  parent: 'game-container',
-  width: 1920,
-  height: 1080,
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  backgroundColor: '#2d2d44',
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { x: 0, y: 0 },
-      debug: false,
-    },
-  },
-  scene: [],
-  render: {
-    pixelArt: false,
-    antialias: true,
-  },
-};
+import { Game } from './core/Game';
 
-// Initialize the game
-const game = new Phaser.Game(config);
+// Initialize the game with default configuration
+const game = new Game();
 
-// Export for potential debugging
+// Export for potential debugging and external access
 export { game };

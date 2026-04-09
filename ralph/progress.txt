@@ -39,6 +39,25 @@ Ready to begin. Run ralph loop to start autonomous execution.
 
 ---
 
+## 2026-04-09 23:XX - US-002
+
+- Implemented Game main controller with initialization and lifecycle management
+- Implemented SceneManager with scene switching logic, transitions, and history tracking
+- Implemented InputManager with keyboard/touch input handling and action dispatching
+- Implemented AudioManager with BGM/SFX/voice playback, volume control, and crossfade
+- TypeScript compilation and typecheck passes
+- Dev server starts successfully on port 3000
+- Files changed: src/core/Game.ts, src/core/SceneManager.ts, src/core/InputManager.ts, src/core/AudioManager.ts, src/main.ts
+
+**Learnings for future iterations:**
+- Phaser 3.80.1 BaseSound doesn't have volume property directly - need to cast to WebAudioSound for setVolume
+- Use scene.input.on('pointerdown/pointerup') for touch input, not scene.input.touch
+- Scene manager uses 'run' for overlay scenes, not 'launch'
+- AudioManager and InputManager don't need Phaser.Game instance - they work with scene context
+- SceneManager supports scene history for navigation (goBack functionality)
+
+---
+
 ## Notes
 
 - 53 user stories total
