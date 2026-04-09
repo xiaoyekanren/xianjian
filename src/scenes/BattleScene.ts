@@ -1208,14 +1208,28 @@ export class BattleScene extends Phaser.Scene {
 
     if (result) {
       if (result.victory) {
-        this.showMessage(`战斗胜利！获得 ${result.expReward} 经验值，${result.goldReward} 金钱`);
+        // Build victory message
+        let message = `战斗胜利！\n获得 ${result.expReward} 经验值，${result.goldReward} 金钱`;
+
+        // Add level-up messages
+        if (result.levelUps && result.levelUps.length > 0) {
+          message += '\n';
+          for (const levelUp of result.levelUps) {
+            message += `\n${levelUp.characterName} 升级到 Lv.${levelUp.newLevel}！`;
+            if (levelUp.newSkills.length > 0) {
+              message += ` 学会: ${levelUp.newSkills.join(', ')}`;
+            }
+          }
+        }
+
+        this.showMessage(message);
       } else {
         this.showMessage('战斗失败...');
       }
     }
 
     // Fade out and return to previous scene
-    this.time.delayedCall(2000, () => {
+    this.time.delayedCall(3000, () => {
       this.cameras.main.fadeOut(500, 0, 0, 0);
       this.cameras.main.once('camerafadeoutcomplete', () => {
         this.exitBattle();

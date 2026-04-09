@@ -85,6 +85,17 @@ export interface BattleAction {
 }
 
 /**
+ * Level-up result for a character
+ */
+export interface LevelUpResult {
+  characterId: string;
+  characterName: string;
+  oldLevel: number;
+  newLevel: number;
+  newSkills: string[];
+}
+
+/**
  * Battle result
  */
 export interface BattleResult {
@@ -92,6 +103,7 @@ export interface BattleResult {
   expReward: number;
   goldReward: number;
   itemsReward: string[];
+  levelUps: LevelUpResult[];  // Characters who leveled up
 }
 
 /**
@@ -678,6 +690,7 @@ export class BattleSystem {
         expReward: 0,
         goldReward: 0,
         itemsReward: [],
+        levelUps: [],
       };
 
       return {
@@ -768,6 +781,7 @@ export class BattleSystem {
         expReward: 0,
         goldReward: 0,
         itemsReward: [],
+        levelUps: [],
       };
     } else if (aliveEnemies.length === 0) {
       // Player victory
@@ -793,6 +807,7 @@ export class BattleSystem {
         expReward: totalExp,
         goldReward: totalGold,
         itemsReward: items,
+        levelUps: [],  // Will be populated by external system
       };
     }
   }
