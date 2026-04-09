@@ -407,3 +407,35 @@
 - hidden flag for secret chests that only appear after discovery
 - getOpenedState/loadOpenedState for save/load integration
 ---
+
+## 2026-04-10 17:30 - US-023
+- Implemented complete battle reward system with BattleRewardSystem.ts
+- BattleReward interface: exp, gold, items (ItemDrop[]), guaranteedItems
+- ItemDrop interface: itemId, probability (0-1), quantity { min, max }
+- BattleRewardResult interface: exp, gold, items, messages
+- EnemyDropTable interface: enemyId, reward
+- BattleRewardSystem class:
+  - loadDropTables(tables): load enemy drop configurations
+  - getDropTable(enemyId): get drops for specific enemy
+  - rollDrop(drop): roll probability for item drop
+  - calculateEnemyReward(enemyId): calculate rewards for one enemy
+  - calculateTotalReward(enemyIds): sum rewards for multiple enemies
+  - addDropTable(enemyId, reward): add table programmatically
+- DEFAULT_DROP_TABLES with 6 enemy types:
+  - slime (10 exp, 5 gold, 30% 止血草)
+  - wolf (20 exp, 15 gold, 50% 止血草, 10% 皮甲)
+  - bandit (35 exp, 30 gold, 40% 金创药, 5% 铁剑)
+  - demon (50 exp, 40 gold, 30% 灵心丹, 10% 灵符)
+  - boss_bandit_leader (200 exp, 150 gold, guaranteed 青铜剑/金戒指)
+  - boss_demon_king (500 exp, 400 gold, guaranteed 天师剑/女娲玉佩)
+
+**Files changed:**
+- src/systems/BattleRewardSystem.ts (created - Battle reward interfaces, BattleRewardSystem class, DEFAULT_DROP_TABLES)
+- ralph/prd.json (updated US-023 to passes: true)
+
+**Learnings for future iterations:**
+- ItemDrop.probability is 0-1 (percentage divided by 100)
+- guaranteedItems always drop regardless of probability
+- quantity { min, max } allows variable amounts (e.g., 2-3 items)
+- calculateTotalReward aggregates drops from all defeated enemies
+---
