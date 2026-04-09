@@ -1,0 +1,339 @@
+[
+  // === 消耗品 ===
+  {
+    "id": "zhixuecao",
+    "name": "止血草",
+    "type": "consumable",
+    "description": "常见的草药，可恢复少量生命值",
+    "price": 50,
+    "effect": { "hp": 50 },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "jinchuangyao",
+    "name": "金创药",
+    "type": "consumable",
+    "description": "外伤良药，可恢复中等生命值",
+    "price": 150,
+    "effect": { "hp": 150 },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "dahuangdan",
+    "name": "大黄丹",
+    "type": "consumable",
+    "description": "珍贵丹药，可恢复大量生命值",
+    "price": 500,
+    "effect": { "hp": 500 },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "lingxincao",
+    "name": "灵心草",
+    "type": "consumable",
+    "description": "恢复少量灵力的草药",
+    "price": 80,
+    "effect": { "mp": 30 },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "lingxindan",
+    "name": "灵心丹",
+    "type": "consumable",
+    "description": "恢复中等灵力的丹药",
+    "price": 200,
+    "effect": { "mp": 80 },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "tianxin_dan",
+    "name": "天心丹",
+    "type": "consumable",
+    "description": "珍贵灵丹，恢复大量灵力",
+    "price": 600,
+    "effect": { "mp": 200 },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "huichunyao",
+    "name": "回春药",
+    "type": "consumable",
+    "description": "同时恢复生命和灵力",
+    "price": 300,
+    "effect": { "hp": 100, "mp": 50 },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "jieduyao",
+    "name": "解毒药",
+    "type": "consumable",
+    "description": "解除中毒状态",
+    "price": 100,
+    "effect": { "removeStatus": ["poison"] },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "xingshendan",
+    "name": "醒神丹",
+    "type": "consumable",
+    "description": "解除睡眠和眩晕状态",
+    "price": 120,
+    "effect": { "removeStatus": ["sleep", "paralyze"] },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "qihuangdan",
+    "name": "气黄丹",
+    "type": "consumable",
+    "description": "解除沉默状态",
+    "price": 100,
+    "effect": { "removeStatus": ["silence"] },
+    "usableInBattle": true,
+    "usableInMenu": true,
+    "targetCount": 1
+  },
+  {
+    "id": "shenxingdan",
+    "name": "神行丹",
+    "type": "consumable",
+    "description": "提升速度，持续3回合",
+    "price": 200,
+    "effect": { "statusEffect": { "type": "haste", "duration": 3, "intensity": 1 } },
+    "usableInBattle": true,
+    "usableInMenu": false,
+    "targetCount": 1
+  },
+  {
+    "id": "hudandan",
+    "name": "护盾丹",
+    "type": "consumable",
+    "description": "提升防御，持续3回合",
+    "price": 200,
+    "effect": { "statusEffect": { "type": "protect", "duration": 3, "intensity": 1 } },
+    "usableInBattle": true,
+    "usableInMenu": false,
+    "targetCount": 1
+  },
+
+  // === 武器 ===
+  {
+    "id": "wooden_sword",
+    "name": "木剑",
+    "type": "weapon",
+    "description": "普通木剑，李逍遥初始武器",
+    "price": 100,
+    "bonus": { "attack": 5 }
+  },
+  {
+    "id": "iron_sword",
+    "name": "铁剑",
+    "type": "weapon",
+    "description": "铁制长剑，攻击力中等",
+    "price": 500,
+    "bonus": { "attack": 15 }
+  },
+  {
+    "id": "bronze_sword",
+    "name": "青铜剑",
+    "type": "weapon",
+    "description": "青铜古剑，攻击力较强",
+    "price": 1000,
+    "bonus": { "attack": 25, "luck": 2 }
+  },
+  {
+    "id": "spirit_sword",
+    "name": "灵剑",
+    "type": "weapon",
+    "description": "蕴含灵力的宝剑",
+    "price": 3000,
+    "bonus": { "attack": 40, "mp": 20 }
+  },
+  {
+    "id": "tianshi_sword",
+    "name": "天师剑",
+    "type": "weapon",
+    "description": "道家法宝，威力惊人",
+    "price": 8000,
+    "bonus": { "attack": 60, "mp": 30, "luck": 5 }
+  },
+  {
+    "id": "lin_sword",
+    "name": "林家剑",
+    "type": "weapon",
+    "description": "林家堡传家宝剑",
+    "price": 2000,
+    "bonus": { "attack": 35, "speed": 3 }
+  },
+  {
+    "id": "miao_blade",
+    "name": "苗刀",
+    "type": "weapon",
+    "description": "苗族特有的锋利刀刃",
+    "price": 1500,
+    "bonus": { "attack": 30, "speed": 5, "luck": 3 }
+  },
+  {
+    "id": "spirit_staff",
+    "name": "灵杖",
+    "type": "weapon",
+    "description": "赵灵儿初始武器，增强灵力",
+    "price": 100,
+    "bonus": { "mp": 10, "attack": 3 }
+  },
+  {
+    "id": "nuwa_staff",
+    "name": "女娲杖",
+    "type": "weapon",
+    "description": "女娲后人专属神器",
+    "price": 10000,
+    "bonus": { "mp": 100, "attack": 30, "luck": 10 }
+  },
+
+  // === 防具 ===
+  {
+    "id": "cloth_armor",
+    "name": "布衣",
+    "type": "armor",
+    "description": "普通布衣，防御力较低",
+    "price": 50,
+    "bonus": { "defense": 3 }
+  },
+  {
+    "id": "leather_armor",
+    "name": "皮甲",
+    "type": "armor",
+    "description": "皮革制成的护甲",
+    "price": 300,
+    "bonus": { "defense": 8, "hp": 10 }
+  },
+  {
+    "id": "iron_armor",
+    "name": "铁甲",
+    "type": "armor",
+    "description": "铁制护甲，防御力中等",
+    "price": 800,
+    "bonus": { "defense": 15, "hp": 30 }
+  },
+  {
+    "id": "bronze_armor",
+    "name": "青铜甲",
+    "type": "armor",
+    "description": "青铜护甲，防御力较强",
+    "price": 2000,
+    "bonus": { "defense": 25, "hp": 50 }
+  },
+  {
+    "id": "silk_dress",
+    "name": "丝绸衣",
+    "type": "armor",
+    "description": "赵灵儿初始服饰",
+    "price": 100,
+    "bonus": { "defense": 2, "mp": 5 }
+  },
+  {
+    "id": "lin_armor",
+    "name": "林家甲",
+    "type": "armor",
+    "description": "林家堡特制护甲",
+    "price": 1500,
+    "bonus": { "defense": 20, "speed": 2 }
+  },
+  {
+    "id": "miao_dress",
+    "name": "苗服",
+    "type": "armor",
+    "description": "阿奴初始服饰，轻盈灵动",
+    "price": 100,
+    "bonus": { "defense": 2, "speed": 3 }
+  },
+
+  // === 饰品 ===
+  {
+    "id": "wooden_ring",
+    "name": "木戒指",
+    "type": "accessory",
+    "description": "普通木制戒指",
+    "price": 100,
+    "bonus": { "luck": 2 }
+  },
+  {
+    "id": "silver_ring",
+    "name": "银戒指",
+    "type": "accessory",
+    "description": "银制戒指，提升运气",
+    "price": 500,
+    "bonus": { "luck": 5, "mp": 10 }
+  },
+  {
+    "id": "gold_ring",
+    "name": "金戒指",
+    "type": "accessory",
+    "description": "金制戒指，大幅提升运气",
+    "price": 2000,
+    "bonus": { "luck": 10, "mp": 20, "hp": 20 }
+  },
+  {
+    "id": "spirit_amulet",
+    "name": "灵符",
+    "type": "accessory",
+    "description": "道家灵符，增强灵力",
+    "price": 800,
+    "bonus": { "mp": 30, "luck": 3 }
+  },
+  {
+    "id": "nuwa_amulet",
+    "name": "女娲玉佩",
+    "type": "accessory",
+    "description": "女娲后人专属饰品",
+    "price": 5000,
+    "bonus": { "mp": 50, "hp": 50, "luck": 8 }
+  },
+
+  // === 剧情道具 ===
+  {
+    "id": "key_jiuguan",
+    "name": "客栈钥匙",
+    "type": "key",
+    "description": "余杭镇客栈的钥匙",
+    "price": 0
+  },
+  {
+    "id": "key_xianlingdao",
+    "name": "仙灵岛通行证",
+    "type": "key",
+    "description": "进入仙灵岛的凭证",
+    "price": 0
+  },
+  {
+    "id": "letter_lin",
+    "name": "林家信物",
+    "type": "key",
+    "description": "林家堡的信物",
+    "price": 0
+  },
+  {
+    "id": "miao_token",
+    "name": "苗王信物",
+    "type": "key",
+    "description": "苗族的信物",
+    "price": 0
+  }
+]

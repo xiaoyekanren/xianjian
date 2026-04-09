@@ -225,8 +225,8 @@
         "Typecheck passes"
       ],
       "priority": 14,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - ItemType (consumable/weapon/armor/accessory/key), ItemEffect interface for consumables (hp/mp/status effects), EquipmentBonus for attribute bonuses, ItemManager class with applyEffect/calculateEquipmentBonus methods, items.json with 12 consumables (止血草/金创药/灵心丹 etc.), 9 weapons (木剑/铁剑/灵剑/天师剑 etc.), 7 armors (布衣/铁甲/青铜甲 etc.), 5 accessories (木戒指/银戒指/女娲玉佩 etc.), 4 key items (客栈钥匙/仙灵岛通行证 etc.), usableInBattle/usableInMenu flags for consumables"
     },
     {
       "id": "US-015",

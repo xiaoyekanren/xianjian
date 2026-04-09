@@ -222,3 +222,30 @@
 - Status effects processed at end of each round before checking battle end
 - BattleResult returned to WorldScene via scene.resume() with battleResult data
 ---
+
+## 2026-04-10 16:00 - US-014
+- Implemented complete item system with Item.ts enhancement
+- ItemType: consumable, weapon, armor, accessory, key
+- ItemEffect interface: hp/mp change, status effect application, status removal
+- EquipmentBonus interface: attribute bonuses (hp/mp/attack/defense/speed/luck)
+- ItemManager class: loadItems, canUse, applyEffect, calculateEquipmentBonus, getSellPrice
+- InventoryEntry interface for tracking quantity and equipment status
+- items.json with 37 items:
+  - 12 consumables: 止血草(HP+50), 金创药(HP+150), 大黄丹(HP+500), 灵心草(MP+30), 灵心丹(MP+80), 天心丹(MP+200), 回春药(HP+100/MP+50), 解毒药, 醒神丹, 气黄丹, 神行丹(haste), 护盾丹(protect)
+  - 9 weapons: 木剑, 铁剑, 青铜剑, 灵剑, 天师剑, 林家剑, 苗刀, 灵杖, 娲杖
+  - 7 armors: 布衣, 皮甲, 铁甲, 青铜甲, 丝绸衣, 林家甲, 苗服
+  - 5 accessories: 木戒指, 银戒指, 金戒指, 灵符, 女娲玉佩
+  - 4 key items: 客栈钥匙, 仙灵岛通行证, 林家信物, 苗王信物
+- usableInBattle/usableInMenu flags for battle/menu context usage
+
+**Files changed:**
+- src/data/Item.ts (complete rewrite - ItemType, ItemEffect, EquipmentBonus, InventoryEntry, ItemManager)
+- src/data/items.json (created - 37 items with complete data)
+- ralph/prd.json (updated US-014 to passes: true)
+
+**Learnings for future iterations:**
+- EquipmentBonus fields are optional, use nullish coalescing for accumulation
+- Consumables have usableInBattle/usableInMenu for context restrictions
+- Key items have price: 0 (cannot be bought/sold)
+- ItemManager.applyEffect returns changes (hpChange, mpChange, removedStatuses, addedStatus)
+---
