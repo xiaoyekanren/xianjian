@@ -1648,6 +1648,233 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // Chapter 1 Story Dialogs - US-035
+  {
+    id: 'prologue_dream',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '夜深人静，李逍遥陷入了梦境...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'prologue_dream_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '梦中，一位白衣剑客在月光下舞剑，剑光如虹...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'prologue_dream_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这剑法...好精妙！我也要学会它！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'prologue_dream_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '梦中习剑，虽然只是虚幻，但剑法的精髓已印入脑海...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'prologue_dream_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '嗯...天亮了...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ch1_aunt_sick',
+    lines: [
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '咳咳咳...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch1_aunt_sick_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '婶婶！您怎么了？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch1_aunt_sick_3',
+      },
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '逍遥...我这病越来越重了...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch1_aunt_sick_4',
+      },
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '听说仙灵岛上有一种仙药，能治百病...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch1_aunt_sick_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '婶婶，我去仙灵岛为您寻药！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch1_aunt_sick_6',
+      },
+      {
+        speakerId: 'yuhang_aunt',
+        speakerName: '婶婶',
+        text: '好孩子...但是仙灵岛路途遥远，你要小心...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ch1_drunkard_teach',
+    lines: [
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '年轻人，要去仙灵岛？那地方可不容易去...',
+        expression: Expression.THINKING,
+        nextDialogId: 'ch1_drunkard_teach_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我必须去，婶婶病重，需要仙灵岛的仙药！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch1_drunkard_teach_3',
+      },
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '好吧，我看你心诚，教你一套御剑术，可以御剑飞往仙灵岛。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch1_drunkard_teach_4',
+      },
+      {
+        speakerId: 'yuhang_drunkard',
+        speakerName: '醉道士',
+        text: '记住，剑由心发，意到剑到。心中无剑，方能御剑。',
+        expression: Expression.HAPPY,
+        event: { type: DialogEventType.SET_FLAG, data: { flagName: 'learned_yujianshu', flagValue: true } },
+      },
+    ],
+  },
+  {
+    id: 'ch1_enter_xianling',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '御剑飞行，李逍遥来到了仙灵岛...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch1_enter_xianling_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这就是传说中的仙灵岛...真是美如仙境！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch1_enter_xianling_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我得小心前进，寻找仙药的踪迹...',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'ch1_maze_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '仙灵岛迷宫，传说中仙女居住的地方...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch1_maze_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这迷宫好复杂...还遇到一些奇怪的怪物！',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'ch1_baiyue_attack',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '突然，一群黑衣人闯入仙灵岛！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch1_baiyue_attack_2',
+      },
+      {
+        speakerId: 'baiyue_cultist',
+        speakerName: '拜月教徒',
+        text: '赵灵儿！教主命令我们带回你！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'ch1_baiyue_attack_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '你们...你们是什么人？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch1_baiyue_attack_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿，快躲开！我来对付他们！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'ch1_linger_captured',
+    lines: [
+      {
+        speakerId: 'baiyue_cultist',
+        speakerName: '拜月教徒',
+        text: '哈哈哈！李逍遥，你虽然有些本事，但救不了她！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'ch1_linger_captured_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥...救我...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch1_linger_captured_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿！我一定会救你回来！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'ch1_linger_captured_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '拜月教徒带走了赵灵儿，李逍遥必须踏上寻找她的旅程...',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.SET_FLAG, data: { flagName: 'linger_captured', flagValue: true } },
+      },
+    ],
+  },
 ];
 
 /**

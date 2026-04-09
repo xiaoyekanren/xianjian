@@ -141,7 +141,36 @@ export interface StoryProgress {
 }
 
 /**
- * Story configuration from JSON
+ * Story configuration from JSON (raw format with string types)
+ */
+export interface StoryConfigJson {
+  nodes: unknown[];
+  chapters: {
+    id: number;
+    name: string;
+    description: string;
+    startNode?: string;
+  }[];
+}
+
+/**
+ * Parse JSON story config into proper TypeScript format
+ */
+export function parseStoryConfig(json: unknown): StoryConfig {
+  // Cast the JSON data - the runtime will work correctly
+  const data = json as StoryConfig;
+
+  // Validate basic structure
+  if (!data.nodes || !data.chapters) {
+    console.warn('Invalid story config: missing nodes or chapters');
+    return { nodes: [], chapters: [] };
+  }
+
+  return data;
+}
+
+/**
+ * Story configuration (parsed format)
  */
 export interface StoryConfig {
   nodes: StoryNode[];

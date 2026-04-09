@@ -87,3 +87,25 @@ Ready to begin. Run ralph loop to start autonomous execution.
 - repeatable flag allows side content nodes to trigger multiple times
 
 ---
+
+## 2026-04-10 XX:XX - US-035
+
+- Added chapter 1 dialog sequences to DialogData.ts
+- Dialogs: prologue_dream (梦中习剑), ch1_aunt_sick (婶婶生病), ch1_drunkard_teach (醉道士传授御剑术), ch1_enter_xianling (进入仙灵岛), ch1_maze_intro (迷宫介绍), ch1_baiyue_attack (拜月教徒袭击), ch1_linger_captured (灵儿被绑架)
+- Integrated StorySystem with WorldScene for trigger checking
+- Added checkStoryTriggerOnMapEntry() to check ENTER_MAP triggers
+- Modified handleInteraction() to check INTERACT_NPC triggers
+- Added executeStoryNode() and executeStoryEvent() methods for story event handling
+- Added handleStoryEventComplete() for event completion callback
+- Added parseStoryConfig() helper to parse JSON story data with proper type handling
+- Added getNPCId() method to NPC class for story trigger identification
+- TypeScript typecheck passes
+- Files changed: src/data/DialogData.ts, src/scenes/WorldScene.ts, src/systems/StorySystem.ts, src/entities/NPC.ts
+
+**Learnings for future iterations:**
+- JSON enum values need special handling - use parseStoryConfig to cast string types to enums
+- Story triggers integrate seamlessly with existing WorldScene map entry and NPC interaction
+- Story events can chain together via waitForCompletion flag
+- DialogScene can receive isStoryEvent flag for story-specific handling
+
+---

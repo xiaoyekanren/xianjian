@@ -2,6 +2,7 @@
  * World Scene - Tile-based map exploration
  * US-004: 地图探索场景实现
  * US-029: 余杭镇地图实现
+ * US-035: 第一章剧情实现
  */
 
 import Phaser from 'phaser';
@@ -15,6 +16,8 @@ import {
   LayerType,
 } from '@/data/MapData';
 import { mapManager } from '@/systems/MapManager';
+import { storySystem, TriggerType, StoryEventType, parseStoryConfig } from '@/systems/StorySystem';
+import storyData from '@/data/story.json';
 import { DialogEndEvent } from '@/scenes/DialogScene';
 
 /**
@@ -54,6 +57,9 @@ export class WorldScene extends Phaser.Scene {
     this.currentMap = mapManager.getMap(this.currentMapId) || this.createFallbackMap();
     this.playerStartX = 5;
     this.playerStartY = 10;
+
+    // Initialize story system with story data
+    storySystem.loadConfig(parseStoryConfig(storyData));
   }
 
   /**
@@ -117,6 +123,123 @@ export class WorldScene extends Phaser.Scene {
     this.playerStartY = data.playerStartY || 10;
     this.isTransitioning = false;
     this.transitionPoints = [];
+
+    // Check for story triggers on entering map
+    this.checkStoryTriggerOnMapEntry();
+  }
+
+  /**
+   * Check for story triggers when entering a map
+   */
+  private checkStoryTriggerOnMapEntry(): void {
+    const triggerResult = storySystem.checkTrigger(TriggerType.ENTER_MAP, {
+      mapId: this.currentMapId,
+    });
+
+    if (triggerResult) {
+      console.log(`[WorldScene] Story trigger activated: ${triggerResult.nodeId}`);
+      this.executeStoryNode(triggerResult.nodeId);
+    }
+  }
+
+  /**
+   * Execute a story node's events
+   */
+  private executeStoryNode(nodeId: string): void {
+    if (storySystem.startNode(nodeId)) {
+      // Get first event
+      const event = storySystem.getNextEvent();
+      if (event) {
+        this.executeStoryEvent(event);
+      }
+    }
+  }
+
+  /**
+   * Execute a single story event
+   */
+  private executeStoryEvent(event: { type: StoryEventType; data: Record<string, unknown>; waitForCompletion?: boolean }): void {
+    switch (event.type) {
+      case StoryEventType.DIALOG:
+        // Start dialog scene
+        if (event.data.dialogId) {
+          this.scene.pause();
+          this.scene.launch('DialogScene', {
+            dialogId: event.data.dialogId as string,
+            isStoryEvent: true,
+          });
+          this.scene.get('DialogScene').events.once('resume', (_data: DialogEndEvent) => {
+            this.handleStoryEventComplete();
+          });
+        }
+        break;
+
+      case StoryEventType.BATTLE:
+        // Start battle scene
+        if (event.data.enemyIds) {
+          this.scene.pause();
+          this.scene.launch('BattleScene', {
+            enemyIds: (event.data.enemyIds as string[])[0],
+            isStoryEvent: true,
+          });
+          this.scene.get('BattleScene').events.once('resume', () => {
+            this.handleStoryEventComplete();
+          });
+        }
+        break;
+
+      case StoryEventType.SET_FLAG:
+        // Set story flag
+        if (event.data.flagName && event.data.flagValue !== undefined) {
+          storySystem.setFlag(event.data.flagName as string, event.data.flagValue as boolean);
+          this.handleStoryEventComplete();
+        }
+        break;
+
+      case StoryEventType.CHAPTER_CHANGE:
+        // Change chapter
+        if (event.data.chapter !== undefined) {
+          storySystem.setChapter(event.data.chapter as number);
+          this.handleStoryEventComplete();
+        }
+        break;
+
+      case StoryEventType.ADD_PARTY:
+        // Add party member - handled by game state
+        console.log(`[WorldScene] Party member added: ${event.data.characterId}`);
+        this.handleStoryEventComplete();
+        break;
+
+      case StoryEventType.GET_ITEM:
+        // Get item - handled by inventory system
+        console.log(`[WorldScene] Item obtained: ${event.data.itemId}`);
+        this.handleStoryEventComplete();
+        break;
+
+      default:
+        // Skip unknown events
+        this.handleStoryEventComplete();
+        break;
+    }
+  }
+
+  /**
+   * Handle story event completion
+   */
+  private handleStoryEventComplete(): void {
+    // Advance to next event
+    if (storySystem.advanceEvent()) {
+      const nextEvent = storySystem.getNextEvent();
+      if (nextEvent) {
+        this.executeStoryEvent(nextEvent);
+      }
+    } else {
+      // Node completed, resume player
+      if (this.player) {
+        this.player.setEnabled(true);
+      }
+      this.scene.resume();
+    }
   }
 
   create(): void {
@@ -528,6 +651,18 @@ export class WorldScene extends Phaser.Scene {
     // Check if any NPC is near the interaction point
     for (const npc of this.npcs) {
       if (npc.canInteractWith(interactX, interactY)) {
+        // Check for story trigger on NPC interaction
+        const triggerResult = storySystem.checkTrigger(TriggerType.INTERACT_NPC, {
+          npcId: npc.getNPCId(),
+        });
+
+        if (triggerResult) {
+          console.log(`[WorldScene] Story trigger activated for NPC: ${triggerResult.nodeId}`);
+          this.executeStoryNode(triggerResult.nodeId);
+          return;
+        }
+
+        // Default: trigger dialog with NPC
         this.triggerDialog(npc);
         return;
       }

@@ -230,6 +230,13 @@ export class NPC {
   }
 
   /**
+   * Get NPC ID (alias for getId)
+   */
+  getNPCId(): string {
+    return this.config.npcId;
+  }
+
+  /**
    * Get NPC name
    */
   getName(): string {

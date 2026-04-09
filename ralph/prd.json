@@ -560,8 +560,8 @@
         "Typecheck passes"
       ],
       "priority": 35,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Added dialog sequences for chapter 1 (prologue_dream, ch1_aunt_sick, ch1_drunkard_teach, ch1_enter_xianling, ch1_maze_intro, ch1_baiyue_attack, ch1_linger_captured), integrated StorySystem with WorldScene for trigger checking on map entry and NPC interaction, added executeStoryNode/executeStoryEvent methods for story event handling, added parseStoryConfig helper to parse JSON story data, added getNPCId() method to NPC class"
     },
     {
       "id": "US-036",
