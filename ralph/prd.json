@@ -305,8 +305,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 19,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - ShopScene with buy/sell mode toggle, item list showing name/price/stock (for buy) or name/sell price/quantity (for sell), detail panel with item info (name/type/description/prices/effects/bonuses), quantity selector with +/-/MAX buttons, confirm/cancel buttons, keyboard navigation (arrows/WASD for items, A/D for quantity, Enter/Space to confirm, ESC to close), gold display updated after transactions, success/error messages"
     },
     {
       "id": "US-020",
