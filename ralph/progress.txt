@@ -64,3 +64,26 @@ Ready to begin. Run ralph loop to start autonomous execution.
 - Phase 1 priority: US-001 through US-035 (核心框架+第一章)
 - Phase 2 priority: US-010, US-011, US-031, US-036 (扩展章节)
 - Phase 3-8 continue progressively
+## 2026-04-10 XX:XX - US-034
+
+- Implemented StorySystem.ts with story node management
+- Created StoryChapter enum (PROLOGUE to CHAPTER_5)
+- Created TriggerType enum (enter_map, interact_npc, flag_set, item_get, party_member, etc.)
+- Created StoryEventType enum (dialog, battle, get_item, set_flag, chapter_change, etc.)
+- Created StoryNode interface with triggers, events, blockingNodes, requiredFlags, priority
+- Implemented trigger condition checking with canTriggerNode() and checkTrigger()
+- Implemented event execution with startNode(), getNextEvent(), advanceEvent()
+- Implemented story progress tracking with StoryProgress (currentNode, completedNodes, activeFlags, currentChapter)
+- Created story.json with 6 chapters and 18 story nodes covering full storyline
+- Nodes include: prologue_start, ch1_aunt_sick, ch1_meet_drunkard, ch1_enter_xianling, ch1_pool, ch1_baiyue_attack, ch2_arrive_suzhou, ch2_biwu, ch3_enter_tower, ch3_tower_levels, ch3_find_linger, ch3_yueru_sacrifice, ch4_enter_miao, ch4_spirit_pearls, ch5_final_battle
+- TypeScript typecheck passes
+- Files changed: src/systems/StorySystem.ts, src/data/story.json
+
+**Learnings for future iterations:**
+- Story nodes use blockingNodes to ensure linear progression (node A must complete before node B)
+- Trigger conditions use requiredFlags for flag-based gating
+- Story events have order field for sequential execution
+- onCompleteFlags set story flags when a node completes, useful for gating subsequent content
+- repeatable flag allows side content nodes to trigger multiple times
+
+---

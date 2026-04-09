@@ -1,0 +1,702 @@
+{
+  "chapters": [
+    {
+      "id": 0,
+      "name": "序章 - 梦中习剑",
+      "description": "李逍遥梦中习剑，开始冒险",
+      "startNode": "story_prologue_start"
+    },
+    {
+      "id": 1,
+      "name": "第一章 - 仙灵岛",
+      "description": "婶婶生病，仙灵岛遇赵灵儿",
+      "startNode": "story_ch1_aunt_sick"
+    },
+    {
+      "id": 2,
+      "name": "第二章 - 苏州",
+      "description": "比武招亲，结识林月如",
+      "startNode": "story_ch2_arrive_suzhou"
+    },
+    {
+      "id": 3,
+      "name": "第三章 - 锁妖塔",
+      "description": "救灵儿，月如牺牲",
+      "startNode": "story_ch3_enter_tower"
+    },
+    {
+      "id": 4,
+      "name": "第四章 - 苗族圣地",
+      "description": "收集五灵珠，决战拜月",
+      "startNode": "story_ch4_enter_miao"
+    },
+    {
+      "id": 5,
+      "name": "结局",
+      "description": "最终决战，结局",
+      "startNode": "story_ch5_final_battle"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "story_prologue_start",
+      "chapter": 0,
+      "title": "梦中习剑",
+      "description": "李逍遥梦中习剑开场",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "yuhang_home" }
+        }
+      ],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "prologue_dream" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "prologue_complete", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 3,
+          "data": { "chapter": 1 }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["prologue_complete"],
+      "nextNode": "story_ch1_aunt_sick"
+    },
+    {
+      "id": "story_ch1_aunt_sick",
+      "chapter": 1,
+      "title": "婶婶生病",
+      "description": "婶婶生病，需要仙灵岛仙药",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "prologue_complete", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_prologue_start"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch1_aunt_sick" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "know_xianling_island", "flagValue": true }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["know_xianling_island"],
+      "nextNode": "story_ch1_meet_drunkard"
+    },
+    {
+      "id": "story_ch1_meet_drunkard",
+      "chapter": 1,
+      "title": "遇醉道士",
+      "description": "酒馆遇见醉道士，学会御剑术",
+      "triggers": [
+        {
+          "type": "interact_npc",
+          "data": { "npcId": "yuhang_drunkard" }
+        }
+      ],
+      "blockingNodes": ["story_ch1_aunt_sick"],
+      "requiredFlags": ["know_xianling_island"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch1_drunkard_teach" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "learned_yujianshu", "flagValue": true }
+        }
+      ],
+      "priority": 80,
+      "onCompleteFlags": ["learned_yujianshu"],
+      "nextNode": "story_ch1_enter_xianling"
+    },
+    {
+      "id": "story_ch1_enter_xianling",
+      "chapter": 1,
+      "title": "进入仙灵岛",
+      "description": "使用御剑术到达仙灵岛",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "xianling_entrance" }
+        }
+      ],
+      "blockingNodes": ["story_ch1_meet_drunkard"],
+      "requiredFlags": ["learned_yujianshu"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch1_enter_xianling" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "entered_xianling", "flagValue": true }
+        }
+      ],
+      "priority": 70,
+      "onCompleteFlags": ["entered_xianling"],
+      "nextNode": "story_ch1_maze"
+    },
+    {
+      "id": "story_ch1_maze",
+      "chapter": 1,
+      "title": "仙灵岛迷宫",
+      "description": "穿越仙灵岛迷宫",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "xianling_maze_1" }
+        }
+      ],
+      "blockingNodes": ["story_ch1_enter_xianling"],
+      "requiredFlags": ["entered_xianling"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch1_maze_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["slime", "slime"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "xianling_maze_clear", "flagValue": true }
+        }
+      ],
+      "priority": 60,
+      "onCompleteFlags": ["xianling_maze_clear"],
+      "nextNode": "story_ch1_pool"
+    },
+    {
+      "id": "story_ch1_pool",
+      "chapter": 1,
+      "title": "荷花池遇灵儿",
+      "description": "在荷花池遇见赵灵儿",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "xianling_pool" }
+        }
+      ],
+      "blockingNodes": ["story_ch1_maze"],
+      "requiredFlags": ["xianling_maze_clear"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "meet_linger_cutscene" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "add_party",
+          "order": 2,
+          "data": { "characterId": "zhao_linger" }
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "linger_joined", "flagValue": true }
+        }
+      ],
+      "priority": 50,
+      "onCompleteFlags": ["linger_joined"],
+      "nextNode": "story_ch1_baiyue_attack"
+    },
+    {
+      "id": "story_ch1_baiyue_attack",
+      "chapter": 1,
+      "title": "拜月教徒袭击",
+      "description": "拜月教徒袭击仙灵岛",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "linger_joined", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch1_pool"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch1_baiyue_attack" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["bandit", "bandit", "bandit"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "ch1_linger_captured" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "remove_party",
+          "order": 4,
+          "data": { "characterId": "zhao_linger" }
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "linger_captured", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 6,
+          "data": { "chapter": 2 }
+        }
+      ],
+      "priority": 40,
+      "onCompleteFlags": ["linger_captured", "ch1_complete"],
+      "nextNode": "story_ch2_arrive_suzhou"
+    },
+    {
+      "id": "story_ch2_arrive_suzhou",
+      "chapter": 2,
+      "title": "抵达苏州",
+      "description": "乘船抵达苏州城",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "suzhou_main" }
+        }
+      ],
+      "blockingNodes": ["story_ch1_baiyue_attack"],
+      "requiredFlags": ["linger_captured"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "suzhou_arrive" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "arrived_suzhou", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["arrived_suzhou"],
+      "nextNode": "story_ch2_biwu"
+    },
+    {
+      "id": "story_ch2_biwu",
+      "chapter": 2,
+      "title": "比武招亲",
+      "description": "参加林家比武招亲",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "suzhou_arena" }
+        }
+      ],
+      "blockingNodes": ["story_ch2_arrive_suzhou"],
+      "requiredFlags": ["arrived_suzhou"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "arena_biwu_zhaqin" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["lin_yueru_boss"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "arena_win" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "add_party",
+          "order": 4,
+          "data": { "characterId": "lin_yueru" }
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "yueru_joined", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 6,
+          "data": { "chapter": 3 }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["yueru_joined", "ch2_complete"],
+      "nextNode": "story_ch3_enter_tower"
+    },
+    {
+      "id": "story_ch3_enter_tower",
+      "chapter": 3,
+      "title": "进入锁妖塔",
+      "description": "为救灵儿进入锁妖塔",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "suoyaota_entrance" }
+        }
+      ],
+      "blockingNodes": ["story_ch2_biwu"],
+      "requiredFlags": ["yueru_joined"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "tower_entrance_warning" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "entered_tower", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["entered_tower"],
+      "nextNode": "story_ch3_tower_levels"
+    },
+    {
+      "id": "story_ch3_tower_levels",
+      "chapter": 3,
+      "title": "锁妖塔闯关",
+      "description": "闯过锁妖塔各层",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "suoyaota_level_5" }
+        }
+      ],
+      "blockingNodes": ["story_ch3_enter_tower"],
+      "requiredFlags": ["entered_tower"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "tower_level5_reached" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["boss_guardian"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "tower_level5_clear", "flagValue": true }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["tower_level5_clear"],
+      "nextNode": "story_ch3_find_linger"
+    },
+    {
+      "id": "story_ch3_find_linger",
+      "chapter": 3,
+      "title": "找到灵儿",
+      "description": "在锁妖塔底层找到灵儿",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "suoyaota_bottom" }
+        }
+      ],
+      "blockingNodes": ["story_ch3_tower_levels"],
+      "requiredFlags": ["tower_level5_clear"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "tower_find_linger" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "add_party",
+          "order": 2,
+          "data": { "characterId": "zhao_linger" }
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "rescued_linger", "flagValue": true }
+        }
+      ],
+      "priority": 80,
+      "onCompleteFlags": ["rescued_linger"],
+      "nextNode": "story_ch3_yueru_sacrifice"
+    },
+    {
+      "id": "story_ch3_yueru_sacrifice",
+      "chapter": 3,
+      "title": "月如牺牲",
+      "description": "锁妖塔崩塌，月如牺牲",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "rescued_linger", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch3_find_linger"],
+      "events": [
+        {
+          "type": "screen_effect",
+          "order": 1,
+          "data": { "effectType": "shake", "effectDuration": 2000 }
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "tower_yueru_sacrifice" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "remove_party",
+          "order": 3,
+          "data": { "characterId": "lin_yueru" }
+        },
+        {
+          "type": "get_item",
+          "order": 4,
+          "data": { "itemId": "yueru_relic", "quantity": 1 }
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "yueru_sacrificed", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 6,
+          "data": { "chapter": 4 }
+        }
+      ],
+      "priority": 70,
+      "onCompleteFlags": ["yueru_sacrificed", "ch3_complete"],
+      "nextNode": "story_ch4_enter_miao"
+    },
+    {
+      "id": "story_ch4_enter_miao",
+      "chapter": 4,
+      "title": "进入苗疆",
+      "description": "前往苗疆收集灵珠",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "white_miao_entrance" }
+        }
+      ],
+      "blockingNodes": ["story_ch3_yueru_sacrifice"],
+      "requiredFlags": ["yueru_sacrificed"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "miao_enter" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "entered_miao", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["entered_miao"],
+      "nextNode": "story_ch4_spirit_pearls"
+    },
+    {
+      "id": "story_ch4_spirit_pearls",
+      "chapter": 4,
+      "title": "收集五灵珠",
+      "description": "收集火水风雷土五灵珠",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "all_pearls_collected", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch4_enter_miao"],
+      "requiredFlags": ["entered_miao"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "miao_pearls_complete" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "pearls_ready", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 3,
+          "data": { "chapter": 5 }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["pearls_ready", "ch4_complete"],
+      "nextNode": "story_ch5_final_battle"
+    },
+    {
+      "id": "story_ch5_final_battle",
+      "chapter": 5,
+      "title": "决战拜月",
+      "description": "最终决战拜月教主",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "miao_sacred_altar" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_spirit_pearls"],
+      "requiredFlags": ["pearls_ready"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "final_battle_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["boss_demon_king"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "final_battle_end" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "game_complete", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["game_complete", "ch5_complete"]
+    },
+    {
+      "id": "story_side_treasure_intro",
+      "chapter": 1,
+      "title": "宝箱发现",
+      "description": "发现第一个宝箱",
+      "triggers": [
+        {
+          "type": "interact_object",
+          "data": { "objectId": "treasure_chest" }
+        }
+      ],
+      "repeatable": true,
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "treasure_found" },
+          "waitForCompletion": true
+        }
+      ],
+      "priority": 10
+    },
+    {
+      "id": "story_side_shop_intro",
+      "chapter": 1,
+      "title": "首次购物",
+      "description": "首次进入商店",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "yuhang_shop" }
+        }
+      ],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "shop_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "visited_shop", "flagValue": true }
+        }
+      ],
+      "priority": 20,
+      "onCompleteFlags": ["visited_shop"],
+      "repeatable": false
+    },
+    {
+      "id": "story_side_inn_intro",
+      "chapter": 1,
+      "title": "首次住宿",
+      "description": "首次使用旅馆",
+      "triggers": [
+        {
+          "type": "interact_npc",
+          "data": { "npcId": "inn_keeper" }
+        }
+      ],
+      "blockingNodes": ["story_side_shop_intro"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "inn_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "visited_inn", "flagValue": true }
+        }
+      ],
+      "priority": 15,
+      "onCompleteFlags": ["visited_inn"]
+    }
+  ]
+}
