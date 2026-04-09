@@ -494,8 +494,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 31,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Implemented suzhou_main with bustling city layout (35x25), suzhou_lin_home (林家堡 25x18), suzhou_inn (客栈 20x15), suzhou_arena (比武招亲擂台 20x15). Added 繁华色调 color theme (#C41E3A red, #FFD700 gold). Added NPCs: crowd gossip, guards, shopkeeper, Lin butler, Lin Yueru. Added transitions to all Suzhou locations. Added dialog sequences including arena_biwu_zhaqin cutscene with battle trigger. Updated DialogData.ts with Suzhou dialogs (suzhou_arrive, suzhou_crowd_gossip, arena_biwu_zhaqin, arena_win/lose outcomes)."
     },
     {
       "id": "US-032",

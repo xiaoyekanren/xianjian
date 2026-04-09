@@ -474,6 +474,435 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // Suzhou City dialogs - US-031
+  {
+    id: 'suzhou_arrive',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '你来到了繁华的苏州城...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suzhou_arrive_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '街道熙熙攘攘，商铺林立，处处洋溢着热闹的气息。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suzhou_arrive_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这就是苏州城吗？比余杭镇热闹多了！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'suzhou_arrive_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '听说林家堡在这里举办比武招亲，去看看吧。',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'suzhou_crowd_gossip',
+    lines: [
+      {
+        speakerId: 'suzhou_crowd_1',
+        speakerName: '路人',
+        text: '你听说了吗？林家堡在举办比武招亲！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'suzhou_crowd_gossip_2',
+      },
+      {
+        speakerId: 'suzhou_crowd_1',
+        speakerName: '路人',
+        text: '林家千金林月如，听说是个绝世美女呢！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'suzhou_crowd_gossip_2',
+    lines: [
+      {
+        speakerId: 'suzhou_crowd_2',
+        speakerName: '路人',
+        text: '听说很多武林高手都来参加比武招亲。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suzhou_crowd_gossip_2_2',
+      },
+      {
+        speakerId: 'suzhou_crowd_2',
+        speakerName: '路人',
+        text: '不过林家千金的武功也很厉害，上次打败了不少挑战者！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'suzhou_guard_intro',
+    lines: [
+      {
+        speakerId: 'suzhou_guard',
+        speakerName: '守卫',
+        text: '欢迎来到苏州城！请遵守城内规矩。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suzhou_guard_intro_2',
+      },
+      {
+        speakerId: 'suzhou_guard',
+        speakerName: '守卫',
+        text: '林家堡正在举办比武招亲，你可以去看看。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'suzhou_shopkeeper_intro',
+    lines: [
+      {
+        speakerId: 'suzhou_shopkeeper',
+        speakerName: '杂货商',
+        text: '客人！要买点什么吗？我们这里有苏州特产！',
+        expression: Expression.HAPPY,
+        event: { type: DialogEventType.SHOW_CHOICE },
+      },
+    ],
+  },
+  {
+    id: 'suzhou_arena_announce',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '前方传来一阵喧闹声...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suzhou_arena_announce_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '「林家堡比武招亲！谁能击败林家千金，便可成为林家女婿！」',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suzhou_arena_announce_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '比武招亲？有意思，去看看吧！',
+        expression: Expression.THINKING,
+        event: { type: DialogEventType.SET_FLAG, data: { flagName: 'can_enter_arena', flagValue: true } },
+      },
+    ],
+  },
+  {
+    id: 'lin_butler_intro',
+    lines: [
+      {
+        speakerId: 'lin_butler',
+        speakerName: '管家',
+        text: '欢迎来到林家堡！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'lin_butler_intro_2',
+      },
+      {
+        speakerId: 'lin_butler',
+        speakerName: '管家',
+        text: '我家老爷正在举办比武招亲，有兴趣参加吗？',
+        expression: Expression.THINKING,
+        choices: [
+          {
+            text: '当然有兴趣！',
+            nextDialogId: 'lin_butler_welcome',
+          },
+          {
+            text: '只是来看看',
+            nextDialogId: 'lin_butler_visit',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'lin_butler_welcome',
+    lines: [
+      {
+        speakerId: 'lin_butler',
+        speakerName: '管家',
+        text: '很好！请前往擂台区，我家千金正在那里等候。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'lin_butler_visit',
+    lines: [
+      {
+        speakerId: 'lin_butler',
+        speakerName: '管家',
+        text: '没关系，随便参观吧。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'lin_yueru_first_meet',
+    lines: [
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '哼，又一个来凑热闹的？',
+        expression: Expression.ANGRY,
+        nextDialogId: 'lin_yueru_first_meet_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '想娶我？先在擂台上打败我再说！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'inn_keeper_intro',
+    lines: [
+      {
+        speakerId: 'inn_keeper',
+        speakerName: '客栈老板',
+        text: '欢迎光临苏州客栈！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'inn_keeper_intro_2',
+      },
+      {
+        speakerId: 'inn_keeper',
+        speakerName: '客栈老板',
+        text: '要住店还是吃饭？我们这里有最好的服务！',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.SHOW_CHOICE },
+      },
+    ],
+  },
+  {
+    id: 'inn_guest_chat',
+    lines: [
+      {
+        speakerId: 'inn_guest',
+        speakerName: '客商',
+        text: '你是外地来的吧？第一次来苏州？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'inn_guest_chat_2',
+      },
+      {
+        speakerId: 'inn_guest',
+        speakerName: '客商',
+        text: '我告诉你，林家堡的比武招亲可是大事，千万别错过！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'arena_announcer_intro',
+    lines: [
+      {
+        speakerId: 'arena_announcer',
+        speakerName: '擂台主持',
+        text: '各位武林同道！欢迎来到林家堡比武招亲！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'arena_announcer_intro_2',
+      },
+      {
+        speakerId: 'arena_announcer',
+        speakerName: '擂台主持',
+        text: '谁能击败林家千金林月如，便可成为林家女婿！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'arena_announcer_intro_3',
+      },
+      {
+        speakerId: 'arena_announcer',
+        speakerName: '擂台主持',
+        text: '有意挑战者，请上台！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'arena_challenger_intro',
+    lines: [
+      {
+        speakerId: 'arena_challenger',
+        speakerName: '挑战者',
+        text: '哼，林家千金的武功果然厉害...',
+        expression: Expression.SAD,
+        nextDialogId: 'arena_challenger_intro_2',
+      },
+      {
+        speakerId: 'arena_challenger',
+        speakerName: '挑战者',
+        text: '我已经输了三次了，看来这辈子娶不到她了。',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'arena_yueru_ready',
+    lines: [
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '哼，你是来挑战我的吗？',
+        expression: Expression.ANGRY,
+        nextDialogId: 'arena_yueru_ready_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '那就上台吧，让我看看你的本事！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'arena_biwu_zhaqin',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '你走上擂台，看到林月如正站在中央...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'arena_biwu_zhaqin_2',
+      },
+      {
+        speakerId: 'arena_announcer',
+        speakerName: '擂台主持',
+        text: '又有一位勇士上台挑战！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'arena_biwu_zhaqin_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '你是何人？敢来挑战我？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'arena_biwu_zhaqin_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '在下李逍遥，从余杭镇来。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'arena_biwu_zhaqin_5',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '哼，余杭镇的小子？好，让我看看你的本事！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'arena_biwu_zhaqin_6',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '战斗即将开始！',
+        expression: Expression.NORMAL,
+        choices: [
+          {
+            text: '开始战斗！',
+            nextDialogId: 'arena_battle_start',
+            event: { type: DialogEventType.START_BATTLE, data: { battleId: 'arena_lin_yueru' } },
+          },
+          {
+            text: '先观察一下',
+            nextDialogId: 'arena_observe',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'arena_battle_start',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '战斗开始！林月如拔剑向你冲来...',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.SET_FLAG, data: { flagName: 'arena_battle_started', flagValue: true } },
+      },
+    ],
+  },
+  {
+    id: 'arena_observe',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '让我先看看她的剑法...',
+        expression: Expression.THINKING,
+        nextDialogId: 'arena_observe_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '不敢动手？那就下去吧！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'arena_win',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '',
+        text: '你击败了林月如！全场一片哗然...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'arena_win_2',
+      },
+      {
+        speakerId: 'arena_announcer',
+        speakerName: '擂台主持',
+        text: '胜者诞生！李逍遥成为林家女婿！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'arena_win_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '我...输了？没想到你竟然...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'arena_win_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '好吧，按照约定，我林月如认输。',
+        expression: Expression.SHY,
+        event: { type: DialogEventType.ADD_PARTY_MEMBER, data: { characterId: 'lin_yueru' } },
+      },
+    ],
+  },
+  {
+    id: 'arena_lose',
+    lines: [
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '哼，看来你还不够资格娶我。',
+        expression: Expression.ANGRY,
+        nextDialogId: 'arena_lose_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '回去练练再来吧。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
   // Original demo dialogs
   {
     id: 'dialog_villager_1',

@@ -759,3 +759,31 @@
 - Story flags (met_linger, linger_helps) track story progression
 - Dialog choices can set flags via DialogEventType.SET_FLAG
 ---
+## 2026-04-10 02:30 - US-031
+- Implemented Suzhou City (苏州城) maps with bustling city atmosphere
+- suzhou_main: 35x25 main square with multiple buildings, NPCs, and transitions
+- suzhou_lin_home: 25x18 林家堡 (Lin family residence) with NPCs
+- suzhou_inn: 20x15 客栈 with shop functionality
+- suzhou_arena: 20x15 比武招亲擂台 with battle trigger
+- Color theme: 繁华色调 (#C41E3A red, #FFD700 gold, #FFF8E7 background)
+- NPCs: crowd gossip (x2), guards, shopkeeper, Lin butler, Lin Yueru, inn keeper, arena announcer, challenger
+- Added suzhou_arrive dialog: player arrives in Suzhou, learns about martial arts contest
+- Added arena_biwu_zhaqin cutscene: player challenges Lin Yueru
+  - Dialog with choices: "开始战斗" vs "先观察一下"
+  - START_BATTLE event for arena_lin_yueru battle
+  - arena_win/arena_lose outcome dialogs
+- Map transitions: suzhou_main ↔ lin_home, inn, arena, shop
+- Events: suzhou_intro_event (on enter), arena_battle_trigger (cutscene)
+
+**Files changed:**
+- src/data/maps.json (added suzhou_main, suzhou_lin_home, suzhou_inn, suzhou_arena)
+- src/data/DialogData.ts (added Suzhou dialogs including 比武招亲 cutscene)
+- ralph/prd.json (updated US-031 to passes: true)
+
+**Learnings for future iterations:**
+- Suzhou uses red/gold color theme (#C41E3A, #FFD700) for prosperous city feel
+- 比武招亲 cutscene triggers battle via DialogEventType.START_BATTLE
+- arena_battle_trigger uses triggerType: "on_enter" for automatic scene activation
+- Story flag 'can_enter_arena' controls arena access
+- Lin Yueru can be added as party member via arena_win dialog outcome
+---
