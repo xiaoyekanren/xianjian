@@ -582,3 +582,26 @@
 - Status effect messages appended to skill result message
 - Damage over time (poison) and healing over time (regen) in processStatusEffects
 ---
+
+## 2026-04-10 20:30 - US-022
+- Implemented EXP/level-up system
+- LevelUpResult interface: characterId, characterName, oldLevel, newLevel, newSkills
+- BattleResult now includes levelUps array
+- BattleScene victory message shows EXP, gold, and level-up notifications
+- CharacterManager.addExp: adds EXP, detects level-ups, returns new skills learned
+- CharacterManager.levelUp: increases stats by growth coefficients, teaches skills
+- EXP formula: (level-1)^2 * 100 (JRPG standard)
+- Stats formula: base + (level-1) * growthCoefficient
+- HP/MP restored to full on level-up
+- Victory delay increased to 3000ms for level-up messages
+
+**Files changed:**
+- src/systems/BattleSystem.ts (updated - LevelUpResult, BattleResult.levelUps)
+- src/scenes/BattleScene.ts (updated - level-up display in victory message)
+- ralph/prd.json (updated US-022 to passes: true)
+
+**Learnings for future iterations:**
+- Level-up processing should be done by game state manager, not BattleSystem
+- BattleResult provides raw data, external systems apply rewards
+- Level-up animations can be added to BattleScene for visual feedback
+---
