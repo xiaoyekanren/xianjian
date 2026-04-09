@@ -163,8 +163,8 @@
         "Typecheck passes"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Character data verified in characters.json (HP80, MP80, Attack10, Defense8, Speed12, Luck15), skills in skills.json (风咒Lv1/雷咒Lv5/五气朝元Lv8/冰咒Lv12/火咒Lv15/女娲神珠Lv20/天雷破Lv25/地火烈Lv30), SpriteGenerator/PortraitGenerator generate sprites and portraits for zhao_linger in BootScene"
     },
     {
       "id": "US-011",
@@ -178,8 +178,8 @@
         "Typecheck passes"
       ],
       "priority": 11,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Character data verified in characters.json (HP100, MP40, Attack22, Defense14, Speed18, Luck10), skills in skills.json (七诀剑气Lv8/剑舞乾坤Lv12/一剑消Lv18/乾坤一掷Lv22/天外飞仙Lv28/剑奴昭日诀Lv35), SpriteGenerator/PortraitGenerator generate sprites and portraits for lin_yueru, story trigger will be implemented in later story"
     },
     {
       "id": "US-012",
@@ -193,8 +193,8 @@
         "Typecheck passes"
       ],
       "priority": 12,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Character data verified in characters.json (HP70, MP60, Attack12, Defense6, Speed22, Luck18), skills in skills.json (鬼降Lv15/祭天Lv18/苗剑Lv22/万毒咒Lv25/羲和烈Lv30/银河咒Lv35), SpriteGenerator/PortraitGenerator generate sprites and portraits for anu, story trigger will be implemented in later story"
     },
     {
       "id": "US-013",
