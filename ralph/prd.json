@@ -47,8 +47,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - BootScene loads assets with progress bar, MainMenuScene displays Chinese title with 3 menu options navigable via keyboard (arrows/WASD) and mouse click"
     },
     {
       "id": "US-004",

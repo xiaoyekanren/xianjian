@@ -1,0 +1,35 @@
+## Codebase Patterns
+- Use `@/` alias for imports (configured in vite.config.ts and tsconfig.json)
+- All scenes extend Phaser.Scene and use `{ key: 'SceneName' }` in constructor
+- Scene keys follow pattern: 'BootScene', 'MainMenuScene', 'WorldScene', etc.
+- Phaser game config: 1920x1080 resolution, FIT scaling, CENTER_BOTH
+- Color scheme: Gold primary (#D4A84B), dark background (#1a1a2e)
+
+---
+
+## 2026-04-09 23:35 - US-003
+- Implemented BootScene.ts with asset loading and progress bar display
+- Implemented MainMenuScene.ts with Chinese title "仙剑奇侠传" and 3 menu options
+- Menu options: 新游戏 (New Game), 继续 (Continue), 设置 (Settings)
+- Keyboard navigation: Arrow keys and WASD for up/down, Enter/Space for selection
+- Mouse click and hover support for menu selection
+- Updated Game.ts to register BootScene and MainMenuScene
+- Visual design: Gold (#D4A84B) accents, dark purple (#1a1a2e) background
+- Decorative Chinese-style border elements in menu
+- Title has subtle floating animation
+- Placeholder actions for menu items (will be connected to actual features later)
+
+**Files changed:**
+- src/scenes/BootScene.ts (rewritten from placeholder)
+- src/scenes/MainMenuScene.ts (rewritten from placeholder)
+- src/core/Game.ts (added scene registration)
+- ralph/prd.json (updated US-003 to passes: true)
+
+**Learnings for future iterations:**
+- Import alias `@/` resolves to `src/` directory
+- Phaser scenes need to be registered in Game.ts scene array
+- Use `this.cameras.main.fadeIn/fadeOut` for smooth transitions
+- Chinese text displays correctly with Arial and fallback fonts
+- Keyboard events use Phaser.Input.Keyboard.KeyCodes for key binding
+- Menu items can be made interactive with `setInteractive({ useHandCursor: true })`
+---

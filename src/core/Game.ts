@@ -8,6 +8,10 @@ import { SceneManager } from './SceneManager';
 import { InputManager } from './InputManager';
 import { AudioManager } from './AudioManager';
 
+// Import scenes for US-003
+import { BootScene } from '@/scenes/BootScene';
+import { MainMenuScene } from '@/scenes/MainMenuScene';
+
 /**
  * Game configuration interface
  */
@@ -53,6 +57,12 @@ export class Game {
    * Create the Phaser game instance with full configuration
    */
   private createPhaserGame(): Phaser.Game {
+    // Register all game scenes
+    const scenes = [
+      BootScene,
+      MainMenuScene,
+    ];
+
     const phaserConfig: Phaser.Types.Core.GameConfig = {
       type: Phaser.AUTO,
       parent: this.config.parent,
@@ -70,7 +80,7 @@ export class Game {
           debug: false,
         },
       },
-      scene: [],
+      scene: scenes,
       render: {
         pixelArt: this.config.pixelArt,
         antialias: !this.config.pixelArt,
