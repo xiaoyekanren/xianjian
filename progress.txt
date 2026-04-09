@@ -315,3 +315,32 @@
 - ShopTransaction returns all changes for easy application
 - getShopDisplayInfo provides UI-friendly data structure
 ---
+
+## 2026-04-10 16:45 - US-020
+- Implemented complete inn system with InnSystem.ts
+- InnData interface: id, name, location, price, healPercent (optional)
+- InnResult interface: success, message, goldSpent, charactersHealed
+- InnSystem class:
+  - loadInns(inns): load inn configuration
+  - getInn(id): get inn by ID
+  - getInnsAtLocation(locationId): get inns at a map location
+  - rest(innId, party, playerGold, saveData): rest with HP/MP recovery, status removal, auto-save
+  - getInnPrice(innId): get price for display
+  - canAfford(innId, playerGold): check affordability
+- DEFAULT_INNS with 4 inns:
+  - yuhang_inn (余杭客栈, 50 gold)
+  - suzhou_inn (苏州客栈, 100 gold)
+  - miao_inn (苗寨客栈, 80 gold)
+  - xianling_inn (仙灵岛客栈, 200 gold)
+- Auto-save via SaveSystem.quickSave() after resting
+
+**Files changed:**
+- src/systems/InnSystem.ts (created - Inn interfaces, InnSystem class, DEFAULT_INNS)
+- ralph/prd.json (updated US-020 to passes: true)
+
+**Learnings for future iterations:**
+- InnSystem.rest() takes SaveData for auto-save functionality
+- healPercent allows partial healing (default 100% for full recovery)
+- All status effects removed on rest (character.statusEffects = [])
+- Inn prices vary by location (50-200 gold range)
+---

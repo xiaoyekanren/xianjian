@@ -320,8 +320,8 @@
         "Typecheck passes"
       ],
       "priority": 20,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - InnSystem.ts with rest functionality, InnData interface for inn configuration, InnResult interface for rest result, rest() method with HP/MP recovery, status effect removal, gold deduction, auto-save via SaveSystem.quickSave(), DEFAULT_INNS with 4 inns (余杭客栈/苏州客栈/苗寨客栈/仙灵岛客栈), canAfford/getInnPrice helper methods"
     },
     {
       "id": "US-021",
