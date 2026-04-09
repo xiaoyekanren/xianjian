@@ -397,8 +397,8 @@
         "Typecheck passes"
       ],
       "priority": 25,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - AffectionSystem with 0-100 affection range for three characters (zhao_linger, lin_yueru, anu), AffectionLevel enum (冷淡/普通/友好/亲密/深爱), addDialogAffection for dialog choices (good=+5, neutral=+2, bad=-3), addGiftAffection with gift effectiveness table (flower/jewelry/herb/candy/book), GIFT_EFFECTIVENESS per character preferences, COMBO_SKILL_REQUIREMENTS for unlock checking, isComboSkillUnlocked/getUnlockedComboSkills for combo skill gating, getAffectionProgress for UI display"
     },
     {
       "id": "US-026",

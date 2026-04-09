@@ -344,3 +344,32 @@
 - All status effects removed on rest (character.statusEffects = [])
 - Inn prices vary by location (50-200 gold range)
 ---
+
+## 2026-04-10 17:00 - US-025
+- Implemented complete affection system with AffectionSystem.ts
+- AffectionCharacterId type: 'zhao_linger' | 'lin_yueru' | 'anu'
+- AffectionLevel enum: 冷淡(0-19), 普通(20-39), 友好(40-59), 亲密(60-79), 深爱(80-100)
+- AffectionChange interface: characterId, oldValue, newValue, change, levelUp, oldLevel, newLevel
+- AffectionSystem class:
+  - getAffection(characterId): get current value
+  - getAllAffections(): get all values
+  - getAffectionLevel(characterId): get current level
+  - addDialogAffection(characterId, choiceIndex, goodChoiceIndex): dialog-based change
+  - addGiftAffection(characterId, giftType): gift-based change with effectiveness table
+  - addAffection(characterId, amount): custom change
+  - isComboSkillUnlocked(skillId, requirements): check combo unlock
+  - getUnlockedComboSkills(requirements): get all unlocked skills
+  - getAffectionProgress(characterId): get progress for UI
+- GIFT_EFFECTIVENESS table: flower (best for 赵灵儿), jewelry (best for 林月如), herb (best for 阿奴)
+- COMBO_SKILL_REQUIREMENTS: 双人合体技 (剑舞乾坤/仙魔同归/灵神风暴/影刃绝杀), 四人合体技 (四方合击/女娲神威)
+
+**Files changed:**
+- src/systems/AffectionSystem.ts (created - Affection types, AffectionSystem class, gift effectiveness, combo requirements)
+- ralph/prd.json (updated US-025 to passes: true)
+
+**Learnings for future iterations:**
+- Dialog choices affect affection: good=+5, neutral=+2, bad=-3
+- Gift effectiveness varies by character preference
+- Combo skills require minimum affection levels for all relevant characters
+- getAffectionProgress returns progress percentage for UI bars
+---
