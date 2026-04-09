@@ -3,10 +3,21 @@
  * US-013: 仙术/技能系统
  */
 
+import { StatusType } from '@/entities/Character';
+
 /**
  * Target type for skills
  */
 export type SkillTargetType = 'single' | 'all_enemy' | 'all_player' | 'self' | 'all';
+
+/**
+ * Status effect configuration on a skill
+ */
+export interface SkillStatusEffect {
+  type: StatusType;
+  duration: number;
+  intensity: number;
+}
 
 /**
  * Skill interface
@@ -21,4 +32,6 @@ export interface Skill {
   targetTypeName?: string;  // Display name for target type (单体/全体/自身)
   description?: string;
   learnLevel?: number;
+  statusEffect?: SkillStatusEffect;  // Status effect applied by this skill
+  healing?: number;  // Healing power (if skill is healing type)
 }

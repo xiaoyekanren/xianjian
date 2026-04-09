@@ -38,7 +38,28 @@
 - Character portrait and sprite keys follow pattern: 'portrait_[id]', 'sprite_[id]'
 ---
 
-## 2026-04-10 12:30 - US-007
+## 2026-04-10 15:45 - US-013
+- Implemented skills.json with 26 complete skills across all characters
+- Enhanced Skill interface with statusEffect and healing fields
+- SkillStatusEffect interface for skill-applied status effects
+- Attack skills for each character:
+  - 李逍遥: 御剑术(Lv1), 天师符法(Lv5), 剑气冲霄(Lv10), 万剑诀(Lv15-all), 天师符咒(Lv20), 灵魂咒(Lv25), 七星诀(Lv30-all)
+  - 赵灵儿: 风咒(Lv1), 雷咒(Lv5), 五气朝元(Lv8-heal), 冰咒(Lv12), 火咒(Lv15), 女娲神珠(Lv20-all), 天雷破(Lv25-all), 地火烈(Lv30-all)
+  - 林月如: 七诀剑气(Lv8), 剑舞乾坤(Lv12-all), 一剑消(Lv18), 乾坤一掷(Lv22-all), 天外飞仙(Lv28), 剑奴昭日诀(Lv35-all)
+  - 阿奴: 鬼降(Lv15-paralyze), 祭天(Lv18-heal all), 苗剑(Lv22), 万毒咒(Lv25-all poison), 羲和烈(Lv30-all), 银河咒(Lv35-all)
+- Skill animations already exist in BattleScene.ts (caster glow, target flash)
+
+**Files changed:**
+- src/data/Skill.ts (enhanced - added SkillStatusEffect interface, statusEffect/healing fields)
+- src/data/skills.json (created - 26 skills with complete data)
+- ralph/prd.json (updated US-013 to passes: true)
+
+**Learnings for future iterations:**
+- Skills can apply status effects via statusEffect field (type, duration, intensity)
+- Healing skills use healing field or targetType 'self'/'all_player' with power for heal amount
+- Skills.json uses skill IDs matching characters.json SkillLearnEntry.skillId
+- Each character has 6-8 unique skills with progressive learn levels
+---
 - Enhanced BattleScene.ts battle UI with improved features
 - Added target type indicator (单体/全体/自身) to skill menu items
 - Added visual indicator for "all enemies" target selection mode

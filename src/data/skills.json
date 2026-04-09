@@ -1,0 +1,333 @@
+[
+  // === 李逍遥专属技能 ===
+  {
+    "id": "yujianshu",
+    "name": "御剑术",
+    "mpCost": 5,
+    "power": 30,
+    "element": "物理",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "李逍遥的基础剑术，以剑气攻击单体敌人",
+    "learnLevel": 1
+  },
+  {
+    "id": "tianshifu",
+    "name": "天师符法",
+    "mpCost": 12,
+    "power": 50,
+    "element": "符咒",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "道家符咒之术，以符纸化为剑气攻击敌人",
+    "learnLevel": 5
+  },
+  {
+    "id": "jianqi_chongxiao",
+    "name": "剑气冲霄",
+    "mpCost": 20,
+    "power": 80,
+    "element": "物理",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "剑气冲天而起，对单体造成强力伤害",
+    "learnLevel": 10
+  },
+  {
+    "id": "wanjian_jue",
+    "name": "万剑诀",
+    "mpCost": 35,
+    "power": 60,
+    "element": "物理",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "万千剑气齐发，攻击敌方全体",
+    "learnLevel": 15
+  },
+  {
+    "id": "tianshi_fuzhou",
+    "name": "天师符咒",
+    "mpCost": 25,
+    "power": 100,
+    "element": "符咒",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "高级符咒之术，威力惊人",
+    "learnLevel": 20
+  },
+  {
+    "id": "linghun_shou",
+    "name": "灵魂咒",
+    "mpCost": 30,
+    "power": 90,
+    "element": "灵力",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "以灵力凝聚成咒，攻击敌人灵魂",
+    "learnLevel": 25
+  },
+  {
+    "id": "qixing_jue",
+    "name": "七星诀",
+    "mpCost": 50,
+    "power": 150,
+    "element": "物理",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "李逍遥最强剑术，七星连珠般的剑气攻击全体敌人",
+    "learnLevel": 30
+  },
+
+  // === 赵灵儿专属技能 ===
+  {
+    "id": "fengzhou",
+    "name": "风咒",
+    "mpCost": 8,
+    "power": 40,
+    "element": "风",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "召唤风神之力，以风刃攻击敌人",
+    "learnLevel": 1
+  },
+  {
+    "id": "leizhou",
+    "name": "雷咒",
+    "mpCost": 10,
+    "power": 55,
+    "element": "雷",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "召唤雷神之力，以雷电攻击敌人",
+    "learnLevel": 5
+  },
+  {
+    "id": "wuqi_chaoyuan",
+    "name": "五气朝元",
+    "mpCost": 15,
+    "power": 40,
+    "element": "灵力",
+    "targetType": "self",
+    "targetTypeName": "自身",
+    "description": "恢复自身大量生命值",
+    "learnLevel": 8
+  },
+  {
+    "id": "bingzhou",
+    "name": "冰咒",
+    "mpCost": 12,
+    "power": 50,
+    "element": "冰",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "召唤冰雪之力，冻结敌人",
+    "learnLevel": 12
+  },
+  {
+    "id": "huozhou",
+    "name": "火咒",
+    "mpCost": 12,
+    "power": 50,
+    "element": "火",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "召唤火焰之力，焚烧敌人",
+    "learnLevel": 15
+  },
+  {
+    "id": "nuwa_shenzhu",
+    "name": "女娲神珠",
+    "mpCost": 40,
+    "power": 120,
+    "element": "灵力",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "女娲后人专属神术，以神珠之力攻击全体敌人",
+    "learnLevel": 20
+  },
+  {
+    "id": "tianlei_po",
+    "name": "天雷破",
+    "mpCost": 35,
+    "power": 100,
+    "element": "雷",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "召唤天雷，对敌方全体造成毁灭性打击",
+    "learnLevel": 25
+  },
+  {
+    "id": "dihuo_lie",
+    "name": "地火烈",
+    "mpCost": 35,
+    "power": 100,
+    "element": "火",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "召唤地底烈火，焚烧敌方全体",
+    "learnLevel": 30
+  },
+
+  // === 林月如专属技能 ===
+  {
+    "id": "qijue_jianqi",
+    "name": "七诀剑气",
+    "mpCost": 15,
+    "power": 70,
+    "element": "物理",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "林家剑法绝学，剑气纵横",
+    "learnLevel": 8
+  },
+  {
+    "id": "jianwu_qiankun",
+    "name": "剑舞乾坤",
+    "mpCost": 25,
+    "power": 90,
+    "element": "物理",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "剑影如舞，攻击敌方全体",
+    "learnLevel": 12
+  },
+  {
+    "id": "yijian_xiao",
+    "name": "一剑消",
+    "mpCost": 30,
+    "power": 110,
+    "element": "物理",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "林家最强单体剑术，一剑破敌",
+    "learnLevel": 18
+  },
+  {
+    "id": "qiankun_yizhi",
+    "name": "乾坤一掷",
+    "mpCost": 40,
+    "power": 80,
+    "element": "物理",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "乾坤剑气齐发，攻击全体",
+    "learnLevel": 22
+  },
+  {
+    "id": "tianwaifeixian",
+    "name": "天外飞仙",
+    "mpCost": 50,
+    "power": 130,
+    "element": "物理",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "传说中的剑术，如同天外飞仙般优美而致命",
+    "learnLevel": 28
+  },
+  {
+    "id": "jiannu_zhaorijue",
+    "name": "剑奴昭日诀",
+    "mpCost": 60,
+    "power": 160,
+    "element": "物理",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "林月如最强剑术，剑光如日照耀，攻击全体敌人",
+    "learnLevel": 35
+  },
+
+  // === 阿奴专属技能 ===
+  {
+    "id": "guijiang",
+    "name": "鬼降",
+    "mpCost": 18,
+    "power": 0,
+    "element": "巫术",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "苗族巫术，降下诅咒使敌人眩晕",
+    "learnLevel": 15,
+    "statusEffect": { "type": "paralyze", "duration": 2, "intensity": 1 }
+  },
+  {
+    "id": "jitian",
+    "name": "祭天",
+    "mpCost": 25,
+    "power": 0,
+    "element": "巫术",
+    "targetType": "all_player",
+    "targetTypeName": "己方全体",
+    "description": "苗族祭祀之术，为己方全体恢复少量生命",
+    "learnLevel": 18,
+    "healing": 30
+  },
+  {
+    "id": "miao_jian",
+    "name": "苗剑",
+    "mpCost": 20,
+    "power": 65,
+    "element": "物理",
+    "targetType": "single",
+    "targetTypeName": "单体",
+    "description": "苗族特有的剑术",
+    "learnLevel": 22
+  },
+  {
+    "id": "wandu_zhou",
+    "name": "万毒咒",
+    "mpCost": 30,
+    "power": 50,
+    "element": "毒",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "释放剧毒，使敌方全体中毒",
+    "learnLevel": 25,
+    "statusEffect": { "type": "poison", "duration": 3, "intensity": 2 }
+  },
+  {
+    "id": "xihe_lie",
+    "name": "羲和烈",
+    "mpCost": 40,
+    "power": 90,
+    "element": "火",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "召唤太阳神之力，烈火焚烧敌方全体",
+    "learnLevel": 30
+  },
+  {
+    "id": "yinhe_zhou",
+    "name": "银河咒",
+    "mpCost": 55,
+    "power": 120,
+    "element": "灵力",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "阿奴最强巫术，以银河之力攻击全体敌人",
+    "learnLevel": 35
+  },
+
+  // === 基础仙术（所有角色可能学习） ===
+  {
+    "id": "xuanbingzhou",
+    "name": "玄冰咒",
+    "mpCost": 18,
+    "power": 60,
+    "element": "冰",
+    "targetType": "all_enemy",
+    "targetTypeName": "全体",
+    "description": "高级冰系仙术，冰封敌方全体",
+    "learnLevel": 10
+  },
+  {
+    "id": "xuanbingzhou_heal",
+    "name": "玄冰咒",
+    "mpCost": 20,
+    "power": 50,
+    "element": "冰",
+    "targetType": "all_player",
+    "targetTypeName": "己方全体",
+    "description": "以玄冰之力为己方全体恢复生命",
+    "learnLevel": 12
+  }
+]

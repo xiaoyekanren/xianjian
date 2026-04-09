@@ -209,8 +209,8 @@
         "Typecheck passes"
       ],
       "priority": 13,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Skill interface enhanced with statusEffect and healing fields, skills.json with 26 skills across all four characters (李逍遥: 御剑术/天师符法/万剑诀/七星诀 etc., 赵灵儿: 风咒/雷咒/五气朝元/女娲神珠 etc., 林月如: 七诀剑气/剑舞乾坤/天外飞仙 etc., 阿奴: 鬼降/祭天/万毒咒 etc.), BattleScene has skill animations (caster glow, target flash)"
     },
     {
       "id": "US-014",
