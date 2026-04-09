@@ -336,8 +336,8 @@
         "Typecheck passes"
       ],
       "priority": 21,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - StatusType enum with 7 effects (poison/paralyze/sleep/silence/protect/haste/regen), status effect icons displayed in BattleScene (毒/晕/眠/默/护/速/愈), duration management in BattleSystem.processStatusEffects, skills apply status effects on hit (e.g., 鬼降 applies paralyze, 万毒咒 applies poison), items remove status effects (解毒药/jieduyao removes poison, 醒神丹/xingshendan removes sleep/paralyze), damage over time for poison, regeneration for regen, speed bonus for haste, damage reduction for protect"
     },
     {
       "id": "US-022",

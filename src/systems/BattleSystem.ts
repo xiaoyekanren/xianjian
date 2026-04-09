@@ -542,6 +542,7 @@ export class BattleSystem {
     let totalDamage = 0;
     let totalHealed = 0;
     const messages: string[] = [];
+    const statusMessages: string[] = [];
 
     for (const targetId of targetIds) {
       const target = this.units.get(targetId);
@@ -567,6 +568,42 @@ export class BattleSystem {
         totalDamage += damage;
         messages.push(`${target.name} 受到 ${damage} 点伤害`);
       }
+
+      // Apply status effect if skill has one
+      if (skill.statusEffect && target.hp > 0) {
+        const existingEffect = target.statusEffects.find(e => e.type === skill.statusEffect!.type);
+        if (existingEffect) {
+          // Refresh duration
+          existingEffect.duration = Math.max(existingEffect.duration, skill.statusEffect.duration);
+        } else {
+          // Apply new effect
+          target.statusEffects.push({
+            type: skill.statusEffect.type,
+            duration: skill.statusEffect.duration,
+            intensity: skill.statusEffect.intensity,
+          });
+        }
+
+        const statusNames: Record<string, string> = {
+          poison: '中毒',
+          paralyze: '眩晕',
+          sleep: '睡眠',
+          silence: '沉默',
+          protect: '防护',
+          haste: '神行',
+          regen: '回春',
+        };
+        statusMessages.push(`${target.name} ${statusNames[skill.statusEffect.type] || skill.statusEffect.type}`);
+      }
+    }
+
+    // Build message
+    let message = `${actor.name} 使用 ${skill.name}！`;
+    if (messages.length > 0) {
+      message += ` ${messages.join(', ')}`;
+    }
+    if (statusMessages.length > 0) {
+      message += ` [${statusMessages.join(', ')}]`;
     }
 
     return {
@@ -576,7 +613,7 @@ export class BattleSystem {
       skillId: skill.id,
       damage: totalDamage,
       healed: totalHealed,
-      message: `${actor.name} 使用 ${skill.name}！${messages.join(', ')}`,
+      message,
     };
   }
 
