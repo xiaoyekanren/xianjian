@@ -206,3 +206,43 @@ Started: Thu Apr  9 11:11:03 PM CST 2026
   - Flashback flow: all_pearls_collected -> spirit_pearls dialog -> pearls_ready -> flashback_trigger on shrine
   - Awakening triggers on flashback_complete + all_pearls_collected flags
 ---
+## Fri Apr 10 2026 - US-040
+- Implemented 最终决战实现
+- Added 拜月教总部地图 to maps.json:
+  - baiyue_headquarters location with 3 maps
+  - baiyue_entrance: Dark entrance hall with 拜月教徒 NPCs
+  - baiyue_inner_hall: Inner temple with 拜月教长老 NPCs
+  - miao_sacred_altar: Final battle arena where 拜月教主 waits
+  - All maps use dark color themes (storm weather, night time)
+- Added boss enemies to enemies.json:
+  - baiyue_leader: HP8000, Attack85, Defense50, Speed20, Luck25 (as specified)
+  - baiyue_leader has special ability: summon_water_beast (triggers when HP < 50%)
+  - water_beast: HP3000, Attack70, Defense40, Speed15, drops water_pearl
+  - Both bosses use canFlee: false for story battles
+- Verified four-person combo skills exist in ComboSkill.ts:
+  - four_directions (四方合击): power 250, requires all 4 characters
+  - nuwa_power (女娲神威): power 400, the ultimate combo skill
+- Updated story_ch5_final_battle in story.json:
+  - Changed enemy reference from boss_demon_king to baiyue_leader
+  - Added two-phase battle: first baiyue_leader alone, then water_beast summons
+  - Added combo skill hint dialog before final combined battle
+  - Added screen_effect (fade to white) after victory
+- Added dialog sequences in DialogData.ts:
+  - final_battle_intro: Meeting 拜月教主 at the altar
+  - baiyue_summons_beast: Water beast summon sequence
+  - final_battle_combo_hint: Four-person combo skill activation
+  - final_battle_end: Victory and ending narration
+  - baiyue_guard_intro, baiyue_priest_intro, baiyue_leader_intro: NPC dialogs
+  - final_battle_start: Cutscene trigger dialog
+- Files changed:
+  - src/data/maps.json (added baiyue_headquarters location with 3 maps)
+  - src/data/enemies.json (added baiyue_leader and water_beast bosses)
+  - src/data/story.json (updated story_ch5_final_battle with proper enemy IDs)
+  - src/data/DialogData.ts (added 9 final battle dialog sequences)
+  - ralph/prd.json (updated US-040 to passes: true)
+- **Learnings for future iterations:**
+  - Final boss uses HP8000 as specified in acceptance criteria
+  - Multi-phase battles can chain battle events with dialog sequences between them
+  - Combo skills are already defined in ComboSkill.ts - use enableComboSkills in battle event
+  - Dark themes for evil locations: #1A0A0A primary, #FF0000 accent, storm weather
+---

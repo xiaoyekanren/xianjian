@@ -2739,6 +2739,187 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // US-040: Final Battle dialogs
+  {
+    id: 'final_battle_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '四人来到拜月教总部祭坛，拜月教主正在等待...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'final_battle_intro_2',
+      },
+      {
+        speakerId: 'baiyue_leader',
+        speakerName: '拜月教主',
+        text: '哈哈哈！你们终于来了。今天，我将召唤水魔兽，毁灭这个世界！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'final_battle_intro_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '拜月教主，你为了权力不惜召唤水魔兽，会害死无数无辜的人！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'final_battle_intro_4',
+      },
+      {
+        speakerId: 'baiyue_leader',
+        speakerName: '拜月教主',
+        text: '哼，女娲后人...你以为你能阻止我吗？今天就是你的末日！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'baiyue_summons_beast',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '拜月教主虽然受了伤，但他依然大笑...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'baiyue_summons_beast_2',
+      },
+      {
+        speakerId: 'baiyue_leader',
+        speakerName: '拜月教主',
+        text: '哈哈哈！你们以为这就结束了？水魔兽，出来吧！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'baiyue_summons_beast_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '祭坛上裂开一道巨大的裂缝，远古的水魔兽从深渊中爬出！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'baiyue_summons_beast_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这就是传说中的水魔兽...它的力量太强大了！',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'final_battle_combo_hint',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '水魔兽的力量与拜月教主融合，我们必须合力才能击败他！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'final_battle_combo_hint_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '灵儿姐姐，我们可以使用四人合体技！女娲神威！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'final_battle_combo_hint_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '大家一起！集中力量！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'final_battle_end',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '四人合力施展女娲神威，光芒笼罩整个祭坛...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'final_battle_end_2',
+      },
+      {
+        speakerId: 'baiyue_leader',
+        speakerName: '拜月教主',
+        text: '不可能...不可能！女娲的力量...我...不甘心！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'final_battle_end_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '拜月教主和水魔兽在光芒中消散，祭坛恢复了宁静。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'final_battle_end_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '终于...结束了。逍遥哥哥，我们做到了。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'final_battle_end_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿，月如，阿奴...谢谢你们一直陪在我身边。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'final_battle_end_6',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '四人的冒险到此结束，新的故事即将开始...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Bai Yue HQ dialogs
+  {
+    id: 'baiyue_guard_intro',
+    lines: [
+      {
+        speakerId: 'baiyue_guard',
+        speakerName: '拜月教徒',
+        text: '这里是拜月教的圣地，禁止外人进入！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'baiyue_priest_intro',
+    lines: [
+      {
+        speakerId: 'baiyue_priest',
+        speakerName: '拜月教长老',
+        text: '教主大人正在祭坛等待，你们这些入侵者不会有好下场！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'baiyue_leader_intro',
+    lines: [
+      {
+        speakerId: 'baiyue_leader',
+        speakerName: '拜月教主',
+        text: '你们终于来了...哈哈哈！今天就是你们的末日！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'final_battle_start',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '进入祭坛，决战即将开始...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
 ];
 
 /**

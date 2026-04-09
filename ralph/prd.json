@@ -639,8 +639,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 40,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - Added baiyue_headquarters location with 3 maps (baiyue_entrance, baiyue_inner_hall, miao_sacred_altar). Added baiyue_leader boss (HP8000) with special ability to summon water_beast. Added water_beast enemy (HP3000) with water_pearl drop. Verified four-person combo skills exist in ComboSkill.ts (four_directions: power 250, nuwa_power: power 400). Updated story_ch5_final_battle to reference correct enemies and added dialog sequences for final battle intro, beast summon, combo hint, and battle end."
     },
     {
       "id": "US-041",

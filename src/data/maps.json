@@ -69,6 +69,22 @@
       "displayName": "苗族圣地",
       "maps": ["sacred_entrance", "sacred_maze_1", "sacred_maze_2", "sacred_maze_3", "sacred_shrine"],
       "chapter": 5
+    },
+    {
+      "id": "nanzhao_10_years",
+      "name": "十年前南诏国",
+      "displayName": "南诏国",
+      "maps": ["nanzhao_palace_10_years", "nanzhao_shrine_10_years"],
+      "chapter": 4,
+      "description": "时光回溯到十年前的南诏国"
+    },
+    {
+      "id": "baiyue_headquarters",
+      "name": "拜月教总部",
+      "displayName": "拜月教总部",
+      "maps": ["baiyue_entrance", "baiyue_inner_hall", "miao_sacred_altar"],
+      "chapter": 5,
+      "description": "拜月教的秘密总部，最终决战之地"
     }
   ],
   "maps": [
@@ -3947,6 +3963,547 @@
         {
           "layerId": "shrine_ground",
           "tileIds": [1, 8]
+        }
+      ]
+    },
+    {
+      "id": "nanzhao_palace_10_years",
+      "name": "南诏国宫殿（十年前）",
+      "displayName": "南诏国宫殿",
+      "description": "十年前南诏国的王宫大殿，巫后居所",
+      "locationId": "nanzhao_10_years",
+      "chapter": 4,
+      "width": 25,
+      "height": 18,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#E8D5B7",
+        "secondary": "#B8860B",
+        "accent": "#FFD700"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "clear",
+        "backgroundColor": "#F5E6D3",
+        "bgm": "nanzhao_palace"
+      },
+      "layers": [
+        {
+          "id": "palace_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,8,8,8,8,8,8,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,8,0,0,0,0,0,8,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "palace_ground",
+            "tileIds": [1, 8, 5]
+          }
+        },
+        {
+          "id": "palace_decor",
+          "name": "装饰层",
+          "type": "overlay",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,7,7,7,7,0,0,0,0,7,7,0,0,7,7,0,0,0,0,7,7,7,7,7,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ]
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "wuhou",
+          "name": "巫后",
+          "dialogId": "wuhou_intro",
+          "x": 12,
+          "y": 3,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "nanzhao_king",
+          "name": "南诏王",
+          "dialogId": "nanzhao_king_intro",
+          "x": 11,
+          "y": 5,
+          "direction": "right",
+          "movementType": "static"
+        },
+        {
+          "npcId": "nanzhao_guard_1",
+          "name": "侍卫",
+          "dialogId": "nanzhao_guard_intro",
+          "x": 3,
+          "y": 5,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "nanzhao_guard_2",
+          "name": "侍卫",
+          "dialogId": "nanzhao_guard_intro",
+          "x": 21,
+          "y": 5,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "palace_to_shrine",
+          "targetMapId": "nanzhao_shrine_10_years",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 15,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "wuhou_meet_point",
+          "type": "cutscene",
+          "x": 12,
+          "y": 6,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "flashback_wuhou_meet",
+          "requireFlag": "flashback_active",
+          "setFlag": "approached_wuhou",
+          "oneTime": true,
+          "priority": 10
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "palace_ground",
+          "tileIds": [1, 8, 5]
+        }
+      ]
+    },
+    {
+      "id": "nanzhao_shrine_10_years",
+      "name": "南诏国圣地（十年前）",
+      "displayName": "南诏国圣地",
+      "description": "十年前南诏国的圣地，水魔兽封印之地",
+      "locationId": "nanzhao_10_years",
+      "chapter": 4,
+      "width": 20,
+      "height": 15,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#4169E1",
+        "secondary": "#1E3A8A",
+        "accent": "#87CEEB"
+      },
+      "environment": {
+        "timeOfDay": "day",
+        "weather": "storm",
+        "backgroundColor": "#1E3A5F",
+        "bgm": "nanzhao_shrine"
+      },
+      "layers": [
+        {
+          "id": "shrine_10_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,2,2,2,2,2,2,2,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "shrine_10_ground",
+            "tileIds": [1, 2, 5]
+          }
+        },
+        {
+          "id": "shrine_10_overlay",
+          "name": "覆盖层",
+          "type": "overlay",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,9,9,9,9,0,0,0,0,9,9,9,9,9,0,0,0,9,9,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+          ]
+        }
+      ],
+      "npcs": [],
+      "transitions": [
+        {
+          "id": "shrine_10_to_palace",
+          "targetMapId": "nanzhao_palace_10_years",
+          "targetX": 12,
+          "targetY": 15,
+          "sourceX": 10,
+          "sourceY": 12,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "water_beast_seal_point",
+          "type": "cutscene",
+          "x": 10,
+          "y": 5,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "flashback_water_beast_seal_scene",
+          "requireFlag": "met_wuhou",
+          "setFlag": "water_beast_sealed",
+          "oneTime": true,
+          "priority": 10
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "shrine_10_ground",
+          "tileIds": [1, 2, 5]
+        }
+      ]
+    },
+    {
+      "id": "baiyue_entrance",
+      "name": "拜月教入口",
+      "displayName": "拜月教入口",
+      "description": "拜月教总部的入口大厅，气氛阴暗压抑",
+      "locationId": "baiyue_headquarters",
+      "chapter": 5,
+      "width": 25,
+      "height": 18,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#2C1810",
+        "secondary": "#4A3728",
+        "accent": "#8B0000"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "storm",
+        "backgroundColor": "#1A1A2E",
+        "bgm": "baiyue_dungeon"
+      },
+      "layers": [
+        {
+          "id": "baiyue_entrance_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,0,0,0,3,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,0,0,0,3,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,3,0,0,0,3,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "baiyue_entrance_ground",
+            "tileIds": [1, 3, 5]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "baiyue_guard",
+          "name": "拜月教徒",
+          "dialogId": "baiyue_guard_intro",
+          "x": 8,
+          "y": 5,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "baiyue_guard_2",
+          "name": "拜月教徒",
+          "dialogId": "baiyue_guard_intro",
+          "x": 16,
+          "y": 5,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "baiyue_to_inner",
+          "targetMapId": "baiyue_inner_hall",
+          "targetX": 12,
+          "targetY": 2,
+          "sourceX": 12,
+          "sourceY": 13,
+          "direction": "up"
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "baiyue_entrance_ground",
+          "tileIds": [1, 3, 5]
+        }
+      ]
+    },
+    {
+      "id": "baiyue_inner_hall",
+      "name": "拜月教内殿",
+      "displayName": "拜月教内殿",
+      "description": "拜月教的内殿，教主居所，气氛诡谲",
+      "locationId": "baiyue_headquarters",
+      "chapter": 5,
+      "width": 20,
+      "height": 15,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#1A0A0A",
+        "secondary": "#3D1515",
+        "accent": "#FF0000"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "storm",
+        "backgroundColor": "#0D0D1A",
+        "bgm": "baiyue_inner_hall"
+      },
+      "layers": [
+        {
+          "id": "baiyue_inner_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,4,0,0,4,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,4,0,0,4,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,4,0,0,4,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "baiyue_inner_ground",
+            "tileIds": [1, 4, 5]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "baiyue_priest",
+          "name": "拜月教长老",
+          "dialogId": "baiyue_priest_intro",
+          "x": 9,
+          "y": 5,
+          "direction": "down",
+          "movementType": "static"
+        },
+        {
+          "npcId": "baiyue_priest_2",
+          "name": "拜月教长老",
+          "dialogId": "baiyue_priest_intro",
+          "x": 11,
+          "y": 5,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "inner_to_entrance",
+          "targetMapId": "baiyue_entrance",
+          "targetX": 12,
+          "targetY": 11,
+          "sourceX": 12,
+          "sourceY": 2,
+          "direction": "down"
+        },
+        {
+          "id": "inner_to_altar",
+          "targetMapId": "miao_sacred_altar",
+          "targetX": 10,
+          "targetY": 2,
+          "sourceX": 10,
+          "sourceY": 10,
+          "direction": "up",
+          "requiredFlag": "linger_awakened"
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "baiyue_inner_ground",
+          "tileIds": [1, 4, 5]
+        }
+      ]
+    },
+    {
+      "id": "miao_sacred_altar",
+      "name": "苗族圣地祭坛",
+      "displayName": "圣地祭坛",
+      "description": "最终决战之地，拜月教主等待在此",
+      "locationId": "baiyue_headquarters",
+      "chapter": 5,
+      "width": 20,
+      "height": 15,
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "colorTheme": {
+        "primary": "#0A0A0A",
+        "secondary": "#1A1A1A",
+        "accent": "#FF6600"
+      },
+      "environment": {
+        "timeOfDay": "night",
+        "weather": "storm",
+        "backgroundColor": "#000000",
+        "bgm": "final_battle"
+      },
+      "layers": [
+        {
+          "id": "altar_ground",
+          "name": "地面层",
+          "type": "ground",
+          "visible": true,
+          "opacity": 1,
+          "tiles": [
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,6,6,6,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,6,6,6,6,6,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,6,6,6,6,6,6,6,0,0,0,0,0,1],
+            [1,0,0,0,0,0,6,6,6,6,6,6,6,6,6,0,0,0,0,1],
+            [1,0,0,0,0,6,6,6,6,6,6,6,6,6,6,6,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+            [1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+          ],
+          "collision": {
+            "layerId": "altar_ground",
+            "tileIds": [1, 5]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "npcId": "baiyue_leader",
+          "name": "拜月教主",
+          "dialogId": "baiyue_leader_intro",
+          "x": 10,
+          "y": 6,
+          "direction": "down",
+          "movementType": "static"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "altar_to_inner",
+          "targetMapId": "baiyue_inner_hall",
+          "targetX": 10,
+          "targetY": 8,
+          "sourceX": 10,
+          "sourceY": 2,
+          "direction": "down"
+        }
+      ],
+      "events": [
+        {
+          "id": "final_battle_trigger",
+          "type": "cutscene",
+          "x": 10,
+          "y": 7,
+          "triggerType": "on_enter",
+          "triggerOnEnter": true,
+          "dialogId": "final_battle_start",
+          "requireFlag": "linger_awakened",
+          "setFlag": "final_battle_ready",
+          "oneTime": true,
+          "priority": 10
+        }
+      ],
+      "collisions": [
+        {
+          "layerId": "altar_ground",
+          "tileIds": [1, 5]
         }
       ]
     }

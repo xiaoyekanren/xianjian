@@ -239,6 +239,55 @@
       ],
       "spriteKey": "enemy_earth_guardian",
       "canFlee": false
+    },
+    {
+      "id": "baiyue_leader",
+      "name": "拜月教主",
+      "displayName": "拜月教主",
+      "description": "拜月教的教主，野心勃勃，企图召唤水魔兽毁灭世界",
+      "category": "boss",
+      "hp": 8000,
+      "maxHp": 8000,
+      "attack": 85,
+      "defense": 50,
+      "speed": 20,
+      "luck": 25,
+      "expReward": 1000,
+      "goldReward": 500,
+      "drops": [
+        { "itemId": "nuwa_yupe", "probability": 1.0 },
+        { "itemId": "tianshijian", "probability": 1.0 }
+      ],
+      "spriteKey": "enemy_baiyue_leader",
+      "canFlee": false,
+      "specialAbilities": [
+        {
+          "id": "summon_water_beast",
+          "name": "召唤水魔兽",
+          "triggerCondition": "hp_below_50_percent",
+          "description": "当HP低于50%时召唤水魔兽助战"
+        }
+      ]
+    },
+    {
+      "id": "water_beast",
+      "name": "水魔兽",
+      "displayName": "水魔兽",
+      "description": "远古被封印的水魔兽，拜月教主召唤的恐怖怪物",
+      "category": "boss",
+      "hp": 3000,
+      "maxHp": 3000,
+      "attack": 70,
+      "defense": 40,
+      "speed": 15,
+      "luck": 20,
+      "expReward": 500,
+      "goldReward": 300,
+      "drops": [
+        { "itemId": "water_pearl", "probability": 1.0 }
+      ],
+      "spriteKey": "enemy_water_beast",
+      "canFlee": false
     }
   ],
   "towerEncounters": [

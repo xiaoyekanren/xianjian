@@ -1131,23 +1131,57 @@
         {
           "type": "battle",
           "order": 2,
-          "data": { "enemyIds": ["boss_demon_king"] },
+          "data": { "enemyIds": ["baiyue_leader"] },
           "waitForCompletion": true
         },
         {
           "type": "dialog",
           "order": 3,
+          "data": { "dialogId": "baiyue_summons_beast" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 4,
+          "data": { "enemyIds": ["water_beast"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 5,
+          "data": { "dialogId": "final_battle_combo_hint" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 6,
+          "data": { "enemyIds": ["baiyue_leader", "water_beast"], "enableComboSkills": true },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 7,
           "data": { "dialogId": "final_battle_end" },
           "waitForCompletion": true
         },
         {
+          "type": "screen_effect",
+          "order": 8,
+          "data": { "effectType": "fade", "effectColor": "#FFFFFF", "effectDuration": 3000 }
+        },
+        {
           "type": "set_flag",
-          "order": 4,
+          "order": 9,
           "data": { "flagName": "game_complete", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 10,
+          "data": { "flagName": "baiyue_defeated", "flagValue": true }
         }
       ],
       "priority": 100,
-      "onCompleteFlags": ["game_complete", "ch5_complete"]
+      "onCompleteFlags": ["game_complete", "ch5_complete", "baiyue_defeated"]
     },
     {
       "id": "story_side_treasure_intro",
