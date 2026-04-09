@@ -249,3 +249,36 @@
 - Key items have price: 0 (cannot be bought/sold)
 - ItemManager.applyEffect returns changes (hpChange, mpChange, removedStatuses, addedStatus)
 ---
+
+## 2026-04-10 16:15 - US-016
+- Implemented complete save system with SaveSystem.ts
+- SaveData interface: slotId, timestamp, playTime, currentMap, playerPosition, storyFlags, currentChapter, partyMembers, characters, inventory, gold, affection, settings
+- MapPosition interface: x, y coordinates
+- StoryFlags interface: key-value boolean flags for story progress
+- AffectionData interface: zhao_linger, lin_yueru, anu (0-100)
+- GameSettings interface: bgmVolume, sfxVolume, textSpeed, autoSave
+- SaveSlotInfo interface for UI display: slotId, exists, timestamp, playTime, currentChapter, partyLeader, currentMap
+- SaveSystem class with static methods:
+  - save(slotId, data): save to localStorage
+  - load(slotId): load from localStorage
+  - delete(slotId): delete save slot
+  - getAllSlotInfo(): get info for all 5 slots
+  - getSlotInfo(slotId): get info for single slot
+  - hasSave(slotId): check if slot has data
+  - getSettings(): load game settings
+  - saveSettings(settings): save game settings
+  - quickSave/quickLoad: auto-save to slot 1
+  - formatPlayTime/formatTimestamp: display helpers
+- 5 save slots (1-5) with localStorage key prefix 'xianjian_save_'
+
+**Files changed:**
+- src/systems/SaveSystem.ts (complete rewrite - SaveData interfaces, SaveSystem class)
+- ralph/prd.json (updated US-016 to passes: true)
+
+**Learnings for future iterations:**
+- localStorage keys use prefix 'xianjian_save_' + slotId
+- Game settings stored separately with key 'xianjian_settings'
+- SaveSlotInfo provides minimal data for UI without full save data
+- quickSave uses slot 1 for auto-save functionality
+- Play time formatted as HH:MM:SS or MM:SS
+---
