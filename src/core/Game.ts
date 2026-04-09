@@ -20,6 +20,7 @@ import { ShopScene } from '@/scenes/ShopScene';
 import { AffectionScene } from '@/scenes/AffectionScene';
 import { EndingScene } from '@/scenes/EndingScene';
 import { SettingsScene } from '@/scenes/SettingsScene';
+import { IntroScene } from '@/scenes/IntroScene';
 
 /**
  * Game configuration interface
@@ -70,6 +71,7 @@ export class Game {
     const scenes = [
       BootScene,
       MainMenuScene,
+      IntroScene,
       WorldScene,
       DialogScene,
       BattleScene,

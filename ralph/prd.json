@@ -760,8 +760,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 48,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - IntroScene.ts with three-phase intro sequence: Phase 1 - Title fade in with gold glow and floating animation; Phase 2 - Nuwa legend with ink painting style graphics and sequential text reveal; Phase 3 - Dream intro with mist effects. Skip controls: ESC/Space/Enter/Click to skip after intro completes. Auto-proceeds to WorldScene after 5 seconds."
     },
     {
       "id": "US-049",
@@ -776,8 +776,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 49,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed - TutorialSystem.ts with TutorialStepType enum (movement/battle/shop/skill/inventory/dialog/save). TutorialStep interface with triggers (mapId, firstBattle, firstShop, firstSkill, storyFlag). checkTriggers method for automatic tutorial detection. Progress tracking with completedTutorials Set. Skip all option. Save/load support. 7 default tutorials covering all core game mechanics."
     },
     {
       "id": "US-050",
