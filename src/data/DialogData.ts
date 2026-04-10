@@ -5809,6 +5809,441 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // Baihe Village NPC dialogs (US-010)
+  {
+    id: 'han_doctor_intro',
+    lines: [
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '我是韩医仙，这里的医生。最近村里有不少人被蛇妖狐妖袭击，伤势很重。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'han_mengci_intro',
+    lines: [
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '我是韩梦慈，父亲的助手。我们正在努力救治被妖魔袭击的村民。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'baihe_villager_intro',
+    lines: [
+      {
+        speakerId: 'baihe_villager',
+        speakerName: '村民',
+        text: '欢迎来到白河村！这里是个宁静的小村庄，但最近有妖魔出没，请小心。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'baihe_villager_worry',
+    lines: [
+      {
+        speakerId: 'baihe_villager',
+        speakerName: '村民',
+        text: '最近蛇妖狐妖经常袭击村子，我们都不敢出门了...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'han_mother_worry',
+    lines: [
+      {
+        speakerId: 'han_mother',
+        speakerName: '韩母',
+        text: '梦慈最近经常外出救治村民，我很担心她的安全...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'clinic_assistant_intro',
+    lines: [
+      {
+        speakerId: 'clinic_assistant',
+        speakerName: '医馆助手',
+        text: '韩医仙正在救治伤员，需要药材的帮助。如果您能找到药材，请告诉我们。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'snake_demon_intro',
+    lines: [
+      {
+        speakerId: 'snake_demon',
+        speakerName: '蛇妖',
+        text: '人类...你们敢闯入我的领地！我要把你们都吃掉！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'fox_demon_intro',
+    lines: [
+      {
+        speakerId: 'fox_demon',
+        speakerName: '狐妖',
+        text: '嘻嘻嘻...愚蠢的人类，你们不知道这里是谁的地盘吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'mengci_rescued',
+    lines: [
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '感谢你们救了我！如果不是你们及时赶到，我可能就被蛇妖吃掉了...',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  // Yangzhou City NPC dialogs (US-011)
+  {
+    id: 'yangzhou_guard_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_guard',
+        speakerName: '扬州守卫',
+        text: '扬州城最近发生了一起女飞贼的案件，知府大人正在追查此事。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_innkeeper_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_innkeeper',
+        speakerName: '客栈老板',
+        text: '欢迎来到扬州客栈！这里有最舒适的房间和最美味的菜肴。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_villager_chat',
+    lines: [
+      {
+        speakerId: 'yangzhou_villager',
+        speakerName: '扬州居民',
+        text: '扬州城最近不太太平，有女飞贼在夜间作案，大家都人心惶惶。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_merchant_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_merchant',
+        speakerName: '扬州商人',
+        text: '我是扬州城的商人，经营各种商品。您需要什么？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_magistrate_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '我是扬州知府。最近城中发生女飞贼案件，正在全力追查。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_guest_chat',
+    lines: [
+      {
+        speakerId: 'yangzhou_guest',
+        speakerName: '客栈客人',
+        text: '听说那个女飞贼很厉害，连知府大人的府邸都被她闯过了。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'female_thief_encounter',
+    lines: [
+      {
+        speakerId: 'female_thief',
+        speakerName: '女飞贼',
+        text: '嘻嘻嘻...你们是谁？想要抓我吗？我可没那么容易被抓住！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'ji_sanniang_npc',
+    lines: [
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '我是姬三娘，扬州城的女飞贼。你们想了解更多关于我的事情吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Capital Liu Manor NPC dialogs (US-012)
+  {
+    id: 'liu_jinyuan_npc_intro',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '我是刘晋元，京城刘府的主人。最近我身体不太好...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'liu_doctor_diagnosis',
+    lines: [
+      {
+        speakerId: 'liu_doctor',
+        speakerName: '刘府医生',
+        text: '晋元公子的病情很奇怪，脉象紊乱，似有某种毒素侵入体内。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'liu_servant_intro',
+    lines: [
+      {
+        speakerId: 'liu_servant',
+        speakerName: '刘府仆人',
+        text: '欢迎来到刘府！晋元公子最近病重，彩依姑娘一直在照顾他。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'liu_jinyuan_npc_sick',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '我最近一直感到虚弱，多亏彩依照顾我...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_intro',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我是彩依，晋元公子的妻子。我会一直照顾他。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_caring',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '晋元的病情很严重，我必须日夜照顾他...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_butterfly_reveal',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '其实...我是蝴蝶精。我用我的灵力来维持晋元的生命。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_final_words',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我已经决定牺牲自己来拯救晋元。这是我最后的心愿...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  // Shushan NPC dialogs (US-013)
+  {
+    id: 'shushan_guard_npc_intro',
+    lines: [
+      {
+        speakerId: 'shushan_guard',
+        speakerName: '蜀山守卫',
+        text: '这里是蜀山派的圣地，只有得到长老许可才能进入锁妖塔。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shushan_disciple_npc_chat',
+    lines: [
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '锁妖塔是蜀山派的镇派之宝，里面封印着无数妖魔。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shushan_disciple_npc_chat2',
+    lines: [
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '听说最近有人要进入锁妖塔救人，长老已经批准了。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shushan_elder_npc_intro',
+    lines: [
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '我是蜀山派的长老。锁妖塔的事务由我负责。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Dali and Trial Cave NPC dialogs (US-014)
+  {
+    id: 'dali_guard_intro',
+    lines: [
+      {
+        speakerId: 'dali_guard',
+        speakerName: '大理守卫',
+        text: '欢迎来到大理城！这里是南诏国的首都。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'dali_villager_greeting',
+    lines: [
+      {
+        speakerId: 'dali_villager',
+        speakerName: '大理村民',
+        text: '大理是个美丽的城市，欢迎远方来的客人！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'dali_shopkeeper_greeting',
+    lines: [
+      {
+        speakerId: 'dali_shopkeeper',
+        speakerName: '大理商人',
+        text: '欢迎光临！我这里有各种南诏特产，您要看看吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'trial_master_intro',
+    lines: [
+      {
+        speakerId: 'trial_master',
+        speakerName: '试炼大师',
+        text: '欢迎来到试炼窟！这里是女娲留下的遗迹，只有通过考验才能获得传承。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'nuwa_guardian_greeting',
+    lines: [
+      {
+        speakerId: 'nuwa_guardian',
+        speakerName: '女娲守护者',
+        text: '我是女娲的守护者。只有真正的勇者才能通过试炼窟的考验。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'nuwa_priestess_intro',
+    lines: [
+      {
+        speakerId: 'nuwa_priestess',
+        speakerName: '女娲祭司',
+        text: '我是女娲祭司，负责守护试炼窟的秘术和宝物。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'qilin_guardian_intro',
+    lines: [
+      {
+        speakerId: 'qilin_guardian',
+        speakerName: '麒麟守护者',
+        text: '麒麟洞是神兽麒麟的居所，只有获得麒麟认可才能进入。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Yuhang and Jingcheng NPC dialogs (US-015)
+  {
+    id: 'yuhang_shop_intro',
+    lines: [
+      {
+        speakerId: 'yuhang_shopkeeper',
+        speakerName: '余杭镇商人',
+        text: '欢迎来到余杭镇！这里是李逍遥的故乡。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'jingcheng_guard_intro',
+    lines: [
+      {
+        speakerId: 'jingcheng_guard',
+        speakerName: '京城守卫',
+        text: '京城是天下繁华之地，欢迎各位前来。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'jingcheng_villager_chat',
+    lines: [
+      {
+        speakerId: 'jingcheng_villager',
+        speakerName: '京城居民',
+        text: '京城的刘府最近出了不少事，听说晋元公子病重...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
 ];
 
 /**
