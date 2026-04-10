@@ -1064,3 +1064,28 @@
 - speakerId 'narrator' used for non-character narration lines
 - Multi-step dialog chains provide emotional buildup and release
 ---
+
+## 2026-04-10 - US-005
+- Implemented 6 complete dialogue sequences for蜀山剧情 (Shushan arc)
+- Key storyline: 李逍遥 and party arrive at蜀山 to rescue赵灵儿 from锁妖塔
+- Dialogues added:
+  - ch8_arrive_shushan: 到达蜀山，众人感叹仙家圣地气势
+  - ch8_shushan_disciple_greeting: 蜀山弟子迎接，李逍遥说明来意
+  - ch8_elder_greeting: 长老出现，了解灵儿被封印原因
+  - ch8_elder_permission: 长老许可进入锁妖塔，解释当年封印真相
+  - ch8_suoyaota_history: 锁妖塔历史介绍，九层结构，灵儿在第七层
+  - ch8_linger_imprisoned_truth: 灵儿被囚真相，巫后十年前为救女儿将她送走
+- Key characters: shushan_disciple, shushan_elder, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 蜀山派管理锁妖塔，灵儿因女娲后人身份被诬陷为妖而封印
+
+**Files changed:**
+- src/data/DialogData.ts (added 6 dialog sequences, ~228 lines)
+- ralph/prd.json (updated US-005 to passes: true)
+
+**Learnings for future iterations:**
+- Shushan dialogs use ch8_ prefix for chapter 8蜀山 arc
+- shushan_elder and shushan_disciple as speaker IDs for蜀山 characters
+- Historical dialogues (suoyaota_history, linger_imprisoned_truth) provide lore context
+- Expression.THINKING used for elders explaining complex situations
+- Multi-party responses show each character's reaction (li_xiaoyao, lin_yueru, anu)
+---
