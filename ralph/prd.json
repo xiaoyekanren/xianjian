@@ -54,7 +54,7 @@
         "DialogData.ts编译通过"
       ],
       "priority": 4,
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-005",

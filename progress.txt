@@ -1010,3 +1010,57 @@
 - Dialog sequences follow pattern: id, lines with speakerId/speakerName/text/expression
 - US-002 comment added to identify the section in DialogData.ts
 ---
+
+## 2026-04-10 17:30 - US-003
+- Added yangzhou_thief_case_brief: 女飞贼案件简报，守卫详细介绍女飞贼作案情况
+- Added yangzhou_thief_resolved: 案件解决，知府感谢并给予奖励，揭露姬三娘身份
+- Added ji_sanniang_encounter: 遇到姬三娘，夜间邂逅并触发战斗
+- Added ji_sanniang_defeated: 姬三娘被击败，承认失败并感慨江湖无奈
+- Dialog structure follows existing patterns: DialogSequence with DialogLine array
+- Used Expression enum for character emotions (NORMAL, HAPPY, SAD, ANGRY, SURPRISED, THINKING)
+- Used DialogEventType for events (GET_ITEM for gold reward, START_BATTLE for battle trigger)
+
+**Files changed:**
+- src/data/DialogData.ts (added 4 dialog sequences with ~20 lines)
+- ralph/prd.json (updated US-003 to passes: true)
+
+**Learnings for future iterations:**
+- Dialog IDs follow pattern: location_event (e.g., yangzhou_thief_case_brief)
+- Multi-step dialogs use nextDialogId chaining
+- Story dialogs often include event triggers (battle, item rewards)
+- Character speakerId should match existing character IDs (ji_sanniang, yangzhou_magistrate, etc.)
+---
+
+## 2026-04-10 18:00 - US-004
+- Implemented 15 complete dialogue sequences for 京城彩依剧情 (Capital Caiyi arc)
+- Classic tearjerker storyline: 彩依 (butterfly spirit) sacrifices herself to save 刘晋元
+- Dialogues added:
+  - ch7_enter_liu_manor: 进入刘府，仆人介绍晋元病重
+  - ch7_meet_jinyuan: 见到刘晋元，病重状态
+  - ch7_meet_caiyi: 见到彩依，温柔照顾晋元
+  - ch7_jinyuan_sick: 医生诊断，脉象紊乱似有毒素
+  - ch7_caiyi_room: 李逍遥与彩依单独谈话
+  - ch7_caiyi_butterfly_spirit: 灵儿识破彩依蝴蝶精身份
+  - ch7_caiyi_love_jinyuan: 彩依诉说对晋元的爱慕
+  - ch7_caiyi_decision: 彩依决定用灵力救晋元，代价是生命
+  - ch7_caiyi_reveal_truth: 彩依向众人揭露真相
+  - ch7_caiyi_to_jinyuan: 彩依对晋元说话
+  - ch7_caiyi_transform: 彩依变身蝴蝶，散发光芒
+  - ch7_caiyi_last_words: 彩依遗言，嘱晋元好好活下去
+  - ch7_caiyi_butterfly_fly: 蝴蝶飞走，消失天际
+  - ch7_jinyuan_awake: 晋元醒来，询问彩依去向
+  - ch7_jinyuan_grief: 晋元悲痛，不愿接受彩依离去
+- Key characters: liu_jinyuan, caiyi, liu_manor_servant, liu_manor_doctor, narrator
+- Used SET_FLAG event for caiyi_transformed flag in ch7_caiyi_transform
+
+**Files changed:**
+- src/data/DialogData.ts (added 15 dialog sequences, ~475 lines)
+- ralph/prd.json (updated US-004 to passes: true)
+
+**Learnings for future iterations:**
+- Tragic story dialogues use narrator (旁白) for scene descriptions and transitions
+- SET_FLAG events can mark story progress flags (e.g., caiyi_transformed: true)
+- Expression.SAD is heavily used in tragic/emotional dialogues
+- speakerId 'narrator' used for non-character narration lines
+- Multi-step dialog chains provide emotional buildup and release
+---
