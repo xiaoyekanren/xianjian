@@ -304,3 +304,22 @@
   - Chapter transition to 12 happens in the final skill learning node
 
 ---
+
+## 2026-04-10 - US-026
+
+- **What was implemented**: Verified Water Pearl story nodes (covered by US-024)
+  - Water pearl acquisition already implemented in story_ch10_get_water_pearl (added in US-024)
+  - collected_water_pearl flag is already set by both story_ch10_get_water_pearl and story_ch10_flashback_water_beast
+  - The all_pearls_collected flag concept is handled in story_ch10_collect_earth_pearl and story_ch10_spirit_pearls nodes
+  - No new nodes needed - US-026 acceptance criteria satisfied by existing implementation
+
+- **Files changed**:
+  - `ralph/prd.json` - US-026 marked as passes: true with overlap note
+
+- **Learnings for future iterations**:
+  - US-024 and US-026 overlap in scope - water pearl acquisition is part of the dream of past sequence
+  - When multiple US stories overlap, check existing implementation before adding redundant nodes
+  - The collected_water_pearl flag is used for tracking water pearl possession
+  - The all_pearls_collected flag is set after collecting earth pearl (last of the 5 pearls from collection chain)
+
+---

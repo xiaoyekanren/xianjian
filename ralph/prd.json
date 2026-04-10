@@ -350,8 +350,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 26,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Water pearl acquisition already handled by story_ch10_get_water_pearl (US-024). collected_water_pearl flag is set. Node ID story_ch10_obtain_water_pearl maps to story_ch10_get_water_pearl functionality."
     },
     {
       "id": "US-027",
