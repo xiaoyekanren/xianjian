@@ -347,3 +347,63 @@
   - New dialogues added at the end of DEMO_DIALOGS array before the closing bracket
 
 ---
+
+## 2026-04-10 - US-032
+
+- **What was implemented**: Added side quests data for key story chapters
+  - quest_baihe_herbs: 白河采药 - Help Doctor Han collect herbs for medicine
+  - quest_yinlong_rescue: 隐龙救人 - Rescue Han Mengci from Yinlong Cave bosses
+  - quest_yangzhou_catch_thief: 扬州捉贼 - Investigate and catch female thief Ji Sanniang
+  - Each quest has: id, name, title, description, summary, chapter, location, giverNpcId, prerequisites, steps, rewards
+
+- **Files changed**:
+  - `src/data/quests.json` - Added 3 new quest entries
+  - `ralph/prd.json` - US-032 marked as passes: true
+
+- **Learnings for future iterations**:
+  - quests.json is an array of quest objects with standardized structure
+  - Quest steps have types: collect_item, talk_to_npc, defeat_enemy, reach_location
+  - Prerequisites can use storyFlags, completedQuests, level requirements
+  - Rewards include: exp, gold, items, affection (characterId + amount), flags
+  - Quests connect to story via storyFlags in prerequisites (e.g., entered_baihe_village, han_plea_received)
+  - The quest_yinlong_rescue directly relates to US-018 story nodes - quest complements main story
+
+---
+
+## 2026-04-10 - US-033
+
+- **What was implemented**: Verified map completeness
+  - All 69 maps have layers (ground, building, overlay)
+  - All maps have npcs defined
+  - maps.json JSON format validated
+
+- **Files changed**:
+  - `ralph/prd.json` - US-033 marked as passes: true
+
+- **Learnings for future iterations**:
+  - maps.json has two top-level arrays: locations and maps
+  - locations contain location metadata (id, name, maps list, shops, inns)
+  - maps contain actual map data (layers, npcs, transitions, events, collisions)
+  - Each map should have: layers (at minimum ground), npcs (can be empty array but must exist)
+
+---
+
+## 2026-04-10 - US-034
+
+- **What was implemented**: Verified story chain integrity
+  - All main story nodes have nextNode (except terminal nodes: story_ch12_final_battle, story_ending_trigger)
+  - All 13 chapters have startNode defined
+  - Story chain verified: prologue → ch1 → ch2 → ... → ch11 → ch12 (ending)
+  - TypeScript typecheck passes
+
+- **Files changed**:
+  - `ralph/prd.json` - US-034 marked as passes: true
+
+- **Learnings for future iterations**:
+  - Terminal nodes (final battle, ending) don't need nextNode - they are the end of the chain
+  - Side story nodes (treasure, shop, inn intro) are standalone and don't need nextNode
+  - Each chapter should have a startNode in the chapters array
+  - Story node chain: story_node → nextNode → story_node2 → ... → terminal node
+  - BlockingNodes ensure proper story flow - previous nodes must complete before current can start
+
+---

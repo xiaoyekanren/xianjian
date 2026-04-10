@@ -431,8 +431,8 @@
         "quests.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 32,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added baihe_herbs, yinlong_rescue, yangzhou_catch_thief side quests"
     },
     {
       "id": "US-033",
@@ -444,8 +444,8 @@
         "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 33,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: All 69 maps have layers and npcs, JSON format validated"
     },
     {
       "id": "US-034",
@@ -457,8 +457,8 @@
         "Typecheck passes"
       ],
       "priority": 34,
-      "passes": false,
-      "notes": "\u6700\u7ec8\u9a8c\u8bc1"
+      "passes": true,
+      "notes": "Completed: All main story nodes have nextNode (final battle/ending nodes are terminal), all 13 chapters have start nodes, story chain verified from prologue to ending, typecheck passes"
     }
   ]
 }
