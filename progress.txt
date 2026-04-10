@@ -1138,3 +1138,29 @@
 - Time travel dialogues use narrator for scene transitions (穿越时空)
 - Historical dialogues connect to main story (巫后牺牲 explains灵儿命运)
 ---
+
+## 2026-04-10 - US-008
+- Implemented 8 complete dialogue sequences for试炼窟剧情 (Trial Cave arc)
+- Key storyline: 获取强大仙术（酒神咒、乾坤一掷）和宝藏
+- Dialogues added:
+  - jiushen_skill_intro: 酒神咒介绍，醉酒老者传授仙术
+  - jiushen_skill_learned: 学会酒神咒，代价是消耗全部MP
+  - qiankun_skill_intro: 乾坤一掷介绍，泛黄秘籍记载绝世仙术
+  - qiankun_skill_learned: 学会乾坤一掷，全身力量集中一击
+  - shilian_cave_intro: 试炼窟介绍，女娲留下的遗迹
+  - shilian_cave_purpose: 试炼窟目的，考验后人并传承秘术宝物
+  - treasure_found: 发现宝藏，女娲留下的传承宝物
+  - tower_level5_reached: 到达锁妖塔第五层，接近灵儿封印位置
+- Key characters: jiushen, zhao_linger, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 试炼窟是女娲遗迹，可获得仙术传承和宝物
+
+**Files changed:**
+- src/data/DialogData.ts (added 8 dialog sequences, ~355 lines)
+- ralph/prd.json (updated US-008 to passes: true)
+
+**Learnings for future iterations:**
+- speakerId 'jiushen' added for酒神 character
+- Skill learning dialogues explain mechanics (MP cost for酒神咒)
+- Skill manuals use narrator for learning process descriptions
+- tower_level5_reached connects to锁妖塔 rescue storyline
+---
