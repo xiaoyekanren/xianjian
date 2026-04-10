@@ -20,21 +20,63 @@
     },
     {
       "id": 3,
-      "name": "第三章 - 锁妖塔",
-      "description": "救灵儿，月如牺牲",
-      "startNode": "story_ch3_enter_tower"
+      "name": "第三章 - 白河村",
+      "description": "韩医仙求救，救治韩梦慈",
+      "startNode": "story_ch3_enter_baihe_village"
     },
     {
       "id": 4,
-      "name": "第四章 - 苗族圣地",
-      "description": "收集五灵珠，决战拜月",
-      "startNode": "story_ch4_enter_miao"
+      "name": "第四章 - 隐龙窟",
+      "description": "蛇妖狐妖，救出韩梦慈",
+      "startNode": "story_ch4_enter_yinlong"
     },
     {
       "id": 5,
+      "name": "第五章 - 鬼阴山",
+      "description": "石长老带走灵儿，关键转折",
+      "startNode": "story_ch5_meet_shi_elder"
+    },
+    {
+      "id": 6,
+      "name": "第六章 - 扬州城",
+      "description": "女飞贼事件，追捕盗贼",
+      "startNode": "story_ch6_enter_yangzhou"
+    },
+    {
+      "id": 7,
+      "name": "第七章 - 京城彩依",
+      "description": "刘晋元与彩依的凄美故事",
+      "startNode": "story_ch7_meet_liu_jinyuan"
+    },
+    {
+      "id": 8,
+      "name": "第八章 - 蜀山",
+      "description": "蜀山剑派，了解锁妖塔真相",
+      "startNode": "story_ch8_arrive_shushan"
+    },
+    {
+      "id": 9,
+      "name": "第九章 - 锁妖塔",
+      "description": "救灵儿，月如牺牲",
+      "startNode": "story_ch9_enter_tower"
+    },
+    {
+      "id": 10,
+      "name": "第十章 - 苗疆",
+      "description": "收集五灵珠，时光回溯",
+      "startNode": "story_ch10_enter_miao"
+    },
+    {
+      "id": 11,
+      "name": "第十一章 - 试炼窟",
+      "description": "学习九仙剑、乾坤一掷",
+      "startNode": "story_ch11_enter_shilian"
+    },
+    {
+      "id": 12,
       "name": "结局",
       "description": "最终决战，结局",
-      "startNode": "story_ch5_final_battle"
+      "startNode": "story_ch12_final_battle"
     }
   ],
   "nodes": [
@@ -357,16 +399,16 @@
         {
           "type": "chapter_change",
           "order": 6,
-          "data": { "chapter": 3 }
+          "data": { "chapter": 9 }
         }
       ],
       "priority": 90,
       "onCompleteFlags": ["yueru_joined", "ch2_complete"],
-      "nextNode": "story_ch3_enter_tower"
+      "nextNode": "story_ch9_enter_tower"
     },
     {
-      "id": "story_ch3_enter_tower",
-      "chapter": 3,
+      "id": "story_ch9_enter_tower",
+      "chapter": 9,
       "title": "进入锁妖塔",
       "description": "为救灵儿进入锁妖塔",
       "triggers": [
@@ -392,11 +434,11 @@
       ],
       "priority": 100,
       "onCompleteFlags": ["entered_tower"],
-      "nextNode": "story_ch3_tower_levels"
+      "nextNode": "story_ch9_tower_levels"
     },
     {
-      "id": "story_ch3_tower_levels",
-      "chapter": 3,
+      "id": "story_ch9_tower_levels",
+      "chapter": 9,
       "title": "锁妖塔闯关",
       "description": "闯过锁妖塔各层",
       "triggers": [
@@ -405,7 +447,7 @@
           "data": { "mapId": "suoyaota_level_5" }
         }
       ],
-      "blockingNodes": ["story_ch3_enter_tower"],
+      "blockingNodes": ["story_ch9_enter_tower"],
       "requiredFlags": ["entered_tower"],
       "events": [
         {
@@ -428,11 +470,11 @@
       ],
       "priority": 90,
       "onCompleteFlags": ["tower_level5_clear"],
-      "nextNode": "story_ch3_find_linger"
+      "nextNode": "story_ch9_find_linger"
     },
     {
-      "id": "story_ch3_find_linger",
-      "chapter": 3,
+      "id": "story_ch9_find_linger",
+      "chapter": 9,
       "title": "找到灵儿",
       "description": "在锁妖塔底层找到灵儿",
       "triggers": [
@@ -441,7 +483,7 @@
           "data": { "mapId": "suoyaota_bottom" }
         }
       ],
-      "blockingNodes": ["story_ch3_tower_levels"],
+      "blockingNodes": ["story_ch9_tower_levels"],
       "requiredFlags": ["tower_level5_clear"],
       "events": [
         {
@@ -463,11 +505,11 @@
       ],
       "priority": 80,
       "onCompleteFlags": ["rescued_linger"],
-      "nextNode": "story_ch3_yueru_sacrifice"
+      "nextNode": "story_ch9_yueru_sacrifice"
     },
     {
-      "id": "story_ch3_yueru_sacrifice",
-      "chapter": 3,
+      "id": "story_ch9_yueru_sacrifice",
+      "chapter": 9,
       "title": "月如牺牲",
       "description": "锁妖塔崩塌，月如牺牲",
       "triggers": [
@@ -476,7 +518,7 @@
           "data": { "flagName": "rescued_linger", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch3_find_linger"],
+      "blockingNodes": ["story_ch9_find_linger"],
       "events": [
         {
           "type": "screen_effect",
@@ -523,16 +565,16 @@
         {
           "type": "chapter_change",
           "order": 9,
-          "data": { "chapter": 4 }
+          "data": { "chapter": 10 }
         }
       ],
       "priority": 70,
       "onCompleteFlags": ["yueru_sacrificed", "ch3_complete"],
-      "nextNode": "story_ch4_enter_miao"
+      "nextNode": "story_ch10_enter_miao"
     },
     {
-      "id": "story_ch4_enter_miao",
-      "chapter": 4,
+      "id": "story_ch10_enter_miao",
+      "chapter": 10,
       "title": "进入苗疆",
       "description": "前往苗疆收集灵珠",
       "triggers": [
@@ -541,7 +583,7 @@
           "data": { "mapId": "white_miao_main" }
         }
       ],
-      "blockingNodes": ["story_ch3_yueru_sacrifice"],
+      "blockingNodes": ["story_ch9_yueru_sacrifice"],
       "requiredFlags": ["yueru_sacrificed"],
       "events": [
         {
@@ -558,11 +600,11 @@
       ],
       "priority": 100,
       "onCompleteFlags": ["entered_miao"],
-      "nextNode": "story_ch4_miao_conflict"
+      "nextNode": "story_ch10_miao_conflict"
     },
     {
-      "id": "story_ch4_miao_conflict",
-      "chapter": 4,
+      "id": "story_ch10_miao_conflict",
+      "chapter": 10,
       "title": "苗族冲突",
       "description": "了解黑苗族与白苗族之间的冲突",
       "triggers": [
@@ -571,7 +613,7 @@
           "data": { "mapId": "black_miao_main" }
         }
       ],
-      "blockingNodes": ["story_ch4_enter_miao"],
+      "blockingNodes": ["story_ch10_enter_miao"],
       "requiredFlags": ["entered_miao"],
       "events": [
         {
@@ -600,11 +642,11 @@
       ],
       "priority": 95,
       "onCompleteFlags": ["learned_miao_conflict"],
-      "nextNode": "story_ch4_anu_join"
+      "nextNode": "story_ch10_anu_join"
     },
     {
-      "id": "story_ch4_anu_join",
-      "chapter": 4,
+      "id": "story_ch10_anu_join",
+      "chapter": 10,
       "title": "阿奴加入",
       "description": "阿奴加入队伍协助收集灵珠",
       "triggers": [
@@ -613,7 +655,7 @@
           "data": { "flagName": "learned_miao_conflict", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch4_miao_conflict"],
+      "blockingNodes": ["story_ch10_miao_conflict"],
       "events": [
         {
           "type": "dialog",
@@ -640,11 +682,11 @@
       ],
       "priority": 90,
       "onCompleteFlags": ["anu_joined"],
-      "nextNode": "story_ch4_collect_fire_pearl"
+      "nextNode": "story_ch10_collect_fire_pearl"
     },
     {
-      "id": "story_ch4_collect_fire_pearl",
-      "chapter": 4,
+      "id": "story_ch10_collect_fire_pearl",
+      "chapter": 10,
       "title": "收集火灵珠",
       "description": "在圣地迷宫收集火灵珠",
       "triggers": [
@@ -653,7 +695,7 @@
           "data": { "mapId": "sacred_maze_1" }
         }
       ],
-      "blockingNodes": ["story_ch4_anu_join"],
+      "blockingNodes": ["story_ch10_anu_join"],
       "requiredFlags": ["anu_joined"],
       "events": [
         {
@@ -687,11 +729,11 @@
       ],
       "priority": 85,
       "onCompleteFlags": ["collected_fire_pearl"],
-      "nextNode": "story_ch4_collect_wind_pearl"
+      "nextNode": "story_ch10_collect_wind_pearl"
     },
     {
-      "id": "story_ch4_collect_wind_pearl",
-      "chapter": 4,
+      "id": "story_ch10_collect_wind_pearl",
+      "chapter": 10,
       "title": "收集风灵珠",
       "description": "在圣地迷宫收集风灵珠",
       "triggers": [
@@ -700,7 +742,7 @@
           "data": { "mapId": "sacred_maze_2" }
         }
       ],
-      "blockingNodes": ["story_ch4_collect_fire_pearl"],
+      "blockingNodes": ["story_ch10_collect_fire_pearl"],
       "requiredFlags": ["collected_fire_pearl"],
       "events": [
         {
@@ -734,11 +776,11 @@
       ],
       "priority": 80,
       "onCompleteFlags": ["collected_wind_pearl"],
-      "nextNode": "story_ch4_collect_thunder_pearl"
+      "nextNode": "story_ch10_collect_thunder_pearl"
     },
     {
-      "id": "story_ch4_collect_thunder_pearl",
-      "chapter": 4,
+      "id": "story_ch10_collect_thunder_pearl",
+      "chapter": 10,
       "title": "收集雷灵珠",
       "description": "在圣地迷宫收集雷灵珠",
       "triggers": [
@@ -747,7 +789,7 @@
           "data": { "mapId": "sacred_maze_3" }
         }
       ],
-      "blockingNodes": ["story_ch4_collect_wind_pearl"],
+      "blockingNodes": ["story_ch10_collect_wind_pearl"],
       "requiredFlags": ["collected_wind_pearl"],
       "events": [
         {
@@ -781,11 +823,11 @@
       ],
       "priority": 75,
       "onCompleteFlags": ["collected_thunder_pearl"],
-      "nextNode": "story_ch4_collect_earth_pearl"
+      "nextNode": "story_ch10_collect_earth_pearl"
     },
     {
-      "id": "story_ch4_collect_earth_pearl",
-      "chapter": 4,
+      "id": "story_ch10_collect_earth_pearl",
+      "chapter": 10,
       "title": "收集土灵珠",
       "description": "在圣地神殿收集土灵珠",
       "triggers": [
@@ -798,7 +840,7 @@
           "data": { "flagName": "collected_thunder_pearl", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch4_collect_thunder_pearl"],
+      "blockingNodes": ["story_ch10_collect_thunder_pearl"],
       "requiredFlags": ["collected_thunder_pearl"],
       "events": [
         {
@@ -837,11 +879,11 @@
       ],
       "priority": 70,
       "onCompleteFlags": ["collected_earth_pearl", "all_pearls_collected"],
-      "nextNode": "story_ch4_spirit_pearls"
+      "nextNode": "story_ch10_spirit_pearls"
     },
     {
-      "id": "story_ch4_linger_awakening",
-      "chapter": 4,
+      "id": "story_ch10_linger_awakening",
+      "chapter": 10,
       "title": "灵儿觉醒",
       "description": "灵儿觉醒女娲之力",
       "triggers": [
@@ -850,7 +892,7 @@
           "data": { "flagName": "flashback_complete", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch4_flashback_return"],
+      "blockingNodes": ["story_ch10_flashback_return"],
       "requiredFlags": ["flashback_complete", "all_pearls_collected"],
       "events": [
         {
@@ -889,11 +931,11 @@
       ],
       "priority": 60,
       "onCompleteFlags": ["linger_awakened"],
-      "nextNode": "story_ch5_final_battle"
+      "nextNode": "story_ch12_final_battle"
     },
     {
-      "id": "story_ch4_spirit_pearls",
-      "chapter": 4,
+      "id": "story_ch10_spirit_pearls",
+      "chapter": 10,
       "title": "收集五灵珠",
       "description": "收集火水风雷土五灵珠",
       "triggers": [
@@ -902,7 +944,7 @@
           "data": { "flagName": "all_pearls_collected", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch4_collect_earth_pearl"],
+      "blockingNodes": ["story_ch10_collect_earth_pearl"],
       "requiredFlags": ["all_pearls_collected"],
       "events": [
         {
@@ -919,11 +961,11 @@
       ],
       "priority": 90,
       "onCompleteFlags": ["pearls_ready"],
-      "nextNode": "story_ch4_flashback_trigger"
+      "nextNode": "story_ch10_flashback_trigger"
     },
     {
-      "id": "story_ch4_flashback_trigger",
-      "chapter": 4,
+      "id": "story_ch10_flashback_trigger",
+      "chapter": 10,
       "title": "时光回溯",
       "description": "进入圣地神殿触发时光回溯",
       "triggers": [
@@ -932,7 +974,7 @@
           "data": { "mapId": "sacred_shrine" }
         }
       ],
-      "blockingNodes": ["story_ch4_spirit_pearls"],
+      "blockingNodes": ["story_ch10_spirit_pearls"],
       "requiredFlags": ["pearls_ready"],
       "events": [
         {
@@ -959,11 +1001,11 @@
       ],
       "priority": 85,
       "onCompleteFlags": ["flashback_active"],
-      "nextNode": "story_ch4_flashback_wuhou"
+      "nextNode": "story_ch10_flashback_wuhou"
     },
     {
-      "id": "story_ch4_flashback_wuhou",
-      "chapter": 4,
+      "id": "story_ch10_flashback_wuhou",
+      "chapter": 10,
       "title": "巫后对话",
       "description": "十年前南诏国遇见巫后",
       "triggers": [
@@ -972,7 +1014,7 @@
           "data": { "mapId": "nanzhao_palace_10_years" }
         }
       ],
-      "blockingNodes": ["story_ch4_flashback_trigger"],
+      "blockingNodes": ["story_ch10_flashback_trigger"],
       "requiredFlags": ["flashback_active"],
       "events": [
         {
@@ -995,11 +1037,11 @@
       ],
       "priority": 80,
       "onCompleteFlags": ["met_wuhou"],
-      "nextNode": "story_ch4_flashback_water_beast"
+      "nextNode": "story_ch10_flashback_water_beast"
     },
     {
-      "id": "story_ch4_flashback_water_beast",
-      "chapter": 4,
+      "id": "story_ch10_flashback_water_beast",
+      "chapter": 10,
       "title": "水魔兽封印",
       "description": "巫后封印水魔兽牺牲",
       "triggers": [
@@ -1008,7 +1050,7 @@
           "data": { "flagName": "met_wuhou", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch4_flashback_wuhou"],
+      "blockingNodes": ["story_ch10_flashback_wuhou"],
       "events": [
         {
           "type": "dialog",
@@ -1056,11 +1098,11 @@
       ],
       "priority": 75,
       "onCompleteFlags": ["water_beast_sealed", "collected_water_pearl"],
-      "nextNode": "story_ch4_flashback_return"
+      "nextNode": "story_ch10_flashback_return"
     },
     {
-      "id": "story_ch4_flashback_return",
-      "chapter": 4,
+      "id": "story_ch10_flashback_return",
+      "chapter": 10,
       "title": "返回现代",
       "description": "时光回溯结束，返回现代",
       "triggers": [
@@ -1069,7 +1111,7 @@
           "data": { "flagName": "water_beast_sealed", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch4_flashback_water_beast"],
+      "blockingNodes": ["story_ch10_flashback_water_beast"],
       "events": [
         {
           "type": "dialog",
@@ -1101,16 +1143,16 @@
         {
           "type": "chapter_change",
           "order": 6,
-          "data": { "chapter": 5 }
+          "data": { "chapter": 12 }
         }
       ],
       "priority": 70,
       "onCompleteFlags": ["flashback_complete", "ch4_complete"],
-      "nextNode": "story_ch4_linger_awakening"
+      "nextNode": "story_ch10_linger_awakening"
     },
     {
-      "id": "story_ch5_final_battle",
-      "chapter": 5,
+      "id": "story_ch12_final_battle",
+      "chapter": 12,
       "title": "决战拜月",
       "description": "最终决战拜月教主",
       "triggers": [
@@ -1119,7 +1161,7 @@
           "data": { "mapId": "miao_sacred_altar" }
         }
       ],
-      "blockingNodes": ["story_ch4_linger_awakening"],
+      "blockingNodes": ["story_ch10_linger_awakening"],
       "requiredFlags": ["linger_awakened"],
       "events": [
         {
@@ -1263,7 +1305,7 @@
     },
     {
       "id": "story_ending_trigger",
-      "chapter": 5,
+      "chapter": 12,
       "title": "结局触发",
       "description": "最终战斗后触发结局判定",
       "triggers": [
@@ -1272,7 +1314,7 @@
           "data": { "flagName": "baiyue_defeated", "flagValue": true }
         }
       ],
-      "blockingNodes": ["story_ch5_final_battle"],
+      "blockingNodes": ["story_ch12_final_battle"],
       "events": [
         {
           "type": "set_flag",
