@@ -993,3 +993,20 @@
 - Story events should use requireFlag for conditional triggering
 - Color themes can reflect location character: red for royal city, blue for sacred temple
 ---
+
+## 2026-04-10 - US-002
+- Added shi_elder_introduction dialogue for Guiyin Mountain (鬼阴山)
+- Introduction explains 石长老 background: 拜月教主's trusted aide, wears black robe, holds staff, grim face
+- Describes his high magic power and ruthless methods, one of the most feared figures in 南诏国
+- Dialogue uses narrator (旁白) to provide context about this key antagonist character
+
+**Files changed:**
+- src/data/DialogData.ts (added shi_elder_introduction dialogue sequence)
+- ralph/prd.json (updated US-002 to passes: true)
+
+**Learnings for future iterations:**
+- 石长老 is 拜月教主's enforcer, introduced before encounter with player party
+- Introduction dialogues use narrator (旁白) to provide background context
+- Dialog sequences follow pattern: id, lines with speakerId/speakerName/text/expression
+- US-002 comment added to identify the section in DialogData.ts
+---
