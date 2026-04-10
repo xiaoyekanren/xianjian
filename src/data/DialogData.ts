@@ -3163,6 +3163,395 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // US-027: 白河村对话
+  {
+    id: 'han_doctor_story',
+    lines: [
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '少侠，我有一事相求...',
+        expression: Expression.SAD,
+        nextDialogId: 'han_doctor_story_2',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '我女儿梦慈，被隐龙窟的妖魔抓去了...',
+        expression: Expression.SAD,
+        nextDialogId: 'han_doctor_story_3',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '隐龙窟深处有两条妖魔，一条蛇妖，一条狐妖...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'han_doctor_story_4',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '少侠若能救回我女儿，我愿倾尽所有报答！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'mengci_captured_news',
+    lines: [
+      {
+        speakerId: 'han_mother',
+        speakerName: '韩母',
+        text: '梦慈啊...我的梦慈啊...',
+        expression: Expression.SAD,
+        nextDialogId: 'mengci_captured_news_2',
+      },
+      {
+        speakerId: 'han_mengci',
+        speakerName: '村民',
+        text: '听说那隐龙窟里妖魔横行，没人敢进去...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'mengci_captured_news_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '不管多危险，我都要去救她！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // US-028: 鬼阴山对话
+  {
+    id: 'shi_elder_appear',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '前方出现一个黑袍老者...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_appear_2',
+      },
+      {
+        speakerId: 'shi_elder',
+        speakerName: '石长老',
+        text: '李逍遥，我等你很久了...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_appear_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '你是谁？为什么要等我？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'shi_elder_appear_4',
+      },
+      {
+        speakerId: 'shi_elder',
+        speakerName: '石长老',
+        text: '我是拜月教主的使者，奉命带走赵灵儿...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shi_elder_take_linger',
+    lines: [
+      {
+        speakerId: 'shi_elder',
+        speakerName: '石长老',
+        text: '赵灵儿，你身为女娲后人，必须回到南诏国...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_take_linger_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我不去！我要和逍遥哥哥在一起！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'shi_elder_take_linger_3',
+      },
+      {
+        speakerId: 'shi_elder',
+        speakerName: '石长老',
+        text: '这是命运，你无法抗拒...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_take_linger_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '休想！我们绝不会让你带走灵儿！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'linger_taken_away',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '石长老施展法术，一股黑雾笼罩住灵儿...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'linger_taken_away_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥...救我...',
+        expression: Expression.SAD,
+        nextDialogId: 'linger_taken_away_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿！！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'linger_taken_away_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '灵儿的身影消失在黑雾中...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'linger_taken_away_5',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥，我们要去救灵儿，不管天涯海角！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // US-029: 扬州城对话
+  {
+    id: 'enter_yangzhou_marvel',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '扬州城，繁华的商业之都...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'enter_yangzhou_marvel_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这扬州城真是繁华啊！人来人往，商铺林立...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'enter_yangzhou_marvel_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '我们先找个落脚的地方吧...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'thief_appear',
+    lines: [
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '最近城里有个女飞贼作案多起，百姓人心惶惶...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'thief_appear_2',
+      },
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '两位侠士若能帮忙捉拿，必有重赏！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'thief_appear_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '女飞贼？有意思，我们来看看是谁敢在这扬州城作案！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // US-030: 京城彩依对话
+  {
+    id: 'caiyi_jinyuan_story',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '咳咳...咳咳...',
+        expression: Expression.SAD,
+        nextDialogId: 'caiyi_jinyuan_story_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '晋元...你病得这么重...',
+        expression: Expression.SAD,
+        nextDialogId: 'caiyi_jinyuan_story_3',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依，自从遇见你，我的病似乎好了一些...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'caiyi_jinyuan_story_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这位姑娘是...？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'caiyi_jinyuan_story_5',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '这是我妻子彩依，她对我照顾得无微不至...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_reveal',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '深夜，彩依独自来到晋元的房间...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'caiyi_reveal_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '晋元的病越来越重了...唯有用我千年修为...',
+        expression: Expression.SAD,
+        nextDialogId: 'caiyi_reveal_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '彩依的身影开始变化，一只美丽的蝴蝶显现...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'caiyi_reveal_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '彩依...你竟然是...蝴蝶精？！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'caiyi_reveal_5',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '李逍遥，我不是妖魔，我只是想救晋元...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_death',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我愿用我千年的修为，换晋元一生的平安...',
+        expression: Expression.SAD,
+        nextDialogId: 'caiyi_death_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '彩依化作一只美丽的蝴蝶，飞向晋元...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'caiyi_death_3',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依！！不要离开我！！',
+        expression: Expression.SAD,
+        nextDialogId: 'caiyi_death_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '彩依化作蝴蝶，永远守护在晋元身边...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'caiyi_death_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '彩依...为了爱情，你甘愿放弃千年修为...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  // US-031: 蜀山对话
+  {
+    id: 'shushan_welcome',
+    lines: [
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '欢迎来到蜀山剑派！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shushan_welcome_2',
+      },
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '两位侠士前来，有何贵干？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shushan_welcome_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我们听说锁妖塔中有人被囚禁，特来求救...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'suoyaota_history',
+    lines: [
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '锁妖塔乃蜀山历代剑仙建造，用于封印妖魔...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suoyaota_history_2',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '赵灵儿...她确实是女娲后人，被我们误认为妖魔...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suoyaota_history_3',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '若你们能证明她并非妖魔，我们愿放她离去...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'suoyaota_history_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿是女娲后人，不是妖魔！我一定要救她！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
 ];
 
 /**
