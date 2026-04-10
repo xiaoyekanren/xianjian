@@ -370,5 +370,192 @@
       ]
     },
     "hidden": true
+  },
+  {
+    "id": "quest_baihe_herbs",
+    "name": "白河采药",
+    "title": "韩医仙的草药",
+    "description": "韩医仙需要一些稀有草药来治疗病人，帮助他收集所需的药材。",
+    "summary": "帮助韩医仙收集止血草和灵心草",
+    "chapter": 3,
+    "location": "baihe_village_main",
+    "giverNpcId": "han_doctor",
+    "prerequisites": {
+      "storyFlags": ["entered_baihe_village"]
+    },
+    "steps": [
+      {
+        "id": "step_baihe_herb_1",
+        "type": "talk_to_npc",
+        "description": "与韩医仙交谈了解需求",
+        "targetId": "han_doctor",
+        "targetMapId": "baihe_clinic"
+      },
+      {
+        "id": "step_baihe_herb_2",
+        "type": "collect_item",
+        "description": "收集止血草x10",
+        "targetId": "zhixuecao",
+        "targetCount": 10,
+        "currentCount": 0
+      },
+      {
+        "id": "step_baihe_herb_3",
+        "type": "collect_item",
+        "description": "收集灵芝x3",
+        "targetId": "lingzhi",
+        "targetCount": 3,
+        "currentCount": 0
+      },
+      {
+        "id": "step_baihe_herb_4",
+        "type": "talk_to_npc",
+        "description": "将草药交给韩医仙",
+        "targetId": "han_doctor",
+        "targetMapId": "baihe_clinic"
+      }
+    ],
+    "rewards": {
+      "exp": 100,
+      "gold": 200,
+      "items": [
+        { "itemId": "jinchuangyao", "quantity": 5 },
+        { "itemId": "huichunyao", "quantity": 2 }
+      ],
+      "affection": [
+        { "characterId": "lin_yueru", "amount": 10 }
+      ]
+    }
+  },
+  {
+    "id": "quest_yinlong_rescue",
+    "name": "隐龙救人",
+    "title": "救出韩梦慈",
+    "description": "韩医仙的女儿韩梦慈被隐龙窟的妖魔抓走，深入洞穴救出她。",
+    "summary": "击败蛇妖和狐妖，救出韩梦慈",
+    "chapter": 4,
+    "location": "yinlong_entrance",
+    "giverNpcId": "han_mother",
+    "prerequisites": {
+      "storyFlags": ["han_plea_received"]
+    },
+    "steps": [
+      {
+        "id": "step_yinlong_1",
+        "type": "reach_location",
+        "description": "进入隐龙窟",
+        "targetId": "yinlong_entrance"
+      },
+      {
+        "id": "step_yinlong_2",
+        "type": "defeat_enemy",
+        "description": "击败蛇妖",
+        "targetId": "snake_demon",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_yinlong_3",
+        "type": "defeat_enemy",
+        "description": "击败狐妖",
+        "targetId": "fox_demon",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_yinlong_4",
+        "type": "talk_to_npc",
+        "description": "救出韩梦慈",
+        "targetId": "han_mengci",
+        "targetMapId": "yinlong_fox_boss"
+      },
+      {
+        "id": "step_yinlong_5",
+        "type": "talk_to_npc",
+        "description": "返回白河村告知韩医仙",
+        "targetId": "han_doctor",
+        "targetMapId": "baihe_clinic"
+      }
+    ],
+    "rewards": {
+      "exp": 200,
+      "gold": 500,
+      "items": [
+        { "itemId": "tianxin_dan", "quantity": 3 },
+        { "itemId": "dahuangdan", "quantity": 2 }
+      ],
+      "affection": [
+        { "characterId": "zhao_linger", "amount": 15 },
+        { "characterId": "lin_yueru", "amount": 10 }
+      ],
+      "flags": [
+        { "flagName": "mengci_rescued", "value": true }
+      ]
+    }
+  },
+  {
+    "id": "quest_yangzhou_catch_thief",
+    "name": "扬州捉贼",
+    "title": "捉拿女飞贼",
+    "description": "扬州城出现了一位神秘的女飞贼，帮助知府捉拿她。",
+    "summary": "调查女飞贼案件，捉拿姬三娘",
+    "chapter": 6,
+    "location": "yangzhou_main",
+    "giverNpcId": "yangzhou_magistrate",
+    "prerequisites": {
+      "storyFlags": ["entered_yangzhou"]
+    },
+    "steps": [
+      {
+        "id": "step_thief_1",
+        "type": "talk_to_npc",
+        "description": "与扬州知府交谈了解案情",
+        "targetId": "yangzhou_magistrate",
+        "targetMapId": "yangzhou_yamen"
+      },
+      {
+        "id": "step_thief_2",
+        "type": "talk_to_npc",
+        "description": "询问客栈老板关于飞贼线索",
+        "targetId": "yangzhou_innkeeper",
+        "targetMapId": "yangzhou_inn"
+      },
+      {
+        "id": "step_thief_3",
+        "type": "defeat_enemy",
+        "description": "击败女飞贼",
+        "targetId": "female_thief",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_thief_4",
+        "type": "defeat_enemy",
+        "description": "击败姬三娘",
+        "targetId": "ji_sanniang",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_thief_5",
+        "type": "talk_to_npc",
+        "description": "向知府报告结案",
+        "targetId": "yangzhou_magistrate",
+        "targetMapId": "yangzhou_yamen"
+      }
+    ],
+    "rewards": {
+      "exp": 150,
+      "gold": 400,
+      "items": [
+        { "itemId": "golden_sword", "quantity": 1 }
+      ],
+      "affection": [
+        { "characterId": "lin_yueru", "amount": 20 }
+      ],
+      "flags": [
+        { "flagName": "yangzhou_thief_caught", "value": true }
+      ]
+    }
   }
 ]
