@@ -98,3 +98,24 @@
   - Transitions between cave layers use consistent coordinate mapping
 
 ---
+
+## 2026-04-10 - US-017
+
+- **What was implemented**: Added 白河村 story nodes
+  - Added story node: story_ch3_enter_baihe_village - arriving at 白河村
+  - Added story node: story_ch3_han_doctor_plea - 韩医仙恳求救助被妖魔抓走的女儿韩梦慈
+  - Modified story_ch2_biwu to transition to chapter 3 instead of chapter 9
+  - Nodes link properly: story_ch2_biwu → story_ch3_enter_baihe_village → story_ch3_han_doctor_plea → story_ch4_enter_yinlong
+
+- **Files changed**:
+  - `src/data/story.json` - Added 2 new story nodes for chapter 3, modified story_ch2_biwu transition
+  - `ralph/prd.json` - US-017 marked as passes: true
+
+- **Learnings for future iterations**:
+  - Story nodes follow a chain pattern: each node has nextNode pointing to the next in sequence
+  - Chapter transitions use chapter_change event type
+  - Each chapter completion sets a flag (e.g., ch3_complete)
+  - Nodes can have multiple triggers (enter_map, interact_npc, flag_set)
+  - blockingNodes ensures previous story nodes must complete before this one can start
+
+---

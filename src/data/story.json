@@ -399,12 +399,83 @@
         {
           "type": "chapter_change",
           "order": 6,
-          "data": { "chapter": 9 }
+          "data": { "chapter": 3 }
         }
       ],
       "priority": 90,
       "onCompleteFlags": ["yueru_joined", "ch2_complete"],
-      "nextNode": "story_ch9_enter_tower"
+      "nextNode": "story_ch3_enter_baihe_village"
+    },
+    {
+      "id": "story_ch3_enter_baihe_village",
+      "chapter": 3,
+      "title": "进入白河村",
+      "description": "抵达白河村，遇到韩医仙",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "baihe_village_main" }
+        }
+      ],
+      "blockingNodes": ["story_ch2_biwu"],
+      "requiredFlags": ["yueru_joined"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "baihe_village_arrive" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "entered_baihe_village", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["entered_baihe_village"],
+      "nextNode": "story_ch3_han_doctor_plea"
+    },
+    {
+      "id": "story_ch3_han_doctor_plea",
+      "chapter": 3,
+      "title": "韩医仙求救",
+      "description": "韩医仙恳求救助被妖魔抓走的女儿韩梦慈",
+      "triggers": [
+        {
+          "type": "interact_npc",
+          "data": { "npcId": "han_doctor" }
+        }
+      ],
+      "blockingNodes": ["story_ch3_enter_baihe_village"],
+      "requiredFlags": ["entered_baihe_village"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "han_doctor_plea" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "han_doctor_explain_yinlong" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "han_plea_received", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 4,
+          "data": { "chapter": 4 }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["han_plea_received", "ch3_complete"],
+      "nextNode": "story_ch4_enter_yinlong"
     },
     {
       "id": "story_ch9_enter_tower",
