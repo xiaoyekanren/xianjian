@@ -1164,3 +1164,40 @@
 - Skill manuals use narrator for learning process descriptions
 - tower_level5_reached connects to锁妖塔 rescue storyline
 ---
+
+## 2026-04-10 - US-009 to US-015 Summary
+- Implemented system dialogues and all location NPC dialogues
+- US-009: System dialogues (inn_intro, shop_intro) - 2 dialogs
+- US-010: 白河村NPC对话 - 9 dialogs (han_doctor, han_mengci, villagers, snake_demon, fox_demon)
+- US-011: 扬州城NPC对话 - 8 dialogs (guards, innkeeper, magistrate, female_thief, ji_sanniang)
+- US-012: 京城刘府NPC对话 - 8 dialogs (liu_jinyuan, caiyi, doctor, servant)
+- US-013: 蜀山NPC对话 - 4 dialogs (guards, disciples, elder)
+- US-014: 大理/试炼窟NPC对话 - 7 dialogs (dali villagers, trial_master, nuwa guardians)
+- US-015: 余杭镇/京城NPC对话 - 3 dialogs
+
+**Files changed:**
+- src/data/DialogData.ts (added ~50 NPC dialogs)
+- ralph/prd.json (updated US-009-015 to passes: true)
+
+**Learnings:**
+- NPC intro dialogues are single-line, simple structure
+- speakerId uses location prefix pattern (yangzhou_, baihe_, shushan_)
+- Character NPCs reuse existing speakerId (caiyi, liu_jinyuan, ji_sanniang)
+---
+
+## 2026-04-10 - US-016 to US-020 Summary
+- Quest data already exists in quests.json for US-016 and US-017
+- Added US-018: quest_jingcheng_caiyi_medicine - help Caiyi collect herbs for medicine
+- Added US-019: quest_shilian_skill_manual - find hidden immortal manual in Trial Cave
+- US-020: Verified data completeness - typecheck passes, JSON valid
+
+**Files changed:**
+- src/data/quests.json (added quest_jingcheng_caiyi_medicine, quest_shilian_skill_manual)
+- ralph/prd.json (updated US-016-020 to passes: true)
+
+**Learnings:**
+- quests.json uses consistent quest schema with prerequisites, steps, rewards
+- Quest IDs use pattern: quest_location_task (quest_jingcheng_caiyi_medicine)
+- Quest steps include: talk_to_npc, collect_item, defeat_enemy, reach_location
+- Rewards can include: exp, gold, items, skills, affection, flags
+---
