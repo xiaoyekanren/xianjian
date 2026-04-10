@@ -119,3 +119,25 @@
   - blockingNodes ensures previous story nodes must complete before this one can start
 
 ---
+
+## 2026-04-10 - US-018
+
+- **What was implemented**: Added 隐龙窟 story nodes
+  - Added story node: story_ch4_enter_yinlong - entering Yinlong Cave
+  - Added story node: story_ch4_maze_explore - exploring maze to reach boss areas
+  - Added story node: story_ch4_snake_boss_battle - battling snake demon boss
+  - Added story node: story_ch4_fox_boss_battle - battling fox demon boss
+  - Added story node: story_ch4_rescue_mengci - rescuing Han Mengci after defeating fox demon
+  - Nodes link properly: story_ch3_han_doctor_plea → story_ch4_enter_yinlong → ... → story_ch4_rescue_mengci → story_ch5_meet_shi_elder
+
+- **Files changed**:
+  - `src/data/story.json` - Added 5 new story nodes for chapter 4
+  - `ralph/prd.json` - US-018 marked as passes: true
+
+- **Learnings for future iterations**:
+  - Boss battle nodes use battle event type with enemyIds array
+  - Each boss defeat sets a flag (snake_demon_defeated, fox_demon_defeated) for progression
+  - Chapter transitions use chapter_change event type at the end of the chapter's final node
+  - Story nodes for dungeons typically have: enter → explore → boss battles → rescue/resolution
+
+---

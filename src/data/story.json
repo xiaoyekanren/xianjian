@@ -478,6 +478,190 @@
       "nextNode": "story_ch4_enter_yinlong"
     },
     {
+      "id": "story_ch4_enter_yinlong",
+      "chapter": 4,
+      "title": "进入隐龙窟",
+      "description": "进入隐龙窟寻找韩梦慈",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "yinlong_entrance" }
+        }
+      ],
+      "blockingNodes": ["story_ch3_han_doctor_plea"],
+      "requiredFlags": ["han_plea_received"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "yinlong_cave_entrance" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "entered_yinlong_cave", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["entered_yinlong_cave"],
+      "nextNode": "story_ch4_maze_explore"
+    },
+    {
+      "id": "story_ch4_maze_explore",
+      "chapter": 4,
+      "title": "隐龙窟迷宫探索",
+      "description": "穿越隐龙窟迷宫寻找妖魔巢穴",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "yinlong_maze_3" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_enter_yinlong"],
+      "requiredFlags": ["entered_yinlong_cave"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "yinlong_maze_warning" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "yinlong_maze_cleared", "flagValue": true }
+        }
+      ],
+      "priority": 95,
+      "onCompleteFlags": ["yinlong_maze_cleared"],
+      "nextNode": "story_ch4_snake_boss_battle"
+    },
+    {
+      "id": "story_ch4_snake_boss_battle",
+      "chapter": 4,
+      "title": "蛇妖大战",
+      "description": "与蛇妖大战",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "yinlong_snake_boss" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_maze_explore"],
+      "requiredFlags": ["yinlong_maze_cleared"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "yinlong_snake_appear" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["snake_demon"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "yinlong_snake_defeated" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "snake_demon_defeated", "flagValue": true }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["snake_demon_defeated"],
+      "nextNode": "story_ch4_fox_boss_battle"
+    },
+    {
+      "id": "story_ch4_fox_boss_battle",
+      "chapter": 4,
+      "title": "狐妖大战",
+      "description": "与狐妖大战，救出韩梦慈",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "yinlong_fox_boss" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_snake_boss_battle"],
+      "requiredFlags": ["snake_demon_defeated"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "yinlong_fox_appear" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["fox_demon"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "yinlong_fox_defeated" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "fox_demon_defeated", "flagValue": true }
+        }
+      ],
+      "priority": 85,
+      "onCompleteFlags": ["fox_demon_defeated"],
+      "nextNode": "story_ch4_rescue_mengci"
+    },
+    {
+      "id": "story_ch4_rescue_mengci",
+      "chapter": 4,
+      "title": "救出韩梦慈",
+      "description": "救出被狐妖抓走的韩梦慈",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "fox_demon_defeated", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch4_fox_boss_battle"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "yinlong_rescue_mengci" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "yinlong_mengci_thank" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "mengci_rescued", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 4,
+          "data": { "chapter": 5 }
+        }
+      ],
+      "priority": 80,
+      "onCompleteFlags": ["mengci_rescued", "ch4_complete"],
+      "nextNode": "story_ch5_meet_shi_elder"
+    },
+    {
       "id": "story_ch9_enter_tower",
       "chapter": 9,
       "title": "进入锁妖塔",

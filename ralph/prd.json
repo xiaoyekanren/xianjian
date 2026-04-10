@@ -243,8 +243,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 18,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added 5 story nodes (enter_yinlong, maze_explore, snake_boss_battle, fox_boss_battle, rescue_mengci), linking ch3\u2192ch4\u2192ch5"
     },
     {
       "id": "US-019",
