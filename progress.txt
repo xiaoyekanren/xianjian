@@ -1089,3 +1089,25 @@
 - Expression.THINKING used for elders explaining complex situations
 - Multi-party responses show each character's reaction (li_xiaoyao, lin_yueru, anu)
 ---
+
+## 2026-04-10 - US-006
+- Implemented 4 complete dialogue sequences for神木林/麒麟洞剧情 (Sacred Forest and Qilin Cave arc)
+- Key storyline: 获取风灵珠 and麒麟角 for施展回魂仙梦
+- Dialogues added:
+  - shenmu_wind_pearl_intro: 风灵珠介绍，女娲留下的五颗灵珠之一
+  - shenmu_wind_pearl_obtained: 获得风灵珠，赵灵儿与灵珠共鸣吸收力量
+  - qilin_cave_intro: 麒麟洞介绍，上古神兽麒麟住在此处
+  - qilin_horn_obtained: 获得麒麟角，麒麟认可女娲后人并赐予断角
+- Key characters: qilin, zhao_linger, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 回魂仙梦需要水灵珠和麒麟角才能施展，穿越时空回到十年前
+
+**Files changed:**
+- src/data/DialogData.ts (added 4 dialog sequences, ~220 lines)
+- ralph/prd.json (updated US-006 to passes: true)
+
+**Learnings for future iterations:**
+- Mythical creature dialogues (qilin) use dignified speech patterns
+- Item acquisition dialogues often use narrator for visual descriptions
+- speakerId 'qilin' added for麒麟 character
+- Story progression items (wind_pearl, qilin_horn) linked to回魂仙梦 ceremony
+---
