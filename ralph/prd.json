@@ -310,8 +310,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 23,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Renamed story_ch10_collect_wind_pearl to story_ch10_get_wind_pearl (神木林/shenmu_forest_2 trigger, golden_phoenix boss), added story_ch10_get_qilin_horn (麒麟洞/qilin_cave_inner trigger, qilin boss), story_ch10_anu_join already existed"
     },
     {
       "id": "US-024",

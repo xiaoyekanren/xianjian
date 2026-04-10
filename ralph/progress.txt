@@ -234,3 +234,26 @@
   - The suoyaota_truth_known flag is critical for the story progression - unlocks chapter 9
 
 ---
+
+## 2026-04-10 - US-023
+
+- **What was implemented**: Added 神木林/麒麟洞 story nodes (Chapter 10 - Wind Pearl and Qilin Horn)
+  - Renamed story_ch10_collect_wind_pearl to story_ch10_get_wind_pearl - entering 神木林 (shenmu_forest_2), battle golden_phoenix, get wind_pearl
+  - Added story node: story_ch10_get_qilin_horn - entering 麒麟洞 (qilin_cave_inner), battle qilin enemy, get qilin_horn item
+  - Updated all node references: fire_pearl → wind_pearl → qilin_horn → thunder_pearl
+  - story_ch10_anu_join already existed and unchanged
+  - Nodes link properly: story_ch10_collect_fire_pearl → story_ch10_get_wind_pearl → story_ch10_get_qilin_horn → story_ch10_collect_thunder_pearl
+
+- **Files changed**:
+  - `src/data/story.json` - Renamed and updated wind_pearl node, added qilin_horn node, updated blockingNodes references
+  - `ralph/prd.json` - US-023 marked as passes: true
+
+- **Learnings for future iterations**:
+  - When renaming a node ID, must update all references (nextNode, blockingNodes, requiredFlags references)
+  - The 神木林 maps (shenmu_entrance, shenmu_forest_1, shenmu_forest_2) were added in US-008
+  - The 麒麟洞 maps (qilin_cave_entrance, qilin_cave_inner) were added in US-008
+  - Enemies golden_phoenix and qilin were added in US-015 (HP: 1500 and 1200 respectively)
+  - The qilin_horn is a separate item from the pearls - used for story progression, not part of the five-pearl collection
+  - Story node priorities should decrease along the chain (fire:85 → wind:80 → qilin:78 → thunder:75)
+
+---

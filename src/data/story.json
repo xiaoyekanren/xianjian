@@ -1517,17 +1517,17 @@
       ],
       "priority": 85,
       "onCompleteFlags": ["collected_fire_pearl"],
-      "nextNode": "story_ch10_collect_wind_pearl"
+      "nextNode": "story_ch10_get_wind_pearl"
     },
     {
-      "id": "story_ch10_collect_wind_pearl",
+      "id": "story_ch10_get_wind_pearl",
       "chapter": 10,
-      "title": "收集风灵珠",
-      "description": "在圣地迷宫收集风灵珠",
+      "title": "神木林取风灵珠",
+      "description": "进入神木林深处，击败凤凰取得风灵珠",
       "triggers": [
         {
           "type": "enter_map",
-          "data": { "mapId": "sacred_maze_2" }
+          "data": { "mapId": "shenmu_forest_2" }
         }
       ],
       "blockingNodes": ["story_ch10_collect_fire_pearl"],
@@ -1536,13 +1536,13 @@
         {
           "type": "dialog",
           "order": 1,
-          "data": { "dialogId": "pearl_wind_intro" },
+          "data": { "dialogId": "shenmu_wind_pearl_intro" },
           "waitForCompletion": true
         },
         {
           "type": "battle",
           "order": 2,
-          "data": { "enemyIds": ["wind_guardian"] },
+          "data": { "enemyIds": ["golden_phoenix"] },
           "waitForCompletion": true
         },
         {
@@ -1553,7 +1553,7 @@
         {
           "type": "dialog",
           "order": 4,
-          "data": { "dialogId": "pearl_wind_obtained" },
+          "data": { "dialogId": "shenmu_wind_pearl_obtained" },
           "waitForCompletion": true
         },
         {
@@ -1564,6 +1564,53 @@
       ],
       "priority": 80,
       "onCompleteFlags": ["collected_wind_pearl"],
+      "nextNode": "story_ch10_get_qilin_horn"
+    },
+    {
+      "id": "story_ch10_get_qilin_horn",
+      "chapter": 10,
+      "title": "麒麟洞取麒麟角",
+      "description": "进入麒麟洞深处，击败麒麟取得麒麟角",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "qilin_cave_inner" }
+        }
+      ],
+      "blockingNodes": ["story_ch10_get_wind_pearl"],
+      "requiredFlags": ["collected_wind_pearl"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "qilin_cave_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["qilin"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "get_item",
+          "order": 3,
+          "data": { "itemId": "qilin_horn", "quantity": 1 }
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "qilin_horn_obtained" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "qilin_horn_obtained", "flagValue": true }
+        }
+      ],
+      "priority": 78,
+      "onCompleteFlags": ["qilin_horn_obtained"],
       "nextNode": "story_ch10_collect_thunder_pearl"
     },
     {
@@ -1577,8 +1624,8 @@
           "data": { "mapId": "sacred_maze_3" }
         }
       ],
-      "blockingNodes": ["story_ch10_collect_wind_pearl"],
-      "requiredFlags": ["collected_wind_pearl"],
+      "blockingNodes": ["story_ch10_get_qilin_horn"],
+      "requiredFlags": ["qilin_horn_obtained"],
       "events": [
         {
           "type": "dialog",
