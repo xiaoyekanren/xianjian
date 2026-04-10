@@ -75,3 +75,26 @@
   - Boss areas use distinct color themes (snake: red tones, fox: purple tones)
 
 ---
+## 2026-04-10 - US-004
+
+- **What was implemented**: Added 鬼阴山 location and 4 maps
+  - Added location: guiyin_mountain (鬼阴山) with chapter 5
+  - Added map: guiyin_mountain_path - mountain entrance with foggy environment, trees, water pools
+  - Added map: guiyin_cave_1 - first cave layer with dark environment
+  - Added map: guiyin_cave_2 - deeper cave layer
+  - Added map: guiyin_altar - altar with NPC (npc_shi_elder), events for story progression (shi_elder_appear, linger_taken)
+  - Each map has: ground, building, overlay layers with proper tile layouts
+  - Added collisions, transitions, and events for story progression
+
+- **Files changed**:
+  - `src/data/maps.json` - Added guiyin_mountain location and 4 maps
+  - `ralph/prd.json` - US-004 marked as passes: true
+
+- **Learnings for future iterations**:
+  - Guiyin_altar is a critical story location - contains the pivotal moment when Shi Elder takes Ling'er away
+  - Events set flags: entered_guiyin_mountain, met_shi_elder, linger_taken
+  - The linger_taken flag is key for the story progression - marks the point where Ling'er leaves the party
+  - NPC spawn locations use tile type 6 (NPC_SPAWN) on ground layer
+  - Transitions between cave layers use consistent coordinate mapping
+
+---
