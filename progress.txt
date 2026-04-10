@@ -893,3 +893,23 @@
 - REMOVE_PARTY event logs removal but actual party state management is TODO
 - GET_ITEM event logs acquisition but inventory state management is TODO
 ---
+
+## 2026-04-10 16:30 - US-005
+- Added Yangzhou City location and maps to maps.json
+- yangzhou_city location with 3 maps: yangzhou_main, yangzhou_inn, yangzhou_yamen
+- yangzhou_main: 30x20 city square with shops, inn, yamen entrances, NPCs (guard, villager, merchant, female_thief)
+- yangzhou_inn: 15x12 inn interior with innkeeper and guest NPCs
+- yangzhou_yamen: 20x15 government office with magistrate and Ji Sanniang NPCs
+- All maps include layers (ground, building, overlay), collision data, transitions, and events
+- Added yangzhou_visited and yangzhou_thief_quest_active flags for quest progression
+
+**Files changed:**
+- src/data/maps.json (added yangzhou_city location and 3 maps)
+- ralph/prd.json (updated US-005 to passes: true)
+
+**Learnings for future iterations:**
+- Yangzhou is Chapter 6 in the story progression
+- Female thief (女飞贼) and Ji Sanniang (姬三娘) are key NPCs for thief quest
+- Maps follow same structure: layers with collision, NPCs, transitions, events
+- City maps typically have shops, inn, and government buildings
+---
