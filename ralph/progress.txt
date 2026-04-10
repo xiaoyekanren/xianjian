@@ -323,3 +323,27 @@
   - The all_pearls_collected flag is set after collecting earth pearl (last of the 5 pearls from collection chain)
 
 ---
+
+## 2026-04-10 - US-027 to US-031
+
+- **What was implemented**: Added dialogue data for key story chapters
+  - US-027 (白河村): han_doctor_story, mengci_captured_news - Doctor Han pleads for help to save daughter
+  - US-028 (鬼阴山): shi_elder_appear, shi_elder_take_linger, linger_taken_away - Pivotal moment when Ling'er is taken
+  - US-029 (扬州城): enter_yangzhou_marvel, thief_appear - Female thief case introduction
+  - US-030 (京城彩依): caiyi_jinyuan_story, caiyi_reveal, caiyi_death - Classic tearjerker where butterfly spirit sacrifices for love
+  - US-031 (蜀山): shushan_welcome, suoyaota_history - Learning about Suoyaota and Ling'er's imprisonment
+
+- **Files changed**:
+  - `src/data/DialogData.ts` - Added 12 new DialogSequence entries
+  - `ralph/prd.json` - US-027 through US-031 marked as passes: true
+
+- **Learnings for future iterations**:
+  - DialogData.ts uses DEMO_DIALOGS array containing DialogSequence objects
+  - Each DialogSequence has id and lines array with DialogLine objects
+  - DialogLine structure: speakerId, speakerName, text, expression (Expression enum), nextDialogId
+  - Expression values: NORMAL, HAPPY, SAD, ANGRY, SURPRISED, THINKING, SHY
+  - Dialogues chain via nextDialogId to create multi-line conversations
+  - The caiyi_death dialogue is one of the most emotional moments in 仙剑 - uses sequential dialogs to build tension
+  - New dialogues added at the end of DEMO_DIALOGS array before the closing bracket
+
+---

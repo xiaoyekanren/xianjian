@@ -363,8 +363,8 @@
         "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
       ],
       "priority": 27,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added han_doctor_story and mengci_captured_news dialogues"
     },
     {
       "id": "US-028",
@@ -377,8 +377,8 @@
         "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
       ],
       "priority": 28,
-      "passes": false,
-      "notes": "\u5267\u60c5\u9ad8\u6f6e"
+      "passes": true,
+      "notes": "Completed: Added shi_elder_appear, shi_elder_take_linger, linger_taken_away dialogues - pivotal moment when Ling'er is taken"
     },
     {
       "id": "US-029",
@@ -390,8 +390,8 @@
         "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
       ],
       "priority": 29,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added enter_yangzhou_marvel and thief_appear dialogues"
     },
     {
       "id": "US-030",
@@ -404,8 +404,8 @@
         "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
       ],
       "priority": 30,
-      "passes": false,
-      "notes": "\u50ac\u6cea\u9ad8\u6f6e"
+      "passes": true,
+      "notes": "Completed: Added caiyi_jinyuan_story, caiyi_reveal, caiyi_death dialogues - classic tearjerker where Caiyi sacrifices herself"
     },
     {
       "id": "US-031",
@@ -417,8 +417,8 @@
         "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
       ],
       "priority": 31,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added shushan_welcome and suoyaota_history dialogues"
     },
     {
       "id": "US-032",
