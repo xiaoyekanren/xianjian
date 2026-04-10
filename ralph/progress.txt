@@ -1,111 +1,51 @@
-# Ralph Progress Tracker
-
-Project: 仙剑奇侠传现代重制版
-Branch: ralph/xianjian-remake
-Started: 2026-04-09
-
----
-
-## Completed Stories
-
-(None yet)
+## Codebase Patterns
+- Map locations have: id, name, displayName, maps[], shops[], inns[], chapter?, description?
+- Maps have: id, name, displayName, description, locationId, chapter, width, height, tileWidth, tileHeight, colorTheme, environment, layers[], npcs[], transitions[], events[], collisions[]
+- Map layer types: ground, building, overlay, event
+- TileType values: 0=GROUND, 1=WALL, 2=WATER, 3=DOOR, 4=PATH, 5=TRANSITION, 6=NPC_SPAWN, 7=TREE, 8=BUILDING, 9=FENCE, 10=CHEST, 11=EVENT
+- Transitions have: id, targetMapId, targetX, targetY, sourceX, sourceY, direction
+- Events have: id, type, x, y, triggerType, triggerOnEnter/triggerOnInteract, dialogId, requireFlag, setFlag, oneTime, priority
 
 ---
 
-## 2026-04-09 23:18 - US-001
+## 2026-04-10 - US-001
 
-- Implemented project architecture setup
-- Created directory structure: src/core, src/scenes, src/systems, src/entities, src/data, public/assets
-- Configured package.json with Phaser 3.80.1, TypeScript 5.4.5, Vite 5.2.8, @types/node
-- Configured tsconfig.json with ESM target, strict mode, skipLibCheck
-- Configured vite.config.ts with path aliases and dev server settings
-- Created main entry files: index.html, src/main.ts with Phaser game config
-- Created placeholder files in all directories for future implementations
-- TypeScript compilation and typecheck passes
-- Dev server starts successfully on port 3000
-- Files changed: package.json, tsconfig.json, vite.config.ts, index.html, src/main.ts, and 16 placeholder TypeScript files
+- **What was implemented**: Expanded story.json from 6 chapters to 13 chapters
+  - Added 7 new chapter definitions: 白河村(ch3), 隐龙窟(ch4), 鬼阴山(ch5), 扬州城(ch6), 京城彩依(ch7), 蜀山(ch8), 试炼窟(ch11)
+  - Renumbered existing chapters: 锁妖塔(ch3→ch9), 苗疆(ch4→ch10), 结局(ch5→ch12)
+  - Updated all node chapter fields, node IDs, and references (nextNode, blockingNodes, startNode)
+  - Updated chapter_change events in story nodes
 
-**Learnings for future iterations:**
-- Use `node:path` and `node:url` imports for ESM compatibility in vite.config.ts
-- Phaser 3.80.1 has type definition issues - need `skipLibCheck: true` in tsconfig
-- Add @types/node when using Node.js APIs in config files
-- Base resolution is 1920x1080 (16:9) with pixel art disabled for modern flat style
+- **Files changed**:
+  - `src/data/story.json` - Chapters array expanded, node IDs renumbered
+  - `ralph/prd.json` - US-001 marked as passes: true
 
----
-
-## Current Status
-
-Ready to begin. Run ralph loop to start autonomous execution.
+- **Learnings for future iterations**:
+  - When using `replace_all` for node IDs like `story_ch3_`, it affects ALL occurrences including startNode references in chapter definitions - need to fix affected references separately
+  - The story.json structure uses chapter IDs 0-12, with nodes referencing chapters by number
+  - Node ID pattern: `story_ch{chapter_number}_{event_name}` - be careful when renumbering to preserve correct mappings
+  - New chapters 3-8 and 11 are placeholders - their story nodes will be added in subsequent user stories (US-017 through US-025)
 
 ---
 
-## 2026-04-09 23:XX - US-002
+## 2026-04-10 - US-002
 
-- Implemented Game main controller with initialization and lifecycle management
-- Implemented SceneManager with scene switching logic, transitions, and history tracking
-- Implemented InputManager with keyboard/touch input handling and action dispatching
-- Implemented AudioManager with BGM/SFX/voice playback, volume control, and crossfade
-- TypeScript compilation and typecheck passes
-- Dev server starts successfully on port 3000
-- Files changed: src/core/Game.ts, src/core/SceneManager.ts, src/core/InputManager.ts, src/core/AudioManager.ts, src/main.ts
+- **What was implemented**: Added 白河村 location and 3 maps
+  - Added location: baihe_village (白河村) with chapter 3
+  - Added map: baihe_village_main - village center with buildings, NPCs, transitions to clinic and han_home
+  - Added map: baihe_clinic - Doctor Han's clinic with medicine shelves, NPCs (han_doctor, assistant)
+  - Added map: baihe_han_home - Han Mengci's home with NPCs (han_mengci, han_mother)
+  - Each map has: ground, building, overlay layers with proper tile layouts
+  - Added collisions, transitions, and events for story progression
 
-**Learnings for future iterations:**
-- Phaser 3.80.1 BaseSound doesn't have volume property directly - need to cast to WebAudioSound for setVolume
-- Use scene.input.on('pointerdown/pointerup') for touch input, not scene.input.touch
-- Scene manager uses 'run' for overlay scenes, not 'launch'
-- AudioManager and InputManager don't need Phaser.Game instance - they work with scene context
-- SceneManager supports scene history for navigation (goBack functionality)
+- **Files changed**:
+  - `src/data/maps.json` - Added baihe_village location and 3 maps
+  - `ralph/prd.json` - US-002 marked as passes: true
 
----
-
-## Notes
-
-- 53 user stories total
-- Phase 1 priority: US-001 through US-035 (核心框架+第一章)
-- Phase 2 priority: US-010, US-011, US-031, US-036 (扩展章节)
-- Phase 3-8 continue progressively
-## 2026-04-10 XX:XX - US-034
-
-- Implemented StorySystem.ts with story node management
-- Created StoryChapter enum (PROLOGUE to CHAPTER_5)
-- Created TriggerType enum (enter_map, interact_npc, flag_set, item_get, party_member, etc.)
-- Created StoryEventType enum (dialog, battle, get_item, set_flag, chapter_change, etc.)
-- Created StoryNode interface with triggers, events, blockingNodes, requiredFlags, priority
-- Implemented trigger condition checking with canTriggerNode() and checkTrigger()
-- Implemented event execution with startNode(), getNextEvent(), advanceEvent()
-- Implemented story progress tracking with StoryProgress (currentNode, completedNodes, activeFlags, currentChapter)
-- Created story.json with 6 chapters and 18 story nodes covering full storyline
-- Nodes include: prologue_start, ch1_aunt_sick, ch1_meet_drunkard, ch1_enter_xianling, ch1_pool, ch1_baiyue_attack, ch2_arrive_suzhou, ch2_biwu, ch3_enter_tower, ch3_tower_levels, ch3_find_linger, ch3_yueru_sacrifice, ch4_enter_miao, ch4_spirit_pearls, ch5_final_battle
-- TypeScript typecheck passes
-- Files changed: src/systems/StorySystem.ts, src/data/story.json
-
-**Learnings for future iterations:**
-- Story nodes use blockingNodes to ensure linear progression (node A must complete before node B)
-- Trigger conditions use requiredFlags for flag-based gating
-- Story events have order field for sequential execution
-- onCompleteFlags set story flags when a node completes, useful for gating subsequent content
-- repeatable flag allows side content nodes to trigger multiple times
-
----
-
-## 2026-04-10 XX:XX - US-035
-
-- Added chapter 1 dialog sequences to DialogData.ts
-- Dialogs: prologue_dream (梦中习剑), ch1_aunt_sick (婶婶生病), ch1_drunkard_teach (醉道士传授御剑术), ch1_enter_xianling (进入仙灵岛), ch1_maze_intro (迷宫介绍), ch1_baiyue_attack (拜月教徒袭击), ch1_linger_captured (灵儿被绑架)
-- Integrated StorySystem with WorldScene for trigger checking
-- Added checkStoryTriggerOnMapEntry() to check ENTER_MAP triggers
-- Modified handleInteraction() to check INTERACT_NPC triggers
-- Added executeStoryNode() and executeStoryEvent() methods for story event handling
-- Added handleStoryEventComplete() for event completion callback
-- Added parseStoryConfig() helper to parse JSON story data with proper type handling
-- Added getNPCId() method to NPC class for story trigger identification
-- TypeScript typecheck passes
-- Files changed: src/data/DialogData.ts, src/scenes/WorldScene.ts, src/systems/StorySystem.ts, src/entities/NPC.ts
-
-**Learnings for future iterations:**
-- JSON enum values need special handling - use parseStoryConfig to cast string types to enums
-- Story triggers integrate seamlessly with existing WorldScene map entry and NPC interaction
-- Story events can chain together via waitForCompletion flag
-- DialogScene can receive isStoryEvent flag for story-specific handling
+- **Learnings for future iterations**:
+  - Map JSON structure is consistent across all maps - follow the pattern from existing maps
+  - NPCs can have requireFlag to appear only after certain story events
+  - Events can set flags for story progression (e.g., entered_baihe_village, han_plea_received)
+  - Transitions connect maps within the same location - use consistent coordinate mapping
 
 ---
