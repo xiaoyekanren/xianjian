@@ -141,3 +141,47 @@
   - Story nodes for dungeons typically have: enter → explore → boss battles → rescue/resolution
 
 ---
+
+## 2026-04-10 - US-019
+
+- **What was implemented**: Added 鬼阴山 story nodes (Chapter 5 - critical turning point)
+  - Added story node: story_ch5_meet_shi_elder - entering guiyin_altar and meeting Shi Elder
+  - Added story node: story_ch5_linger_taken - the pivotal moment where Ling'er is taken away
+  - Nodes link properly: story_ch4_rescue_mengci → story_ch5_meet_shi_elder → story_ch5_linger_taken → story_ch6_enter_yangzhou
+  - Key events: dialog (shi_elder_appear, shi_elder_introduction, shi_elder_take_linger, linger_taken_away), remove_party (zhao_linger), set_flag (met_shi_elder, linger_taken, ch5_complete)
+  - Chapter transition from 5 to 6 at the end of linger_taken node
+
+- **Files changed**:
+  - `src/data/story.json` - Added 2 new story nodes for chapter 5
+  - `ralph/prd.json` - US-019 marked as passes: true
+
+- **Learnings for future iterations**:
+  - The linger_taken flag is a critical story state - marks the point where Ling'er leaves the party
+  - remove_party event removes a character from the active party - use characterId to specify
+  - Critical turning point nodes have higher priority (90) to ensure they execute properly
+  - Story nodes can chain flag_set triggers: met_shi_elder triggers linger_taken node
+  - The guiyin_altar map already has events that set these flags (shi_elder_event, linger_taken_event) - story nodes coordinate with map events
+
+---
+
+## 2026-04-10 - US-020
+
+- **What was implemented**: Added 扬州城 story nodes (Chapter 6 - female thief case)
+  - Added story node: story_ch6_enter_yangzhou - arriving at 扬州城, marveling at the bustling city
+  - Added story node: story_ch6_investigate_thief - investigating the female thief case after talking to magistrate
+  - Added story node: story_ch6_thief_boss_battle - battling 姬三娘 (Ji Sanniang, the female thief boss)
+  - Added story node: story_ch6_resolve_thief_case - resolving the thief case, chapter transition to 7
+  - Nodes link properly: story_ch5_linger_taken → story_ch6_enter_yangzhou → ... → story_ch6_resolve_thief_case → story_ch7_meet_liu_jinyuan
+
+- **Files changed**:
+  - `src/data/story.json` - Added 4 new story nodes for chapter 6
+  - `ralph/prd.json` - US-020 marked as passes: true
+
+- **Learnings for future iterations**:
+  - The Yangzhou chapter revolves around the 女飞贼案件 - a side story where Li Xiaoyao helps catch a female thief
+  - The yangzhou_yamen map already has an event that sets `yangzhou_thief_quest_active` flag when visiting magistrate after `yangzhou_visited` is set
+  - NPCs `female_thief` and `ji_sanniang` have `requireFlag: yangzhou_thief_quest_active` to only appear during the quest
+  - Story nodes chain flags: entered_yangzhou → yangzhou_visited → thief_case_started → ji_sanniang_defeated → ch6_complete
+  - Battle events use enemyIds array with boss IDs from enemies.json (e.g., ji_sanniang)
+
+---

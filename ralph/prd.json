@@ -257,8 +257,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 19,
-      "passes": false,
-      "notes": "\u5173\u952e\u8f6c\u6298\uff1a\u7075\u513f\u88ab\u5e26\u8d70"
+      "passes": true,
+      "notes": "Completed: Added 2 story nodes (meet_shi_elder, linger_taken), set linger_taken flag, remove_party event for Ling'er, chapter transition to ch6"
     },
     {
       "id": "US-020",
@@ -270,8 +270,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 20,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added 4 story nodes (enter_yangzhou, investigate_thief, thief_boss_battle, resolve_thief_case), linking ch5→ch6→ch7"
     },
     {
       "id": "US-021",

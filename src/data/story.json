@@ -749,6 +749,153 @@
       "nextNode": "story_ch6_enter_yangzhou"
     },
     {
+      "id": "story_ch6_enter_yangzhou",
+      "chapter": 6,
+      "title": "进入扬州城",
+      "description": "来到繁华的扬州城，感叹城市的富庶",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "yangzhou_main" }
+        }
+      ],
+      "blockingNodes": ["story_ch5_linger_taken"],
+      "requiredFlags": ["ch5_complete"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "enter_yangzhou_marvel" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "entered_yangzhou", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "yangzhou_visited", "flagValue": true }
+        }
+      ],
+      "priority": 80,
+      "onCompleteFlags": ["entered_yangzhou", "yangzhou_visited"],
+      "nextNode": "story_ch6_investigate_thief"
+    },
+    {
+      "id": "story_ch6_investigate_thief",
+      "chapter": 6,
+      "title": "女飞贼案件调查",
+      "description": "在扬州府衙了解到女飞贼案件，开始调查",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "yangzhou_thief_quest_active", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch6_enter_yangzhou"],
+      "requiredFlags": ["yangzhou_visited"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "yangzhou_thief_case_brief" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "thief_appear" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "thief_case_started", "flagValue": true }
+        }
+      ],
+      "priority": 85,
+      "onCompleteFlags": ["thief_case_started"],
+      "nextNode": "story_ch6_thief_boss_battle"
+    },
+    {
+      "id": "story_ch6_thief_boss_battle",
+      "chapter": 6,
+      "title": "女飞贼之战",
+      "description": "与女飞贼姬三娘展开战斗",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "met_female_thief", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch6_investigate_thief"],
+      "requiredFlags": ["thief_case_started"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ji_sanniang_encounter" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["ji_sanniang"] }
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "ji_sanniang_defeated" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "ji_sanniang_defeated", "flagValue": true }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["ji_sanniang_defeated"],
+      "nextNode": "story_ch6_resolve_thief_case"
+    },
+    {
+      "id": "story_ch6_resolve_thief_case",
+      "chapter": 6,
+      "title": "女飞贼案件解决",
+      "description": "解决女飞贼案件，扬州城恢复平静",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "ji_sanniang_defeated", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch6_thief_boss_battle"],
+      "requiredFlags": ["ji_sanniang_defeated"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "yangzhou_thief_resolved" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 2,
+          "data": { "flagName": "ch6_complete", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 3,
+          "data": { "chapter": 7 }
+        }
+      ],
+      "priority": 95,
+      "onCompleteFlags": ["ch6_complete"],
+      "nextNode": "story_ch7_meet_liu_jinyuan"
+    },
+    {
       "id": "story_ch9_enter_tower",
       "chapter": 9,
       "title": "进入锁妖塔",
