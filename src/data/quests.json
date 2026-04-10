@@ -557,5 +557,129 @@
         { "flagName": "yangzhou_thief_caught", "value": true }
       ]
     }
+  },
+  {
+    "id": "quest_jingcheng_caiyi_medicine",
+    "name": "彩依炼药",
+    "title": "帮助彩依收集药材",
+    "description": "彩依想要为晋元炼制一种特殊的丹药，需要收集一些稀有的药材。",
+    "summary": "帮助彩依收集炼药所需的材料",
+    "chapter": 7,
+    "location": "liu_manor_main",
+    "giverNpcId": "caiyi",
+    "prerequisites": {
+      "storyFlags": ["entered_liu_manor"]
+    },
+    "steps": [
+      {
+        "id": "step_caiyi_1",
+        "type": "talk_to_npc",
+        "description": "与彩依交谈了解炼药需求",
+        "targetId": "caiyi",
+        "targetMapId": "liu_manor_caiyi_room"
+      },
+      {
+        "id": "step_caiyi_2",
+        "type": "collect_item",
+        "description": "收集千年人参x1",
+        "targetId": "millennium_ginseng",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_caiyi_3",
+        "type": "collect_item",
+        "description": "收集天山雪莲x1",
+        "targetId": "snow_lotus",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_caiyi_4",
+        "type": "collect_item",
+        "description": "收集麒麟血x1（在麒麟洞获得）",
+        "targetId": "qilin_blood",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_caiyi_5",
+        "type": "talk_to_npc",
+        "description": "将药材交给彩依",
+        "targetId": "caiyi",
+        "targetMapId": "liu_manor_caiyi_room"
+      }
+    ],
+    "rewards": {
+      "exp": 200,
+      "gold": 300,
+      "items": [
+        { "itemId": "dahuangdan", "quantity": 3 }
+      ],
+      "affection": [
+        { "characterId": "li_xiaoyao", "amount": 10 }
+      ],
+      "flags": [
+        { "flagName": "caiyi_medicine_collected", "value": true }
+      ]
+    }
+  },
+  {
+    "id": "quest_shilian_skill_manual",
+    "name": "试炼秘籍",
+    "title": "寻找隐藏的仙术秘籍",
+    "description": "传说试炼窟中藏有一本失传已久的仙术秘籍，找到它可以学会强大的仙术。",
+    "summary": "在试炼窟深处寻找仙术秘籍",
+    "chapter": 8,
+    "location": "shilian_cave_entrance",
+    "giverNpcId": "trial_master",
+    "prerequisites": {
+      "storyFlags": ["entered_shilian_cave"]
+    },
+    "steps": [
+      {
+        "id": "step_manual_1",
+        "type": "reach_location",
+        "description": "进入试炼窟",
+        "targetId": "shilian_cave_entrance"
+      },
+      {
+        "id": "step_manual_2",
+        "type": "defeat_enemy",
+        "description": "击败试炼窟中的守护者",
+        "targetId": "trial_guardian",
+        "targetCount": 5,
+        "currentCount": 0
+      },
+      {
+        "id": "step_manual_3",
+        "type": "reach_location",
+        "description": "到达试炼窟最深处",
+        "targetId": "shilian_cave_bottom"
+      },
+      {
+        "id": "step_manual_4",
+        "type": "collect_item",
+        "description": "找到仙术秘籍",
+        "targetId": "immortal_manual",
+        "targetCount": 1,
+        "currentCount": 0
+      },
+      {
+        "id": "step_manual_5",
+        "type": "talk_to_npc",
+        "description": "向试炼大师汇报",
+        "targetId": "trial_master",
+        "targetMapId": "shilian_cave_entrance"
+      }
+    ],
+    "rewards": {
+      "exp": 300,
+      "gold": 500,
+      "skills": ["jiushen_skill", "qiankun_skill"],
+      "flags": [
+        { "flagName": "immortal_manual_found", "value": true }
+      ]
+    }
   }
 ]
