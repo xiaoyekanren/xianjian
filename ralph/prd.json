@@ -102,7 +102,7 @@
         "DialogData.ts编译通过"
       ],
       "priority": 7,
-      "passes": false
+      "passes": true
     },
     {
       "id": "US-008",

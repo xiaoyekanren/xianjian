@@ -1111,3 +1111,30 @@
 - speakerId 'qilin' added for麒麟 character
 - Story progression items (wind_pearl, qilin_horn) linked to回魂仙梦 ceremony
 ---
+
+## 2026-04-10 - US-007
+- Implemented 8 complete dialogue sequences for大理/回魂仙梦剧情 (Dali and Dream of Past arc)
+- Key storyline: 穿越时空回到十年前，见巫后并获得水灵珠
+- Dialogues added:
+  - dream_of_past_intro: 回魂仙梦介绍，女娲秘术可穿越时空
+  - dream_of_past_explanation: 解释施展方法，需水灵珠和麒麟角
+  - nanzhao_10_years_intro: 南诏十年前介绍，繁荣的国家
+  - nanzhao_10_years_wuhou_appear: 巫后出现，母女重逢
+  - nanzhao_10_years_wuhou_request: 巫后请求帮助阻止拜月教主阴谋
+  - water_beast_threat: 水魔兽威胁，上古凶兽被召唤
+  - wuhou_sacrifice: 巫后牺牲，封印水魔兽并留下水灵珠
+  - water_pearl_obtained: 获得水灵珠，返回现在
+- Key characters: wuhou, water_beast, baiyue_leader, zhao_linger, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 十年前巫后牺牲封印水魔兽，留下水灵珠给女儿
+
+**Files changed:**
+- src/data/DialogData.ts (added 8 dialog sequences, ~362 lines)
+- ralph/prd.json (updated US-007 to passes: true)
+
+**Learnings for future iterations:**
+- speakerId 'wuhou' added for巫后 character
+- speakerId 'water_beast' added for水魔兽凶兽
+- Emotional dialogues use Expression.SAD heavily for tragic moments
+- Time travel dialogues use narrator for scene transitions (穿越时空)
+- Historical dialogues connect to main story (巫后牺牲 explains灵儿命运)
+---
