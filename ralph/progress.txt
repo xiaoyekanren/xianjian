@@ -185,3 +185,52 @@
   - Battle events use enemyIds array with boss IDs from enemies.json (e.g., ji_sanniang)
 
 ---
+
+## 2026-04-10 - US-021
+
+- **What was implemented**: Added 京城彩依 story nodes (Chapter 7 - classic tearjerker)
+  - Added story node: story_ch7_meet_liu_jinyuan - entering Liu Manor, meeting Liu Jinyuan and Caiyi
+  - Added story node: story_ch7_caiyi_reveal - discovering Caiyi's true identity as butterfly spirit in her room
+  - Added story node: story_ch7_caiyi_sacrifice - the emotional climax where Caiyi sacrifices herself by transforming into butterfly to save Liu Jinyuan
+  - Nodes link properly: story_ch6_resolve_thief_case → story_ch7_meet_liu_jinyuan → story_ch7_caiyi_reveal → story_ch7_caiyi_sacrifice → story_ch8_arrive_shushan
+  - Key events: dialogs (enter_liu_manor, meet_jinyuan, jinyuan_sick, meet_caiyi, caiyi_reveal_truth, caiyi_decision, caiyi_last_words, caiyi_transform), battle (caiyi_butterfly), flags (met_liu_jinyuan, met_caiyi, caiyi_truth_known, caiyi_sacrificed, ch7_complete)
+  - Chapter transition from 7 to 8 at the end of caiyi_sacrifice node
+
+- **Files changed**:
+  - `src/data/story.json` - Added 3 new story nodes for chapter 7
+  - `ralph/prd.json` - US-021 marked as passes: true
+
+- **Learnings for future iterations**:
+  - The Caiyi chapter is one of the most emotional moments in 仙剑奇侠传 - a butterfly spirit sacrifices herself for love
+  - The plot flow: meet Liu Jinyuan (sick noble) → discover Caiyi is butterfly spirit → Caiyi sacrifices herself → Liu Jinyuan is saved but loses his love
+  - Used multiple sequential dialogs to build emotional tension before the sacrifice
+  - The caiyi_butterfly enemy exists in enemies.json (HP: 1000) - used for the boss battle event
+  - Story nodes can have dual triggers (enter_map + flag_set) to allow multiple entry paths
+  - The caiyi_room map has night environment - perfect for the intimate revelation scene
+
+---
+
+## 2026-04-10 - US-022
+
+- **What was implemented**: Added 蜀山 story nodes (Chapter 8 - learning Suoyaota truth)
+  - Added story node: story_ch8_arrive_shushan - arriving at Shushan Sword Sect after Caiyi's sacrifice
+  - Added story node: story_ch8_learn_suoyaota_truth - meeting Shushan Elder, learning that Ling'er is imprisoned in Suoyaota (Lock Demon Tower)
+  - Nodes link properly: story_ch7_caiyi_sacrifice → story_ch8_arrive_shushan → story_ch8_learn_suoyaota_truth → story_ch9_enter_tower
+  - Updated story_ch9_enter_tower blockingNodes from ["story_ch2_biwu"] to ["story_ch8_learn_suoyaota_truth"]
+  - Updated story_ch9_enter_tower requiredFlags from ["yueru_joined"] to ["ch8_complete", "suoyaota_truth_known"]
+  - Key events: dialogs (arrive_shushan, elder_greeting, suoyaota_history, linger_imprisoned_truth, elder_permission), flags (shushan_visited, suoyaota_truth_known, ch8_complete)
+  - Chapter transition from 8 to 9 at the end of learn_suoyaota_truth node
+
+- **Files changed**:
+  - `src/data/story.json` - Added 2 new story nodes for chapter 8, updated ch9_enter_tower blockingNodes and requiredFlags
+  - `ralph/prd.json` - US-022 marked as passes: true
+
+- **Learnings for future iterations**:
+  - Shushan maps have: shushan_gate (with npc_shushan_disciple), shushan_hall (with npc_shushan_elder)
+  - The npc_shushan_elder is the key NPC for chapter 8 story - provides the Suoyaota truth
+  - Story nodes can have dual triggers (enter_map + interact_npc) to allow multiple entry paths
+  - Chapter 8 is a transitional chapter - connects Caiyi's sacrifice to the Suoyaota rescue mission
+  - When updating blockingNodes, also update requiredFlags to ensure proper story flow
+  - The suoyaota_truth_known flag is critical for the story progression - unlocks chapter 9
+
+---

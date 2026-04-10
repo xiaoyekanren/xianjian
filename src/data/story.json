@@ -1097,6 +1097,104 @@
       "nextNode": "story_ch8_arrive_shushan"
     },
     {
+      "id": "story_ch8_arrive_shushan",
+      "chapter": 8,
+      "title": "抵达蜀山",
+      "description": "离开京城后，李逍遥前往蜀山剑派，寻找解救灵儿的方法",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "shushan_gate" }
+        }
+      ],
+      "blockingNodes": ["story_ch7_caiyi_sacrifice"],
+      "requiredFlags": ["ch7_complete"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch8_arrive_shushan" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "ch8_shushan_disciple_greeting" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "shushan_visited", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["shushan_visited"],
+      "nextNode": "story_ch8_learn_suoyaota_truth"
+    },
+    {
+      "id": "story_ch8_learn_suoyaota_truth",
+      "chapter": 8,
+      "title": "锁妖塔真相",
+      "description": "蜀山长老告知锁妖塔真相，灵儿被囚于塔中，必须前往解救",
+      "triggers": [
+        {
+          "type": "interact_npc",
+          "data": { "npcId": "npc_shushan_elder" }
+        },
+        {
+          "type": "enter_map",
+          "data": { "mapId": "shushan_hall" }
+        }
+      ],
+      "blockingNodes": ["story_ch8_arrive_shushan"],
+      "requiredFlags": ["shushan_visited"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch8_elder_greeting" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "ch8_suoyaota_history" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "ch8_linger_imprisoned_truth" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "ch8_elder_permission" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "suoyaota_truth_known", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 6,
+          "data": { "flagName": "ch8_complete", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 7,
+          "data": { "chapter": 9 }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["suoyaota_truth_known", "ch8_complete"],
+      "nextNode": "story_ch9_enter_tower"
+    },
+    {
       "id": "story_ch9_enter_tower",
       "chapter": 9,
       "title": "进入锁妖塔",
@@ -1107,8 +1205,8 @@
           "data": { "mapId": "suoyaota_entrance" }
         }
       ],
-      "blockingNodes": ["story_ch2_biwu"],
-      "requiredFlags": ["yueru_joined"],
+      "blockingNodes": ["story_ch8_learn_suoyaota_truth"],
+      "requiredFlags": ["ch8_complete", "suoyaota_truth_known"],
       "events": [
         {
           "type": "dialog",

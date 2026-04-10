@@ -296,8 +296,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 22,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added 2 story nodes (arrive_shushan, learn_suoyaota_truth), linking ch7→ch8→ch9, updated ch9_enter_tower blockingNodes"
     },
     {
       "id": "US-023",
