@@ -943,3 +943,27 @@
 - Cutscene events (type: "cutscene") trigger special story sequences
 - Flag chain: jingcheng_visited -> met_liu_jinyuan -> liu_jinyuan_sick -> caiyi_revealed -> caiyi_sacrifice_started -> caiyi_transformed
 ---
+
+## 2026-04-10 10:15 - US-008
+- Implemented 神木林 and 麒麟洞 map data
+- Added sacred_forest location with 3 maps (shenmu_entrance, shenmu_forest_1, shenmu_forest_2)
+- Added qilin_cave location with 2 maps (qilin_cave_entrance, qilin_cave_inner)
+- shenmu_entrance: ancient sacred forest entrance where 阿奴 joins party and Wind Pearl obtained
+- qilin_cave_entrance: mystical cave where Qilin beast resides and Qilin Horn obtained
+- Both maps have complete layers (ground, building, overlay), NPCs, transitions, events, collisions
+- NPCs: 阿奴 at shenmu entrance for party join event, 麒麟兽 at qilin cave for horn obtain event
+- Events include story events for party join, treasure events for items
+- Color themes: Sacred Forest (green theme), Qilin Cave (brown/cave theme)
+- JSON format validated, typecheck passes
+
+**Files changed:**
+- src/data/maps.json (added 2 locations, 2 new map definitions)
+- ralph/prd.json (updated US-008 to passes: true)
+
+**Learnings for future iterations:**
+- Sacred Forest is chapter 10, where Wind Pearl and 阿奴 joining happen
+- Qilin Cave is chapter 10, where Qilin Horn is obtained
+- Story events use storyId for story progression triggers
+- Treasure events use treasureId and setFlag for item acquisition
+- requireFlag can gate events until prerequisites met
+---
