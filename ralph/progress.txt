@@ -281,3 +281,26 @@
   - The dream_of_past_complete flag signals the end of flashback, triggering linger_awakening
 
 ---
+
+## 2026-04-10 - US-025
+
+- **What was implemented**: Added 试炼窟 story nodes (Chapter 11 - learning ultimate skills)
+  - Added story node: story_ch11_enter_shilian - entering trial cave entrance
+  - Added story node: story_ch11_learn_jiushen - learning 九仙剑 skill in shilian_skill_room
+  - Added story node: story_ch11_learn_qiankun - learning 乾坤一掷 skill
+  - Updated story_ch10_linger_awakening nextNode from story_ch12_final_battle to story_ch11_enter_shilian
+  - Nodes link properly: story_ch10_linger_awakening → story_ch11_enter_shilian → story_ch11_learn_jiushen → story_ch11_learn_qiankun → story_ch12_final_battle
+
+- **Files changed**:
+  - `src/data/story.json` - Added 3 new story nodes for chapter 11, updated linger_awakening nextNode
+  - `ralph/prd.json` - US-025 marked as passes: true
+
+- **Learnings for future iterations**:
+  - The trial_cave maps (shilian_cave_entrance, shilian_cave_1-5, shilian_skill_room) were added in US-010
+  - 九仙剑 and 乾坤一掷 are the ultimate skills for Li Xiaoyao in 仙剑奇侠传
+  - Skill learning nodes use learn_skill event type with skillId and characterId
+  - Chapter 11 is a skill-learning chapter - short transitional chapter between pearl collection and final battle
+  - Guardian battles (shilian_guardian_1, shilian_guardian_2) test player before granting skills - enemies may need to be added
+  - Chapter transition to 12 happens in the final skill learning node
+
+---

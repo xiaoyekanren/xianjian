@@ -337,8 +337,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 25,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added 3 story nodes (enter_shilian, learn_jiushen, learn_qiankun), connected ch10→ch11→ch12"
     },
     {
       "id": "US-026",
