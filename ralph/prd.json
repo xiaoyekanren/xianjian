@@ -283,8 +283,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 21,
-      "passes": false,
-      "notes": "\u7ecf\u5178\u50ac\u6cea\u5267\u60c5"
+      "passes": true,
+      "notes": "Completed: Added 3 story nodes (meet_liu_jinyuan, caiyi_reveal, caiyi_sacrifice), classic tearjerker plot where Caiyi transforms into butterfly to save Liu Jinyuan"
     },
     {
       "id": "US-022",

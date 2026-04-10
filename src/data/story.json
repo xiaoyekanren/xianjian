@@ -896,6 +896,207 @@
       "nextNode": "story_ch7_meet_liu_jinyuan"
     },
     {
+      "id": "story_ch7_meet_liu_jinyuan",
+      "chapter": 7,
+      "title": "京城遇刘晋元",
+      "description": "抵达京城，拜访刘晋元府邸",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "liu_manor" }
+        }
+      ],
+      "blockingNodes": ["story_ch6_resolve_thief_case"],
+      "requiredFlags": ["ch6_complete"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch7_enter_liu_manor" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "ch7_meet_jinyuan" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "ch7_jinyuan_sick" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "ch7_meet_caiyi" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "met_liu_jinyuan", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 6,
+          "data": { "flagName": "met_caiyi", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 7,
+          "data": { "flagName": "jingcheng_visited", "flagValue": true }
+        }
+      ],
+      "priority": 100,
+      "onCompleteFlags": ["met_liu_jinyuan", "met_caiyi"],
+      "nextNode": "story_ch7_caiyi_reveal"
+    },
+    {
+      "id": "story_ch7_caiyi_reveal",
+      "chapter": 7,
+      "title": "彩依真相",
+      "description": "发现彩依是蝶妖，她用灵力救治刘晋元",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "caiyi_room" }
+        },
+        {
+          "type": "flag_set",
+          "data": { "flagName": "met_caiyi", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch7_meet_liu_jinyuan"],
+      "requiredFlags": ["met_caiyi"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch7_caiyi_room" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "ch7_caiyi_reveal_truth" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "ch7_caiyi_butterfly_spirit" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "ch7_caiyi_love_jinyuan" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "caiyi_truth_known", "flagValue": true }
+        }
+      ],
+      "priority": 95,
+      "onCompleteFlags": ["caiyi_truth_known"],
+      "nextNode": "story_ch7_caiyi_sacrifice"
+    },
+    {
+      "id": "story_ch7_caiyi_sacrifice",
+      "chapter": 7,
+      "title": "彩依化蝶",
+      "description": "彩依牺牲自己化蝶救治刘晋元，经典催泪剧情",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "caiyi_truth_known", "flagValue": true }
+        },
+        {
+          "type": "interact_npc",
+          "data": { "npcId": "npc_caiyi" }
+        }
+      ],
+      "blockingNodes": ["story_ch7_caiyi_reveal"],
+      "requiredFlags": ["caiyi_truth_known"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "ch7_caiyi_decision" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "ch7_caiyi_last_words" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "ch7_caiyi_to_jinyuan" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 4,
+          "data": { "dialogId": "ch7_caiyi_transform" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 5,
+          "data": { "dialogId": "ch7_caiyi_butterfly_fly" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 6,
+          "data": { "dialogId": "ch7_jinyuan_awake" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 7,
+          "data": { "dialogId": "ch7_jinyuan_grief" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 8,
+          "data": { "enemyIds": ["caiyi_butterfly"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 9,
+          "data": { "flagName": "caiyi_sacrificed", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 10,
+          "data": { "flagName": "jinyuan_saved", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 11,
+          "data": { "flagName": "ch7_complete", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 12,
+          "data": { "chapter": 8 }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["caiyi_sacrificed", "ch7_complete"],
+      "nextNode": "story_ch8_arrive_shushan"
+    },
+    {
       "id": "story_ch9_enter_tower",
       "chapter": 9,
       "title": "进入锁妖塔",
