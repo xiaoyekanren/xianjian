@@ -159,7 +159,6 @@
       ],
       "spriteKey": "enemy_boss_demon_king"
     },
-    // US-039: Pearl Guardians
     {
       "id": "fire_guardian",
       "name": "火灵守护者",
