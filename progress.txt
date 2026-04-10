@@ -913,3 +913,33 @@
 - Maps follow same structure: layers with collision, NPCs, transitions, events
 - City maps typically have shops, inn, and government buildings
 ---
+
+## 2026-04-10 22:00 - US-006
+- Added 京城 (Capital City) location and maps to maps.json
+- jingcheng_city location with 3 maps: jingcheng_main, liu_manor, caiyi_room
+- jingcheng_main: 30x20 city square with Liu Manor entrance, inn, and street NPCs
+  - NPCs: 京城守卫, 京城居民, 刘晋元 (Liu Jinyuan), 彩依 (Caiyi - hidden until met_liu_jinyuan flag)
+  - Events: jingcheng_arrive (first visit), liu_jinyuan_meet (introduces Liu Jinyuan)
+  - Transitions: to Liu Manor (after meeting Liu), to inn, exit to Yangzhou
+- liu_manor: 25x18 Liu family estate
+  - NPCs: 刘晋元 (sick version after caiyi_sacrifice_started), 彩依 (caring version), 刘府仆人, 大夫 (doctor)
+  - Events: liu_jinyuan_sick_diagnosis (triggers sickness), caiyi_secret_reveal (reveals Caiyi's identity)
+  - Transitions: back to jingcheng_main, to caiyi_room (after met_caiyi flag)
+- caiyi_room: 15x12 Caiyi's bedroom with tragic atmosphere
+  - NPCs: 彩依 (final words), 彩依蝶形态 (butterfly form - hidden until caiyi_sacrifice_started)
+  - Events: caiyi_sacrifice_choice (player choice), caiyi_butterfly_transformation (cutscene)
+  - Night theme with pink/purple color scheme for romantic atmosphere
+- All maps include layers (ground, building, overlay), collision data, transitions, and events
+- Story flags: jingcheng_visited, met_liu_jinyuan, liu_jinyuan_sick, caiyi_revealed, caiyi_sacrifice_started, caiyi_transformed
+
+**Files changed:**
+- src/data/maps.json (added jingcheng_city location and 3 maps)
+- ralph/prd.json (updated US-006 to passes: true)
+
+**Learnings for future iterations:**
+- Capital City is Chapter 7 (彩依剧情 - Caiyi Story Arc)
+- Liu Jinyuan and Caiyi's tragic love story is one of the most emotional moments in the game
+- caiyi_room uses night theme (timeOfDay: "night") to create romantic/mysterious atmosphere
+- Cutscene events (type: "cutscene") trigger special story sequences
+- Flag chain: jingcheng_visited -> met_liu_jinyuan -> liu_jinyuan_sick -> caiyi_revealed -> caiyi_sacrifice_started -> caiyi_transformed
+---
