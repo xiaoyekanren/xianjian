@@ -1766,7 +1766,7 @@
       ],
       "priority": 60,
       "onCompleteFlags": ["linger_awakened"],
-      "nextNode": "story_ch12_final_battle"
+      "nextNode": "story_ch11_enter_shilian"
     },
     {
       "id": "story_ch10_spirit_pearls",
@@ -2316,6 +2316,146 @@
       "priority": 70,
       "onCompleteFlags": ["collected_water_pearl", "dream_of_past_complete"],
       "nextNode": "story_ch10_linger_awakening"
+    },
+    {
+      "id": "story_ch11_enter_shilian",
+      "chapter": 11,
+      "title": "进入试炼窟",
+      "description": "进入试炼窟，准备学习终极技能",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "shilian_cave_entrance" }
+        }
+      ],
+      "blockingNodes": ["story_ch10_linger_awakening"],
+      "requiredFlags": ["linger_awakened"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "shilian_cave_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "shilian_cave_purpose" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "entered_shilian", "flagValue": true }
+        }
+      ],
+      "priority": 60,
+      "onCompleteFlags": ["entered_shilian"],
+      "nextNode": "story_ch11_learn_jiushen"
+    },
+    {
+      "id": "story_ch11_learn_jiushen",
+      "chapter": 11,
+      "title": "学习九仙剑",
+      "description": "在试炼窟深处学习九仙剑绝技",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "shilian_skill_room" }
+        }
+      ],
+      "blockingNodes": ["story_ch11_enter_shilian"],
+      "requiredFlags": ["entered_shilian"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "jiushen_skill_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["shilian_guardian_1"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "jiushen_skill_learned" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "learn_skill",
+          "order": 4,
+          "data": { "skillId": "jiushen_jianfa", "characterId": "li_xiaoyao" }
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "jiushen_learned", "flagValue": true }
+        }
+      ],
+      "priority": 55,
+      "onCompleteFlags": ["jiushen_learned"],
+      "nextNode": "story_ch11_learn_qiankun"
+    },
+    {
+      "id": "story_ch11_learn_qiankun",
+      "chapter": 11,
+      "title": "学习乾坤一掷",
+      "description": "在试炼窟最深处学习乾坤一掷绝技",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "jiushen_learned", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch11_learn_jiushen"],
+      "requiredFlags": ["jiushen_learned"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "qiankun_skill_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["shilian_guardian_2"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "qiankun_skill_learned" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "learn_skill",
+          "order": 4,
+          "data": { "skillId": "qiankun_yizhi", "characterId": "li_xiaoyao" }
+        },
+        {
+          "type": "chapter_change",
+          "order": 5,
+          "data": { "chapter": 12 }
+        },
+        {
+          "type": "set_flag",
+          "order": 6,
+          "data": { "flagName": "qiankun_learned", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 7,
+          "data": { "flagName": "ch11_complete", "flagValue": true }
+        }
+      ],
+      "priority": 50,
+      "onCompleteFlags": ["qiankun_learned", "ch11_complete"],
+      "nextNode": "story_ch12_final_battle"
     }
   ]
 }
