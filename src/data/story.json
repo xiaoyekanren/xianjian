@@ -2165,6 +2165,157 @@
       ],
       "priority": 1000,
       "onCompleteFlags": ["final_battle_complete", "ending_reached"]
+    },
+    {
+      "id": "story_ch10_dream_of_past",
+      "chapter": 10,
+      "title": "回魂仙梦",
+      "description": "在女娲神殿触发回魂仙梦，回到十年前的南诏国",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "nuwa_temple_shrine" }
+        }
+      ],
+      "blockingNodes": ["story_ch10_collect_earth_pearl"],
+      "requiredFlags": ["collected_earth_pearl"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "dream_of_past_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 2,
+          "data": { "effectType": "fade", "effectColor": "#E8D0F0", "effectDuration": 2000 }
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "dream_of_past_explanation" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "change_map",
+          "order": 4,
+          "data": { "mapId": "nanzhao_palace_10_years", "x": 10, "y": 8 }
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "dream_of_past_active", "flagValue": true }
+        }
+      ],
+      "priority": 72,
+      "onCompleteFlags": ["dream_of_past_active"],
+      "nextNode": "story_ch10_nanzhao_10_years"
+    },
+    {
+      "id": "story_ch10_nanzhao_10_years",
+      "chapter": 10,
+      "title": "南诏国十年前",
+      "description": "回到十年前的南诏国，见证巫后的故事",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "nanzhao_palace_10_years" }
+        }
+      ],
+      "blockingNodes": ["story_ch10_dream_of_past"],
+      "requiredFlags": ["dream_of_past_active"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "nanzhao_10_years_intro" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "nanzhao_10_years_wuhou_appear" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "nanzhao_10_years_wuhou_request" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "met_wuhou_in_dream", "flagValue": true }
+        }
+      ],
+      "priority": 71,
+      "onCompleteFlags": ["met_wuhou_in_dream"],
+      "nextNode": "story_ch10_get_water_pearl"
+    },
+    {
+      "id": "story_ch10_get_water_pearl",
+      "chapter": 10,
+      "title": "获取水灵珠",
+      "description": "在十年前的南诏国见证水魔兽封印，获得水灵珠",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "met_wuhou_in_dream", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch10_nanzhao_10_years"],
+      "requiredFlags": ["met_wuhou_in_dream"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "water_beast_threat" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "battle",
+          "order": 2,
+          "data": { "enemyIds": ["water_beast_10_years"] },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 3,
+          "data": { "dialogId": "wuhou_sacrifice" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "screen_effect",
+          "order": 4,
+          "data": { "effectType": "flash", "effectColor": "#00BFFF", "effectDuration": 1500 }
+        },
+        {
+          "type": "dialog",
+          "order": 5,
+          "data": { "dialogId": "water_pearl_obtained" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "change_map",
+          "order": 6,
+          "data": { "mapId": "nuwa_temple_shrine", "x": 12, "y": 8 }
+        },
+        {
+          "type": "set_flag",
+          "order": 7,
+          "data": { "flagName": "collected_water_pearl", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 8,
+          "data": { "flagName": "dream_of_past_complete", "flagValue": true }
+        }
+      ],
+      "priority": 70,
+      "onCompleteFlags": ["collected_water_pearl", "dream_of_past_complete"],
+      "nextNode": "story_ch10_linger_awakening"
     }
   ]
 }
