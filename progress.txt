@@ -967,3 +967,29 @@
 - Treasure events use treasureId and setFlag for item acquisition
 - requireFlag can gate events until prerequisites met
 ---
+
+## 2026-04-10 17:00 - US-009
+- Added dali location with 3 maps (dali_main, dali_palace, dali_inn)
+- Added nuwa_temple location with 3 maps (nuwa_temple_entrance, nuwa_temple_inner, nuwa_temple_shrine)
+- dali_main: 大理城中心广场，南诏国繁华都城，chapter 10
+  - Color theme: 红色系 (#8B0000, #CD5C5C) 代表南诏国皇城风格
+  - NPCs: 大理村民、大理守卫、杂货店主
+  - Transitions: 到皇宫、客栈、神木林入口、女娲神殿
+  - Events: 大理到达事件、皇宫大门接近事件
+- nuwa_temple_entrance: 女娲神殿入口，女娲后人圣地，chapter 11
+  - Color theme: 蓝色系 (#4169E1, #6495ED) 代表神圣纯洁
+  - NPCs: 女娲神殿祭司、神殿守护
+  - Transitions: 到神殿内部、大理城
+  - Events: 女娲神殿到达事件、祭司对话事件、水灵珠提示事件
+
+**Files changed:**
+- src/data/maps.json (added dali and nuwa_temple locations and maps)
+- ralph/prd.json (updated US-009 to passes: true)
+
+**Learnings for future iterations:**
+- Dali (大理) is the capital of Nanzhao kingdom, chapter 10, where 灵儿's hometown
+- Nuwa Temple (女娲神殿) is chapter 11, where Water Spirit Pearl (水灵珠) is found
+- Map transitions should connect logically between related locations
+- Story events should use requireFlag for conditional triggering
+- Color themes can reflect location character: red for royal city, blue for sacred temple
+---
