@@ -662,6 +662,93 @@
       "nextNode": "story_ch5_meet_shi_elder"
     },
     {
+      "id": "story_ch5_meet_shi_elder",
+      "chapter": 5,
+      "title": "遇见石长老",
+      "description": "在鬼阴山祭坛遇见石长老，他已等候多时",
+      "triggers": [
+        {
+          "type": "enter_map",
+          "data": { "mapId": "guiyin_altar" }
+        }
+      ],
+      "blockingNodes": ["story_ch4_rescue_mengci"],
+      "requiredFlags": ["mengci_rescued"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "shi_elder_appear" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "shi_elder_introduction" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "set_flag",
+          "order": 3,
+          "data": { "flagName": "met_shi_elder", "flagValue": true }
+        }
+      ],
+      "priority": 85,
+      "onCompleteFlags": ["met_shi_elder"],
+      "nextNode": "story_ch5_linger_taken"
+    },
+    {
+      "id": "story_ch5_linger_taken",
+      "chapter": 5,
+      "title": "灵儿被带走",
+      "description": "石长老带走灵儿，关键转折点",
+      "triggers": [
+        {
+          "type": "flag_set",
+          "data": { "flagName": "met_shi_elder", "flagValue": true }
+        }
+      ],
+      "blockingNodes": ["story_ch5_meet_shi_elder"],
+      "requiredFlags": ["met_shi_elder"],
+      "events": [
+        {
+          "type": "dialog",
+          "order": 1,
+          "data": { "dialogId": "shi_elder_take_linger" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "dialog",
+          "order": 2,
+          "data": { "dialogId": "linger_taken_away" },
+          "waitForCompletion": true
+        },
+        {
+          "type": "remove_party",
+          "order": 3,
+          "data": { "characterId": "zhao_linger" }
+        },
+        {
+          "type": "set_flag",
+          "order": 4,
+          "data": { "flagName": "linger_taken", "flagValue": true }
+        },
+        {
+          "type": "set_flag",
+          "order": 5,
+          "data": { "flagName": "ch5_complete", "flagValue": true }
+        },
+        {
+          "type": "chapter_change",
+          "order": 6,
+          "data": { "chapter": 6 }
+        }
+      ],
+      "priority": 90,
+      "onCompleteFlags": ["linger_taken", "ch5_complete"],
+      "nextNode": "story_ch6_enter_yangzhou"
+    },
+    {
       "id": "story_ch9_enter_tower",
       "chapter": 9,
       "title": "进入锁妖塔",
