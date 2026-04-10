@@ -5751,6 +5751,64 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // System dialogs (US-009)
+  {
+    id: 'inn_intro',
+    lines: [
+      {
+        speakerId: 'innkeeper',
+        speakerName: '客栈老板',
+        text: '欢迎来到客栈！我们这里可以为您提供休息和住宿服务。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'inn_intro_2',
+      },
+      {
+        speakerId: 'innkeeper',
+        speakerName: '客栈老板',
+        text: '休息一晚可以恢复您全部的HP和MP，费用是50金币。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'inn_intro_3',
+      },
+      {
+        speakerId: 'innkeeper',
+        speakerName: '客栈老板',
+        text: '您想在这里休息吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shop_intro',
+    lines: [
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '欢迎光临！我这里有各种药品、武器和道具出售。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shop_intro_2',
+      },
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '药品可以恢复HP和MP，武器可以提升攻击力，道具可以在战斗中使用。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shop_intro_3',
+      },
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '如果您有不需要的物品，也可以卖给我换取金币。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shop_intro_4',
+      },
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '请问您想要购买什么？',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
 ];
 
 /**
