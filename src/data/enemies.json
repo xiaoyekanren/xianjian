@@ -2,9 +2,9 @@
   "enemies": [
     {
       "id": "tower_ghost",
-      "name": "锁妖塔幽灵",
-      "displayName": "幽灵",
-      "description": "被困在锁妖塔中的怨灵",
+      "name": "\u9501\u5996\u5854\u5e7d\u7075",
+      "displayName": "\u5e7d\u7075",
+      "description": "\u88ab\u56f0\u5728\u9501\u5996\u5854\u4e2d\u7684\u6028\u7075",
       "category": "normal",
       "hp": 80,
       "maxHp": 80,
@@ -15,16 +15,22 @@
       "expReward": 25,
       "goldReward": 15,
       "drops": [
-        { "itemId": "jieduyao", "probability": 0.2 },
-        { "itemId": "lingxindan", "probability": 0.1 }
+        {
+          "itemId": "jieduyao",
+          "probability": 0.2
+        },
+        {
+          "itemId": "lingxindan",
+          "probability": 0.1
+        }
       ],
       "spriteKey": "enemy_ghost"
     },
     {
       "id": "tower_demon",
-      "name": "锁妖塔妖魔",
-      "displayName": "妖魔",
-      "description": "被女娲封印在塔中的妖魔",
+      "name": "\u9501\u5996\u5854\u5996\u9b54",
+      "displayName": "\u5996\u9b54",
+      "description": "\u88ab\u5973\u5a32\u5c01\u5370\u5728\u5854\u4e2d\u7684\u5996\u9b54",
       "category": "normal",
       "hp": 120,
       "maxHp": 120,
@@ -35,16 +41,22 @@
       "expReward": 40,
       "goldReward": 25,
       "drops": [
-        { "itemId": "jinchaungyao", "probability": 0.15 },
-        { "itemId": "huanhundan", "probability": 0.05 }
+        {
+          "itemId": "jinchaungyao",
+          "probability": 0.15
+        },
+        {
+          "itemId": "huanhundan",
+          "probability": 0.05
+        }
       ],
       "spriteKey": "enemy_demon"
     },
     {
       "id": "tower_skeleton",
-      "name": "锁妖塔骷髅",
-      "displayName": "骷髅",
-      "description": "塔中死者的骸骨复生",
+      "name": "\u9501\u5996\u5854\u9ab7\u9ac5",
+      "displayName": "\u9ab7\u9ac5",
+      "description": "\u5854\u4e2d\u6b7b\u8005\u7684\u9ab8\u9aa8\u590d\u751f",
       "category": "normal",
       "hp": 60,
       "maxHp": 60,
@@ -55,15 +67,18 @@
       "expReward": 20,
       "goldReward": 12,
       "drops": [
-        { "itemId": "tiejian", "probability": 0.1 }
+        {
+          "itemId": "tiejian",
+          "probability": 0.1
+        }
       ],
       "spriteKey": "enemy_skeleton"
     },
     {
       "id": "tower_gargoyle",
-      "name": "锁妖塔石像鬼",
-      "displayName": "石像鬼",
-      "description": "塔顶守护的石像怪物",
+      "name": "\u9501\u5996\u5854\u77f3\u50cf\u9b3c",
+      "displayName": "\u77f3\u50cf\u9b3c",
+      "description": "\u5854\u9876\u5b88\u62a4\u7684\u77f3\u50cf\u602a\u7269",
       "category": "elite",
       "hp": 200,
       "maxHp": 200,
@@ -74,16 +89,22 @@
       "expReward": 80,
       "goldReward": 50,
       "drops": [
-        { "itemId": "lingjian", "probability": 0.3 },
-        { "itemId": "tianshijian", "probability": 0.1 }
+        {
+          "itemId": "lingjian",
+          "probability": 0.3
+        },
+        {
+          "itemId": "tianshijian",
+          "probability": 0.1
+        }
       ],
       "spriteKey": "enemy_gargoyle"
     },
     {
       "id": "tower_shadow",
-      "name": "锁妖塔暗影",
-      "displayName": "暗影",
-      "description": "塔中层游荡的神秘暗影",
+      "name": "\u9501\u5996\u5854\u6697\u5f71",
+      "displayName": "\u6697\u5f71",
+      "description": "\u5854\u4e2d\u5c42\u6e38\u8361\u7684\u795e\u79d8\u6697\u5f71",
       "category": "elite",
       "hp": 150,
       "maxHp": 150,
@@ -94,16 +115,22 @@
       "expReward": 60,
       "goldReward": 40,
       "drops": [
-        { "itemId": "huanhundan", "probability": 0.2 },
-        { "itemId": "yinjiezhi", "probability": 0.1 }
+        {
+          "itemId": "huanhundan",
+          "probability": 0.2
+        },
+        {
+          "itemId": "yinjiezhi",
+          "probability": 0.1
+        }
       ],
       "spriteKey": "enemy_shadow"
     },
     {
       "id": "tower_boss_guardian",
-      "name": "锁妖塔守护者",
-      "displayName": "守护者",
-      "description": "守护锁妖塔底层的强大怪物",
+      "name": "\u9501\u5996\u5854\u5b88\u62a4\u8005",
+      "displayName": "\u5b88\u62a4\u8005",
+      "description": "\u5b88\u62a4\u9501\u5996\u5854\u5e95\u5c42\u7684\u5f3a\u5927\u602a\u7269",
       "category": "boss",
       "hp": 500,
       "maxHp": 500,
@@ -114,16 +141,22 @@
       "expReward": 200,
       "goldReward": 150,
       "drops": [
-        { "itemId": "tianshijian", "probability": 1.0 },
-        { "itemId": "nuwa_yupe", "probability": 0.5 }
+        {
+          "itemId": "tianshijian",
+          "probability": 1.0
+        },
+        {
+          "itemId": "nuwa_yupe",
+          "probability": 0.5
+        }
       ],
       "spriteKey": "enemy_boss_guardian"
     },
     {
       "id": "lin_yueru_boss",
-      "name": "林月如",
-      "displayName": "林月如",
-      "description": "林家堡千金，比武招亲的擂主",
+      "name": "\u6797\u6708\u5982",
+      "displayName": "\u6797\u6708\u5982",
+      "description": "\u6797\u5bb6\u5821\u5343\u91d1\uff0c\u6bd4\u6b66\u62db\u4eb2\u7684\u64c2\u4e3b",
       "category": "boss",
       "hp": 350,
       "maxHp": 350,
@@ -134,15 +167,18 @@
       "expReward": 150,
       "goldReward": 100,
       "drops": [
-        { "itemId": "lin_jianbao", "probability": 1.0 }
+        {
+          "itemId": "lin_jianbao",
+          "probability": 1.0
+        }
       ],
       "spriteKey": "character_lin_yueru"
     },
     {
       "id": "tower_boss_demon_king",
-      "name": "锁妖塔妖王",
-      "displayName": "妖王",
-      "description": "被镇压千年的妖王，实力恐怖",
+      "name": "\u9501\u5996\u5854\u5996\u738b",
+      "displayName": "\u5996\u738b",
+      "description": "\u88ab\u9547\u538b\u5343\u5e74\u7684\u5996\u738b\uff0c\u5b9e\u529b\u6050\u6016",
       "category": "boss",
       "hp": 800,
       "maxHp": 800,
@@ -153,17 +189,26 @@
       "expReward": 500,
       "goldReward": 300,
       "drops": [
-        { "itemId": "tianshijian", "probability": 1.0 },
-        { "itemId": "nuwa_yupe", "probability": 0.8 },
-        { "itemId": "lingjian", "probability": 0.5 }
+        {
+          "itemId": "tianshijian",
+          "probability": 1.0
+        },
+        {
+          "itemId": "nuwa_yupe",
+          "probability": 0.8
+        },
+        {
+          "itemId": "lingjian",
+          "probability": 0.5
+        }
       ],
       "spriteKey": "enemy_boss_demon_king"
     },
     {
       "id": "fire_guardian",
-      "name": "火灵守护者",
-      "displayName": "火灵守护者",
-      "description": "守护火灵珠的炎之精灵",
+      "name": "\u706b\u7075\u5b88\u62a4\u8005",
+      "displayName": "\u706b\u7075\u5b88\u62a4\u8005",
+      "description": "\u5b88\u62a4\u706b\u7075\u73e0\u7684\u708e\u4e4b\u7cbe\u7075",
       "category": "boss",
       "hp": 400,
       "maxHp": 400,
@@ -174,16 +219,19 @@
       "expReward": 180,
       "goldReward": 120,
       "drops": [
-        { "itemId": "fire_pearl", "probability": 1.0 }
+        {
+          "itemId": "fire_pearl",
+          "probability": 1.0
+        }
       ],
       "spriteKey": "enemy_fire_guardian",
       "canFlee": false
     },
     {
       "id": "wind_guardian",
-      "name": "风灵守护者",
-      "displayName": "风灵守护者",
-      "description": "守护风灵珠的风之精灵",
+      "name": "\u98ce\u7075\u5b88\u62a4\u8005",
+      "displayName": "\u98ce\u7075\u5b88\u62a4\u8005",
+      "description": "\u5b88\u62a4\u98ce\u7075\u73e0\u7684\u98ce\u4e4b\u7cbe\u7075",
       "category": "boss",
       "hp": 350,
       "maxHp": 350,
@@ -194,16 +242,19 @@
       "expReward": 160,
       "goldReward": 100,
       "drops": [
-        { "itemId": "wind_pearl", "probability": 1.0 }
+        {
+          "itemId": "wind_pearl",
+          "probability": 1.0
+        }
       ],
       "spriteKey": "enemy_wind_guardian",
       "canFlee": false
     },
     {
       "id": "thunder_guardian",
-      "name": "雷灵守护者",
-      "displayName": "雷灵守护者",
-      "description": "守护雷灵珠的雷之精灵",
+      "name": "\u96f7\u7075\u5b88\u62a4\u8005",
+      "displayName": "\u96f7\u7075\u5b88\u62a4\u8005",
+      "description": "\u5b88\u62a4\u96f7\u7075\u73e0\u7684\u96f7\u4e4b\u7cbe\u7075",
       "category": "boss",
       "hp": 450,
       "maxHp": 450,
@@ -214,16 +265,19 @@
       "expReward": 200,
       "goldReward": 150,
       "drops": [
-        { "itemId": "thunder_pearl", "probability": 1.0 }
+        {
+          "itemId": "thunder_pearl",
+          "probability": 1.0
+        }
       ],
       "spriteKey": "enemy_thunder_guardian",
       "canFlee": false
     },
     {
       "id": "earth_guardian",
-      "name": "土灵守护者",
-      "displayName": "土灵守护者",
-      "description": "守护土灵珠的地之精灵",
+      "name": "\u571f\u7075\u5b88\u62a4\u8005",
+      "displayName": "\u571f\u7075\u5b88\u62a4\u8005",
+      "description": "\u5b88\u62a4\u571f\u7075\u73e0\u7684\u5730\u4e4b\u7cbe\u7075",
       "category": "boss",
       "hp": 500,
       "maxHp": 500,
@@ -234,16 +288,19 @@
       "expReward": 220,
       "goldReward": 180,
       "drops": [
-        { "itemId": "earth_pearl", "probability": 1.0 }
+        {
+          "itemId": "earth_pearl",
+          "probability": 1.0
+        }
       ],
       "spriteKey": "enemy_earth_guardian",
       "canFlee": false
     },
     {
       "id": "baiyue_leader",
-      "name": "拜月教主",
-      "displayName": "拜月教主",
-      "description": "拜月教的教主，野心勃勃，企图召唤水魔兽毁灭世界",
+      "name": "\u62dc\u6708\u6559\u4e3b",
+      "displayName": "\u62dc\u6708\u6559\u4e3b",
+      "description": "\u62dc\u6708\u6559\u7684\u6559\u4e3b\uff0c\u91ce\u5fc3\u52c3\u52c3\uff0c\u4f01\u56fe\u53ec\u5524\u6c34\u9b54\u517d\u6bc1\u706d\u4e16\u754c",
       "category": "boss",
       "hp": 8000,
       "maxHp": 8000,
@@ -254,25 +311,31 @@
       "expReward": 1000,
       "goldReward": 500,
       "drops": [
-        { "itemId": "nuwa_yupe", "probability": 1.0 },
-        { "itemId": "tianshijian", "probability": 1.0 }
+        {
+          "itemId": "nuwa_yupe",
+          "probability": 1.0
+        },
+        {
+          "itemId": "tianshijian",
+          "probability": 1.0
+        }
       ],
       "spriteKey": "enemy_baiyue_leader",
       "canFlee": false,
       "specialAbilities": [
         {
           "id": "summon_water_beast",
-          "name": "召唤水魔兽",
+          "name": "\u53ec\u5524\u6c34\u9b54\u517d",
           "triggerCondition": "hp_below_50_percent",
-          "description": "当HP低于50%时召唤水魔兽助战"
+          "description": "\u5f53HP\u4f4e\u4e8e50%\u65f6\u53ec\u5524\u6c34\u9b54\u517d\u52a9\u6218"
         }
       ]
     },
     {
       "id": "water_beast",
-      "name": "水魔兽",
-      "displayName": "水魔兽",
-      "description": "远古被封印的水魔兽，拜月教主召唤的恐怖怪物",
+      "name": "\u6c34\u9b54\u517d",
+      "displayName": "\u6c34\u9b54\u517d",
+      "description": "\u8fdc\u53e4\u88ab\u5c01\u5370\u7684\u6c34\u9b54\u517d\uff0c\u62dc\u6708\u6559\u4e3b\u53ec\u5524\u7684\u6050\u6016\u602a\u7269",
       "category": "boss",
       "hp": 3000,
       "maxHp": 3000,
@@ -283,71 +346,470 @@
       "expReward": 500,
       "goldReward": 300,
       "drops": [
-        { "itemId": "water_pearl", "probability": 1.0 }
+        {
+          "itemId": "water_pearl",
+          "probability": 1.0
+        }
       ],
       "spriteKey": "enemy_water_beast",
       "canFlee": false
+    },
+    {
+      "id": "enemy_snake_demon",
+      "name": "\u86c7\u5996\u7537",
+      "displayName": "\u86c7\u5996\u7537",
+      "description": "\u9690\u9f99\u7a9f\u7684\u86c7\u5996BOSS",
+      "category": "boss",
+      "hp": 800,
+      "maxHp": 800,
+      "attack": 45,
+      "defense": 20,
+      "speed": 15,
+      "luck": 10,
+      "exp": 300,
+      "gold": 500,
+      "skills": [
+        "poison_bite",
+        "tail_whip"
+      ],
+      "drops": [
+        {
+          "itemId": "snake_fang",
+          "probability": 0.5
+        }
+      ],
+      "spriteKey": "enemy_snake_demon"
+    },
+    {
+      "id": "enemy_fox_demon",
+      "name": "\u72d0\u5996\u5973",
+      "displayName": "\u72d0\u5996\u5973",
+      "description": "\u9690\u9f99\u7a9f\u7684\u72d0\u5996BOSS",
+      "category": "boss",
+      "hp": 600,
+      "maxHp": 600,
+      "attack": 35,
+      "defense": 15,
+      "speed": 25,
+      "luck": 20,
+      "exp": 250,
+      "gold": 400,
+      "skills": [
+        "charm",
+        "fox_fire"
+      ],
+      "drops": [
+        {
+          "itemId": "fox_tail",
+          "probability": 0.5
+        }
+      ],
+      "spriteKey": "enemy_fox_demon"
+    },
+    {
+      "id": "enemy_cave_snake",
+      "name": "\u6d1e\u7a74\u86c7\u5996",
+      "displayName": "\u6d1e\u7a74\u86c7\u5996",
+      "description": "\u9690\u9f99\u7a9f\u5e38\u89c1\u7684\u86c7\u5996",
+      "category": "normal",
+      "hp": 120,
+      "maxHp": 120,
+      "attack": 18,
+      "defense": 8,
+      "speed": 12,
+      "luck": 5,
+      "exp": 35,
+      "gold": 30,
+      "skills": [
+        "bite"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_snake"
+    },
+    {
+      "id": "enemy_cave_bat",
+      "name": "\u6d1e\u7a74\u8759\u8760",
+      "displayName": "\u6d1e\u7a74\u8759\u8760",
+      "description": "\u9690\u9f99\u7a9f\u7684\u8759\u8760",
+      "category": "normal",
+      "hp": 60,
+      "maxHp": 60,
+      "attack": 12,
+      "defense": 4,
+      "speed": 20,
+      "luck": 8,
+      "exp": 15,
+      "gold": 10,
+      "skills": [
+        "sonic_screech"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_bat"
+    },
+    {
+      "id": "enemy_shi_elder",
+      "name": "\u77f3\u957f\u8001",
+      "displayName": "\u77f3\u957f\u8001",
+      "description": "\u82d7\u7586\u77f3\u957f\u8001\uff0c\u5267\u60c5\u6218\u65e0\u6cd5\u51fb\u8d25",
+      "category": "boss",
+      "hp": 2000,
+      "maxHp": 2000,
+      "attack": 80,
+      "defense": 50,
+      "speed": 10,
+      "luck": 30,
+      "exp": 0,
+      "gold": 0,
+      "skills": [
+        "stone_strike",
+        "earthquake"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_shi_elder",
+      "unbeatable": true
+    },
+    {
+      "id": "enemy_mountain_bandit",
+      "name": "\u5c71\u8d3c",
+      "displayName": "\u5c71\u8d3c",
+      "description": "\u9b3c\u9634\u5c71\u7684\u5c71\u8d3c",
+      "category": "normal",
+      "hp": 100,
+      "maxHp": 100,
+      "attack": 15,
+      "defense": 6,
+      "speed": 10,
+      "luck": 5,
+      "exp": 25,
+      "gold": 40,
+      "skills": [
+        "slash"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_bandit"
+    },
+    {
+      "id": "enemy_wild_wolf",
+      "name": "\u91ce\u72fc",
+      "displayName": "\u91ce\u72fc",
+      "description": "\u9b3c\u9634\u5c71\u7684\u91ce\u72fc",
+      "category": "normal",
+      "hp": 80,
+      "maxHp": 80,
+      "attack": 14,
+      "defense": 5,
+      "speed": 18,
+      "luck": 6,
+      "exp": 20,
+      "gold": 15,
+      "skills": [
+        "bite"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_wolf"
+    },
+    {
+      "id": "enemy_female_thief",
+      "name": "\u5973\u98de\u8d3c",
+      "displayName": "\u5973\u98de\u8d3c",
+      "description": "\u626c\u5dde\u57ce\u5973\u98de\u8d3cBOSS",
+      "category": "boss",
+      "hp": 500,
+      "maxHp": 500,
+      "attack": 30,
+      "defense": 12,
+      "speed": 35,
+      "luck": 25,
+      "exp": 200,
+      "gold": 600,
+      "skills": [
+        "steal",
+        "backstab"
+      ],
+      "drops": [
+        {
+          "itemId": "stolen_goods",
+          "probability": 1.0
+        }
+      ],
+      "spriteKey": "enemy_female_thief"
+    },
+    {
+      "id": "enemy_ji_sanniang",
+      "name": "\u59ec\u4e09\u5a18",
+      "displayName": "\u59ec\u4e09\u5a18",
+      "description": "\u626c\u5dde\u540d\u5993\uff0c\u9690\u85cf\u7684BOSS",
+      "category": "boss",
+      "hp": 800,
+      "maxHp": 800,
+      "attack": 40,
+      "defense": 18,
+      "speed": 22,
+      "luck": 15,
+      "exp": 350,
+      "gold": 800,
+      "skills": [
+        "seduction",
+        "poison_needle"
+      ],
+      "drops": [
+        {
+          "itemId": "perfume_pouch",
+          "probability": 0.5
+        }
+      ],
+      "spriteKey": "enemy_ji_sanniang"
+    },
+    {
+      "id": "enemy_caiyi_butterfly",
+      "name": "\u8774\u8776\u7cbe\u00b7\u5f69\u4f9d",
+      "displayName": "\u5f69\u4f9d",
+      "description": "\u5f69\u4f9d\u7684\u771f\u5b9e\u5f62\u6001\uff0c\u8774\u8776\u7cbe",
+      "category": "boss",
+      "hp": 1000,
+      "maxHp": 1000,
+      "attack": 50,
+      "defense": 25,
+      "speed": 20,
+      "luck": 18,
+      "exp": 400,
+      "gold": 0,
+      "skills": [
+        "butterfly_dance",
+        "life_transfer"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_caiyi_butterfly"
+    },
+    {
+      "id": "enemy_poison_spider",
+      "name": "\u6bd2\u8718\u86db",
+      "displayName": "\u6bd2\u8718\u86db",
+      "description": "\u5f69\u4f9d\u53d8\u8eab\u524d\u7684\u6218\u6597",
+      "category": "normal",
+      "hp": 300,
+      "maxHp": 300,
+      "attack": 35,
+      "defense": 15,
+      "speed": 15,
+      "luck": 10,
+      "exp": 100,
+      "gold": 50,
+      "skills": [
+        "poison_bite",
+        "web"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_spider"
+    },
+    {
+      "id": "enemy_golden_phoenix",
+      "name": "\u91d1\u7fc5\u51e4\u51f0",
+      "displayName": "\u91d1\u7fc5\u51e4\u51f0",
+      "description": "\u795e\u6728\u6797\u7684\u98ce\u7075\u73e0\u5b88\u62a4\u8005",
+      "category": "boss",
+      "hp": 1500,
+      "maxHp": 1500,
+      "attack": 60,
+      "defense": 30,
+      "speed": 28,
+      "luck": 25,
+      "exp": 500,
+      "gold": 1000,
+      "skills": [
+        "wind_blade",
+        "phoenix_flame",
+        "feather_storm"
+      ],
+      "drops": [
+        {
+          "itemId": "wind_pearl",
+          "probability": 1.0
+        }
+      ],
+      "spriteKey": "enemy_phoenix"
+    },
+    {
+      "id": "enemy_qilin",
+      "name": "\u9e92\u9e9f",
+      "displayName": "\u9e92\u9e9f",
+      "description": "\u9e92\u9e9f\u6d1e\u7684\u795e\u517d",
+      "category": "boss",
+      "hp": 1200,
+      "maxHp": 1200,
+      "attack": 55,
+      "defense": 35,
+      "speed": 18,
+      "luck": 20,
+      "exp": 450,
+      "gold": 800,
+      "skills": [
+        "fire_breath",
+        "horn_strike"
+      ],
+      "drops": [
+        {
+          "itemId": "qilin_horn",
+          "probability": 1.0
+        }
+      ],
+      "spriteKey": "enemy_qilin"
+    },
+    {
+      "id": "enemy_tree_demon",
+      "name": "\u6811\u5996",
+      "displayName": "\u6811\u5996",
+      "description": "\u795e\u6728\u6797\u7684\u6811\u5996",
+      "category": "normal",
+      "hp": 150,
+      "maxHp": 150,
+      "attack": 20,
+      "defense": 15,
+      "speed": 8,
+      "luck": 5,
+      "exp": 40,
+      "gold": 25,
+      "skills": [
+        "root_trap",
+        "branch_whip"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_tree"
+    },
+    {
+      "id": "enemy_fire_spirit",
+      "name": "\u706b\u7cbe\u7075",
+      "displayName": "\u706b\u7cbe\u7075",
+      "description": "\u9e92\u9e9f\u6d1e\u7684\u706b\u7cbe\u7075",
+      "category": "normal",
+      "hp": 130,
+      "maxHp": 130,
+      "attack": 25,
+      "defense": 10,
+      "speed": 15,
+      "luck": 8,
+      "exp": 45,
+      "gold": 30,
+      "skills": [
+        "fireball"
+      ],
+      "drops": [],
+      "spriteKey": "enemy_fire_spirit"
     }
   ],
   "towerEncounters": [
     {
       "level": 1,
-      "name": "第一层",
-      "enemies": ["tower_ghost", "tower_skeleton"],
+      "name": "\u7b2c\u4e00\u5c42",
+      "enemies": [
+        "tower_ghost",
+        "tower_skeleton"
+      ],
       "groups": [
-        { "enemyId": "tower_ghost", "count": 2 },
-        { "enemyId": "tower_skeleton", "count": 1 }
+        {
+          "enemyId": "tower_ghost",
+          "count": 2
+        },
+        {
+          "enemyId": "tower_skeleton",
+          "count": 1
+        }
       ],
       "encounterRate": 0.3
     },
     {
       "level": 2,
-      "name": "第二层",
-      "enemies": ["tower_ghost", "tower_demon"],
+      "name": "\u7b2c\u4e8c\u5c42",
+      "enemies": [
+        "tower_ghost",
+        "tower_demon"
+      ],
       "groups": [
-        { "enemyId": "tower_ghost", "count": 1 },
-        { "enemyId": "tower_demon", "count": 2 }
+        {
+          "enemyId": "tower_ghost",
+          "count": 1
+        },
+        {
+          "enemyId": "tower_demon",
+          "count": 2
+        }
       ],
       "encounterRate": 0.3
     },
     {
       "level": 3,
-      "name": "第三层",
-      "enemies": ["tower_demon", "tower_shadow"],
+      "name": "\u7b2c\u4e09\u5c42",
+      "enemies": [
+        "tower_demon",
+        "tower_shadow"
+      ],
       "groups": [
-        { "enemyId": "tower_demon", "count": 2 },
-        { "enemyId": "tower_shadow", "count": 1 }
+        {
+          "enemyId": "tower_demon",
+          "count": 2
+        },
+        {
+          "enemyId": "tower_shadow",
+          "count": 1
+        }
       ],
       "encounterRate": 0.35
     },
     {
       "level": 4,
-      "name": "第四层",
-      "enemies": ["tower_shadow", "tower_gargoyle"],
+      "name": "\u7b2c\u56db\u5c42",
+      "enemies": [
+        "tower_shadow",
+        "tower_gargoyle"
+      ],
       "groups": [
-        { "enemyId": "tower_shadow", "count": 2 },
-        { "enemyId": "tower_gargoyle", "count": 1 }
+        {
+          "enemyId": "tower_shadow",
+          "count": 2
+        },
+        {
+          "enemyId": "tower_gargoyle",
+          "count": 1
+        }
       ],
       "encounterRate": 0.35
     },
     {
       "level": 5,
-      "name": "第五层",
-      "enemies": ["tower_gargoyle", "tower_demon"],
+      "name": "\u7b2c\u4e94\u5c42",
+      "enemies": [
+        "tower_gargoyle",
+        "tower_demon"
+      ],
       "groups": [
-        { "enemyId": "tower_gargoyle", "count": 2 },
-        { "enemyId": "tower_demon", "count": 2 }
+        {
+          "enemyId": "tower_gargoyle",
+          "count": 2
+        },
+        {
+          "enemyId": "tower_demon",
+          "count": 2
+        }
       ],
       "encounterRate": 0.4,
       "boss": "tower_boss_guardian"
     },
     {
       "level": 0,
-      "name": "底层",
-      "enemies": ["tower_demon", "tower_shadow"],
+      "name": "\u5e95\u5c42",
+      "enemies": [
+        "tower_demon",
+        "tower_shadow"
+      ],
       "groups": [
-        { "enemyId": "tower_demon", "count": 3 },
-        { "enemyId": "tower_shadow", "count": 2 }
+        {
+          "enemyId": "tower_demon",
+          "count": 3
+        },
+        {
+          "enemyId": "tower_shadow",
+          "count": 2
+        }
       ],
       "encounterRate": 0.5,
       "boss": "tower_boss_demon_king",
