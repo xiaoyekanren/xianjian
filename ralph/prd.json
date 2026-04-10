@@ -324,8 +324,8 @@
         "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
       ],
       "priority": 24,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completed: Added 3 story nodes (dream_of_past, nanzhao_10_years, get_water_pearl), triggered by nuwa_temple_shrine, connected to flashback chain"
     },
     {
       "id": "US-025",

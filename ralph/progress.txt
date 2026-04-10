@@ -257,3 +257,27 @@
   - Story node priorities should decrease along the chain (fire:85 → wind:80 → qilin:78 → thunder:75)
 
 ---
+
+## 2026-04-10 - US-024
+
+- **What was implemented**: Added 大理/回魂仙梦 story nodes (Chapter 10 - dream of past and water pearl)
+  - Added story node: story_ch10_dream_of_past - triggered at nuwa_temple_shrine, starts the dream/flashback sequence
+  - Added story node: story_ch10_nanzhao_10_years - experiencing 10-years-ago Nanzhao, meeting Wuhou
+  - Added story node: story_ch10_get_water_pearl - battle water_beast_10_years, witness Wuhou sacrifice, obtain water_pearl
+  - Nodes link properly: story_ch10_collect_earth_pearl → story_ch10_dream_of_past → story_ch10_nanzhao_10_years → story_ch10_get_water_pearl → story_ch10_linger_awakening
+  - Key events: dialogs (dream_of_past_intro, dream_of_past_explanation, nanzhao_10_years_intro, wuhou_appear, wuhou_request, water_beast_threat, wuhou_sacrifice, water_pearl_obtained), screen_effects (fade, flash), battle (water_beast_10_years), flags (dream_of_past_active, met_wuhou_in_dream, collected_water_pearl, dream_of_past_complete)
+
+- **Files changed**:
+  - `src/data/story.json` - Added 3 new story nodes for chapter 10
+  - `ralph/prd.json` - US-024 marked as passes: true
+
+- **Learnings for future iterations**:
+  - The nuwa_temple maps (nuwa_temple_entrance, nuwa_temple_inner, nuwa_temple_shrine) were added in US-009
+  - The dali maps (dali_main, dali_palace, dali_inn) were added in US-009 - these connect to the story via nuwa_temple
+  - The 回魂仙梦 is the classic 仙剑 flashback mechanic - player travels back 10 years to witness Wuhou's sacrifice
+  - The nanzhao_palace_10_years map is referenced but doesn't exist in maps.json yet - may need to be added for the flashback scene
+  - Water pearl is obtained during the flashback, not as a separate collection phase - different from other pearls
+  - Story nodes use change_map to teleport player between nuwa_temple and nanzhao_palace_10_years
+  - The dream_of_past_complete flag signals the end of flashback, triggering linger_awakening
+
+---
