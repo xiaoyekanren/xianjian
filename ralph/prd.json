@@ -1,464 +1,302 @@
 {
-  "project": "\u4ed9\u5251\u5947\u4fa0\u4f20\u73b0\u4ee3\u91cd\u5236\u7248",
-  "branchName": "ralph/xianjian-remake",
-  "description": "\u4ed9\u5251\u5947\u4fa0\u4f20\u5b8c\u6574\u5267\u60c5\u7ae0\u8282\u8865\u5145 - \u8865\u5145\u7f3a\u5931\u768411\u4e2a\u5267\u60c5\u7ae0\u8282",
+  "project": "仙剑奇侠传现代重制版",
+  "branchName": "ralph/dialog-data-supplement",
+  "description": "补充缺失的剧情对话、NPC对话和支线任务数据",
   "userStories": [
     {
-      "id": "US-001",
-      "title": "\u91cd\u6784\u7ae0\u8282\u7ed3\u6784",
-      "description": "Expand 6-chapter to 11-chapter structure",
-      "acceptanceCriteria": [
-        "\u521b\u5efa13\u4e2a\u7ae0\u8282\u5b9a\u4e49",
-        "\u8c03\u6574\u73b0\u6709\u8282\u70b9chapter\u5b57\u6bb5",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7",
-        "Typecheck passes"
-      ],
-      "priority": 1,
-      "passes": true,
-      "notes": "Completed: 13 chapters created, node IDs updated (ch3\u2192ch9, ch4\u2192ch10, ch5\u2192ch12)"
+      "passes": true
     },
     {
       "id": "US-002",
-      "title": "\u6dfb\u52a0\u767d\u6cb3\u6751\u5730\u56fe\u6570\u636e",
-      "description": "Add Baihe Village maps",
+      "title": "补充鬼阴山剧情对话",
+      "description": "Add missing story dialogues for Guiyin Mountain",
       "acceptanceCriteria": [
-        "baihe_village_main",
-        "baihe_clinic",
-        "baihe_han_home",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "shi_elder_introduction: 石长老介绍",
+        "DialogData.ts编译通过"
       ],
       "priority": 2,
-      "passes": true,
-      "notes": "Completed: Added baihe_village location with 3 maps (main, clinic, han_home), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-003",
-      "title": "\u6dfb\u52a0\u9690\u9f99\u7a9f\u5730\u56fe\u6570\u636e",
-      "description": "Add Hidden Dragon Cave maps",
+      "title": "补充扬州城剧情对话",
+      "description": "Add missing story dialogues for Yangzhou City",
       "acceptanceCriteria": [
-        "yinlong_entrance",
-        "yinlong_maze_1-3",
-        "yinlong_snake_boss",
-        "yinlong_fox_boss",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "yangzhou_thief_case_brief: 女飞贼案件简报",
+        "yangzhou_thief_resolved: 案件解决",
+        "ji_sanniang_encounter: 遇到姬三娘",
+        "ji_sanniang_defeated: 姬三娘被击败",
+        "DialogData.ts编译通过"
       ],
       "priority": 3,
-      "passes": true,
-      "notes": "Completed: Added yinlong_cave location with 6 maps (entrance, maze_1-3, snake_boss, fox_boss), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-004",
-      "title": "\u6dfb\u52a0\u9b3c\u9634\u5c71\u5730\u56fe\u6570\u636e",
-      "description": "Add Guiyin Mountain maps",
+      "title": "补充京城彩依剧情对话",
+      "description": "Add missing story dialogues for Capital Caiyi arc - classic tearjerker",
       "acceptanceCriteria": [
-        "guiyin_mountain_path",
-        "guiyin_cave_1-2",
-        "guiyin_altar",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "ch7_meet_jinyuan: 见到刘晋元",
+        "ch7_meet_caiyi: 见到彩依",
+        "ch7_caiyi_reveal_truth: 彩依揭露真相",
+        "ch7_caiyi_transform: 彩依变身蝴蝶",
+        "ch7_caiyi_last_words: 彩依遗言",
+        "ch7_caiyi_butterfly_fly: 蝴蝶飞走",
+        "ch7_enter_liu_manor: 进入刘府",
+        "ch7_jinyuan_sick: 晋元病重",
+        "ch7_jinyuan_awake: 晋元醒来",
+        "ch7_jinyuan_grief: 晋元悲痛",
+        "ch7_caiyi_love_jinyuan: 彩依对晋元的爱",
+        "ch7_caiyi_decision: 彩依的决定",
+        "ch7_caiyi_butterfly_spirit: 蝴蝶精身份",
+        "ch7_caiyi_to_jinyuan: 彩依对晋元说话",
+        "ch7_caiyi_room: 彩依房间",
+        "DialogData.ts编译通过"
       ],
       "priority": 4,
-      "passes": true,
-      "notes": "Completed: Added guiyin_mountain location with 4 maps (mountain_path, cave_1, cave_2, altar), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-005",
-      "title": "\u6dfb\u52a0\u626c\u5dde\u57ce\u5730\u56fe\u6570\u636e",
-      "description": "Add Yangzhou City maps",
+      "title": "补充蜀山剧情对话",
+      "description": "Add missing story dialogues for Shushan",
       "acceptanceCriteria": [
-        "yangzhou_main",
-        "yangzhou_inn",
-        "yangzhou_yamen",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "ch8_arrive_shushan: 到达蜀山",
+        "ch8_shushan_disciple_greeting: 蜀山弟子迎接",
+        "ch8_elder_greeting: 长老迎接",
+        "ch8_elder_permission: 长老许可进塔",
+        "ch8_suoyaota_history: 锁妖塔历史",
+        "ch8_linger_imprisoned_truth: 灵儿被囚真相",
+        "DialogData.ts编译通过"
       ],
       "priority": 5,
-      "passes": true,
-      "notes": "Completed: Added yangzhou_city location with 3 maps (main, inn, yamen), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-006",
-      "title": "\u6dfb\u52a0\u4eac\u57ce\u5730\u56fe\u6570\u636e",
-      "description": "Add Capital City maps",
+      "title": "补充神木林/麒麟洞剧情对话",
+      "description": "Add missing story dialogues for Sacred Forest and Qilin Cave",
       "acceptanceCriteria": [
-        "jingcheng_main",
-        "liu_manor",
-        "caiyi_room",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "shenmu_wind_pearl_intro: 风灵珠介绍",
+        "shenmu_wind_pearl_obtained: 获得风灵珠",
+        "qilin_cave_intro: 麒麟洞介绍",
+        "qilin_horn_obtained: 获得麒麟角",
+        "DialogData.ts编译通过"
       ],
       "priority": 6,
-      "passes": true,
-      "notes": "Completed: Added jingcheng_city location with 3 maps (jingcheng_main, liu_manor, caiyi_room), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-007",
-      "title": "\u6dfb\u52a0\u8700\u5c71\u5730\u56fe\u6570\u636e",
-      "description": "Add Shushan maps",
+      "title": "补充大理/回魂仙梦剧情对话",
+      "description": "Add missing story dialogues for Dali and Dream of Past",
       "acceptanceCriteria": [
-        "shushan_gate",
-        "shushan_hall",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "dream_of_past_intro: 回魂仙梦介绍",
+        "dream_of_past_explanation: 解释回魂仙梦",
+        "nanzhao_10_years_intro: 南诏十年前介绍",
+        "nanzhao_10_years_wuhou_appear: 巫后出现",
+        "nanzhao_10_years_wuhou_request: 巫后请求",
+        "water_beast_threat: 水魔兽威胁",
+        "wuhou_sacrifice: 巫后牺牲",
+        "water_pearl_obtained: 获得水灵珠",
+        "DialogData.ts编译通过"
       ],
       "priority": 7,
-      "passes": true,
-      "notes": "Completed: Added shushan location with 2 maps (shushan_gate, shushan_hall), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-008",
-      "title": "\u6dfb\u52a0\u795e\u6728\u6797/\u9e92\u9e9f\u6d1e\u5730\u56fe\u6570\u636e",
-      "description": "Add Sacred Forest and Qilin Cave maps",
+      "title": "补充试炼窟剧情对话",
+      "description": "Add missing story dialogues for Trial Cave",
       "acceptanceCriteria": [
-        "shenmu_entrance",
-        "qilin_cave_entrance",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "jiushen_skill_intro: 酒神咒介绍",
+        "jiushen_skill_learned: 学会酒神咒",
+        "qiankun_skill_intro: 乾坤一掷介绍",
+        "qiankun_skill_learned: 学会乾坤一掷",
+        "shilian_cave_intro: 试炼窟介绍",
+        "shilian_cave_purpose: 试炼窟目的",
+        "treasure_found: 发现宝藏",
+        "tower_level5_reached: 到达锁妖塔第五层",
+        "DialogData.ts编译通过"
       ],
       "priority": 8,
-      "passes": true,
-      "notes": "Completed: Added sacred_forest location with 3 maps (shenmu_entrance, shenmu_forest_1, shenmu_forest_2), qilin_cave location with 2 maps (qilin_cave_entrance, qilin_cave_inner), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-009",
-      "title": "\u6dfb\u52a0\u5927\u7406/\u5973\u5a32\u795e\u6bbf\u5730\u56fe\u6570\u636e",
-      "description": "Add Dali and Nuwa Temple maps",
+      "title": "补充通用系统对话",
+      "description": "Add missing system dialogues",
       "acceptanceCriteria": [
-        "dali_main",
-        "nuwa_temple_entrance",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "inn_intro: 旅馆介绍",
+        "shop_intro: 商店介绍",
+        "DialogData.ts编译通过"
       ],
       "priority": 9,
-      "passes": true,
-      "notes": "Completed: Added dali location with 3 maps (dali_main, dali_palace, dali_inn), nuwa_temple location with 3 maps (nuwa_temple_entrance, nuwa_temple_inner, nuwa_temple_shrine), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-010",
-      "title": "\u6dfb\u52a0\u8bd5\u70bc\u7a9f\u5730\u56fe\u6570\u636e",
-      "description": "Add Trial Cave maps",
+      "title": "补充白河村NPC对话",
+      "description": "Add missing NPC dialogues for Baihe Village",
       "acceptanceCriteria": [
-        "shilian_cave_entrance",
-        "shilian_cave_1-5",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "han_doctor_intro: 韩医仙介绍",
+        "han_mengci_intro: 韩梦慈介绍",
+        "baihe_villager_intro: 村民介绍",
+        "baihe_villager_worry: 村民担忧",
+        "han_mother_worry: 韩母担忧",
+        "clinic_assistant_intro: 医馆助手介绍",
+        "snake_demon_intro: 蛇妖介绍",
+        "fox_demon_intro: 狐妖介绍",
+        "mengci_rescued: 梦慈被救",
+        "DialogData.ts编译通过"
       ],
       "priority": 10,
-      "passes": true,
-      "notes": "Completed: Added trial_cave location with 7 maps (entrance, cave_1-5, skill_room), all with layers, NPCs, transitions, events, collisions"
+      "passes": true
     },
     {
       "id": "US-011",
-      "title": "\u6dfb\u52a0\u767d\u6cb3\u6751/\u9690\u9f99\u7a9f\u654c\u4eba\u6570\u636e",
-      "description": "Add Baihe/Yinlong enemies",
+      "title": "补充扬州城NPC对话",
+      "description": "Add missing NPC dialogues for Yangzhou City",
       "acceptanceCriteria": [
-        "enemy_snake_demon HP800",
-        "enemy_fox_demon HP600",
-        "enemies.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "yangzhou_guard_intro: 守卫介绍",
+        "yangzhou_innkeeper_intro: 客栈老板介绍",
+        "yangzhou_villager_chat: 村民闲聊",
+        "yangzhou_merchant_intro: 商人介绍",
+        "yangzhou_magistrate_intro: 知府介绍",
+        "yangzhou_guest_chat: 客人闲聊",
+        "female_thief_encounter: 遇到女飞贼",
+        "ji_sanniang_encounter: 遇到姬三娘(NPC版)",
+        "DialogData.ts编译通过"
       ],
       "priority": 11,
-      "passes": true,
-      "notes": "Completed: Added white river/hidden dragon enemies (snake_demon, fox_demon, cave_snake, cave_bat)"
+      "passes": true
     },
     {
       "id": "US-012",
-      "title": "\u6dfb\u52a0\u9b3c\u9634\u5c71\u654c\u4eba\u6570\u636e",
-      "description": "Add Guiyin Mountain enemies",
+      "title": "补充京城刘府NPC对话",
+      "description": "Add missing NPC dialogues for Capital Liu Manor",
       "acceptanceCriteria": [
-        "enemy_shi_elder HP2000",
-        "enemies.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "liu_jinyuan_intro: 刘晋元介绍",
+        "liu_doctor_diagnosis: 医生诊断",
+        "liu_servant_intro: 刘府仆人介绍",
+        "liu_jinyuan_sick: 晋元病重(NPC版)",
+        "caiyi_intro: 彩依介绍",
+        "caiyi_caring: 彩依照顾晋元",
+        "caiyi_butterfly_reveal: 彩依蝴蝶身份揭露",
+        "caiyi_final_words: 彩依最后的话(NPC版)",
+        "DialogData.ts编译通过"
       ],
       "priority": 12,
-      "passes": true,
-      "notes": "Completed: Added gui yin mountain enemies (shi_elder, mountain_bandit, wild_wolf)"
+      "passes": true
     },
     {
       "id": "US-013",
-      "title": "\u6dfb\u52a0\u626c\u5dde\u57ce\u654c\u4eba\u6570\u636e",
-      "description": "Add Yangzhou enemies",
+      "title": "补充蜀山NPC对话",
+      "description": "Add missing NPC dialogues for Shushan",
       "acceptanceCriteria": [
-        "enemy_female_thief HP500",
-        "enemy_ji_sanniang HP800",
-        "enemies.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "shushan_guard_intro: 蜀山守卫介绍",
+        "shushan_disciple_chat: 蜀山弟子闲聊",
+        "shushan_disciple_chat2: 蜀山弟子闲聊2",
+        "shushan_elder_intro: 蜀山长老介绍",
+        "DialogData.ts编译通过"
       ],
       "priority": 13,
-      "passes": true,
-      "notes": "Completed: Added yangzhou enemies (female_thief, ji_sanniang)"
+      "passes": true
     },
     {
       "id": "US-014",
-      "title": "\u6dfb\u52a0\u4eac\u57ce\u654c\u4eba\u6570\u636e",
-      "description": "Add Capital enemies",
+      "title": "补充大理/试炼窟NPC对话",
+      "description": "Add missing NPC dialogues for Dali and Trial Cave",
       "acceptanceCriteria": [
-        "enemy_caiyi_butterfly HP1000",
-        "enemies.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "dali_guard_intro: 大理守卫介绍",
+        "dali_villager_greeting: 大理村民问候",
+        "dali_shopkeeper_greeting: 大理商人问候",
+        "trial_master_intro: 试炼大师介绍",
+        "nuwa_guardian_greeting: 女娲守护者问候",
+        "nuwa_priestess_intro: 女娲祭司介绍",
+        "qilin_guardian_intro: 麒麟守护者介绍",
+        "DialogData.ts编译通过"
       ],
       "priority": 14,
-      "passes": true,
-      "notes": "Completed: Added capital enemies (caiyi_butterfly, poison_spider)"
+      "passes": true
     },
     {
       "id": "US-015",
-      "title": "\u6dfb\u52a0\u795e\u6728\u6797/\u9e92\u9e9f\u6d1e\u654c\u4eba\u6570\u636e",
-      "description": "Add Sacred Forest/Qilin enemies",
+      "title": "补充余杭镇/京城NPC对话",
+      "description": "Add missing NPC dialogues for Yuhang and Jingcheng",
       "acceptanceCriteria": [
-        "enemy_golden_phoenix HP1500",
-        "enemy_qilin HP1200",
-        "enemies.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "yuhang_shop_intro: 余杭镇商店介绍",
+        "jingcheng_guard_intro: 京城守卫介绍",
+        "jingcheng_villager_chat: 京城村民闲聊",
+        "DialogData.ts编译通过"
       ],
       "priority": 15,
-      "passes": true,
-      "notes": "Completed: Added sacred forest/qilin enemies (golden_phoenix, qilin, tree_demon, fire_spirit)"
+      "passes": true
     },
     {
       "id": "US-016",
-      "title": "\u6dfb\u52a0\u65b0\u89d2\u8272\u6570\u636e",
-      "description": "Add new characters",
+      "title": "补充白河村支线任务",
+      "description": "Add Baihe Village side quest - help Han Doctor find herbs",
       "acceptanceCriteria": [
-        "npc_han_mengci",
-        "npc_sumei",
-        "npc_liu_jinyuan",
-        "npc_caiyi",
-        "npc_shi_elder",
-        "npc_wuhou",
-        "characters.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "quest_id: baihe_herbs_collect",
+        "任务目标: 收集指定药材",
+        "奖励: 经验值、金钱、药品",
+        "quests.json格式验证通过"
       ],
       "priority": 16,
-      "passes": true,
-      "notes": "Completed: Added new characters (han_mengci, han_doctor, sumei, shi_elder, liu_jinyuan, caiyi, ji_sanniang, wuhou)"
+      "passes": true
     },
     {
       "id": "US-017",
-      "title": "\u6dfb\u52a0\u767d\u6cb3\u6751\u5267\u60c5\u8282\u70b9",
-      "description": "Add Baihe Village story nodes",
+      "title": "补充扬州城支线任务",
+      "description": "Add Yangzhou side quest - help catch female thief",
       "acceptanceCriteria": [
-        "story_ch3_enter_baihe_village",
-        "story_ch3_han_doctor_plea",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "quest_id: yangzhou_help_catch_thief",
+        "任务目标: 协助抓捕女飞贼",
+        "奖励: 经验值、金钱、特殊物品",
+        "quests.json格式验证通过"
       ],
       "priority": 17,
-      "passes": true,
-      "notes": "Completed: Added 2 story nodes (enter_baihe_village, han_doctor_plea), modified story_ch2_biwu to transition to chapter 3"
+      "passes": true
     },
     {
       "id": "US-018",
-      "title": "\u6dfb\u52a0\u9690\u9f99\u7a9f\u5267\u60c5\u8282\u70b9",
-      "description": "Add Yinlong story nodes",
+      "title": "补充京城支线任务",
+      "description": "Add Capital side quest - help Caiyi find materials for medicine",
       "acceptanceCriteria": [
-        "story_ch4_enter_yinlong",
-        "story_ch4_snake_boss_battle",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "quest_id: jingcheng_caiyi_medicine",
+        "任务目标: 收集炼制丹药的材料",
+        "奖励: 经验值、好感度提升",
+        "quests.json格式验证通过"
       ],
       "priority": 18,
-      "passes": true,
-      "notes": "Completed: Added 5 story nodes (enter_yinlong, maze_explore, snake_boss_battle, fox_boss_battle, rescue_mengci), linking ch3\u2192ch4\u2192ch5"
+      "passes": true
     },
     {
       "id": "US-019",
-      "title": "\u6dfb\u52a0\u9b3c\u9634\u5c71\u5267\u60c5\u8282\u70b9",
-      "description": "Add Guiyin story nodes - critical turning point",
+      "title": "补充试炼窟支线任务",
+      "description": "Add Trial Cave side quest - find hidden skill manual",
       "acceptanceCriteria": [
-        "story_ch5_meet_shi_elder",
-        "story_ch5_linger_taken",
-        "\u7075\u513f\u79bb\u961fflag",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "quest_id: shilian_find_skill_manual",
+        "任务目标: 寻找隐藏的仙术秘籍",
+        "奖励: 新仙术技能",
+        "quests.json格式验证通过"
       ],
       "priority": 19,
-      "passes": true,
-      "notes": "Completed: Added 2 story nodes (meet_shi_elder, linger_taken), set linger_taken flag, remove_party event for Ling'er, chapter transition to ch6"
+      "passes": true
     },
     {
       "id": "US-020",
-      "title": "\u6dfb\u52a0\u626c\u5dde\u57ce\u5267\u60c5\u8282\u70b9",
-      "description": "Add Yangzhou story nodes",
+      "title": "验证数据完整性",
+      "description": "Verify all dialogues and quests are properly integrated",
       "acceptanceCriteria": [
-        "story_ch6_enter_yangzhou",
-        "story_ch6_thief_boss_battle",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
+        "所有dialogId在DialogData.ts中存在",
+        "所有quest在quests.json中存在",
+        "Typecheck passes",
+        "JSON格式验证通过"
       ],
       "priority": 20,
-      "passes": true,
-      "notes": "Completed: Added 4 story nodes (enter_yangzhou, investigate_thief, thief_boss_battle, resolve_thief_case), linking ch5→ch6→ch7"
-    },
-    {
-      "id": "US-021",
-      "title": "\u6dfb\u52a0\u4eac\u57ce\u5f69\u4f9d\u5267\u60c5\u8282\u70b9",
-      "description": "Add Capital Caiyi story nodes",
-      "acceptanceCriteria": [
-        "story_ch7_meet_liu_jinyuan",
-        "story_ch7_caiyi_sacrifice",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 21,
-      "passes": true,
-      "notes": "Completed: Added 3 story nodes (meet_liu_jinyuan, caiyi_reveal, caiyi_sacrifice), classic tearjerker plot where Caiyi transforms into butterfly to save Liu Jinyuan"
-    },
-    {
-      "id": "US-022",
-      "title": "\u6dfb\u52a0\u8700\u5c71\u5267\u60c5\u8282\u70b9",
-      "description": "Add Shushan story nodes",
-      "acceptanceCriteria": [
-        "story_ch8_arrive_shushan",
-        "story_ch8_learn_suoyaota_truth",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 22,
-      "passes": true,
-      "notes": "Completed: Added 2 story nodes (arrive_shushan, learn_suoyaota_truth), linking ch7→ch8→ch9, updated ch9_enter_tower blockingNodes"
-    },
-    {
-      "id": "US-023",
-      "title": "\u6dfb\u52a0\u795e\u6728\u6797/\u9e92\u9e9f\u6d1e\u5267\u60c5\u8282\u70b9",
-      "description": "Add Wind Pearl and Qilin story nodes",
-      "acceptanceCriteria": [
-        "story_ch10_get_wind_pearl",
-        "story_ch10_anu_join",
-        "story_ch10_get_qilin_horn",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 23,
-      "passes": true,
-      "notes": "Completed: Renamed story_ch10_collect_wind_pearl to story_ch10_get_wind_pearl (神木林/shenmu_forest_2 trigger, golden_phoenix boss), added story_ch10_get_qilin_horn (麒麟洞/qilin_cave_inner trigger, qilin boss), story_ch10_anu_join already existed"
-    },
-    {
-      "id": "US-024",
-      "title": "\u6dfb\u52a0\u5927\u7406/\u56de\u9b42\u4ed9\u68a6\u5267\u60c5\u8282\u70b9",
-      "description": "Add Dali and dream of past story nodes",
-      "acceptanceCriteria": [
-        "story_ch10_dream_of_past",
-        "story_ch10_nanzhao_10_years",
-        "story_ch10_get_water_pearl",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 24,
-      "passes": true,
-      "notes": "Completed: Added 3 story nodes (dream_of_past, nanzhao_10_years, get_water_pearl), triggered by nuwa_temple_shrine, connected to flashback chain"
-    },
-    {
-      "id": "US-025",
-      "title": "\u6dfb\u52a0\u8bd5\u70bc\u7a9f\u5267\u60c5\u8282\u70b9",
-      "description": "Add Trial Cave story nodes",
-      "acceptanceCriteria": [
-        "story_ch11_learn_jiushen",
-        "story_ch11_learn_qiankun",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 25,
-      "passes": true,
-      "notes": "Completed: Added 3 story nodes (enter_shilian, learn_jiushen, learn_qiankun), connected ch10→ch11→ch12"
-    },
-    {
-      "id": "US-026",
-      "title": "\u6dfb\u52a0\u6c34\u7075\u73e0\u5267\u60c5\u8282\u70b9",
-      "description": "Add Water Pearl story nodes",
-      "acceptanceCriteria": [
-        "story_ch10_obtain_water_pearl",
-        "\u4e94\u7075\u73e0flag",
-        "story.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 26,
-      "passes": true,
-      "notes": "Completed: Water pearl acquisition already handled by story_ch10_get_water_pearl (US-024). collected_water_pearl flag is set. Node ID story_ch10_obtain_water_pearl maps to story_ch10_get_water_pearl functionality."
-    },
-    {
-      "id": "US-027",
-      "title": "\u6dfb\u52a0\u767d\u6cb3\u6751\u5bf9\u8bdd\u6570\u636e",
-      "description": "Add Baihe Village dialogues",
-      "acceptanceCriteria": [
-        "han_doctor_story",
-        "mengci_captured_news",
-        "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
-      ],
-      "priority": 27,
-      "passes": true,
-      "notes": "Completed: Added han_doctor_story and mengci_captured_news dialogues"
-    },
-    {
-      "id": "US-028",
-      "title": "\u6dfb\u52a0\u9b3c\u9634\u5c71\u5bf9\u8bdd\u6570\u636e",
-      "description": "Add Guiyin Mountain dialogues",
-      "acceptanceCriteria": [
-        "shi_elder_appear",
-        "shi_elder_take_linger",
-        "linger_taken_away",
-        "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
-      ],
-      "priority": 28,
-      "passes": true,
-      "notes": "Completed: Added shi_elder_appear, shi_elder_take_linger, linger_taken_away dialogues - pivotal moment when Ling'er is taken"
-    },
-    {
-      "id": "US-029",
-      "title": "\u6dfb\u52a0\u626c\u5dde\u57ce\u5bf9\u8bdd\u6570\u636e",
-      "description": "Add Yangzhou dialogues",
-      "acceptanceCriteria": [
-        "enter_yangzhou_marvel",
-        "thief_appear",
-        "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
-      ],
-      "priority": 29,
-      "passes": true,
-      "notes": "Completed: Added enter_yangzhou_marvel and thief_appear dialogues"
-    },
-    {
-      "id": "US-030",
-      "title": "\u6dfb\u52a0\u4eac\u57ce\u5f69\u4f9d\u5bf9\u8bdd\u6570\u636e",
-      "description": "Add Caiyi tearjerker dialogues",
-      "acceptanceCriteria": [
-        "caiyi_jinyuan_story",
-        "caiyi_reveal",
-        "caiyi_death",
-        "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
-      ],
-      "priority": 30,
-      "passes": true,
-      "notes": "Completed: Added caiyi_jinyuan_story, caiyi_reveal, caiyi_death dialogues - classic tearjerker where Caiyi sacrifices herself"
-    },
-    {
-      "id": "US-031",
-      "title": "\u6dfb\u52a0\u8700\u5c71\u5bf9\u8bdd\u6570\u636e",
-      "description": "Add Shushan dialogues",
-      "acceptanceCriteria": [
-        "shushan_welcome",
-        "suoyaota_history",
-        "DialogData.ts\u7f16\u8bd1\u901a\u8fc7"
-      ],
-      "priority": 31,
-      "passes": true,
-      "notes": "Completed: Added shushan_welcome and suoyaota_history dialogues"
-    },
-    {
-      "id": "US-032",
-      "title": "\u6dfb\u52a0\u652f\u7ebf\u4efb\u52a1\u6570\u636e",
-      "description": "Add side quests",
-      "acceptanceCriteria": [
-        "baihe_herbs",
-        "yinlong_rescue",
-        "yangzhou_catch_thief",
-        "quests.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 32,
-      "passes": true,
-      "notes": "Completed: Added baihe_herbs, yinlong_rescue, yangzhou_catch_thief side quests"
-    },
-    {
-      "id": "US-033",
-      "title": "\u66f4\u65b0\u73b0\u6709\u5730\u56fe\u5b8c\u6574\u6027",
-      "description": "Check and complete existing maps",
-      "acceptanceCriteria": [
-        "\u6240\u6709\u5730\u56fe\u6709layers",
-        "\u6240\u6709\u5730\u56fe\u6709npcs",
-        "maps.json\u683c\u5f0f\u9a8c\u8bc1\u901a\u8fc7"
-      ],
-      "priority": 33,
-      "passes": true,
-      "notes": "Completed: All 69 maps have layers and npcs, JSON format validated"
-    },
-    {
-      "id": "US-034",
-      "title": "\u9a8c\u8bc1\u5267\u60c5\u94fe\u5b8c\u6574\u6027",
-      "description": "Verify story chain integrity",
-      "acceptanceCriteria": [
-        "\u6240\u6709\u8282\u70b9\u6709nextNode",
-        "\u4ece\u5e8f\u7ae0\u5230\u7ed3\u5c40\u53ef\u904d\u5386",
-        "Typecheck passes"
-      ],
-      "priority": 34,
-      "passes": true,
-      "notes": "Completed: All main story nodes have nextNode (final battle/ending nodes are terminal), all 13 chapters have start nodes, story chain verified from prologue to ending, typecheck passes"
+      "passes": true
     }
   ]
 }

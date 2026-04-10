@@ -3325,6 +3325,32 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // US-002: 补充鬼阴山剧情对话 - 石长老介绍
+  {
+    id: 'shi_elder_introduction',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '石长老，拜月教主麾下的得力助手...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_introduction_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '他身着黑袍，手持法杖，面容阴沉，常年追随拜月教主，执行各种任务。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_introduction_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '此人法力高强，手段狠辣，是南诏国最令人畏惧的人物之一。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
   // US-029: 扬州城对话
   {
     id: 'enter_yangzhou_marvel',
@@ -3372,6 +3398,172 @@ export const DEMO_DIALOGS: DialogSequence[] = [
         speakerId: 'li_xiaoyao',
         speakerName: '李逍遥',
         text: '女飞贼？有意思，我们来看看是谁敢在这扬州城作案！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // US-003: 扬州城剧情对话补充
+  {
+    id: 'yangzhou_thief_case_brief',
+    lines: [
+      {
+        speakerId: 'yangzhou_guard',
+        speakerName: '扬州守卫',
+        text: '侠士，关于女飞贼的事，我再多说几句...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yangzhou_thief_case_brief_2',
+      },
+      {
+        speakerId: 'yangzhou_guard',
+        speakerName: '扬州守卫',
+        text: '这女飞贼手法高超，已作案十余起，每次都能神不知鬼不觉...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yangzhou_thief_case_brief_3',
+      },
+      {
+        speakerId: 'yangzhou_guard',
+        speakerName: '扬州守卫',
+        text: '听说她经常在夜间出没，专偷富户的金银珠宝...',
+        expression: Expression.THINKING,
+        nextDialogId: 'yangzhou_thief_case_brief_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '哼，区区一个小贼，看我怎么抓住她！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_thief_resolved',
+    lines: [
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '两位侠士果然厉害，竟将那女飞贼擒获了！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'yangzhou_thief_resolved_2',
+      },
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '扬州百姓从此可以安居乐业，实在感激不尽！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yangzhou_thief_resolved_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '知府大人，这女飞贼究竟是什么来历？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yangzhou_thief_resolved_4',
+      },
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '据调查，她名叫姬三娘，本是江湖中人...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yangzhou_thief_resolved_5',
+      },
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '此次擒获女飞贼，本府必有重赏！',
+        expression: Expression.HAPPY,
+        event: { type: DialogEventType.GET_ITEM, data: { itemId: 'gold', quantity: 500 } },
+      },
+    ],
+  },
+  {
+    id: 'ji_sanniang_encounter',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '夜幕降临，一道黑影飞掠而过...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ji_sanniang_encounter_2',
+      },
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '两位小侠士，深夜还在街上晃荡，不怕遇到坏人吗？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ji_sanniang_encounter_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '你就是那个女飞贼？！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ji_sanniang_encounter_4',
+      },
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '呵呵，小姑娘眼光不错。我就是姬三娘，扬州城最厉害的飞贼。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ji_sanniang_encounter_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '姬三娘，你作案多起，今日我们便要为民除害！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'ji_sanniang_encounter_6',
+      },
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '哼，两个小辈也敢在我面前逞英雄？那就来吧！',
+        expression: Expression.ANGRY,
+        event: { type: DialogEventType.START_BATTLE, data: { battleId: 'battle_ji_sanniang' } },
+      },
+    ],
+  },
+  {
+    id: 'ji_sanniang_defeated',
+    lines: [
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '咳咳...没想到你们两个小辈竟有这般身手...',
+        expression: Expression.SAD,
+        nextDialogId: 'ji_sanniang_defeated_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '这下你还敢嚣张吗？跟我去见知府大人！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ji_sanniang_defeated_3',
+      },
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '我姬三娘做事从不后悔...只是没想到会败在你们手中...',
+        expression: Expression.SAD,
+        nextDialogId: 'ji_sanniang_defeated_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '你为何要做这些偷盗之事？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ji_sanniang_defeated_5',
+      },
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '哼...江湖中事，有太多不得已...罢了...',
+        expression: Expression.SAD,
+        nextDialogId: 'ji_sanniang_defeated_6',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '姬三娘被擒获，扬州城的飞贼风波终于平息...',
         expression: Expression.NORMAL,
       },
     ],
@@ -3548,6 +3740,2506 @@ export const DEMO_DIALOGS: DialogSequence[] = [
         speakerId: 'li_xiaoyao',
         speakerName: '李逍遥',
         text: '灵儿是女娲后人，不是妖魔！我一定要救她！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // US-001: 白河村/隐龙窟剧情对话
+  {
+    id: 'han_doctor_plea',
+    lines: [
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '少侠...少侠！',
+        expression: Expression.SAD,
+        nextDialogId: 'han_doctor_plea_2',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '求求你，救救我女儿！',
+        expression: Expression.SAD,
+        nextDialogId: 'han_doctor_plea_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '韩大夫，您慢慢说，到底发生了什么事？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'han_doctor_plea_4',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '我女儿梦慈...被隐龙窟的妖魔掳走了！',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'han_doctor_explain_yinlong',
+    lines: [
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '隐龙窟在白河村北边，那里常年迷雾笼罩...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'han_doctor_explain_yinlong_2',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '传说窟中住着两条妖魔，一条蛇妖，一条狐妖...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'han_doctor_explain_yinlong_3',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '它们每隔一段时间就会出来掳掠年轻女子...',
+        expression: Expression.SAD,
+        nextDialogId: 'han_doctor_explain_yinlong_4',
+      },
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '没有人敢进去救人，进去的人都没能活着出来...',
+        expression: Expression.SAD,
+        nextDialogId: 'han_doctor_explain_yinlong_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '不管有多危险，我都要去试试！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'baihe_village_arrive',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '一行人来到了白河村...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'baihe_village_arrive_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥，这里好像很安静...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'baihe_village_arrive_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '村子里的人似乎都心事重重...',
+        expression: Expression.THINKING,
+        nextDialogId: 'baihe_village_arrive_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我们去医馆打听一下情况吧。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_cave_entrance',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '隐龙窟的入口弥漫着诡异的气息...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_cave_entrance_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这里...有种很不好的感觉...',
+        expression: Expression.SAD,
+        nextDialogId: 'yinlong_cave_entrance_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '小心些，不知道会有什么妖魔在等着我们。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_cave_entrance_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '大家准备好了吗？我们进去！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_snake_appear',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '一条巨大的蛇妖从黑暗中现身！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_snake_appear_2',
+      },
+      {
+        speakerId: 'snake_demon',
+        speakerName: '蛇妖',
+        text: '哈哈哈...又有人类送上门来了！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'yinlong_snake_appear_3',
+      },
+      {
+        speakerId: 'snake_demon',
+        speakerName: '蛇妖',
+        text: '正好，我的肚子饿了...',
+        expression: Expression.ANGRY,
+        nextDialogId: 'yinlong_snake_appear_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '妖孽！你掳掠村民女子，今日我必除你！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_snake_defeated',
+    lines: [
+      {
+        speakerId: 'snake_demon',
+        speakerName: '蛇妖',
+        text: '可恶...你们...你们竟敢...',
+        expression: Expression.SAD,
+        nextDialogId: 'yinlong_snake_defeated_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '蛇妖倒在血泊中，再也无力作恶...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_snake_defeated_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '哼，这种妖孽，早该被除掉了。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_snake_defeated_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我们继续前进，狐妖肯定还在深处。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_fox_appear',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '一阵诡异的笑声从深处传来...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_fox_appear_2',
+      },
+      {
+        speakerId: 'fox_demon',
+        speakerName: '狐妖',
+        text: '哟，你们打败了那条蠢蛇？',
+        expression: Expression.HAPPY,
+        nextDialogId: 'yinlong_fox_appear_3',
+      },
+      {
+        speakerId: 'fox_demon',
+        speakerName: '狐妖',
+        text: '不过...你们以为这样就结束了？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_fox_appear_4',
+      },
+      {
+        speakerId: 'fox_demon',
+        speakerName: '狐妖',
+        text: '我可不是那么容易对付的...',
+        expression: Expression.ANGRY,
+        nextDialogId: 'yinlong_fox_appear_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这狐妖...浑身散发着妖气，小心！',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_fox_defeated',
+    lines: [
+      {
+        speakerId: 'fox_demon',
+        speakerName: '狐妖',
+        text: '不...不可能...我怎么会...',
+        expression: Expression.SAD,
+        nextDialogId: 'yinlong_fox_defeated_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '狐妖的身影渐渐消失在黑暗中...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_fox_defeated_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '终于...这两条妖孽都被除掉了。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_fox_defeated_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '现在我们可以去救那些被掳的女子了。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_maze_warning',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '隐龙窟深处是一个复杂的迷宫...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_maze_warning_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '逍遥哥哥，这里的道路很复杂...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_maze_warning_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我感觉...有些女子被囚禁在深处...',
+        expression: Expression.THINKING,
+        nextDialogId: 'yinlong_maze_warning_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '我们要小心，不要迷失方向。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_rescue_mengci',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '在一间囚室中，你们发现了一位年轻女子...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_rescue_mengci_2',
+      },
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '你们...你们是来救我的吗？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'yinlong_rescue_mengci_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '韩姑娘，你父亲委托我们来救你。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_rescue_mengci_4',
+      },
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '父亲...父亲还好吗？',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'yinlong_mengci_thank',
+    lines: [
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '多谢少侠相救...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'yinlong_mengci_thank_2',
+      },
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '若不是你们，我恐怕再也见不到父亲了...',
+        expression: Expression.SAD,
+        nextDialogId: 'yinlong_mengci_thank_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '韩姑娘，你安全了，我们带你回去。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'yinlong_mengci_thank_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '走吧，你父亲一定在焦急地等着你。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // US-004: 京城彩依剧情对话补充 - 经典悲剧剧情
+  {
+    id: 'ch7_enter_liu_manor',
+    lines: [
+      {
+        speakerId: 'liu_manor_servant',
+        speakerName: '刘府仆人',
+        text: '欢迎各位侠士来到刘府，我家公子正在后院休养...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_enter_liu_manor_2',
+      },
+      {
+        speakerId: 'liu_manor_servant',
+        speakerName: '刘府仆人',
+        text: '公子最近身体不适，有一位姑娘在照顾他。',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_enter_liu_manor_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '刘晋元？他不是京城刘家的少爷吗？怎么会病重？',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'ch7_meet_jinyuan',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '咳咳...逍遥兄，好久不见...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_meet_jinyuan_2',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '没想到竟在这种情形下与你们重逢...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_meet_jinyuan_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '晋元表哥！你怎么病得这么重？',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_meet_jinyuan_4',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '月如...我也没想到会这样，但有一位好姑娘在照顾我...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ch7_meet_caiyi',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '公子，您该吃药了...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_meet_caiyi_2',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依...谢谢你一直照顾我...',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ch7_meet_caiyi_3',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '公子不必客气，这是我应该做的。',
+        expression: Expression.SHY,
+        nextDialogId: 'ch7_meet_caiyi_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这位姑娘就是彩依？我看她气色有些异样...',
+        expression: Expression.THINKING,
+      },
+    ],
+  },
+  {
+    id: 'ch7_jinyuan_sick',
+    lines: [
+      {
+        speakerId: 'liu_manor_doctor',
+        speakerName: '刘府医生',
+        text: '晋元公子的病很奇怪，脉象紊乱，似有毒素侵体...',
+        expression: Expression.THINKING,
+        nextDialogId: 'ch7_jinyuan_sick_2',
+      },
+      {
+        speakerId: 'liu_manor_doctor',
+        speakerName: '刘府医生',
+        text: '普通的药方似乎都没有效果，这病来得蹊跷...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_jinyuan_sick_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这病...会不会和妖邪有关？',
+        expression: Expression.THINKING,
+        nextDialogId: 'ch7_jinyuan_sick_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '妖邪？灵儿，你察觉到了什么？',
+        expression: Expression.SURPRISED,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_room',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '彩依姑娘，能和你单独谈谈吗？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_room_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '侠士有何事？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_room_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '晋元的病...和你有关吗？',
+        expression: Expression.THINKING,
+        nextDialogId: 'ch7_caiyi_room_4',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '侠士何必多问...我只是想照顾公子...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_butterfly_spirit',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '彩依姑娘...你是蝴蝶精？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch7_caiyi_butterfly_spirit_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '既然被你们识破了...是的，我是蝴蝶精...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_butterfly_spirit_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '什么？你竟然是妖精！难怪晋元表哥会生病！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'ch7_caiyi_butterfly_spirit_4',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '不是的...我没有害他...我爱他...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_love_jinyuan',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我本是花丛中的蝴蝶，一日飞入刘府花园...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_love_jinyuan_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '见到晋元公子在花丛中吟诗作画，我便被他吸引...',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ch7_caiyi_love_jinyuan_3',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '他温柔善良，对花儿都有怜惜之心...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_love_jinyuan_4',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我化作人形，只希望能陪伴在他身边...',
+        expression: Expression.SHY,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_decision',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '晋元公子的病...是因为他救我时被毒虫所伤...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_decision_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '唯有用我的灵力才能救他...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_decision_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '用你的灵力？会有什么代价？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch7_caiyi_decision_4',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '代价...就是我将失去生命，化作蝴蝶飞去...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_reveal_truth',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '各位侠士，我已决定...用我毕生的灵力救晋元公子...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_reveal_truth_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '你要牺牲自己？不可！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch7_caiyi_reveal_truth_3',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '这是我唯一能为他做的事...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_reveal_truth_4',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '请各位不要阻止我...这是我自己的选择...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_to_jinyuan',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '晋元公子，我来了...',
+        expression: Expression.HAPPY,
+        nextDialogId: 'ch7_caiyi_to_jinyuan_2',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依...你的脸色怎么这么苍白...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_to_jinyuan_3',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '公子，我有一些话想对您说...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_to_jinyuan_4',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '公子对我一直很好，我很感激...',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_transform',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '公子，您好好保重...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_transform_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我要用我的灵力，为您驱除病魔...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_transform_3',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依！你要做什么？不要！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch7_caiyi_transform_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '彩依的身体开始散发出柔和的光芒，渐渐化作一只美丽的蝴蝶...',
+        expression: Expression.NORMAL,
+        event: { type: DialogEventType.SET_FLAG, data: { flagName: 'caiyi_transformed', flagValue: true } },
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_last_words',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '公子...我本是蝴蝶精，因爱慕您才化作人形...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_last_words_2',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '您救我时被毒虫所伤，如今我用生命来偿还...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_last_words_3',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '公子...以后要好好活下去...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_last_words_4',
+      },
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '忘了我吧...找一个真心爱您的姑娘...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ch7_caiyi_butterfly_fly',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '彩依化作一只五彩斑斓的蝴蝶，缓缓飞向窗外...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_butterfly_fly_2',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依！不要走！回来！',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_caiyi_butterfly_fly_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '蝴蝶在空中轻轻舞动，似乎在对晋元做最后的告别...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_caiyi_butterfly_fly_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '蝴蝶渐渐飞远，消失在天际...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ch7_jinyuan_awake',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '咳咳...我感觉...身体好多了...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch7_jinyuan_awake_2',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依...彩依在哪里？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch7_jinyuan_awake_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '晋元...彩依她...她已经走了...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'ch7_jinyuan_grief',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '走了？她去哪里了？我要去找她！',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_jinyuan_grief_2',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '晋元表哥...彩依已经牺牲了自己来救你...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_jinyuan_grief_3',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '牺牲...？不！我不相信！',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_jinyuan_grief_4',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '彩依...你为什么...为什么要这样做...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch7_jinyuan_grief_5',
+      },
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '我宁愿病死也不要你离开我...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  // Shushan story dialogs (US-005)
+  {
+    id: 'ch8_arrive_shushan',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '经过漫长的旅途，众人终于来到了传说中的蜀山...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_arrive_shushan_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这就是蜀山...果然气势非凡，不愧是仙家圣地。',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch8_arrive_shushan_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '这座山峰如此高耸入云，云雾缭绕，真有仙气。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_arrive_shushan_4',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '听说蜀山剑派是武林中最强大的门派，专门管理锁妖塔。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ch8_shushan_disciple_greeting',
+    lines: [
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '几位是什么人？为何来到蜀山？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_shushan_disciple_greeting_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '在下李逍遥，我们是来救人的。听说锁妖塔中有一位名叫赵灵儿的女子...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_shushan_disciple_greeting_3',
+      },
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '赵灵儿？那是一位女娲后人，被前任掌门封印在锁妖塔中。此事涉及重大，我需要请示长老。',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'ch8_shushan_disciple_greeting_4',
+      },
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '请几位稍等，我去通报长老。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ch8_elder_greeting',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '片刻之后，一位白发苍苍的长者从山上走下...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_elder_greeting_2',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '我是蜀山派长老。听说你们要进入锁妖塔救人？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_elder_greeting_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '长老，赵灵儿是我的挚爱，她被冤枉封印在锁妖塔中。请允许我们进入救她！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_elder_greeting_4',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '冤枉？此事说来话长...当年封印她，是因为她体内有妖族血脉。',
+        expression: Expression.THINKING,
+        nextDialogId: 'ch8_elder_greeting_5',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '长老，灵儿虽然有一半妖族血脉，但她是女娲后人，心地善良，从未害人！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'ch8_elder_permission',
+    lines: [
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '我了解你们的诚意。赵灵儿的确是女娲后人，她母亲巫后当年为了拯救南诏国而牺牲。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_elder_permission_2',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '当年封印她，实是无奈之举。如今拜月教主已被消灭，她也该获得自由。',
+        expression: Expression.SAD,
+        nextDialogId: 'ch8_elder_permission_3',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '我允许你们进入锁妖塔。但锁妖塔内妖魔众多，危险重重，你们要小心。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_elder_permission_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '感谢长老！我们一定会把灵儿安全救出来！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'ch8_suoyaota_history',
+    lines: [
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '让我为你们介绍一下锁妖塔的历史。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_suoyaota_history_2',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '锁妖塔建于千年前，是蜀山派的镇派之宝。它专门用来封印危害人间的妖魔。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_suoyaota_history_3',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '塔内共有九层，每一层都封印着不同等级的妖魔。越往深处，妖魔越强。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_suoyaota_history_4',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '灵儿被封在哪一层？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_suoyaota_history_5',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '她被封在第七层。那里是塔中最危险的地方之一，你们要格外小心。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'ch8_linger_imprisoned_truth',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '长老，灵儿究竟为什么会被封印在锁妖塔中？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_linger_imprisoned_truth_2',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '这是十年前的事情了...',
+        expression: Expression.SAD,
+        nextDialogId: 'ch8_linger_imprisoned_truth_3',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '当年南诏国发生大变，巫后为了保护女儿，将灵儿送往余杭镇。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_linger_imprisoned_truth_4',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '后来，有人发现灵儿是女娲后人，体内有妖族血脉。蜀山前任掌门认为她是妖，便将她封印。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'ch8_linger_imprisoned_truth_5',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '这太不公平了！灵儿从未做过任何坏事！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'ch8_linger_imprisoned_truth_6',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '我知道。当年封印她，是因为拜月教主诬陷她是妖。如今真相大白，她应该获得自由。',
+        expression: Expression.SAD,
+        nextDialogId: 'ch8_linger_imprisoned_truth_7',
+      },
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '去吧，救出赵灵儿。这是蜀山派欠她的。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Sacred Forest and Qilin Cave dialogs (US-006)
+  {
+    id: 'shenmu_wind_pearl_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '众人来到神木林深处，一片神秘的林间空地...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shenmu_wind_pearl_intro_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '这里是神木林的核心区域，传说中的风灵珠就在这里！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'shenmu_wind_pearl_intro_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '风灵珠？那是什么东西？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shenmu_wind_pearl_intro_4',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '风灵珠是女娲留下的五颗灵珠之一，蕴含着风元素的力量。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shenmu_wind_pearl_intro_5',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '听说五颗灵珠分别是风、雷、水、火、土，拥有它们可以召唤女娲神力。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shenmu_wind_pearl_intro_6',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '风灵珠...母亲曾经提起过。它是我们女娲一族的圣物。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'shenmu_wind_pearl_obtained',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '在神木林的深处，一颗闪烁着青色光芒的珠子静静地悬浮在空中...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shenmu_wind_pearl_obtained_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这就是风灵珠！我能感受到它的力量...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'shenmu_wind_pearl_obtained_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿，你能够吸收它的力量吗？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shenmu_wind_pearl_obtained_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '是的...风灵珠正在与我共鸣。作为女娲后人，我可以感应灵珠的力量。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'shenmu_wind_pearl_obtained_5',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '赵灵儿伸出手，风灵珠缓缓飘向她，青色的光芒渐渐融入她的体内...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shenmu_wind_pearl_obtained_6',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我获得了风灵珠的力量！现在我已经拥有风和雷两种元素的力量了。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'shenmu_wind_pearl_obtained_7',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '太好了！接下来我们要去找水灵珠和麒麟角，才能施展回魂仙梦！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'qilin_cave_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '众人来到传说中的麒麟洞入口...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_cave_intro_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '这就是麒麟洞！据说洞中住着一只麒麟，它的角可以用来施展回魂仙梦。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_cave_intro_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '麒麟？那不是传说中的瑞兽吗？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'qilin_cave_intro_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '麒麟是上古神兽，据说能够穿越时空。它的角蕴含着强大的时空之力。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_cave_intro_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '回魂仙梦需要水灵珠和麒麟角才能施展。我们要进入洞中寻找麒麟。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_cave_intro_6',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '众人小心翼翼地进入麒麟洞，洞中弥漫着神秘的气息...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'qilin_horn_obtained',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '在麒麟洞深处，众人见到了传说中的神兽麒麟...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_2',
+      },
+      {
+        speakerId: 'qilin',
+        speakerName: '麒麟',
+        text: '凡人，你们为何闯入我的洞府？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '麒麟大人，我是女娲后人赵灵儿。我们需要您的帮助。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_4',
+      },
+      {
+        speakerId: 'qilin',
+        speakerName: '麒麟',
+        text: '女娲后人？果然，我能感受到你体内的血脉。你需要什么帮助？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我们需要施展回魂仙梦，回到十年前寻找水灵珠。这需要您的角才能施展。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_6',
+      },
+      {
+        speakerId: 'qilin',
+        speakerName: '麒麟',
+        text: '回魂仙梦...这是女娲一族的秘术。既然你是女娲后人，我便助你一臂之力。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_7',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '麒麟低下了头，它的角发出柔和的光芒。一根断角缓缓飘向赵灵儿...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_8',
+      },
+      {
+        speakerId: 'qilin',
+        speakerName: '麒麟',
+        text: '这根角蕴含着我的时空之力。用它配合水灵珠，便可施展回魂仙梦。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qilin_horn_obtained_9',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '感谢麒麟大人！有了麒麟角，我们终于可以回到十年前寻找水灵珠了！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'qilin_horn_obtained_10',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '接下来我们还需要找到水灵珠，才能完成回魂仙梦的施展。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Dali and Dream of Past dialogs (US-007)
+  {
+    id: 'dream_of_past_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '众人来到大理城，准备施展回魂仙梦回到十年前...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_intro_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '回魂仙梦是女娲一族的秘术，可以让人穿越时空回到过去。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_intro_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '穿越时空？这听起来太神奇了！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'dream_of_past_intro_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '是的。通过回魂仙梦，我们可以回到十年前，见到我的母亲巫后。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_intro_5',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '巫后？她是当年南诏国的女娲后人吗？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_intro_6',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '是的。母亲当年为了保护南诏国而牺牲。我要回去见她，寻找水灵珠。',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'dream_of_past_explanation',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '让我解释一下回魂仙梦的施展方法。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_explanation_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '回魂仙梦需要水灵珠和麒麟角才能施展。水灵珠提供穿越的力量，麒麟角指引时空的方向。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_explanation_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我们已经获得了麒麟角，但水灵珠在十年前的南诏国。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_explanation_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '所以我们需要先回到过去获得水灵珠，才能真正施展回魂仙梦？',
+        expression: Expression.THINKING,
+        nextDialogId: 'dream_of_past_explanation_5',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '是的。灵儿姐姐可以用麒麟角的力量，短暂打开时空之门，让我们回到十年前。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'dream_of_past_explanation_6',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '但这只能维持很短的时间。我们必须尽快找到水灵珠，然后返回现在。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'nanzhao_10_years_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '光芒闪烁，众人穿越时空，来到了十年前的南诏国...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这里就是十年前的南诏国！和现在的样子完全不同...',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'nanzhao_10_years_intro_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '那时的南诏国还很繁荣，没有拜月教的破坏。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_intro_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这是我的故乡...那时母亲还活着，我们一家人生活在一起。',
+        expression: Expression.SAD,
+        nextDialogId: 'nanzhao_10_years_intro_5',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '灵儿姐姐，我们应该先去找巫后大人。她应该知道水灵珠在哪里。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'nanzhao_10_years_wuhou_appear',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '众人来到南诏国的祭坛，见到了传说中的巫后...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_wuhou_appear_2',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '你们是谁？为何闯入祭坛？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_wuhou_appear_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '母亲...我是灵儿！十年后的灵儿！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'nanzhao_10_years_wuhou_appear_4',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '灵儿？你是我的女儿？你从未来回来了？',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'nanzhao_10_years_wuhou_appear_5',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '我能感受到你体内的女娲血脉...你果然是我的女儿。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'nanzhao_10_years_wuhou_appear_6',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '母亲，十年后您为了保护南诏国而牺牲。我回来是为了寻找水灵珠。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'nanzhao_10_years_wuhou_request',
+    lines: [
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '灵儿，水灵珠一直在我身边。但是...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_wuhou_request_2',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '拜月教主正在策划一场阴谋，他想召唤水魔兽来毁灭南诏国。',
+        expression: Expression.SAD,
+        nextDialogId: 'nanzhao_10_years_wuhou_request_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '水魔兽？那是什么？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_wuhou_request_4',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '水魔兽是上古凶兽，拥有毁灭一切的力量。拜月教主想用它来统治天下。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_wuhou_request_5',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '我需要你们帮我阻止拜月教主的阴谋。只有这样，我才能把水灵珠交给你们。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'nanzhao_10_years_wuhou_request_6',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '母亲，我们一定会帮助您！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'water_beast_threat',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '拜月教主召唤了水魔兽，巨大的凶兽出现在南诏国的祭坛上...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'water_beast_threat_2',
+      },
+      {
+        speakerId: 'baiyue_leader',
+        speakerName: '拜月教主',
+        text: '哈哈哈！水魔兽的力量将毁灭一切！南诏国将臣服于我！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'water_beast_threat_3',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '拜月教主！你疯了！水魔兽会毁灭整个世界！',
+        expression: Expression.ANGRY,
+        nextDialogId: 'water_beast_threat_4',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我们必须阻止水魔兽！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'water_beast_threat_5',
+      },
+      {
+        speakerId: 'water_beast',
+        speakerName: '水魔兽',
+        text: '毁灭...吞噬...一切...',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'wuhou_sacrifice',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '巫后知道只有牺牲自己才能封印水魔兽...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'wuhou_sacrifice_2',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '灵儿，我必须用女娲的力量封印水魔兽。这是我作为女娲后人的命运。',
+        expression: Expression.SAD,
+        nextDialogId: 'wuhou_sacrifice_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '母亲！不要！',
+        expression: Expression.SAD,
+        nextDialogId: 'wuhou_sacrifice_4',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '灵儿，这是水灵珠。你带着它回到未来，用它来保护世界。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'wuhou_sacrifice_5',
+      },
+      {
+        speakerId: 'wuhou',
+        speakerName: '巫后',
+        text: '我的女儿，你要好好活下去。你是女娲后人，你有责任保护这个世界。',
+        expression: Expression.SAD,
+        nextDialogId: 'wuhou_sacrifice_6',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '巫后化作光芒，与水魔兽一同被封印...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'wuhou_sacrifice_7',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '母亲...我一定会继承您的意志，保护这个世界！',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'water_pearl_obtained',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '赵灵儿获得了母亲留下的水灵珠...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'water_pearl_obtained_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这是母亲留下的水灵珠。我能感受到她的爱和保护这个世界的决心。',
+        expression: Expression.SAD,
+        nextDialogId: 'water_pearl_obtained_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿，我们有了水灵珠和麒麟角，可以施展完整的回魂仙梦回到现在了。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'water_pearl_obtained_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '灵儿，你母亲是个伟大的女娲后人。她的精神会一直指引你。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'water_pearl_obtained_5',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '灵儿姐姐，我们回去吧。现在我们有了所有灵珠，可以对抗拜月教主了！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'water_pearl_obtained_6',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '光芒再次闪烁，众人从十年前回到了现在...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Trial Cave dialogs (US-008)
+  {
+    id: 'jiushen_skill_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '在试炼窟深处，众人发现了一位醉酒的老者...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'jiushen_skill_intro_2',
+      },
+      {
+        speakerId: 'jiushen',
+        speakerName: '酒神',
+        text: '哈哈哈！你们来得正好！来陪我喝一杯！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'jiushen_skill_intro_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这位老先生是...？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'jiushen_skill_intro_4',
+      },
+      {
+        speakerId: 'jiushen',
+        speakerName: '酒神',
+        text: '我是酒神！世间的酒，都是我的杰作！哈哈哈！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'jiushen_skill_intro_5',
+      },
+      {
+        speakerId: 'jiushen',
+        speakerName: '酒神',
+        text: '小子，你看起来是个有潜力的年轻人。我可以教你一招绝世仙术——酒神咒！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'jiushen_skill_intro_6',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '酒神咒？那是什么仙术？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'jiushen_skill_learned',
+    lines: [
+      {
+        speakerId: 'jiushen',
+        speakerName: '酒神',
+        text: '酒神咒是我独创的仙术。它可以将你全身的灵力转化为攻击力，一击必杀！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'jiushen_skill_learned_2',
+      },
+      {
+        speakerId: 'jiushen',
+        speakerName: '酒神',
+        text: '但这是代价很大的仙术。使用一次，你所有的MP都会消耗殆尽。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'jiushen_skill_learned_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '代价这么大？那使用时要非常谨慎了。',
+        expression: Expression.THINKING,
+        nextDialogId: 'jiushen_skill_learned_4',
+      },
+      {
+        speakerId: 'jiushen',
+        speakerName: '酒神',
+        text: '正是如此。但当你面对强大的敌人，无路可退时，酒神咒就是你的最后王牌！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'jiushen_skill_learned_5',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '酒神传授了酒神咒的秘法给李逍遥...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'jiushen_skill_learned_6',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我学会了酒神咒！感谢酒神的传授！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'jiushen_skill_learned_7',
+      },
+      {
+        speakerId: 'jiushen',
+        speakerName: '酒神',
+        text: '哈哈哈！去吧！用酒神咒征服天下！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'qiankun_skill_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '在试炼窟的另一处，众人发现了一本泛黄的秘籍...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qiankun_skill_intro_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这是什么秘籍？上面写着"乾坤一掷"...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qiankun_skill_intro_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '乾坤一掷！这是传说中的仙术！可以将全身的力量集中在一点，击穿一切！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'qiankun_skill_intro_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '听说这仙术是古时一位大侠所创，威力惊人。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qiankun_skill_intro_5',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '这本书似乎是留给有缘人的。逍遥哥哥，你应该可以学会这仙术！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'qiankun_skill_learned',
+    lines: [
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '让我仔细研读这本秘籍...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qiankun_skill_learned_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '李逍遥翻开秘籍，仔细研读其中记载的修炼方法...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qiankun_skill_learned_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '原来乾坤一掷是这样施展的！将全身力量集中，以雷霆之势击向敌人！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qiankun_skill_learned_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '李逍遥在心中默念秘法，渐渐领悟了乾坤一掷的精髓...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'qiankun_skill_learned_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我学会了乾坤一掷！这仙术威力惊人，足以击穿最强的敌人！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'qiankun_skill_learned_6',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '逍遥，你现在有了酒神咒和乾坤一掷两招绝世仙术，实力大增！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'shilian_cave_intro',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '众人来到传说中的试炼窟入口...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_intro_2',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '这是试炼窟！听说这里藏着许多上古秘术和宝藏。',
+        expression: Expression.HAPPY,
+        nextDialogId: 'shilian_cave_intro_3',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '试炼窟？这个名字听起来很有意思。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_intro_4',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '试炼窟是上古女娲留下的遗迹，用来考验和保护女娲后人。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_intro_5',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '所以我们来这里是为了寻找可以对抗拜月教主的秘密？',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_intro_6',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '是的。试炼窟中可能有强大的仙术和宝物，能帮助我们战胜拜月教主。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shilian_cave_purpose',
+    lines: [
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '让我解释一下试炼窟的目的。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_purpose_2',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '上古时代，女娲为了保护后人，在这里留下了许多秘术和宝物。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_purpose_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '只有通过重重考验的人，才能获得这些传承。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_purpose_4',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '所以试炼窟既是考验，也是传承。只有真正的勇者才能获得女娲的恩赐。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shilian_cave_purpose_5',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '既然我们来到了这里，就一定要完成所有的考验！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'treasure_found',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '在试炼窟的最深处，众人发现了一个古老的宝藏室...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'treasure_found_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '这里藏满了各种宝物和秘籍！',
+        expression: Expression.SURPRISED,
+        nextDialogId: 'treasure_found_3',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '这些都是女娲留下的传承。我们要好好保管这些宝物。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'treasure_found_4',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '有了这些宝物和秘术，我们对抗拜月教主的信心更足了！',
+        expression: Expression.HAPPY,
+        nextDialogId: 'treasure_found_5',
+      },
+      {
+        speakerId: 'anu',
+        speakerName: '阿奴',
+        text: '灵儿姐姐，我们通过了试炼窟的考验，获得了女娲的恩赐！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'tower_level5_reached',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '众人来到锁妖塔第五层...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_level5_reached_2',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '我们已经到达锁妖塔第五层了！灵儿应该就在上面两层！',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_level5_reached_3',
+      },
+      {
+        speakerId: 'lin_yueru',
+        speakerName: '林月如',
+        text: '锁妖塔越来越危险了。我们要小心前行。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_level5_reached_4',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '第五层中封印着更强的妖魔，众人小心翼翼地前进...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'tower_level5_reached_5',
+      },
+      {
+        speakerId: 'zhao_linger',
+        speakerName: '赵灵儿',
+        text: '我的封印就在第七层...我能感应到自己被困在那里。',
+        expression: Expression.SAD,
+        nextDialogId: 'tower_level5_reached_6',
+      },
+      {
+        speakerId: 'li_xiaoyao',
+        speakerName: '李逍遥',
+        text: '灵儿，我们一定会救你出来！再往上两层就到了！',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // System dialogs (US-009)
+  {
+    id: 'inn_intro',
+    lines: [
+      {
+        speakerId: 'innkeeper',
+        speakerName: '客栈老板',
+        text: '欢迎来到客栈！我们这里可以为您提供休息和住宿服务。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'inn_intro_2',
+      },
+      {
+        speakerId: 'innkeeper',
+        speakerName: '客栈老板',
+        text: '休息一晚可以恢复您全部的HP和MP，费用是50金币。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'inn_intro_3',
+      },
+      {
+        speakerId: 'innkeeper',
+        speakerName: '客栈老板',
+        text: '您想在这里休息吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shop_intro',
+    lines: [
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '欢迎光临！我这里有各种药品、武器和道具出售。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shop_intro_2',
+      },
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '药品可以恢复HP和MP，武器可以提升攻击力，道具可以在战斗中使用。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shop_intro_3',
+      },
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '如果您有不需要的物品，也可以卖给我换取金币。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shop_intro_4',
+      },
+      {
+        speakerId: 'shopkeeper',
+        speakerName: '商人',
+        text: '请问您想要购买什么？',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  // Baihe Village NPC dialogs (US-010)
+  {
+    id: 'han_doctor_intro',
+    lines: [
+      {
+        speakerId: 'han_doctor',
+        speakerName: '韩医仙',
+        text: '我是韩医仙，这里的医生。最近村里有不少人被蛇妖狐妖袭击，伤势很重。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'han_mengci_intro',
+    lines: [
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '我是韩梦慈，父亲的助手。我们正在努力救治被妖魔袭击的村民。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'baihe_villager_intro',
+    lines: [
+      {
+        speakerId: 'baihe_villager',
+        speakerName: '村民',
+        text: '欢迎来到白河村！这里是个宁静的小村庄，但最近有妖魔出没，请小心。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'baihe_villager_worry',
+    lines: [
+      {
+        speakerId: 'baihe_villager',
+        speakerName: '村民',
+        text: '最近蛇妖狐妖经常袭击村子，我们都不敢出门了...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'han_mother_worry',
+    lines: [
+      {
+        speakerId: 'han_mother',
+        speakerName: '韩母',
+        text: '梦慈最近经常外出救治村民，我很担心她的安全...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'clinic_assistant_intro',
+    lines: [
+      {
+        speakerId: 'clinic_assistant',
+        speakerName: '医馆助手',
+        text: '韩医仙正在救治伤员，需要药材的帮助。如果您能找到药材，请告诉我们。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'snake_demon_intro',
+    lines: [
+      {
+        speakerId: 'snake_demon',
+        speakerName: '蛇妖',
+        text: '人类...你们敢闯入我的领地！我要把你们都吃掉！',
+        expression: Expression.ANGRY,
+      },
+    ],
+  },
+  {
+    id: 'fox_demon_intro',
+    lines: [
+      {
+        speakerId: 'fox_demon',
+        speakerName: '狐妖',
+        text: '嘻嘻嘻...愚蠢的人类，你们不知道这里是谁的地盘吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'mengci_rescued',
+    lines: [
+      {
+        speakerId: 'han_mengci',
+        speakerName: '韩梦慈',
+        text: '感谢你们救了我！如果不是你们及时赶到，我可能就被蛇妖吃掉了...',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  // Yangzhou City NPC dialogs (US-011)
+  {
+    id: 'yangzhou_guard_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_guard',
+        speakerName: '扬州守卫',
+        text: '扬州城最近发生了一起女飞贼的案件，知府大人正在追查此事。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_innkeeper_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_innkeeper',
+        speakerName: '客栈老板',
+        text: '欢迎来到扬州客栈！这里有最舒适的房间和最美味的菜肴。',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_villager_chat',
+    lines: [
+      {
+        speakerId: 'yangzhou_villager',
+        speakerName: '扬州居民',
+        text: '扬州城最近不太太平，有女飞贼在夜间作案，大家都人心惶惶。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_merchant_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_merchant',
+        speakerName: '扬州商人',
+        text: '我是扬州城的商人，经营各种商品。您需要什么？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_magistrate_intro',
+    lines: [
+      {
+        speakerId: 'yangzhou_magistrate',
+        speakerName: '扬州知府',
+        text: '我是扬州知府。最近城中发生女飞贼案件，正在全力追查。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'yangzhou_guest_chat',
+    lines: [
+      {
+        speakerId: 'yangzhou_guest',
+        speakerName: '客栈客人',
+        text: '听说那个女飞贼很厉害，连知府大人的府邸都被她闯过了。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'female_thief_encounter',
+    lines: [
+      {
+        speakerId: 'female_thief',
+        speakerName: '女飞贼',
+        text: '嘻嘻嘻...你们是谁？想要抓我吗？我可没那么容易被抓住！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'ji_sanniang_npc',
+    lines: [
+      {
+        speakerId: 'ji_sanniang',
+        speakerName: '姬三娘',
+        text: '我是姬三娘，扬州城的女飞贼。你们想了解更多关于我的事情吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Capital Liu Manor NPC dialogs (US-012)
+  {
+    id: 'liu_jinyuan_npc_intro',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '我是刘晋元，京城刘府的主人。最近我身体不太好...',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'liu_doctor_diagnosis',
+    lines: [
+      {
+        speakerId: 'liu_doctor',
+        speakerName: '刘府医生',
+        text: '晋元公子的病情很奇怪，脉象紊乱，似有某种毒素侵入体内。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'liu_servant_intro',
+    lines: [
+      {
+        speakerId: 'liu_servant',
+        speakerName: '刘府仆人',
+        text: '欢迎来到刘府！晋元公子最近病重，彩依姑娘一直在照顾他。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'liu_jinyuan_npc_sick',
+    lines: [
+      {
+        speakerId: 'liu_jinyuan',
+        speakerName: '刘晋元',
+        text: '我最近一直感到虚弱，多亏彩依照顾我...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_intro',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我是彩依，晋元公子的妻子。我会一直照顾他。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_caring',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '晋元的病情很严重，我必须日夜照顾他...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_butterfly_reveal',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '其实...我是蝴蝶精。我用我的灵力来维持晋元的生命。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'caiyi_npc_final_words',
+    lines: [
+      {
+        speakerId: 'caiyi',
+        speakerName: '彩依',
+        text: '我已经决定牺牲自己来拯救晋元。这是我最后的心愿...',
+        expression: Expression.SAD,
+      },
+    ],
+  },
+  // Shushan NPC dialogs (US-013)
+  {
+    id: 'shushan_guard_npc_intro',
+    lines: [
+      {
+        speakerId: 'shushan_guard',
+        speakerName: '蜀山守卫',
+        text: '这里是蜀山派的圣地，只有得到长老许可才能进入锁妖塔。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shushan_disciple_npc_chat',
+    lines: [
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '锁妖塔是蜀山派的镇派之宝，里面封印着无数妖魔。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shushan_disciple_npc_chat2',
+    lines: [
+      {
+        speakerId: 'shushan_disciple',
+        speakerName: '蜀山弟子',
+        text: '听说最近有人要进入锁妖塔救人，长老已经批准了。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'shushan_elder_npc_intro',
+    lines: [
+      {
+        speakerId: 'shushan_elder',
+        speakerName: '蜀山长老',
+        text: '我是蜀山派的长老。锁妖塔的事务由我负责。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Dali and Trial Cave NPC dialogs (US-014)
+  {
+    id: 'dali_guard_intro',
+    lines: [
+      {
+        speakerId: 'dali_guard',
+        speakerName: '大理守卫',
+        text: '欢迎来到大理城！这里是南诏国的首都。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'dali_villager_greeting',
+    lines: [
+      {
+        speakerId: 'dali_villager',
+        speakerName: '大理村民',
+        text: '大理是个美丽的城市，欢迎远方来的客人！',
+        expression: Expression.HAPPY,
+      },
+    ],
+  },
+  {
+    id: 'dali_shopkeeper_greeting',
+    lines: [
+      {
+        speakerId: 'dali_shopkeeper',
+        speakerName: '大理商人',
+        text: '欢迎光临！我这里有各种南诏特产，您要看看吗？',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'trial_master_intro',
+    lines: [
+      {
+        speakerId: 'trial_master',
+        speakerName: '试炼大师',
+        text: '欢迎来到试炼窟！这里是女娲留下的遗迹，只有通过考验才能获得传承。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'nuwa_guardian_greeting',
+    lines: [
+      {
+        speakerId: 'nuwa_guardian',
+        speakerName: '女娲守护者',
+        text: '我是女娲的守护者。只有真正的勇者才能通过试炼窟的考验。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'nuwa_priestess_intro',
+    lines: [
+      {
+        speakerId: 'nuwa_priestess',
+        speakerName: '女娲祭司',
+        text: '我是女娲祭司，负责守护试炼窟的秘术和宝物。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'qilin_guardian_intro',
+    lines: [
+      {
+        speakerId: 'qilin_guardian',
+        speakerName: '麒麟守护者',
+        text: '麒麟洞是神兽麒麟的居所，只有获得麒麟认可才能进入。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  // Yuhang and Jingcheng NPC dialogs (US-015)
+  {
+    id: 'yuhang_shop_intro',
+    lines: [
+      {
+        speakerId: 'yuhang_shopkeeper',
+        speakerName: '余杭镇商人',
+        text: '欢迎来到余杭镇！这里是李逍遥的故乡。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'jingcheng_guard_intro',
+    lines: [
+      {
+        speakerId: 'jingcheng_guard',
+        speakerName: '京城守卫',
+        text: '京城是天下繁华之地，欢迎各位前来。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
+  {
+    id: 'jingcheng_villager_chat',
+    lines: [
+      {
+        speakerId: 'jingcheng_villager',
+        speakerName: '京城居民',
+        text: '京城的刘府最近出了不少事，听说晋元公子病重...',
         expression: Expression.NORMAL,
       },
     ],

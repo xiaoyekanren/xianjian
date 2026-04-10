@@ -993,3 +993,211 @@
 - Story events should use requireFlag for conditional triggering
 - Color themes can reflect location character: red for royal city, blue for sacred temple
 ---
+
+## 2026-04-10 - US-002
+- Added shi_elder_introduction dialogue for Guiyin Mountain (鬼阴山)
+- Introduction explains 石长老 background: 拜月教主's trusted aide, wears black robe, holds staff, grim face
+- Describes his high magic power and ruthless methods, one of the most feared figures in 南诏国
+- Dialogue uses narrator (旁白) to provide context about this key antagonist character
+
+**Files changed:**
+- src/data/DialogData.ts (added shi_elder_introduction dialogue sequence)
+- ralph/prd.json (updated US-002 to passes: true)
+
+**Learnings for future iterations:**
+- 石长老 is 拜月教主's enforcer, introduced before encounter with player party
+- Introduction dialogues use narrator (旁白) to provide background context
+- Dialog sequences follow pattern: id, lines with speakerId/speakerName/text/expression
+- US-002 comment added to identify the section in DialogData.ts
+---
+
+## 2026-04-10 17:30 - US-003
+- Added yangzhou_thief_case_brief: 女飞贼案件简报，守卫详细介绍女飞贼作案情况
+- Added yangzhou_thief_resolved: 案件解决，知府感谢并给予奖励，揭露姬三娘身份
+- Added ji_sanniang_encounter: 遇到姬三娘，夜间邂逅并触发战斗
+- Added ji_sanniang_defeated: 姬三娘被击败，承认失败并感慨江湖无奈
+- Dialog structure follows existing patterns: DialogSequence with DialogLine array
+- Used Expression enum for character emotions (NORMAL, HAPPY, SAD, ANGRY, SURPRISED, THINKING)
+- Used DialogEventType for events (GET_ITEM for gold reward, START_BATTLE for battle trigger)
+
+**Files changed:**
+- src/data/DialogData.ts (added 4 dialog sequences with ~20 lines)
+- ralph/prd.json (updated US-003 to passes: true)
+
+**Learnings for future iterations:**
+- Dialog IDs follow pattern: location_event (e.g., yangzhou_thief_case_brief)
+- Multi-step dialogs use nextDialogId chaining
+- Story dialogs often include event triggers (battle, item rewards)
+- Character speakerId should match existing character IDs (ji_sanniang, yangzhou_magistrate, etc.)
+---
+
+## 2026-04-10 18:00 - US-004
+- Implemented 15 complete dialogue sequences for 京城彩依剧情 (Capital Caiyi arc)
+- Classic tearjerker storyline: 彩依 (butterfly spirit) sacrifices herself to save 刘晋元
+- Dialogues added:
+  - ch7_enter_liu_manor: 进入刘府，仆人介绍晋元病重
+  - ch7_meet_jinyuan: 见到刘晋元，病重状态
+  - ch7_meet_caiyi: 见到彩依，温柔照顾晋元
+  - ch7_jinyuan_sick: 医生诊断，脉象紊乱似有毒素
+  - ch7_caiyi_room: 李逍遥与彩依单独谈话
+  - ch7_caiyi_butterfly_spirit: 灵儿识破彩依蝴蝶精身份
+  - ch7_caiyi_love_jinyuan: 彩依诉说对晋元的爱慕
+  - ch7_caiyi_decision: 彩依决定用灵力救晋元，代价是生命
+  - ch7_caiyi_reveal_truth: 彩依向众人揭露真相
+  - ch7_caiyi_to_jinyuan: 彩依对晋元说话
+  - ch7_caiyi_transform: 彩依变身蝴蝶，散发光芒
+  - ch7_caiyi_last_words: 彩依遗言，嘱晋元好好活下去
+  - ch7_caiyi_butterfly_fly: 蝴蝶飞走，消失天际
+  - ch7_jinyuan_awake: 晋元醒来，询问彩依去向
+  - ch7_jinyuan_grief: 晋元悲痛，不愿接受彩依离去
+- Key characters: liu_jinyuan, caiyi, liu_manor_servant, liu_manor_doctor, narrator
+- Used SET_FLAG event for caiyi_transformed flag in ch7_caiyi_transform
+
+**Files changed:**
+- src/data/DialogData.ts (added 15 dialog sequences, ~475 lines)
+- ralph/prd.json (updated US-004 to passes: true)
+
+**Learnings for future iterations:**
+- Tragic story dialogues use narrator (旁白) for scene descriptions and transitions
+- SET_FLAG events can mark story progress flags (e.g., caiyi_transformed: true)
+- Expression.SAD is heavily used in tragic/emotional dialogues
+- speakerId 'narrator' used for non-character narration lines
+- Multi-step dialog chains provide emotional buildup and release
+---
+
+## 2026-04-10 - US-005
+- Implemented 6 complete dialogue sequences for蜀山剧情 (Shushan arc)
+- Key storyline: 李逍遥 and party arrive at蜀山 to rescue赵灵儿 from锁妖塔
+- Dialogues added:
+  - ch8_arrive_shushan: 到达蜀山，众人感叹仙家圣地气势
+  - ch8_shushan_disciple_greeting: 蜀山弟子迎接，李逍遥说明来意
+  - ch8_elder_greeting: 长老出现，了解灵儿被封印原因
+  - ch8_elder_permission: 长老许可进入锁妖塔，解释当年封印真相
+  - ch8_suoyaota_history: 锁妖塔历史介绍，九层结构，灵儿在第七层
+  - ch8_linger_imprisoned_truth: 灵儿被囚真相，巫后十年前为救女儿将她送走
+- Key characters: shushan_disciple, shushan_elder, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 蜀山派管理锁妖塔，灵儿因女娲后人身份被诬陷为妖而封印
+
+**Files changed:**
+- src/data/DialogData.ts (added 6 dialog sequences, ~228 lines)
+- ralph/prd.json (updated US-005 to passes: true)
+
+**Learnings for future iterations:**
+- Shushan dialogs use ch8_ prefix for chapter 8蜀山 arc
+- shushan_elder and shushan_disciple as speaker IDs for蜀山 characters
+- Historical dialogues (suoyaota_history, linger_imprisoned_truth) provide lore context
+- Expression.THINKING used for elders explaining complex situations
+- Multi-party responses show each character's reaction (li_xiaoyao, lin_yueru, anu)
+---
+
+## 2026-04-10 - US-006
+- Implemented 4 complete dialogue sequences for神木林/麒麟洞剧情 (Sacred Forest and Qilin Cave arc)
+- Key storyline: 获取风灵珠 and麒麟角 for施展回魂仙梦
+- Dialogues added:
+  - shenmu_wind_pearl_intro: 风灵珠介绍，女娲留下的五颗灵珠之一
+  - shenmu_wind_pearl_obtained: 获得风灵珠，赵灵儿与灵珠共鸣吸收力量
+  - qilin_cave_intro: 麒麟洞介绍，上古神兽麒麟住在此处
+  - qilin_horn_obtained: 获得麒麟角，麒麟认可女娲后人并赐予断角
+- Key characters: qilin, zhao_linger, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 回魂仙梦需要水灵珠和麒麟角才能施展，穿越时空回到十年前
+
+**Files changed:**
+- src/data/DialogData.ts (added 4 dialog sequences, ~220 lines)
+- ralph/prd.json (updated US-006 to passes: true)
+
+**Learnings for future iterations:**
+- Mythical creature dialogues (qilin) use dignified speech patterns
+- Item acquisition dialogues often use narrator for visual descriptions
+- speakerId 'qilin' added for麒麟 character
+- Story progression items (wind_pearl, qilin_horn) linked to回魂仙梦 ceremony
+---
+
+## 2026-04-10 - US-007
+- Implemented 8 complete dialogue sequences for大理/回魂仙梦剧情 (Dali and Dream of Past arc)
+- Key storyline: 穿越时空回到十年前，见巫后并获得水灵珠
+- Dialogues added:
+  - dream_of_past_intro: 回魂仙梦介绍，女娲秘术可穿越时空
+  - dream_of_past_explanation: 解释施展方法，需水灵珠和麒麟角
+  - nanzhao_10_years_intro: 南诏十年前介绍，繁荣的国家
+  - nanzhao_10_years_wuhou_appear: 巫后出现，母女重逢
+  - nanzhao_10_years_wuhou_request: 巫后请求帮助阻止拜月教主阴谋
+  - water_beast_threat: 水魔兽威胁，上古凶兽被召唤
+  - wuhou_sacrifice: 巫后牺牲，封印水魔兽并留下水灵珠
+  - water_pearl_obtained: 获得水灵珠，返回现在
+- Key characters: wuhou, water_beast, baiyue_leader, zhao_linger, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 十年前巫后牺牲封印水魔兽，留下水灵珠给女儿
+
+**Files changed:**
+- src/data/DialogData.ts (added 8 dialog sequences, ~362 lines)
+- ralph/prd.json (updated US-007 to passes: true)
+
+**Learnings for future iterations:**
+- speakerId 'wuhou' added for巫后 character
+- speakerId 'water_beast' added for水魔兽凶兽
+- Emotional dialogues use Expression.SAD heavily for tragic moments
+- Time travel dialogues use narrator for scene transitions (穿越时空)
+- Historical dialogues connect to main story (巫后牺牲 explains灵儿命运)
+---
+
+## 2026-04-10 - US-008
+- Implemented 8 complete dialogue sequences for试炼窟剧情 (Trial Cave arc)
+- Key storyline: 获取强大仙术（酒神咒、乾坤一掷）和宝藏
+- Dialogues added:
+  - jiushen_skill_intro: 酒神咒介绍，醉酒老者传授仙术
+  - jiushen_skill_learned: 学会酒神咒，代价是消耗全部MP
+  - qiankun_skill_intro: 乾坤一掷介绍，泛黄秘籍记载绝世仙术
+  - qiankun_skill_learned: 学会乾坤一掷，全身力量集中一击
+  - shilian_cave_intro: 试炼窟介绍，女娲留下的遗迹
+  - shilian_cave_purpose: 试炼窟目的，考验后人并传承秘术宝物
+  - treasure_found: 发现宝藏，女娲留下的传承宝物
+  - tower_level5_reached: 到达锁妖塔第五层，接近灵儿封印位置
+- Key characters: jiushen, zhao_linger, li_xiaoyao, lin_yueru, anu, narrator
+- Story context: 试炼窟是女娲遗迹，可获得仙术传承和宝物
+
+**Files changed:**
+- src/data/DialogData.ts (added 8 dialog sequences, ~355 lines)
+- ralph/prd.json (updated US-008 to passes: true)
+
+**Learnings for future iterations:**
+- speakerId 'jiushen' added for酒神 character
+- Skill learning dialogues explain mechanics (MP cost for酒神咒)
+- Skill manuals use narrator for learning process descriptions
+- tower_level5_reached connects to锁妖塔 rescue storyline
+---
+
+## 2026-04-10 - US-009 to US-015 Summary
+- Implemented system dialogues and all location NPC dialogues
+- US-009: System dialogues (inn_intro, shop_intro) - 2 dialogs
+- US-010: 白河村NPC对话 - 9 dialogs (han_doctor, han_mengci, villagers, snake_demon, fox_demon)
+- US-011: 扬州城NPC对话 - 8 dialogs (guards, innkeeper, magistrate, female_thief, ji_sanniang)
+- US-012: 京城刘府NPC对话 - 8 dialogs (liu_jinyuan, caiyi, doctor, servant)
+- US-013: 蜀山NPC对话 - 4 dialogs (guards, disciples, elder)
+- US-014: 大理/试炼窟NPC对话 - 7 dialogs (dali villagers, trial_master, nuwa guardians)
+- US-015: 余杭镇/京城NPC对话 - 3 dialogs
+
+**Files changed:**
+- src/data/DialogData.ts (added ~50 NPC dialogs)
+- ralph/prd.json (updated US-009-015 to passes: true)
+
+**Learnings:**
+- NPC intro dialogues are single-line, simple structure
+- speakerId uses location prefix pattern (yangzhou_, baihe_, shushan_)
+- Character NPCs reuse existing speakerId (caiyi, liu_jinyuan, ji_sanniang)
+---
+
+## 2026-04-10 - US-016 to US-020 Summary
+- Quest data already exists in quests.json for US-016 and US-017
+- Added US-018: quest_jingcheng_caiyi_medicine - help Caiyi collect herbs for medicine
+- Added US-019: quest_shilian_skill_manual - find hidden immortal manual in Trial Cave
+- US-020: Verified data completeness - typecheck passes, JSON valid
+
+**Files changed:**
+- src/data/quests.json (added quest_jingcheng_caiyi_medicine, quest_shilian_skill_manual)
+- ralph/prd.json (updated US-016-020 to passes: true)
+
+**Learnings:**
+- quests.json uses consistent quest schema with prerequisites, steps, rewards
+- Quest IDs use pattern: quest_location_task (quest_jingcheng_caiyi_medicine)
+- Quest steps include: talk_to_npc, collect_item, defeat_enemy, reach_location
+- Rewards can include: exp, gold, items, skills, affection, flags
+---
