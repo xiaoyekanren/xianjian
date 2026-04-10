@@ -3325,6 +3325,32 @@ export const DEMO_DIALOGS: DialogSequence[] = [
       },
     ],
   },
+  // US-002: 补充鬼阴山剧情对话 - 石长老介绍
+  {
+    id: 'shi_elder_introduction',
+    lines: [
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '石长老，拜月教主麾下的得力助手...',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_introduction_2',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '他身着黑袍，手持法杖，面容阴沉，常年追随拜月教主，执行各种任务。',
+        expression: Expression.NORMAL,
+        nextDialogId: 'shi_elder_introduction_3',
+      },
+      {
+        speakerId: 'narrator',
+        speakerName: '旁白',
+        text: '此人法力高强，手段狠辣，是南诏国最令人畏惧的人物之一。',
+        expression: Expression.NORMAL,
+      },
+    ],
+  },
   // US-029: 扬州城对话
   {
     id: 'enter_yangzhou_marvel',
