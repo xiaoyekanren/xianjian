@@ -246,3 +246,24 @@ Started: Thu Apr  9 11:11:03 PM CST 2026
   - Combo skills are already defined in ComboSkill.ts - use enableComboSkills in battle event
   - Dark themes for evil locations: #1A0A0A primary, #FF0000 accent, storm weather
 ---
+
+## Thu Apr 10 2026 - US-007
+- Implemented 蜀山地图数据 (Shushan Maps)
+- Added shushan location to maps.json:
+  - shushan_gate: Mountain entrance with 蜀山弟子 NPCs
+  - shushan_hall: Central hall with 蜀山长老 NPC and suoyaota truth event
+- Both maps include:
+  - Full layer structure (ground, building, overlay)
+  - NPCs with dialog references
+  - Map transitions (gate↔hall, gate↔jingcheng_main, hall↔suoyaota_entrance)
+  - On-enter events with flag setting
+  - Collision definitions
+- Files changed:
+  - src/data/maps.json (added shushan location entry + 2 map entries)
+  - ralph/prd.json (updated US-007 to passes: true)
+- **Learnings for future iterations:**
+  - Shushan uses chapter 8 in the 13-chapter structure
+  - Color theme for Shushan: silver/blue/ice colors (#C0C0C0, #4682B4, #E0FFFF)
+  - Transition to suoyaota_entrance requires "suoyaota_access" flag
+  - Hall event sets "learned_suoyaota_truth" flag for story progression
+---
